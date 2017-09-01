@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6325F69A1F59041600B22DDA /* Gib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F6991F59041600B22DDA /* Gib.swift */; };
+		6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F69B1F590B1E00B22DDA /* Classes.swift */; };
 		6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA151F58A661006C20DD /* AppDelegate.swift */; };
 		6373FA181F58A661006C20DD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA171F58A661006C20DD /* FirstViewController.swift */; };
 		6373FA1A1F58A661006C20DD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA191F58A661006C20DD /* SecondViewController.swift */; };
@@ -15,6 +17,9 @@
 		6373FA221F58A661006C20DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6373FA201F58A661006C20DD /* LaunchScreen.storyboard */; };
 		6373FA2D1F58A661006C20DD /* AssignmentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA2C1F58A661006C20DD /* AssignmentsTests.swift */; };
 		6373FA381F58A661006C20DD /* AssignmentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA371F58A661006C20DD /* AssignmentsUITests.swift */; };
+		63FE4DBC1F591B2900077579 /* frmAssignmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */; };
+		63FE4DBE1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */; };
+		63FE4DC01F591D5600077579 /* frmAssignmentList_NewAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6325F6991F59041600B22DDA /* Gib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gib.swift; sourceTree = "<group>"; };
+		6325F69B1F590B1E00B22DDA /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		6373FA121F58A661006C20DD /* Assignments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA151F58A661006C20DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6373FA171F58A661006C20DD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +56,13 @@
 		6373FA331F58A661006C20DD /* AssignmentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA371F58A661006C20DD /* AssignmentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsUITests.swift; sourceTree = "<group>"; };
 		6373FA391F58A661006C20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList.swift; path = Assignments/Forms/frmAssignmentList.swift; sourceTree = SOURCE_ROOT; };
+		63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_tblAssignment_Cell.swift; path = Assignments/Forms/frmAssignmentList_tblAssignment_Cell.swift; sourceTree = SOURCE_ROOT; };
+		63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_NewAssignment.swift; path = Assignments/Forms/frmAssignmentList_NewAssignment.swift; sourceTree = SOURCE_ROOT; };
+		63FE4DC21F591FAA00077579 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		63FE4DC31F591FAA00077579 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
+		63FE4DC41F591FAA00077579 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
+		63FE4DC51F5920A300077579 /* ZFRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = "Assignments/Third-Parties/ZFRippleButton.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +90,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6325F6981F58F23F00B22DDA /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */,
+				63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */,
+				63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */,
+			);
+			name = Forms;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		6373FA091F58A661006C20DD = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +124,8 @@
 		6373FA141F58A661006C20DD /* Assignments */ = {
 			isa = PBXGroup;
 			children = (
+				63FE4DB91F59164200077579 /* Third-Parties */,
+				6325F6981F58F23F00B22DDA /* Forms */,
 				6373FA151F58A661006C20DD /* AppDelegate.swift */,
 				6373FA171F58A661006C20DD /* FirstViewController.swift */,
 				6373FA191F58A661006C20DD /* SecondViewController.swift */,
@@ -106,6 +133,8 @@
 				6373FA1E1F58A661006C20DD /* Assets.xcassets */,
 				6373FA201F58A661006C20DD /* LaunchScreen.storyboard */,
 				6373FA231F58A661006C20DD /* Info.plist */,
+				6325F6991F59041600B22DDA /* Gib.swift */,
+				6325F69B1F590B1E00B22DDA /* Classes.swift */,
 			);
 			path = Assignments;
 			sourceTree = "<group>";
@@ -126,6 +155,26 @@
 				6373FA391F58A661006C20DD /* Info.plist */,
 			);
 			path = AssignmentsUITests;
+			sourceTree = "<group>";
+		};
+		63FE4DB91F59164200077579 /* Third-Parties */ = {
+			isa = PBXGroup;
+			children = (
+				63FE4DC11F591FAA00077579 /* SkyFloatingLabelTextField */,
+				63FE4DC51F5920A300077579 /* ZFRippleButton.swift */,
+			);
+			name = "Third-Parties";
+			sourceTree = "<group>";
+		};
+		63FE4DC11F591FAA00077579 /* SkyFloatingLabelTextField */ = {
+			isa = PBXGroup;
+			children = (
+				63FE4DC21F591FAA00077579 /* SkyFloatingLabelTextField.swift */,
+				63FE4DC31F591FAA00077579 /* SkyFloatingLabelTextFieldWithIcon.swift */,
+				63FE4DC41F591FAA00077579 /* UITextField+fixCaretPosition.swift */,
+			);
+			name = SkyFloatingLabelTextField;
+			path = "Third-Parties/SkyFloatingLabelTextField";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */,
+				6325F69A1F59041600B22DDA /* Gib.swift in Sources */,
 				6373FA1A1F58A661006C20DD /* SecondViewController.swift in Sources */,
 				6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */,
+				63FE4DC01F591D5600077579 /* frmAssignmentList_NewAssignment.swift in Sources */,
+				63FE4DBE1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift in Sources */,
+				63FE4DBC1F591B2900077579 /* frmAssignmentList.swift in Sources */,
 				6373FA181F58A661006C20DD /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,13 +485,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FLLKWS94W7;
+				DEVELOPMENT_TEAM = W7W7V5B7Q6;
 				INFOPLIST_FILE = Assignments/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignments;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -446,13 +501,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FLLKWS94W7;
+				DEVELOPMENT_TEAM = W7W7V5B7Q6;
 				INFOPLIST_FILE = Assignments/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignments;
+				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
