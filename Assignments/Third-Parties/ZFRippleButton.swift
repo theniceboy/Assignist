@@ -1,10 +1,3 @@
-//
-//  ZFRippleButton.swift
-//  ZFRippleButtonDemo
-//
-//  Created by Amornchai Kanokpullwad on 6/26/14.
-//  Copyright (c) 2014 zoonref. All rights reserved.
-//
 
 import UIKit
 import QuartzCore
@@ -54,7 +47,7 @@ open class ZFRippleButton: UIButton {
             if !rippleOverBounds {
                 let maskLayer = CAShapeLayer()
                 maskLayer.path = UIBezierPath(roundedRect: bounds,
-                    cornerRadius: layer.cornerRadius).cgPath
+                                              cornerRadius: layer.cornerRadius).cgPath
                 return maskLayer
             } else {
                 return nil
@@ -110,15 +103,15 @@ open class ZFRippleButton: UIButton {
         
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
             self.rippleBackgroundView.alpha = 1
-            }, completion: nil)
+        }, completion: nil)
         
         rippleView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         
         
         UIView.animate(withDuration: 0.7, delay: 0, options: [UIViewAnimationOptions.curveEaseOut, UIViewAnimationOptions.allowUserInteraction],
-            animations: {
-                self.rippleView.transform = CGAffineTransform.identity
-            }, completion: nil)
+                       animations: {
+                        self.rippleView.transform = CGAffineTransform.identity
+        }, completion: nil)
         
         if shadowRippleEnable {
             tempShadowRadius = layer.shadowRadius
@@ -154,32 +147,32 @@ open class ZFRippleButton: UIButton {
     fileprivate func animateToNormal() {
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
             self.rippleBackgroundView.alpha = 1
-            }, completion: {(success: Bool) -> () in
-                UIView.animate(withDuration: self.touchUpAnimationTime, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
-                    self.rippleBackgroundView.alpha = 0
-                    }, completion: nil)
+        }, completion: {(success: Bool) -> () in
+            UIView.animate(withDuration: self.touchUpAnimationTime, delay: 0, options: UIViewAnimationOptions.allowUserInteraction, animations: {
+                self.rippleBackgroundView.alpha = 0
+            }, completion: nil)
         })
         
         
         UIView.animate(withDuration: 0.7, delay: 0,
-            options: [.curveEaseOut, .beginFromCurrentState, .allowUserInteraction],
-            animations: {
-                self.rippleView.transform = CGAffineTransform.identity
-                
-                let shadowAnim = CABasicAnimation(keyPath:"shadowRadius")
-                shadowAnim.toValue = self.tempShadowRadius
-                
-                let opacityAnim = CABasicAnimation(keyPath:"shadowOpacity")
-                opacityAnim.toValue = self.tempShadowOpacity
-                
-                let groupAnim = CAAnimationGroup()
-                groupAnim.duration = 0.7
-                groupAnim.fillMode = kCAFillModeForwards
-                groupAnim.isRemovedOnCompletion = false
-                groupAnim.animations = [shadowAnim, opacityAnim]
-                
-                self.layer.add(groupAnim, forKey:"shadowBack")
-            }, completion: nil)
+                       options: [.curveEaseOut, .beginFromCurrentState, .allowUserInteraction],
+                       animations: {
+                        self.rippleView.transform = CGAffineTransform.identity
+                        
+                        let shadowAnim = CABasicAnimation(keyPath:"shadowRadius")
+                        shadowAnim.toValue = self.tempShadowRadius
+                        
+                        let opacityAnim = CABasicAnimation(keyPath:"shadowOpacity")
+                        opacityAnim.toValue = self.tempShadowOpacity
+                        
+                        let groupAnim = CAAnimationGroup()
+                        groupAnim.duration = 0.7
+                        groupAnim.fillMode = kCAFillModeForwards
+                        groupAnim.isRemovedOnCompletion = false
+                        groupAnim.animations = [shadowAnim, opacityAnim]
+                        
+                        self.layer.add(groupAnim, forKey:"shadowBack")
+        }, completion: nil)
     }
     
     override open func layoutSubviews() {

@@ -1,26 +1,20 @@
 //
-//  frmAssignmentList_NewAssignment.swift
+//  frmAssignmentList_NewAssignment_NewSubject.swift
 //  Assignments
 //
-//  Created by David Chen on 8/31/17.
+//  Created by David Chen on 9/3/17.
 //  Copyright © 2017 David Chen. All rights reserved.
 //
 
 import UIKit
 
-class frmAssignmentList_NewAssignment: UIViewController {
+class frmAssignmentList_NewAssignment_NewSubject: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     /*
     // MARK: - Navigation

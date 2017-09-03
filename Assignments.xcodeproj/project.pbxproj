@@ -9,14 +9,36 @@
 /* Begin PBXBuildFile section */
 		6325F69A1F59041600B22DDA /* Gib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F6991F59041600B22DDA /* Gib.swift */; };
 		6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F69B1F590B1E00B22DDA /* Classes.swift */; };
+		63489CD61F59268B0051CC0D /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CD51F59268B0051CC0D /* ZFRippleButton.swift */; };
+		63489CD91F5929E60051CC0D /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CD81F5929E60051CC0D /* SkyFloatingLabelTextField.swift */; };
+		63489CDB1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CDA1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift */; };
+		63489CDD1F592A210051CC0D /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CDC1F592A210051CC0D /* UITextField+fixCaretPosition.swift */; };
+		63662A0D1F5B152200BB4DBA /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63662A0C1F5B152200BB4DBA /* SevenSwitch.swift */; };
 		6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA151F58A661006C20DD /* AppDelegate.swift */; };
-		6373FA181F58A661006C20DD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA171F58A661006C20DD /* FirstViewController.swift */; };
+		6373FA181F58A661006C20DD /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA171F58A661006C20DD /* LaunchScreen.swift */; };
 		6373FA1A1F58A661006C20DD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA191F58A661006C20DD /* SecondViewController.swift */; };
 		6373FA1D1F58A661006C20DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6373FA1B1F58A661006C20DD /* Main.storyboard */; };
 		6373FA1F1F58A661006C20DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6373FA1E1F58A661006C20DD /* Assets.xcassets */; };
 		6373FA221F58A661006C20DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6373FA201F58A661006C20DD /* LaunchScreen.storyboard */; };
 		6373FA2D1F58A661006C20DD /* AssignmentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA2C1F58A661006C20DD /* AssignmentsTests.swift */; };
 		6373FA381F58A661006C20DD /* AssignmentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA371F58A661006C20DD /* AssignmentsUITests.swift */; };
+		637FE8971F5A6B030029136B /* BetterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FE8961F5A6B030029136B /* BetterSegmentedControl.swift */; };
+		639DE6E71F5BAD2F00A8B473 /* M13Checkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */; };
+		639DE6E81F5BAD2F00A8B473 /* M13Checkbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63A656431F5C6A8A005734FA /* Twinkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656421F5C6A89005734FA /* Twinkle.framework */; };
+		63A656441F5C6A8A005734FA /* Twinkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656421F5C6A89005734FA /* Twinkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63A656461F5C6D36005734FA /* Presentr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656451F5C6D35005734FA /* Presentr.framework */; };
+		63A656471F5C6D36005734FA /* Presentr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656451F5C6D35005734FA /* Presentr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63A656491F5C7052005734FA /* RandomColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656481F5C7050005734FA /* RandomColor.framework */; };
+		63A6564A1F5C7052005734FA /* RandomColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656481F5C7050005734FA /* RandomColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */; };
+		63A6F5ED1F5B24DA00E84B0C /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */; };
+		63A6F5EE1F5B24DA00E84B0C /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63E8E8F41F5B6E7100DDAC53 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */; };
+		63E8E8F51F5B6E7100DDAC53 /* Timepiece.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		63E8E8F71F5B7A7900DDAC53 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E8F61F5B7A7900DDAC53 /* DateTimePicker.swift */; };
+		63E8E8F91F5B7AA500DDAC53 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E8F81F5B7AA500DDAC53 /* DateCollectionViewCell.swift */; };
+		63E8E8FB1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E8FA1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift */; };
 		63FE4DBC1F591B2900077579 /* frmAssignmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */; };
 		63FE4DBE1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */; };
 		63FE4DC01F591D5600077579 /* frmAssignmentList_NewAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */; };
@@ -39,12 +61,45 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		632F752F1F5B235A0091E15E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				639DE6E81F5BAD2F00A8B473 /* M13Checkbox.framework in Embed Frameworks */,
+				63E8E8F51F5B6E7100DDAC53 /* Timepiece.framework in Embed Frameworks */,
+				63A6F5EE1F5B24DA00E84B0C /* DropDown.framework in Embed Frameworks */,
+				63A6564A1F5C7052005734FA /* RandomColor.framework in Embed Frameworks */,
+				63A656441F5C6A8A005734FA /* Twinkle.framework in Embed Frameworks */,
+				63A656471F5C6D36005734FA /* Presentr.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6325F6991F59041600B22DDA /* Gib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gib.swift; sourceTree = "<group>"; };
 		6325F69B1F590B1E00B22DDA /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		63489CD51F59268B0051CC0D /* ZFRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = "Third-Parties/ZFRippleButton.swift"; sourceTree = "<group>"; };
+		63489CD81F5929E60051CC0D /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
+		63489CDA1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkyFloatingLabelTextFieldWithIcon.swift; path = "Third-Parties/SkyFloatingLabelTextField/SkyFloatingLabelTextFieldWithIcon.swift"; sourceTree = "<group>"; };
+		63489CDC1F592A210051CC0D /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITextField+fixCaretPosition.swift"; path = "Third-Parties/SkyFloatingLabelTextField/UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
+		63662A0C1F5B152200BB4DBA /* SevenSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
+		63662A0F1F5B205900BB4DBA /* DropDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		63662A111F5B205900BB4DBA /* DPDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
+		63662A121F5B205900BB4DBA /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		63662A131F5B205900BB4DBA /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		63662A141F5B205900BB4DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63662A161F5B205900BB4DBA /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		63662A181F5B205900BB4DBA /* DropDown+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		63662A191F5B205900BB4DBA /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		63662A1A1F5B205900BB4DBA /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		6373FA121F58A661006C20DD /* Assignments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA151F58A661006C20DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6373FA171F58A661006C20DD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		6373FA171F58A661006C20DD /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		6373FA191F58A661006C20DD /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		6373FA1C1F58A661006C20DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6373FA1E1F58A661006C20DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,13 +111,20 @@
 		6373FA331F58A661006C20DD /* AssignmentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA371F58A661006C20DD /* AssignmentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsUITests.swift; sourceTree = "<group>"; };
 		6373FA391F58A661006C20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList.swift; path = Assignments/Forms/frmAssignmentList.swift; sourceTree = SOURCE_ROOT; };
-		63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_tblAssignment_Cell.swift; path = Assignments/Forms/frmAssignmentList_tblAssignment_Cell.swift; sourceTree = SOURCE_ROOT; };
-		63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_NewAssignment.swift; path = Assignments/Forms/frmAssignmentList_NewAssignment.swift; sourceTree = SOURCE_ROOT; };
-		63FE4DC21F591FAA00077579 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
-		63FE4DC31F591FAA00077579 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
-		63FE4DC41F591FAA00077579 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
-		63FE4DC51F5920A300077579 /* ZFRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = "Assignments/Third-Parties/ZFRippleButton.swift"; sourceTree = SOURCE_ROOT; };
+		637FE8961F5A6B030029136B /* BetterSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BetterSegmentedControl.swift; path = "Third-Parties/BetterSegmentedControl.swift"; sourceTree = "<group>"; };
+		639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = M13Checkbox.framework; sourceTree = "<group>"; };
+		63A656421F5C6A89005734FA /* Twinkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Twinkle.framework; sourceTree = "<group>"; };
+		63A656451F5C6D35005734FA /* Presentr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Presentr.framework; sourceTree = "<group>"; };
+		63A656481F5C7050005734FA /* RandomColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RandomColor.framework; sourceTree = "<group>"; };
+		63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_NewAssignment_NewSubject.swift; sourceTree = "<group>"; };
+		63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropDown.framework; sourceTree = "<group>"; };
+		63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Timepiece.framework; sourceTree = "<group>"; };
+		63E8E8F61F5B7A7900DDAC53 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		63E8E8F81F5B7AA500DDAC53 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		63E8E8FA1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList.swift; path = Assignments/frmAssignmentList.swift; sourceTree = SOURCE_ROOT; };
+		63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_tblAssignment_Cell.swift; path = Assignments/frmAssignmentList_tblAssignment_Cell.swift; sourceTree = SOURCE_ROOT; };
+		63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_NewAssignment.swift; path = Assignments/frmAssignmentList_NewAssignment.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +132,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				639DE6E71F5BAD2F00A8B473 /* M13Checkbox.framework in Frameworks */,
+				63E8E8F41F5B6E7100DDAC53 /* Timepiece.framework in Frameworks */,
+				63A6F5ED1F5B24DA00E84B0C /* DropDown.framework in Frameworks */,
+				63A656491F5C7052005734FA /* RandomColor.framework in Frameworks */,
+				63A656431F5C6A8A005734FA /* Twinkle.framework in Frameworks */,
+				63A656461F5C6D36005734FA /* Presentr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,20 +158,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6325F6981F58F23F00B22DDA /* Forms */ = {
+		63489CD71F5929C70051CC0D /* SkyFloatingLabelTextField */ = {
 			isa = PBXGroup;
 			children = (
-				63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */,
-				63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */,
-				63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */,
+				63489CDA1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift */,
+				63489CDC1F592A210051CC0D /* UITextField+fixCaretPosition.swift */,
 			);
-			name = Forms;
-			path = "New Group";
+			name = SkyFloatingLabelTextField;
+			sourceTree = "<group>";
+		};
+		63662A0E1F5B205900BB4DBA /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				63662A0F1F5B205900BB4DBA /* DropDown.h */,
+				63662A101F5B205900BB4DBA /* helpers */,
+				63662A141F5B205900BB4DBA /* Info.plist */,
+				63662A151F5B205900BB4DBA /* resources */,
+				63662A171F5B205900BB4DBA /* src */,
+			);
+			name = DropDown;
+			path = "Third-Parties/DropDown";
+			sourceTree = "<group>";
+		};
+		63662A101F5B205900BB4DBA /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				63662A111F5B205900BB4DBA /* DPDConstants.swift */,
+				63662A121F5B205900BB4DBA /* DPDKeyboardListener.swift */,
+				63662A131F5B205900BB4DBA /* DPDUIView+Extension.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		63662A151F5B205900BB4DBA /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				63662A161F5B205900BB4DBA /* DropDownCell.xib */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		63662A171F5B205900BB4DBA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				63662A181F5B205900BB4DBA /* DropDown+Appearance.swift */,
+				63662A191F5B205900BB4DBA /* DropDown.swift */,
+				63662A1A1F5B205900BB4DBA /* DropDownCell.swift */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		63723C7E1F5A0503003734F0 /* DateTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				63E8E8F61F5B7A7900DDAC53 /* DateTimePicker.swift */,
+				63E8E8F81F5B7AA500DDAC53 /* DateCollectionViewCell.swift */,
+				63E8E8FA1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift */,
+			);
+			name = DateTimePicker;
+			path = "Third-Parties/DateTimePicker";
 			sourceTree = "<group>";
 		};
 		6373FA091F58A661006C20DD = {
 			isa = PBXGroup;
 			children = (
+				63A656481F5C7050005734FA /* RandomColor.framework */,
+				63A656451F5C6D35005734FA /* Presentr.framework */,
+				63A656421F5C6A89005734FA /* Twinkle.framework */,
+				639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */,
+				63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */,
+				63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */,
 				6373FA141F58A661006C20DD /* Assignments */,
 				6373FA2B1F58A661006C20DD /* AssignmentsTests */,
 				6373FA361F58A661006C20DD /* AssignmentsUITests */,
@@ -124,10 +248,10 @@
 		6373FA141F58A661006C20DD /* Assignments */ = {
 			isa = PBXGroup;
 			children = (
+				63B0122C1F5923B9000CF101 /* Forms */,
 				63FE4DB91F59164200077579 /* Third-Parties */,
-				6325F6981F58F23F00B22DDA /* Forms */,
 				6373FA151F58A661006C20DD /* AppDelegate.swift */,
-				6373FA171F58A661006C20DD /* FirstViewController.swift */,
+				6373FA171F58A661006C20DD /* LaunchScreen.swift */,
 				6373FA191F58A661006C20DD /* SecondViewController.swift */,
 				6373FA1B1F58A661006C20DD /* Main.storyboard */,
 				6373FA1E1F58A661006C20DD /* Assets.xcassets */,
@@ -157,24 +281,29 @@
 			path = AssignmentsUITests;
 			sourceTree = "<group>";
 		};
+		63B0122C1F5923B9000CF101 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */,
+				63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */,
+				63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */,
+				63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */,
+			);
+			name = Forms;
+			sourceTree = "<group>";
+		};
 		63FE4DB91F59164200077579 /* Third-Parties */ = {
 			isa = PBXGroup;
 			children = (
-				63FE4DC11F591FAA00077579 /* SkyFloatingLabelTextField */,
-				63FE4DC51F5920A300077579 /* ZFRippleButton.swift */,
+				637FE8961F5A6B030029136B /* BetterSegmentedControl.swift */,
+				63662A0E1F5B205900BB4DBA /* DropDown */,
+				63723C7E1F5A0503003734F0 /* DateTimePicker */,
+				63662A0C1F5B152200BB4DBA /* SevenSwitch.swift */,
+				63489CD81F5929E60051CC0D /* SkyFloatingLabelTextField.swift */,
+				63489CD71F5929C70051CC0D /* SkyFloatingLabelTextField */,
+				63489CD51F59268B0051CC0D /* ZFRippleButton.swift */,
 			);
 			name = "Third-Parties";
-			sourceTree = "<group>";
-		};
-		63FE4DC11F591FAA00077579 /* SkyFloatingLabelTextField */ = {
-			isa = PBXGroup;
-			children = (
-				63FE4DC21F591FAA00077579 /* SkyFloatingLabelTextField.swift */,
-				63FE4DC31F591FAA00077579 /* SkyFloatingLabelTextFieldWithIcon.swift */,
-				63FE4DC41F591FAA00077579 /* UITextField+fixCaretPosition.swift */,
-			);
-			name = SkyFloatingLabelTextField;
-			path = "Third-Parties/SkyFloatingLabelTextField";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +316,7 @@
 				6373FA0E1F58A661006C20DD /* Sources */,
 				6373FA0F1F58A661006C20DD /* Frameworks */,
 				6373FA101F58A661006C20DD /* Resources */,
+				632F752F1F5B235A0091E15E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,14 +441,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637FE8971F5A6B030029136B /* BetterSegmentedControl.swift in Sources */,
+				63662A0D1F5B152200BB4DBA /* SevenSwitch.swift in Sources */,
 				6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */,
 				6325F69A1F59041600B22DDA /* Gib.swift in Sources */,
+				63489CDB1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				6373FA1A1F58A661006C20DD /* SecondViewController.swift in Sources */,
+				63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */,
 				6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */,
+				63489CD91F5929E60051CC0D /* SkyFloatingLabelTextField.swift in Sources */,
+				63489CDD1F592A210051CC0D /* UITextField+fixCaretPosition.swift in Sources */,
 				63FE4DC01F591D5600077579 /* frmAssignmentList_NewAssignment.swift in Sources */,
 				63FE4DBE1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift in Sources */,
+				63E8E8FB1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift in Sources */,
+				63489CD61F59268B0051CC0D /* ZFRippleButton.swift in Sources */,
+				63E8E8F91F5B7AA500DDAC53 /* DateCollectionViewCell.swift in Sources */,
+				63E8E8F71F5B7A7900DDAC53 /* DateTimePicker.swift in Sources */,
 				63FE4DBC1F591B2900077579 /* frmAssignmentList.swift in Sources */,
-				6373FA181F58A661006C20DD /* FirstViewController.swift in Sources */,
+				6373FA181F58A661006C20DD /* LaunchScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +626,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7W7V5B7Q6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Assignments/Third-Parties",
+					"$(PROJECT_DIR)/iOS",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Assignments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -502,6 +648,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7W7V5B7Q6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Assignments/Third-Parties",
+					"$(PROJECT_DIR)/iOS",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Assignments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

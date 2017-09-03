@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import M13Checkbox
 
 class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     
@@ -14,10 +15,20 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     
     @IBOutlet weak var vMaster: UIView!
     @IBOutlet weak var vSubject: UIView!
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var vChecked: UIView!
+    
+    // MARK: - UI
+    
+    var cChecked: M13Checkbox = M13Checkbox()
+    var rowNum: Int = 0
     
     // MARK: - Load
     
-    func loadCell() {
+    func loadCell(rowNumber: Int) {
+        
+        rowNum = rowNumber
+        
         // Set Cell UI
         
         vMaster.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -28,11 +39,29 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         vMaster.layer.cornerRadius = 10
         
         vSubject.layer.cornerRadius = 10
+        
+        lbTitle.tag = rowNumber
+        lbTitle.text = assignmentList[rowNumber].title
+        
+        cChecked = M13Checkbox(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        cChecked.stateChangeAnimation = .stroke
+        vChecked.addSubview(cChecked)
+    }
+    
+    @IBAction func btnCheck_Tapped(_ sender: Any) {
+        cChecked.toggleCheckState(true)
+        if (cChecked.checkState == M13Checkbox.CheckState.checked) {
+            assignmentList[rowNum].checked = true
+        } else {
+            assignmentList[rowNum].checked = false
+        }
+        
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

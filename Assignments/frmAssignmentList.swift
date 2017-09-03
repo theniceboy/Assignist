@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import M13Checkbox
 
 class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,6 +25,27 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
         tblAssignmentList.delegate = self
         tblAssignmentList.dataSource = self
+        
+        
+        curFrmAssignmentList = self
+        
+        let nsAssignments = UserDefaults.standard.object(forKey: "assignmentList")
+        if (nsAssignments != nil) {
+            assignmentList = NSKeyedUnarchiver.unarchiveObject(with: nsAssignments as! Data) as! [AssignmentItem]
+        }
+        
+        let nsSubjects = UserDefaults.standard.object(forKey: "subjectList")
+        if (nsSubjects != nil) {
+            subjectList = NSKeyedUnarchiver.unarchiveObject(with: nsAssignments as! Data) as! [SubjectItem]
+        }
+        
+        if (subjectList.count == 0) {
+            let defaultSubject = SubjectItem()
+            defaultSubject.name = __DEFAULT_SUBJECT_NAME
+            defaultSubject.color = UIColor.darkGray
+        }
+        
+        tblAssignmentList.reloadData()
     }
     
     // MARK: - TableView Delegate & DataSource
@@ -36,14 +58,15 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return assignmentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: frmAsignmentList_tblAssignmentListCell = tableView.dequeueReusableCell(withIdentifier: "tblAssignmentListCell_ Identifier", for: indexPath) as! frmAsignmentList_tblAssignmentListCell
-        cell.loadCell()
+        let cell: frmAsignmentList_tblAssignmentListCell = tableView.dequeueReusableCell(withIdentifier: "tblAssignmentListCell_Identifier", for: indexPath) as! frmAsignmentList_tblAssignmentListCell
+        cell.loadCell(rowNumber: indexPath.row)
         return cell
     }
+    
     
     /*
      // MARK: - Navigation
