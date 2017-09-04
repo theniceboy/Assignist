@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Timepiece
 
 // MARK: - Global Variables
 
@@ -22,6 +21,8 @@ var __DEFAULT_SUBJECT_NAME = "General"
 // MARK: - Live Viewcontrollers
 
 var curFrmAssignmentList: frmAssignmentList = frmAssignmentList()
+var curFrmAssignmentList_NewAssignment: frmAssignmentList_NewAssignment = frmAssignmentList_NewAssignment()
+var curFrmAssignmentList_NewAssignment_NewSubject:frmAssignmentList_NewAssignment_NewSubject = frmAssignmentList_NewAssignment_NewSubject()
 
 // MARK: - Colors
 

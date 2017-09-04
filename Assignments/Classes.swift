@@ -9,11 +9,18 @@
 import Foundation
 import UIKit
 
+var curAssignmentID: Int = 1
+
+func saveCurAssignmentID () {
+    UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: curAssignmentID), forKey: "curAssignmentID")
+}
+
 class AssignmentItem: NSObject, NSCoding {
     
     
     // Variables
     
+    var id: Int = 0
     var checked: Bool = false
     var title: String = ""
     var comments: String = ""
@@ -26,6 +33,7 @@ class AssignmentItem: NSObject, NSCoding {
     override init() { }
     
     required init(coder aDecoder: NSCoder) {
+        id = aDecoder.decodeObject(forKey: "id") as? Int ?? 0
         checked = aDecoder.decodeObject(forKey: "checked") as? Bool ?? false
         title = aDecoder.decodeObject(forKey: "title") as? String ?? ""
         comments = aDecoder.decodeObject(forKey: "comments") as? String ?? ""
@@ -35,6 +43,7 @@ class AssignmentItem: NSObject, NSCoding {
     }
     
     func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
         aCoder.encode(checked, forKey: "checked")
         aCoder.encode(title, forKey: "title")
         aCoder.encode(comments, forKey: "comments")
@@ -42,6 +51,16 @@ class AssignmentItem: NSObject, NSCoding {
         aCoder.encode(dueDate, forKey: "dueDate")
         aCoder.encode(priority, forKey: "priority")
     }
+}
+
+func getRowNum_AssignmentList (id: Int) -> Int {
+    for var i in 0 ... assignmentList.count - 1 {
+        if (assignmentList[i].id == id) {
+            return i
+        }
+    }
+    print ("NOOOOOOOOOO!!!!!!!!!")
+    return -1
 }
 
 func saveAssignmentList () {
@@ -73,4 +92,13 @@ class SubjectItem: NSObject, NSCoding {
 
 func saveSubjectList () {
     UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: subjectList), forKey: "subjectList")
+}
+
+func subjectColor (string: String) -> UIColor {
+    for item: SubjectItem in subjectList {
+        if (item.name == string) {
+            return item.color
+        }
+    }
+    return UIColor.darkGray
 }

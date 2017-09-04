@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		6325F69A1F59041600B22DDA /* Gib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F6991F59041600B22DDA /* Gib.swift */; };
 		6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F69B1F590B1E00B22DDA /* Classes.swift */; };
-		63489CD61F59268B0051CC0D /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CD51F59268B0051CC0D /* ZFRippleButton.swift */; };
-		63489CD91F5929E60051CC0D /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CD81F5929E60051CC0D /* SkyFloatingLabelTextField.swift */; };
-		63489CDB1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CDA1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift */; };
-		63489CDD1F592A210051CC0D /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63489CDC1F592A210051CC0D /* UITextField+fixCaretPosition.swift */; };
-		63662A0D1F5B152200BB4DBA /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63662A0C1F5B152200BB4DBA /* SevenSwitch.swift */; };
 		6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA151F58A661006C20DD /* AppDelegate.swift */; };
 		6373FA181F58A661006C20DD /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA171F58A661006C20DD /* LaunchScreen.swift */; };
 		6373FA1A1F58A661006C20DD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA191F58A661006C20DD /* SecondViewController.swift */; };
@@ -22,23 +17,74 @@
 		6373FA221F58A661006C20DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6373FA201F58A661006C20DD /* LaunchScreen.storyboard */; };
 		6373FA2D1F58A661006C20DD /* AssignmentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA2C1F58A661006C20DD /* AssignmentsTests.swift */; };
 		6373FA381F58A661006C20DD /* AssignmentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA371F58A661006C20DD /* AssignmentsUITests.swift */; };
-		637FE8971F5A6B030029136B /* BetterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FE8961F5A6B030029136B /* BetterSegmentedControl.swift */; };
-		639DE6E71F5BAD2F00A8B473 /* M13Checkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */; };
-		639DE6E81F5BAD2F00A8B473 /* M13Checkbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63A656431F5C6A8A005734FA /* Twinkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656421F5C6A89005734FA /* Twinkle.framework */; };
-		63A656441F5C6A8A005734FA /* Twinkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656421F5C6A89005734FA /* Twinkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63A656461F5C6D36005734FA /* Presentr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656451F5C6D35005734FA /* Presentr.framework */; };
-		63A656471F5C6D36005734FA /* Presentr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656451F5C6D35005734FA /* Presentr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63A656491F5C7052005734FA /* RandomColor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656481F5C7050005734FA /* RandomColor.framework */; };
-		63A6564A1F5C7052005734FA /* RandomColor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A656481F5C7050005734FA /* RandomColor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */; };
-		63A6F5ED1F5B24DA00E84B0C /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */; };
-		63A6F5EE1F5B24DA00E84B0C /* DropDown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63E8E8F41F5B6E7100DDAC53 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */; };
-		63E8E8F51F5B6E7100DDAC53 /* Timepiece.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		63E8E8F71F5B7A7900DDAC53 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E8F61F5B7A7900DDAC53 /* DateTimePicker.swift */; };
-		63E8E8F91F5B7AA500DDAC53 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E8F81F5B7AA500DDAC53 /* DateCollectionViewCell.swift */; };
-		63E8E8FB1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8E8FA1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift */; };
+		63B2B44A1F5D14DA00615601 /* BetterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4121F5D14AE00615601 /* BetterSegmentedControl.swift */; };
+		63B2B44B1F5D14DA00615601 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4401F5D14AF00615601 /* DateCollectionViewCell.swift */; };
+		63B2B44C1F5D14DA00615601 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4411F5D14AF00615601 /* DateTimePicker.swift */; };
+		63B2B44D1F5D14DA00615601 /* StepCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4421F5D14AF00615601 /* StepCollectionViewFlowLayout.swift */; };
+		63B2B44E1F5D14DA00615601 /* DropDown.h in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B41D1F5D14AE00615601 /* DropDown.h */; };
+		63B2B44F1F5D14DA00615601 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B41F1F5D14AE00615601 /* DPDConstants.swift */; };
+		63B2B4501F5D14DA00615601 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4201F5D14AE00615601 /* DPDKeyboardListener.swift */; };
+		63B2B4511F5D14DA00615601 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4211F5D14AE00615601 /* DPDUIView+Extension.swift */; };
+		63B2B4521F5D14DA00615601 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4221F5D14AE00615601 /* Info.plist */; };
+		63B2B4531F5D14DA00615601 /* DropDownCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4241F5D14AE00615601 /* DropDownCell.xib */; };
+		63B2B4541F5D14DA00615601 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4261F5D14AE00615601 /* DropDown+Appearance.swift */; };
+		63B2B4551F5D14DA00615601 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4271F5D14AE00615601 /* DropDown.swift */; };
+		63B2B4561F5D14DA00615601 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4281F5D14AE00615601 /* DropDownCell.swift */; };
+		63B2B4571F5D14DA00615601 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4041F5D14AE00615601 /* M13CheckboxBounceController.swift */; };
+		63B2B4581F5D14DA00615601 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4051F5D14AE00615601 /* M13CheckboxDotController.swift */; };
+		63B2B4591F5D14DA00615601 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4061F5D14AE00615601 /* M13CheckboxExpandController.swift */; };
+		63B2B45A1F5D14DA00615601 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4071F5D14AE00615601 /* M13CheckboxFadeController.swift */; };
+		63B2B45B1F5D14DA00615601 /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4081F5D14AE00615601 /* M13CheckboxFillController.swift */; };
+		63B2B45C1F5D14DA00615601 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4091F5D14AE00615601 /* M13CheckboxFlatController.swift */; };
+		63B2B45D1F5D14DA00615601 /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B40A1F5D14AE00615601 /* M13CheckboxSpiralController.swift */; };
+		63B2B45E1F5D14DA00615601 /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B40B1F5D14AE00615601 /* M13CheckboxStrokeController.swift */; };
+		63B2B45F1F5D14DA00615601 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B40D1F5D14AE00615601 /* M13CheckboxAddRemovePathGenerator.swift */; };
+		63B2B4601F5D14DA00615601 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B40E1F5D14AE00615601 /* M13CheckboxCheckPathGenerator.swift */; };
+		63B2B4611F5D14DA00615601 /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B40F1F5D14AE00615601 /* M13CheckboxDisclosurePathGenerator.swift */; };
+		63B2B4621F5D14DA00615601 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4101F5D14AE00615601 /* M13CheckboxPathGenerator.swift */; };
+		63B2B4631F5D14DA00615601 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4111F5D14AE00615601 /* M13CheckboxRadioPathGenerator.swift */; };
+		63B2B4641F5D14DA00615601 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B42A1F5D14AE00615601 /* AlertViewController.swift */; };
+		63B2B4651F5D14DA00615601 /* AlertViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B42B1F5D14AE00615601 /* AlertViewController.xib */; };
+		63B2B4661F5D14DA00615601 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B42C1F5D14AE00615601 /* BackgroundView.swift */; };
+		63B2B4671F5D14DA00615601 /* CoverHorizontalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B42D1F5D14AE00615601 /* CoverHorizontalAnimation.swift */; };
+		63B2B4681F5D14DA00615601 /* CoverVerticalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B42E1F5D14AE00615601 /* CoverVerticalAnimation.swift */; };
+		63B2B4691F5D14DA00615601 /* CoverVerticalFromTopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B42F1F5D14AE00615601 /* CoverVerticalFromTopAnimation.swift */; };
+		63B2B46A1F5D14DA00615601 /* CrossDissolveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4301F5D14AE00615601 /* CrossDissolveAnimation.swift */; };
+		63B2B46B1F5D14DA00615601 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4311F5D14AE00615601 /* Info.plist */; };
+		63B2B46C1F5D14DA00615601 /* KeyboardTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4321F5D14AE00615601 /* KeyboardTranslation.swift */; };
+		63B2B46D1F5D14DA00615601 /* ModalCenterPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4331F5D14AE00615601 /* ModalCenterPosition.swift */; };
+		63B2B46E1F5D14DA00615601 /* ModalSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4341F5D14AE00615601 /* ModalSize.swift */; };
+		63B2B46F1F5D14DA00615601 /* Montserrat-Regular.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4351F5D14AE00615601 /* Montserrat-Regular.ttf */; };
+		63B2B4701F5D14DA00615601 /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4361F5D14AE00615601 /* PresentationType.swift */; };
+		63B2B4711F5D14DA00615601 /* Presentr+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4371F5D14AE00615601 /* Presentr+Equatable.swift */; };
+		63B2B4721F5D14DA00615601 /* Presentr.h in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4381F5D14AE00615601 /* Presentr.h */; };
+		63B2B4731F5D14DA00615601 /* Presentr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4391F5D14AE00615601 /* Presentr.swift */; };
+		63B2B4741F5D14DA00615601 /* PresentrAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B43A1F5D14AE00615601 /* PresentrAnimation.swift */; };
+		63B2B4751F5D14DA00615601 /* PresentrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B43B1F5D14AE00615601 /* PresentrController.swift */; };
+		63B2B4761F5D14DA00615601 /* PresentrShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B43C1F5D14AE00615601 /* PresentrShadow.swift */; };
+		63B2B4771F5D14DA00615601 /* SourceSansPro-Regular.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B43D1F5D14AE00615601 /* SourceSansPro-Regular.ttf */; };
+		63B2B4781F5D14DA00615601 /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B43E1F5D14AE00615601 /* TransitionType.swift */; };
+		63B2B4791F5D14DA00615601 /* ColorDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4441F5D14B000615601 /* ColorDefinition.swift */; };
+		63B2B47A1F5D14DA00615601 /* Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4451F5D14B000615601 /* Hue.swift */; };
+		63B2B47B1F5D14DA00615601 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4461F5D14B000615601 /* Info.plist */; };
+		63B2B47C1F5D14DA00615601 /* Luminosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4471F5D14B000615601 /* Luminosity.swift */; };
+		63B2B47D1F5D14DA00615601 /* RandomColor.h in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4481F5D14B000615601 /* RandomColor.h */; };
+		63B2B47E1F5D14DA00615601 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4491F5D14B000615601 /* RandomColor.swift */; };
+		63B2B47F1F5D14DA00615601 /* SevenSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4131F5D14AE00615601 /* SevenSwitch.swift */; };
+		63B2B4801F5D14DA00615601 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4151F5D14AE00615601 /* SkyFloatingLabelTextFieldWithIcon.swift */; };
+		63B2B4811F5D14DA00615601 /* UITextField+fixCaretPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4161F5D14AE00615601 /* UITextField+fixCaretPosition.swift */; };
+		63B2B4821F5D14DA00615601 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4011F5D14AD00615601 /* SkyFloatingLabelTextField.swift */; };
+		63B2B4831F5D14DA00615601 /* Date+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4181F5D14AE00615601 /* Date+Timepiece.swift */; };
+		63B2B4841F5D14DA00615601 /* DateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4191F5D14AE00615601 /* DateComponents+Timepiece.swift */; };
+		63B2B4851F5D14DA00615601 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B41A1F5D14AE00615601 /* Int+Timepiece.swift */; };
+		63B2B4861F5D14DA00615601 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B41B1F5D14AE00615601 /* String+Timepiece.swift */; };
+		63B2B4871F5D14DA00615601 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4001F5D14AD00615601 /* ZFRippleButton.swift */; };
+		63B2B48D1F5D156A00615601 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4891F5D156000615601 /* M13Checkbox.swift */; };
+		63B2B48E1F5D156A00615601 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B48B1F5D156000615601 /* M13Checkbox+IB.swift */; };
+		63B2B48F1F5D156A00615601 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B48A1F5D156000615601 /* M13CheckboxAnimationGenerator.swift */; };
+		63B2B4901F5D156A00615601 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B4881F5D155F00615601 /* M13CheckboxController.swift */; };
+		63B2B4911F5D156A00615601 /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2B48C1F5D156100615601 /* M13CheckboxGestureRecognizer.swift */; };
 		63FE4DBC1F591B2900077579 /* frmAssignmentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */; };
 		63FE4DBE1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */; };
 		63FE4DC01F591D5600077579 /* frmAssignmentList_NewAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */; };
@@ -62,41 +108,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		632F752F1F5B235A0091E15E /* Embed Frameworks */ = {
+		63376FC81F5D0D6F00E17C0E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				639DE6E81F5BAD2F00A8B473 /* M13Checkbox.framework in Embed Frameworks */,
-				63E8E8F51F5B6E7100DDAC53 /* Timepiece.framework in Embed Frameworks */,
-				63A6F5EE1F5B24DA00E84B0C /* DropDown.framework in Embed Frameworks */,
-				63A6564A1F5C7052005734FA /* RandomColor.framework in Embed Frameworks */,
-				63A656441F5C6A8A005734FA /* Twinkle.framework in Embed Frameworks */,
-				63A656471F5C6D36005734FA /* Presentr.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6325F6991F59041600B22DDA /* Gib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gib.swift; sourceTree = "<group>"; };
 		6325F69B1F590B1E00B22DDA /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
-		63489CD51F59268B0051CC0D /* ZFRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = "Third-Parties/ZFRippleButton.swift"; sourceTree = "<group>"; };
-		63489CD81F5929E60051CC0D /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
-		63489CDA1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkyFloatingLabelTextFieldWithIcon.swift; path = "Third-Parties/SkyFloatingLabelTextField/SkyFloatingLabelTextFieldWithIcon.swift"; sourceTree = "<group>"; };
-		63489CDC1F592A210051CC0D /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITextField+fixCaretPosition.swift"; path = "Third-Parties/SkyFloatingLabelTextField/UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
-		63662A0C1F5B152200BB4DBA /* SevenSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenSwitch.swift; sourceTree = "<group>"; };
-		63662A0F1F5B205900BB4DBA /* DropDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
-		63662A111F5B205900BB4DBA /* DPDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
-		63662A121F5B205900BB4DBA /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
-		63662A131F5B205900BB4DBA /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
-		63662A141F5B205900BB4DBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63662A161F5B205900BB4DBA /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
-		63662A181F5B205900BB4DBA /* DropDown+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
-		63662A191F5B205900BB4DBA /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
-		63662A1A1F5B205900BB4DBA /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		6373FA121F58A661006C20DD /* Assignments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA151F58A661006C20DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6373FA171F58A661006C20DD /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
@@ -111,17 +137,74 @@
 		6373FA331F58A661006C20DD /* AssignmentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA371F58A661006C20DD /* AssignmentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsUITests.swift; sourceTree = "<group>"; };
 		6373FA391F58A661006C20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		637FE8961F5A6B030029136B /* BetterSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BetterSegmentedControl.swift; path = "Third-Parties/BetterSegmentedControl.swift"; sourceTree = "<group>"; };
-		639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = M13Checkbox.framework; sourceTree = "<group>"; };
-		63A656421F5C6A89005734FA /* Twinkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Twinkle.framework; sourceTree = "<group>"; };
-		63A656451F5C6D35005734FA /* Presentr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Presentr.framework; sourceTree = "<group>"; };
-		63A656481F5C7050005734FA /* RandomColor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RandomColor.framework; sourceTree = "<group>"; };
 		63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_NewAssignment_NewSubject.swift; sourceTree = "<group>"; };
-		63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropDown.framework; sourceTree = "<group>"; };
-		63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Timepiece.framework; sourceTree = "<group>"; };
-		63E8E8F61F5B7A7900DDAC53 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
-		63E8E8F81F5B7AA500DDAC53 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
-		63E8E8FA1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		63B2B4001F5D14AD00615601 /* ZFRippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = "Assignments/Third-Parties/ZFRippleButton.swift"; sourceTree = SOURCE_ROOT; };
+		63B2B4011F5D14AD00615601 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SkyFloatingLabelTextField.swift; path = "Assignments/Third-Parties/SkyFloatingLabelTextField.swift"; sourceTree = SOURCE_ROOT; };
+		63B2B4041F5D14AE00615601 /* M13CheckboxBounceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxBounceController.swift; sourceTree = "<group>"; };
+		63B2B4051F5D14AE00615601 /* M13CheckboxDotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxDotController.swift; sourceTree = "<group>"; };
+		63B2B4061F5D14AE00615601 /* M13CheckboxExpandController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxExpandController.swift; sourceTree = "<group>"; };
+		63B2B4071F5D14AE00615601 /* M13CheckboxFadeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxFadeController.swift; sourceTree = "<group>"; };
+		63B2B4081F5D14AE00615601 /* M13CheckboxFillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxFillController.swift; sourceTree = "<group>"; };
+		63B2B4091F5D14AE00615601 /* M13CheckboxFlatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxFlatController.swift; sourceTree = "<group>"; };
+		63B2B40A1F5D14AE00615601 /* M13CheckboxSpiralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxSpiralController.swift; sourceTree = "<group>"; };
+		63B2B40B1F5D14AE00615601 /* M13CheckboxStrokeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxStrokeController.swift; sourceTree = "<group>"; };
+		63B2B40D1F5D14AE00615601 /* M13CheckboxAddRemovePathGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxAddRemovePathGenerator.swift; sourceTree = "<group>"; };
+		63B2B40E1F5D14AE00615601 /* M13CheckboxCheckPathGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxCheckPathGenerator.swift; sourceTree = "<group>"; };
+		63B2B40F1F5D14AE00615601 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
+		63B2B4101F5D14AE00615601 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
+		63B2B4111F5D14AE00615601 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
+		63B2B4121F5D14AE00615601 /* BetterSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BetterSegmentedControl.swift; path = "Assignments/Third-Parties/BetterSegmentedControl.swift"; sourceTree = SOURCE_ROOT; };
+		63B2B4131F5D14AE00615601 /* SevenSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SevenSwitch.swift; path = "Assignments/Third-Parties/SevenSwitch.swift"; sourceTree = SOURCE_ROOT; };
+		63B2B4151F5D14AE00615601 /* SkyFloatingLabelTextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextFieldWithIcon.swift; sourceTree = "<group>"; };
+		63B2B4161F5D14AE00615601 /* UITextField+fixCaretPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+fixCaretPosition.swift"; sourceTree = "<group>"; };
+		63B2B4181F5D14AE00615601 /* Date+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Timepiece.swift"; sourceTree = "<group>"; };
+		63B2B4191F5D14AE00615601 /* DateComponents+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponents+Timepiece.swift"; sourceTree = "<group>"; };
+		63B2B41A1F5D14AE00615601 /* Int+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
+		63B2B41B1F5D14AE00615601 /* String+Timepiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		63B2B41D1F5D14AE00615601 /* DropDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		63B2B41F1F5D14AE00615601 /* DPDConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
+		63B2B4201F5D14AE00615601 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		63B2B4211F5D14AE00615601 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		63B2B4221F5D14AE00615601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B2B4241F5D14AE00615601 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		63B2B4261F5D14AE00615601 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		63B2B4271F5D14AE00615601 /* DropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		63B2B4281F5D14AE00615601 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		63B2B42A1F5D14AE00615601 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		63B2B42B1F5D14AE00615601 /* AlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertViewController.xib; sourceTree = "<group>"; };
+		63B2B42C1F5D14AE00615601 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		63B2B42D1F5D14AE00615601 /* CoverHorizontalAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverHorizontalAnimation.swift; sourceTree = "<group>"; };
+		63B2B42E1F5D14AE00615601 /* CoverVerticalAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverVerticalAnimation.swift; sourceTree = "<group>"; };
+		63B2B42F1F5D14AE00615601 /* CoverVerticalFromTopAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverVerticalFromTopAnimation.swift; sourceTree = "<group>"; };
+		63B2B4301F5D14AE00615601 /* CrossDissolveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossDissolveAnimation.swift; sourceTree = "<group>"; };
+		63B2B4311F5D14AE00615601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B2B4321F5D14AE00615601 /* KeyboardTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTranslation.swift; sourceTree = "<group>"; };
+		63B2B4331F5D14AE00615601 /* ModalCenterPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCenterPosition.swift; sourceTree = "<group>"; };
+		63B2B4341F5D14AE00615601 /* ModalSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSize.swift; sourceTree = "<group>"; };
+		63B2B4351F5D14AE00615601 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		63B2B4361F5D14AE00615601 /* PresentationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
+		63B2B4371F5D14AE00615601 /* Presentr+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presentr+Equatable.swift"; sourceTree = "<group>"; };
+		63B2B4381F5D14AE00615601 /* Presentr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Presentr.h; sourceTree = "<group>"; };
+		63B2B4391F5D14AE00615601 /* Presentr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentr.swift; sourceTree = "<group>"; };
+		63B2B43A1F5D14AE00615601 /* PresentrAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentrAnimation.swift; sourceTree = "<group>"; };
+		63B2B43B1F5D14AE00615601 /* PresentrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentrController.swift; sourceTree = "<group>"; };
+		63B2B43C1F5D14AE00615601 /* PresentrShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentrShadow.swift; sourceTree = "<group>"; };
+		63B2B43D1F5D14AE00615601 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		63B2B43E1F5D14AE00615601 /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
+		63B2B4401F5D14AF00615601 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		63B2B4411F5D14AF00615601 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		63B2B4421F5D14AF00615601 /* StepCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		63B2B4441F5D14B000615601 /* ColorDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDefinition.swift; sourceTree = "<group>"; };
+		63B2B4451F5D14B000615601 /* Hue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hue.swift; sourceTree = "<group>"; };
+		63B2B4461F5D14B000615601 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B2B4471F5D14B000615601 /* Luminosity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luminosity.swift; sourceTree = "<group>"; };
+		63B2B4481F5D14B000615601 /* RandomColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomColor.h; sourceTree = "<group>"; };
+		63B2B4491F5D14B000615601 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
+		63B2B4881F5D155F00615601 /* M13CheckboxController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxController.swift; sourceTree = "<group>"; };
+		63B2B4891F5D156000615601 /* M13Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13Checkbox.swift; sourceTree = "<group>"; };
+		63B2B48A1F5D156000615601 /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
+		63B2B48B1F5D156000615601 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		63B2B48C1F5D156100615601 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
 		63FE4DBB1F591B2900077579 /* frmAssignmentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList.swift; path = Assignments/frmAssignmentList.swift; sourceTree = SOURCE_ROOT; };
 		63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_tblAssignment_Cell.swift; path = Assignments/frmAssignmentList_tblAssignment_Cell.swift; sourceTree = SOURCE_ROOT; };
 		63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = frmAssignmentList_NewAssignment.swift; path = Assignments/frmAssignmentList_NewAssignment.swift; sourceTree = SOURCE_ROOT; };
@@ -132,12 +215,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				639DE6E71F5BAD2F00A8B473 /* M13Checkbox.framework in Frameworks */,
-				63E8E8F41F5B6E7100DDAC53 /* Timepiece.framework in Frameworks */,
-				63A6F5ED1F5B24DA00E84B0C /* DropDown.framework in Frameworks */,
-				63A656491F5C7052005734FA /* RandomColor.framework in Frameworks */,
-				63A656431F5C6A8A005734FA /* Twinkle.framework in Frameworks */,
-				63A656461F5C6D36005734FA /* Presentr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,76 +235,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		63489CD71F5929C70051CC0D /* SkyFloatingLabelTextField */ = {
-			isa = PBXGroup;
-			children = (
-				63489CDA1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift */,
-				63489CDC1F592A210051CC0D /* UITextField+fixCaretPosition.swift */,
-			);
-			name = SkyFloatingLabelTextField;
-			sourceTree = "<group>";
-		};
-		63662A0E1F5B205900BB4DBA /* DropDown */ = {
-			isa = PBXGroup;
-			children = (
-				63662A0F1F5B205900BB4DBA /* DropDown.h */,
-				63662A101F5B205900BB4DBA /* helpers */,
-				63662A141F5B205900BB4DBA /* Info.plist */,
-				63662A151F5B205900BB4DBA /* resources */,
-				63662A171F5B205900BB4DBA /* src */,
-			);
-			name = DropDown;
-			path = "Third-Parties/DropDown";
-			sourceTree = "<group>";
-		};
-		63662A101F5B205900BB4DBA /* helpers */ = {
-			isa = PBXGroup;
-			children = (
-				63662A111F5B205900BB4DBA /* DPDConstants.swift */,
-				63662A121F5B205900BB4DBA /* DPDKeyboardListener.swift */,
-				63662A131F5B205900BB4DBA /* DPDUIView+Extension.swift */,
-			);
-			path = helpers;
-			sourceTree = "<group>";
-		};
-		63662A151F5B205900BB4DBA /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				63662A161F5B205900BB4DBA /* DropDownCell.xib */,
-			);
-			path = resources;
-			sourceTree = "<group>";
-		};
-		63662A171F5B205900BB4DBA /* src */ = {
-			isa = PBXGroup;
-			children = (
-				63662A181F5B205900BB4DBA /* DropDown+Appearance.swift */,
-				63662A191F5B205900BB4DBA /* DropDown.swift */,
-				63662A1A1F5B205900BB4DBA /* DropDownCell.swift */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		63723C7E1F5A0503003734F0 /* DateTimePicker */ = {
-			isa = PBXGroup;
-			children = (
-				63E8E8F61F5B7A7900DDAC53 /* DateTimePicker.swift */,
-				63E8E8F81F5B7AA500DDAC53 /* DateCollectionViewCell.swift */,
-				63E8E8FA1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift */,
-			);
-			name = DateTimePicker;
-			path = "Third-Parties/DateTimePicker";
-			sourceTree = "<group>";
-		};
 		6373FA091F58A661006C20DD = {
 			isa = PBXGroup;
 			children = (
-				63A656481F5C7050005734FA /* RandomColor.framework */,
-				63A656451F5C6D35005734FA /* Presentr.framework */,
-				63A656421F5C6A89005734FA /* Twinkle.framework */,
-				639DE6E61F5BAD2E00A8B473 /* M13Checkbox.framework */,
-				63E8E8F31F5B6E7000DDAC53 /* Timepiece.framework */,
-				63A6F5EC1F5B24DA00E84B0C /* DropDown.framework */,
 				6373FA141F58A661006C20DD /* Assignments */,
 				6373FA2B1F58A661006C20DD /* AssignmentsTests */,
 				6373FA361F58A661006C20DD /* AssignmentsUITests */,
@@ -248,8 +258,8 @@
 		6373FA141F58A661006C20DD /* Assignments */ = {
 			isa = PBXGroup;
 			children = (
+				63B2B3FF1F5D146100615601 /* Third-Parties */,
 				63B0122C1F5923B9000CF101 /* Forms */,
-				63FE4DB91F59164200077579 /* Third-Parties */,
 				6373FA151F58A661006C20DD /* AppDelegate.swift */,
 				6373FA171F58A661006C20DD /* LaunchScreen.swift */,
 				6373FA191F58A661006C20DD /* SecondViewController.swift */,
@@ -292,19 +302,183 @@
 			name = Forms;
 			sourceTree = "<group>";
 		};
-		63FE4DB91F59164200077579 /* Third-Parties */ = {
+		63B2B3FF1F5D146100615601 /* Third-Parties */ = {
 			isa = PBXGroup;
 			children = (
-				637FE8961F5A6B030029136B /* BetterSegmentedControl.swift */,
-				63662A0E1F5B205900BB4DBA /* DropDown */,
-				63723C7E1F5A0503003734F0 /* DateTimePicker */,
-				63662A0C1F5B152200BB4DBA /* SevenSwitch.swift */,
-				63489CD81F5929E60051CC0D /* SkyFloatingLabelTextField.swift */,
-				63489CD71F5929C70051CC0D /* SkyFloatingLabelTextField */,
-				63489CD51F59268B0051CC0D /* ZFRippleButton.swift */,
+				63B2B4121F5D14AE00615601 /* BetterSegmentedControl.swift */,
+				63B2B43F1F5D14AF00615601 /* DateTimePicker */,
+				63B2B41C1F5D14AE00615601 /* DropDown */,
+				63B2B4021F5D14AE00615601 /* M13CheckBox */,
+				63B2B4291F5D14AE00615601 /* Presentr */,
+				63B2B4431F5D14B000615601 /* RandomColor */,
+				63B2B4131F5D14AE00615601 /* SevenSwitch.swift */,
+				63B2B4141F5D14AE00615601 /* SkyFloatingLabelTextField */,
+				63B2B4011F5D14AD00615601 /* SkyFloatingLabelTextField.swift */,
+				63B2B4171F5D14AE00615601 /* Timepiece */,
+				63B2B4001F5D14AD00615601 /* ZFRippleButton.swift */,
 			);
 			name = "Third-Parties";
+			path = "New Group";
 			sourceTree = "<group>";
+		};
+		63B2B4021F5D14AE00615601 /* M13CheckBox */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4891F5D156000615601 /* M13Checkbox.swift */,
+				63B2B48B1F5D156000615601 /* M13Checkbox+IB.swift */,
+				63B2B48A1F5D156000615601 /* M13CheckboxAnimationGenerator.swift */,
+				63B2B4881F5D155F00615601 /* M13CheckboxController.swift */,
+				63B2B48C1F5D156100615601 /* M13CheckboxGestureRecognizer.swift */,
+				63B2B4031F5D14AE00615601 /* Managers */,
+				63B2B40C1F5D14AE00615601 /* Paths */,
+			);
+			name = M13CheckBox;
+			path = "Assignments/Third-Parties/M13CheckBox";
+			sourceTree = SOURCE_ROOT;
+		};
+		63B2B4031F5D14AE00615601 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4041F5D14AE00615601 /* M13CheckboxBounceController.swift */,
+				63B2B4051F5D14AE00615601 /* M13CheckboxDotController.swift */,
+				63B2B4061F5D14AE00615601 /* M13CheckboxExpandController.swift */,
+				63B2B4071F5D14AE00615601 /* M13CheckboxFadeController.swift */,
+				63B2B4081F5D14AE00615601 /* M13CheckboxFillController.swift */,
+				63B2B4091F5D14AE00615601 /* M13CheckboxFlatController.swift */,
+				63B2B40A1F5D14AE00615601 /* M13CheckboxSpiralController.swift */,
+				63B2B40B1F5D14AE00615601 /* M13CheckboxStrokeController.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		63B2B40C1F5D14AE00615601 /* Paths */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B40D1F5D14AE00615601 /* M13CheckboxAddRemovePathGenerator.swift */,
+				63B2B40E1F5D14AE00615601 /* M13CheckboxCheckPathGenerator.swift */,
+				63B2B40F1F5D14AE00615601 /* M13CheckboxDisclosurePathGenerator.swift */,
+				63B2B4101F5D14AE00615601 /* M13CheckboxPathGenerator.swift */,
+				63B2B4111F5D14AE00615601 /* M13CheckboxRadioPathGenerator.swift */,
+			);
+			path = Paths;
+			sourceTree = "<group>";
+		};
+		63B2B4141F5D14AE00615601 /* SkyFloatingLabelTextField */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4151F5D14AE00615601 /* SkyFloatingLabelTextFieldWithIcon.swift */,
+				63B2B4161F5D14AE00615601 /* UITextField+fixCaretPosition.swift */,
+			);
+			name = SkyFloatingLabelTextField;
+			path = "Assignments/Third-Parties/SkyFloatingLabelTextField";
+			sourceTree = SOURCE_ROOT;
+		};
+		63B2B4171F5D14AE00615601 /* Timepiece */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4181F5D14AE00615601 /* Date+Timepiece.swift */,
+				63B2B4191F5D14AE00615601 /* DateComponents+Timepiece.swift */,
+				63B2B41A1F5D14AE00615601 /* Int+Timepiece.swift */,
+				63B2B41B1F5D14AE00615601 /* String+Timepiece.swift */,
+			);
+			name = Timepiece;
+			path = "Assignments/Third-Parties/Timepiece";
+			sourceTree = SOURCE_ROOT;
+		};
+		63B2B41C1F5D14AE00615601 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B41D1F5D14AE00615601 /* DropDown.h */,
+				63B2B41E1F5D14AE00615601 /* helpers */,
+				63B2B4221F5D14AE00615601 /* Info.plist */,
+				63B2B4231F5D14AE00615601 /* resources */,
+				63B2B4251F5D14AE00615601 /* src */,
+			);
+			name = DropDown;
+			path = "Assignments/Third-Parties/DropDown";
+			sourceTree = SOURCE_ROOT;
+		};
+		63B2B41E1F5D14AE00615601 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B41F1F5D14AE00615601 /* DPDConstants.swift */,
+				63B2B4201F5D14AE00615601 /* DPDKeyboardListener.swift */,
+				63B2B4211F5D14AE00615601 /* DPDUIView+Extension.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		63B2B4231F5D14AE00615601 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4241F5D14AE00615601 /* DropDownCell.xib */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		63B2B4251F5D14AE00615601 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4261F5D14AE00615601 /* DropDown+Appearance.swift */,
+				63B2B4271F5D14AE00615601 /* DropDown.swift */,
+				63B2B4281F5D14AE00615601 /* DropDownCell.swift */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		63B2B4291F5D14AE00615601 /* Presentr */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B42A1F5D14AE00615601 /* AlertViewController.swift */,
+				63B2B42B1F5D14AE00615601 /* AlertViewController.xib */,
+				63B2B42C1F5D14AE00615601 /* BackgroundView.swift */,
+				63B2B42D1F5D14AE00615601 /* CoverHorizontalAnimation.swift */,
+				63B2B42E1F5D14AE00615601 /* CoverVerticalAnimation.swift */,
+				63B2B42F1F5D14AE00615601 /* CoverVerticalFromTopAnimation.swift */,
+				63B2B4301F5D14AE00615601 /* CrossDissolveAnimation.swift */,
+				63B2B4311F5D14AE00615601 /* Info.plist */,
+				63B2B4321F5D14AE00615601 /* KeyboardTranslation.swift */,
+				63B2B4331F5D14AE00615601 /* ModalCenterPosition.swift */,
+				63B2B4341F5D14AE00615601 /* ModalSize.swift */,
+				63B2B4351F5D14AE00615601 /* Montserrat-Regular.ttf */,
+				63B2B4361F5D14AE00615601 /* PresentationType.swift */,
+				63B2B4371F5D14AE00615601 /* Presentr+Equatable.swift */,
+				63B2B4381F5D14AE00615601 /* Presentr.h */,
+				63B2B4391F5D14AE00615601 /* Presentr.swift */,
+				63B2B43A1F5D14AE00615601 /* PresentrAnimation.swift */,
+				63B2B43B1F5D14AE00615601 /* PresentrController.swift */,
+				63B2B43C1F5D14AE00615601 /* PresentrShadow.swift */,
+				63B2B43D1F5D14AE00615601 /* SourceSansPro-Regular.ttf */,
+				63B2B43E1F5D14AE00615601 /* TransitionType.swift */,
+			);
+			name = Presentr;
+			path = "Assignments/Third-Parties/Presentr";
+			sourceTree = SOURCE_ROOT;
+		};
+		63B2B43F1F5D14AF00615601 /* DateTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4401F5D14AF00615601 /* DateCollectionViewCell.swift */,
+				63B2B4411F5D14AF00615601 /* DateTimePicker.swift */,
+				63B2B4421F5D14AF00615601 /* StepCollectionViewFlowLayout.swift */,
+			);
+			name = DateTimePicker;
+			path = "Assignments/Third-Parties/DateTimePicker";
+			sourceTree = SOURCE_ROOT;
+		};
+		63B2B4431F5D14B000615601 /* RandomColor */ = {
+			isa = PBXGroup;
+			children = (
+				63B2B4441F5D14B000615601 /* ColorDefinition.swift */,
+				63B2B4451F5D14B000615601 /* Hue.swift */,
+				63B2B4461F5D14B000615601 /* Info.plist */,
+				63B2B4471F5D14B000615601 /* Luminosity.swift */,
+				63B2B4481F5D14B000615601 /* RandomColor.h */,
+				63B2B4491F5D14B000615601 /* RandomColor.swift */,
+			);
+			name = RandomColor;
+			path = "Assignments/Third-Parties/RandomColor";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -316,7 +490,7 @@
 				6373FA0E1F58A661006C20DD /* Sources */,
 				6373FA0F1F58A661006C20DD /* Frameworks */,
 				6373FA101F58A661006C20DD /* Resources */,
-				632F752F1F5B235A0091E15E /* Embed Frameworks */,
+				63376FC81F5D0D6F00E17C0E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -441,22 +615,80 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637FE8971F5A6B030029136B /* BetterSegmentedControl.swift in Sources */,
-				63662A0D1F5B152200BB4DBA /* SevenSwitch.swift in Sources */,
+				63B2B48D1F5D156A00615601 /* M13Checkbox.swift in Sources */,
+				63B2B48E1F5D156A00615601 /* M13Checkbox+IB.swift in Sources */,
+				63B2B48F1F5D156A00615601 /* M13CheckboxAnimationGenerator.swift in Sources */,
+				63B2B4901F5D156A00615601 /* M13CheckboxController.swift in Sources */,
+				63B2B4911F5D156A00615601 /* M13CheckboxGestureRecognizer.swift in Sources */,
+				63B2B44A1F5D14DA00615601 /* BetterSegmentedControl.swift in Sources */,
+				63B2B44B1F5D14DA00615601 /* DateCollectionViewCell.swift in Sources */,
+				63B2B44C1F5D14DA00615601 /* DateTimePicker.swift in Sources */,
+				63B2B44D1F5D14DA00615601 /* StepCollectionViewFlowLayout.swift in Sources */,
+				63B2B44E1F5D14DA00615601 /* DropDown.h in Sources */,
+				63B2B44F1F5D14DA00615601 /* DPDConstants.swift in Sources */,
+				63B2B4501F5D14DA00615601 /* DPDKeyboardListener.swift in Sources */,
+				63B2B4511F5D14DA00615601 /* DPDUIView+Extension.swift in Sources */,
+				63B2B4521F5D14DA00615601 /* Info.plist in Sources */,
+				63B2B4531F5D14DA00615601 /* DropDownCell.xib in Sources */,
+				63B2B4541F5D14DA00615601 /* DropDown+Appearance.swift in Sources */,
+				63B2B4551F5D14DA00615601 /* DropDown.swift in Sources */,
+				63B2B4561F5D14DA00615601 /* DropDownCell.swift in Sources */,
+				63B2B4571F5D14DA00615601 /* M13CheckboxBounceController.swift in Sources */,
+				63B2B4581F5D14DA00615601 /* M13CheckboxDotController.swift in Sources */,
+				63B2B4591F5D14DA00615601 /* M13CheckboxExpandController.swift in Sources */,
+				63B2B45A1F5D14DA00615601 /* M13CheckboxFadeController.swift in Sources */,
+				63B2B45B1F5D14DA00615601 /* M13CheckboxFillController.swift in Sources */,
+				63B2B45C1F5D14DA00615601 /* M13CheckboxFlatController.swift in Sources */,
+				63B2B45D1F5D14DA00615601 /* M13CheckboxSpiralController.swift in Sources */,
+				63B2B45E1F5D14DA00615601 /* M13CheckboxStrokeController.swift in Sources */,
+				63B2B45F1F5D14DA00615601 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
+				63B2B4601F5D14DA00615601 /* M13CheckboxCheckPathGenerator.swift in Sources */,
+				63B2B4611F5D14DA00615601 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
+				63B2B4621F5D14DA00615601 /* M13CheckboxPathGenerator.swift in Sources */,
+				63B2B4631F5D14DA00615601 /* M13CheckboxRadioPathGenerator.swift in Sources */,
+				63B2B4641F5D14DA00615601 /* AlertViewController.swift in Sources */,
+				63B2B4651F5D14DA00615601 /* AlertViewController.xib in Sources */,
+				63B2B4661F5D14DA00615601 /* BackgroundView.swift in Sources */,
+				63B2B4671F5D14DA00615601 /* CoverHorizontalAnimation.swift in Sources */,
+				63B2B4681F5D14DA00615601 /* CoverVerticalAnimation.swift in Sources */,
+				63B2B4691F5D14DA00615601 /* CoverVerticalFromTopAnimation.swift in Sources */,
+				63B2B46A1F5D14DA00615601 /* CrossDissolveAnimation.swift in Sources */,
+				63B2B46B1F5D14DA00615601 /* Info.plist in Sources */,
+				63B2B46C1F5D14DA00615601 /* KeyboardTranslation.swift in Sources */,
+				63B2B46D1F5D14DA00615601 /* ModalCenterPosition.swift in Sources */,
+				63B2B46E1F5D14DA00615601 /* ModalSize.swift in Sources */,
+				63B2B46F1F5D14DA00615601 /* Montserrat-Regular.ttf in Sources */,
+				63B2B4701F5D14DA00615601 /* PresentationType.swift in Sources */,
+				63B2B4711F5D14DA00615601 /* Presentr+Equatable.swift in Sources */,
+				63B2B4721F5D14DA00615601 /* Presentr.h in Sources */,
+				63B2B4731F5D14DA00615601 /* Presentr.swift in Sources */,
+				63B2B4741F5D14DA00615601 /* PresentrAnimation.swift in Sources */,
+				63B2B4751F5D14DA00615601 /* PresentrController.swift in Sources */,
+				63B2B4761F5D14DA00615601 /* PresentrShadow.swift in Sources */,
+				63B2B4771F5D14DA00615601 /* SourceSansPro-Regular.ttf in Sources */,
+				63B2B4781F5D14DA00615601 /* TransitionType.swift in Sources */,
+				63B2B4791F5D14DA00615601 /* ColorDefinition.swift in Sources */,
+				63B2B47A1F5D14DA00615601 /* Hue.swift in Sources */,
+				63B2B47B1F5D14DA00615601 /* Info.plist in Sources */,
+				63B2B47C1F5D14DA00615601 /* Luminosity.swift in Sources */,
+				63B2B47D1F5D14DA00615601 /* RandomColor.h in Sources */,
+				63B2B47E1F5D14DA00615601 /* RandomColor.swift in Sources */,
+				63B2B47F1F5D14DA00615601 /* SevenSwitch.swift in Sources */,
+				63B2B4801F5D14DA00615601 /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
+				63B2B4811F5D14DA00615601 /* UITextField+fixCaretPosition.swift in Sources */,
+				63B2B4821F5D14DA00615601 /* SkyFloatingLabelTextField.swift in Sources */,
+				63B2B4831F5D14DA00615601 /* Date+Timepiece.swift in Sources */,
+				63B2B4841F5D14DA00615601 /* DateComponents+Timepiece.swift in Sources */,
+				63B2B4851F5D14DA00615601 /* Int+Timepiece.swift in Sources */,
+				63B2B4861F5D14DA00615601 /* String+Timepiece.swift in Sources */,
+				63B2B4871F5D14DA00615601 /* ZFRippleButton.swift in Sources */,
 				6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */,
 				6325F69A1F59041600B22DDA /* Gib.swift in Sources */,
-				63489CDB1F592A020051CC0D /* SkyFloatingLabelTextFieldWithIcon.swift in Sources */,
 				6373FA1A1F58A661006C20DD /* SecondViewController.swift in Sources */,
 				63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */,
 				6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */,
-				63489CD91F5929E60051CC0D /* SkyFloatingLabelTextField.swift in Sources */,
-				63489CDD1F592A210051CC0D /* UITextField+fixCaretPosition.swift in Sources */,
 				63FE4DC01F591D5600077579 /* frmAssignmentList_NewAssignment.swift in Sources */,
 				63FE4DBE1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift in Sources */,
-				63E8E8FB1F5B7ABA00DDAC53 /* StepCollectionViewFlowLayout.swift in Sources */,
-				63489CD61F59268B0051CC0D /* ZFRippleButton.swift in Sources */,
-				63E8E8F91F5B7AA500DDAC53 /* DateCollectionViewCell.swift in Sources */,
-				63E8E8F71F5B7A7900DDAC53 /* DateTimePicker.swift in Sources */,
 				63FE4DBC1F591B2900077579 /* frmAssignmentList.swift in Sources */,
 				6373FA181F58A661006C20DD /* LaunchScreen.swift in Sources */,
 			);

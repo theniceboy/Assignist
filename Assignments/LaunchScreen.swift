@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Twinkle
 
 class LaunchScreen: UIViewController {
 

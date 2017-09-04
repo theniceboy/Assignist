@@ -9,6 +9,7 @@
 import UIKit
 import DropDown
 import Presentr
+import Timepiece
 
 class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     
@@ -31,7 +32,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     @IBOutlet weak var btnSetDueDate: ZFRippleButton!
     
     @IBOutlet weak var sgcSetDueTime: BetterSegmentedControl!
-    @IBOutlet weak var btnSetDueTime: ZFRippleButton!
     
     @IBOutlet weak var vSetNotification: UIView!
     @IBOutlet weak var switchSetNotification: SevenSwitch!
@@ -58,10 +58,18 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     
     var sgcSetDueTime_lastSelected: Int = 0
     
+    // MARK: - For btnAdd_Tapped (_:)
+    
+    var tmpSubject: String = ""
+    var tmpDueDate: Date = Date()
+    
     // MARK: - System Override Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //curFrmAssignmentList_NewAssignment = self
+        
         initializeUI()
         configureKeyboardHidingGestures()
         
@@ -70,15 +78,14 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         }
         
         if (!_EDIT_MODE_) {
-            assignmentItem.dueDate = Date(year: Date.tomorrow().year, month: Date.tomorrow().month, day: Date.tomorrow().day, hour: 7, minute: 30, second: 0)
+            tmpDueDate = Date(year: Date.tomorrow().year, month: Date.tomorrow().month, day: Date.tomorrow().day, hour: 7, minute: 30, second: 0)
         }
         
         updateDateTime()
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "addedSubject"), object:nil, queue:nil, using:catchNotification)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         showSuggestionArea()
@@ -134,15 +141,21 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         if (!checkForm()) {
             return
         }
+        assignmentItem.id = curAssignmentID
+        curAssignmentID += 1
+        saveCurAssignmentID()
         assignmentItem.title = (tfTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
         assignmentItem.comments = tvComments.text
+        assignmentItem.subject = tmpSubject
+        assignmentItem.dueDate = tmpDueDate
         
         assignmentList.append(assignmentItem)
         saveAssignmentList()
         
         UIView.animate(withDuration: 0.5) {
-            curFrmAssignmentList.tblAssignmentList.reloadData()
+            curFrmAssignmentList.refreshTableAssignmentList()
         }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -184,7 +197,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     @IBAction func btnSetDueDate_Tapped(_ sender: Any) {
         let min = Date.today()
         let max = Date.today() + 10000000
-        let picker = DateTimePicker.show(selected: assignmentItem.dueDate, minimumDate: min, maximumDate: max)
+        let picker = DateTimePicker.show(selected: tmpDueDate, minimumDate: min, maximumDate: max)
         picker.highlightColor = themeColor
         picker.darkColor = UIColor.darkGray
         picker.doneButtonTitle = "Done"
@@ -194,7 +207,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         picker.dateFormat = "MM/dd/yyyy"
         picker.isDatePickerOnly = false
         picker.completionHandler = { date in
-            self.assignmentItem.dueDate = Date(year: date.year, month: date.month, day: date.day, hour: self.assignmentItem.dueDate.hour, minute: self.assignmentItem.dueDate.minute, second: 0)
+            self.tmpDueDate = Date(year: date.year, month: date.month, day: date.day, hour: self.tmpDueDate.hour, minute: self.tmpDueDate.minute, second: 0)
             self.updateDateTime()
         }
     }
@@ -202,17 +215,17 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     @IBAction func sgcSetDueTime_ValueChanged(_ sender: BetterSegmentedControl) {
         let selected: String = sender.titles[Int(sender.index)]
         if (selected == "Morning") {
-            assignmentItem.dueDate = Date(year: assignmentItem.dueDate.year, month: assignmentItem.dueDate.month, day: assignmentItem.dueDate.day, hour: 7, minute: 30, second: 0)
+            tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 7, minute: 30, second: 0)
             updateDateTime()
             //sgcSetDueTime_lastSelected = 0
         } else if (selected == "Midnight") {
-            assignmentItem.dueDate = Date(year: assignmentItem.dueDate.year, month: assignmentItem.dueDate.month, day: assignmentItem.dueDate.day, hour: 11, minute: 59, second: 0)
+            tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 11, minute: 59, second: 0)
             updateDateTime()
             //sgcSetDueTime_lastSelected = 1
         } else if (selected == "Custom") {
             let min = Date.today()
             let max = Date.today() + 10000000
-            let picker = DateTimePicker.show(selected: assignmentItem.dueDate, minimumDate: min, maximumDate: max)
+            let picker = DateTimePicker.show(selected: tmpDueDate, minimumDate: min, maximumDate: max)
             picker.highlightColor = themeColor
             picker.darkColor = UIColor.darkGray
             picker.doneButtonTitle = "Done"
@@ -221,7 +234,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
             picker.is12HourFormat = false
             picker.dateFormat = "MM/dd/yyyy, mm:ss aa"
             picker.completionHandler = { date in
-                self.assignmentItem.dueDate = Date(year: date.year, month: date.month, day: date.day, hour: date.hour, minute: date.minute, second: 0)
+                self.tmpDueDate = Date(year: date.year, month: date.month, day: date.day, hour: date.hour, minute: date.minute, second: 0)
                 self.updateDateTime()
                 //self.sgcSetDueTime_lastSelected = 3
             }
@@ -229,9 +242,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
                 //self.sgcSetDueTime.index = self.sgcSetDueTime_lastSelected
             }
         }
-    }
-    
-    @IBAction func btnSetDueTime_Tapped(_ sender: Any) {
     }
     
     // MARK: Actions - Notification Settings
@@ -301,9 +311,29 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         return popupViewController as! frmAssignmentList_NewAssignment_NewSubject
     }()
     
-    func btnSelectSubject_setup () {
+    func setSubjectDropToNormalState () {
+        btnSelectSubject.setTitleColor(themeColor, for: .normal)
         btnSelectSubject.layer.borderColor = themeColor.cgColor
         btnSelectSubject.layer.borderWidth = 0.8
+    }
+    
+    func setSubjectDropToErrorState () {
+        btnSelectSubject.setTitleColor(redColor, for: .normal)
+        btnSelectSubject.layer.borderColor = redColor.cgColor
+        btnSelectSubject.layer.borderWidth = 1.0
+    }
+    
+    func updateSubjectDropDataSource () {
+        dropSelectSubject.dataSource = ["+"]
+        for var subject: SubjectItem in subjectList {
+            dropSelectSubject.dataSource.append(subject.name)
+        }
+        dropSelectSubject.reloadAllComponents()
+    }
+    
+    func btnSelectSubject_setup () {
+        
+        setSubjectDropToNormalState()
         
         dropSelectSubject.anchorView = btnSelectSubject
         let appearance = DropDown.appearance()
@@ -317,29 +347,35 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         appearance.animationduration = 0.25
         appearance.textColor = .darkGray
         
-        dropSelectSubject.dataSource = ["+"]
-        for var subject: SubjectItem in subjectList {
-            dropSelectSubject.dataSource.append(subject.name)
-        }
+        updateSubjectDropDataSource()
         
         // Action triggered on selection
         dropSelectSubject.selectionAction = { [unowned self] (index, item) in
             if (index == 0) {
                 let presenter: Presentr = {
-                    let presenter = Presentr(presentationType: .alert)
+                    let customPresentationType = PresentationType.custom(width: ModalSize.custom(size: 450.0), height: ModalSize.custom(size: 170.0), center: ModalCenterPosition.topCenter)
+                    let presenter = Presentr(presentationType: customPresentationType)
                     presenter.transitionType = TransitionType.coverHorizontalFromRight
                     presenter.dismissOnSwipe = false
+                    presenter.dismissOnTap = false
+                    presenter.blurBackground = true
+                    presenter.keyboardTranslationType = KeyboardTranslationType.moveUp
+                    
+                    
                     return presenter
                 }()
                 
-                presenter.presentationType = .popup
-                presenter.transitionType = nil
-                presenter.dismissTransitionType = nil
-                presenter.keyboardTranslationType = .compress
-                self.customPresentViewController(presenter, viewController: self.popupNewSubject, animated: true, completion: nil)
                 
+                self.customPresentViewController(presenter, viewController: self.popupNewSubject, animated: true, completion: {
+                    self.refreshSubjectList()
+                })
+            
+                
+                curFrmAssignmentList_NewAssignment_NewSubject.initializeUI()
             } else {
+                self.tmpSubject = item
                 self.btnSelectSubject.setTitle(item, for: .normal)
+                self.setSubjectDropToNormalState()
             }
         }
     }
@@ -351,15 +387,33 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     }
     
     func checkForm () -> Bool { // Returns a Bool value that represents if the assignment is ready to be added to the assignmentList
+        var result: Bool = true
         if (tfTitle.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) == "") {
             tfTitle.errorMessage = "The title of the assignment cannot be empty"
-            return false
+            result = false
         }
-        return true
+        if (tmpSubject == "") {
+            setSubjectDropToErrorState()
+            result = false
+        }
+        return result
     }
     
     func updateDateTime () {
-        lbDueDate.text = "Assignment due " + (abs(daysDifference(date1: Date.today(), date2: assignmentItem.dueDate)) > 1 ? "On " : "") + dateFormat_Word(date: assignmentItem.dueDate) + " At \(assignmentItem.dueDate.hour):\(assignmentItem.dueDate.minute)"
+        lbDueDate.text = "Assignment due " + (abs(daysDifference(date1: Date.today(), date2: tmpDueDate)) > 1 ? "On " : "") + dateFormat_Word(date: tmpDueDate) + " At \(tmpDueDate.hour):\(tmpDueDate.minute)"
+    }
+    
+    func refreshSubjectList () {
+        
+        setSubjectDropToNormalState()
+        updateSubjectDropDataSource()
+        tmpSubject = (subjectList.last?.name)!
+        btnSelectSubject.setTitle(self.tmpSubject, for: .normal)
+    }
+    
+    
+    func catchNotification(notification:Notification) -> Void {
+        refreshSubjectList()
     }
     
     /*
