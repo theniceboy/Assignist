@@ -1,6 +1,0 @@
-framework module Twinkle {
-  umbrella header "Twinkle.h"
-
-  export *
-  module * { export * }
-}

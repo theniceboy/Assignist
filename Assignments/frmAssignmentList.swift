@@ -10,6 +10,8 @@ import UIKit
 import M13Checkbox
 
 var tableAssignmentList: [AssignmentItem] = [] // The assignment list that is displayed
+var tableAssignmentList_checked: [AssignmentItem] = []
+var tableAssignmentListDivider: Int = 0 // The index of the first item that shoud be in the completed section
 
 class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +21,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var vRight: UIView!
     @IBOutlet weak var vRightCenter: UIView!
     @IBOutlet weak var tblAssignmentList: UITableView!
+    @IBOutlet weak var btnShowCompleted: ZFRippleButton!
     
     // Variables
     
@@ -60,6 +63,19 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         refreshTableAssignmentList()
     }
     
+    // MARK: - Actions
+    
+    @IBAction func btnAdd_Tapped(_ sender: Any) {
+        _EDIT_MODE_ = false
+    }
+    
+    var showingChecked: Bool = false
+    @IBAction func btnShowCompleted_Tapped(_ sender: Any) {
+        showingChecked = !showingChecked
+        btnShowCompleted.setTitle((showingChecked ? "Hide Completed" : "Show Completed"), for: .normal)
+        self.refreshTableAssignmentList()
+    }
+    
     // MARK: - TableView Delegate & DataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,6 +89,14 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         return tableAssignmentList.count
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (section == 0) {
+            return ""
+        } else {
+            return "Completed"
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: frmAsignmentList_tblAssignmentListCell = tableView.dequeueReusableCell(withIdentifier: "tblAssignmentListCell_Identifier", for: indexPath) as! frmAsignmentList_tblAssignmentListCell
         cell.rowNumber = indexPath.row
@@ -82,39 +106,121 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // MARK: - Table View Data
     
-    func refreshTableAssignmentList () {
+    func swaptable (a: Int, b: Int) {
+        var c = tableAssignmentList[a]
+        tableAssignmentList[a] = tableAssignmentList[b]
+        tableAssignmentList[b] = c
+    }
+    
+    func swaptable_checked (a: Int, b: Int) {
+        var c = tableAssignmentList_checked[a]
+        tableAssignmentList_checked[a] = tableAssignmentList_checked[b]
+        tableAssignmentList_checked[b] = c
+    }
+    
+    func formatTableData () {
+        var i: Int = 0, j: Int = 0, k: Int = 0
+        tableAssignmentList = []
+        tableAssignmentList_checked = []
         if (assignmentList.count == 0) {
-            tableAssignmentList = []
             return
         }
         if (assignmentList.count == 1) {
-            tableAssignmentList = assignmentList
+            if (assignmentList[0].checked) {
+                tableAssignmentList_checked.append(assignmentList[0])
+            } else {
+                tableAssignmentList.append(assignmentList[0])
+            }
         } else {
-            var i: Int = 0, j: Int = 0
-            tableAssignmentList = assignmentList
-            for i in 0 ... (tableAssignmentList.count - 2) {
-                for j in (i + 1) ... (tableAssignmentList.count - 1) {
-                    if (tableAssignmentList[i].dueDate > tableAssignmentList[j].dueDate) {
-                        swap(&tableAssignmentList[i], &tableAssignmentList[j])
-                    } else if (tableAssignmentList[i].dueDate == tableAssignmentList[j].dueDate) {
-                        if (tableAssignmentList[i].priority < tableAssignmentList[j].priority) {
-                            swap(&tableAssignmentList[i], &tableAssignmentList[j])
-                        } else if (tableAssignmentList[i].priority == tableAssignmentList[j].priority) {
-                            if (tableAssignmentList[i].subject.compare(tableAssignmentList[j].subject) == ComparisonResult.orderedAscending) {
-                                swap(&tableAssignmentList[i], &tableAssignmentList[j])
+            for i in 0 ... (assignmentList.count - 1) {
+                if (assignmentList[i].checked) {
+                    tableAssignmentList_checked.append(assignmentList[i])
+                } else {
+                    tableAssignmentList.append(assignmentList[i])
+                }
+            }
+            tableAssignmentListDivider = tableAssignmentList.count
+            if (tableAssignmentList.count > 1) {
+                for i in 0 ... (tableAssignmentList.count - 2) {
+                    for j in (i + 1) ... (tableAssignmentList.count - 1) {
+                        if (tableAssignmentList[i].dueDate.timeIntervalSince1970 > tableAssignmentList[j].dueDate.timeIntervalSince1970) {
+                            swaptable(a: i, b: j)
+                        } else if (tableAssignmentList[i].dueDate == tableAssignmentList[j].dueDate) {
+                            if (tableAssignmentList[i].priority < tableAssignmentList[j].priority) {
+                                swaptable(a: i, b: j)
+                            } else if (tableAssignmentList[i].priority == tableAssignmentList[j].priority) {
+                                if (tableAssignmentList[i].subject.compare(tableAssignmentList[j].subject) == ComparisonResult.orderedDescending) {
+                                    swaptable(a: i, b: j)
+                                }
                             }
                         }
                     }
                 }
             }
+            if (tableAssignmentList_checked.count > 1) {
+                for i in 0 ... (tableAssignmentList_checked.count - 2) {
+                    for j in (i + 1) ... (tableAssignmentList_checked.count - 1) {
+                        if (tableAssignmentList_checked[i].dueDate.timeIntervalSince1970 > tableAssignmentList_checked[j].dueDate.timeIntervalSince1970) {
+                            swaptable_checked(a: i, b: j)
+                        }
+                    }
+                }
+            }
+            
+            if (showingChecked) {
+                tableAssignmentList.append(contentsOf: tableAssignmentList_checked)
+            }
         }
-        tblAssignmentList.reloadData()
     }
     
+    func refreshShowCompletedButton () {
+        if (tableAssignmentList_checked.count == 0) {
+            showingChecked = false
+            btnShowCompleted.setTitle("Show Completed", for: .normal)
+            btnShowCompleted.isEnabled = false
+            btnShowCompleted.setTitleColor(scrollGray, for: .normal)
+        } else {
+            btnShowCompleted.isEnabled = true
+            btnShowCompleted.setTitleColor(themeColor, for: .normal)
+        }
+    }
+    
+    func refreshTableAssignmentList (formatTable: Bool = true) {
+        
+        if (formatTable) {
+            formatTableData()
+        }
+        
+        printTableAssignments()
+        
+        refreshShowCompletedButton()
+        
+        tblAssignmentList.reloadData()
+        /*
+        var allRows: [IndexPath] = []
+        if (tableAssignmentList.count > 0) {
+            for i in 0 ... (tableAssignmentList.count - 1) {
+                allRows.append(IndexPath(row: i, section: 0))
+            }
+        }
+        tblAssignmentList.reloadRows(at: allRows, with: UITableViewRowAnimation.none)
+         */
+        //tblAssignmentList.reloadSections([1], with: .none)
+    }
+    
+    // MARK: - Table View Action
+    
+    func editAssignment (id: Int) {
+        _EDIT_ID_ = id
+        _EDIT_MODE_ = true
+        self.performSegue(withIdentifier: "segueShowFrmNewAssignment", sender: self)
+    }
     
     // MARK: - Test Only
     
     @IBAction func clearAll(_ sender: Any) {
+        printAssignments()
+        /*
         assignmentList = []
         subjectList = []
         let defaultSubject = SubjectItem()
@@ -124,6 +230,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         saveAssignmentList()
         saveSubjectList()
         refreshTableAssignmentList()
+ */
     }
     
     

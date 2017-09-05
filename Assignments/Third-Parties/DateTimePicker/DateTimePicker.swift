@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @objc public class DateTimePicker: UIView {
     
     var contentHeight: CGFloat = 310
@@ -31,7 +32,7 @@ import UIKit
         didSet {
             dateTitleLabel.textColor = darkColor
             cancelButton.setTitleColor(darkColor.withAlphaComponent(0.5), for: .normal)
-            doneButton.backgroundColor = highlightColor
+            doneButton.backgroundColor = themeColor
             borderTopView.backgroundColor = darkColor.withAlphaComponent(0.2)
             borderBottomView.backgroundColor = darkColor.withAlphaComponent(0.2)
             separatorTopView.backgroundColor = darkColor.withAlphaComponent(0.2)
@@ -62,14 +63,6 @@ import UIKit
     public var dateFormat = "HH:mm dd/MM/YYYY" {
         didSet {
             resetDateTitle()
-        }
-    }
-    
-    public var cancelButtonTitle = "Cancel" {
-        didSet {
-            cancelButton.setTitle(cancelButtonTitle, for: .normal)
-            let size = cancelButton.sizeThatFits(CGSize(width: 0, height: 44.0)).width + 20.0
-            cancelButton.frame = CGRect(x: 0, y: 0, width: size, height: 44)
         }
     }
     
@@ -112,7 +105,7 @@ import UIKit
     private var contentView: UIView!
     private var dateTitleLabel: UILabel!
     private var todayButton: UIButton!
-    private var doneButton: ZFRippleButton!
+    private var doneButton: UIButton!
     private var cancelButton: UIButton!
     private var colonLabel1: UILabel!
     private var colonLabel2: UILabel!
@@ -163,21 +156,21 @@ import UIKit
                                           y: 0,
                                           width: frame.width,
                                           height: frame.height))
-        shadowView.backgroundColor = backgroundViewColor ?? UIColor.black.withAlphaComponent(0.5)
+        shadowView.backgroundColor = backgroundViewColor ?? UIColor.black.withAlphaComponent(0.3)
         shadowView.alpha = 1
         let shadowViewTap = UITapGestureRecognizer(target: self, action: #selector(DateTimePicker.dismissView(sender:)))
         shadowView.addGestureRecognizer(shadowViewTap)
         addSubview(shadowView)
         
         // content view
-        contentHeight = isDatePickerOnly ? 208 : 380
+        contentHeight = isDatePickerOnly ? 208 : 310
         contentView = UIView(frame: CGRect(x: 0,
                                            y: frame.height,
                                            width: frame.width,
                                            height: contentHeight))
         contentView.layer.shadowColor = UIColor(white: 0, alpha: 0.3).cgColor
         contentView.layer.shadowOffset = CGSize(width: 0, height: -2.0)
-        contentView.layer.shadowRadius = 3
+        contentView.layer.shadowRadius = 1.5
         contentView.layer.shadowOpacity = 0.5
         contentView.backgroundColor = .white
         contentView.isHidden = true
@@ -197,7 +190,7 @@ import UIKit
         titleView.addSubview(dateTitleLabel)
         
         cancelButton = UIButton(type: .system)
-        cancelButton.setTitle(cancelButtonTitle, for: .normal)
+        cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.setTitleColor(darkColor.withAlphaComponent(0.5), for: .normal)
         cancelButton.addTarget(self, action: #selector(DateTimePicker.dismissView(sender:)), for: .touchUpInside)
         cancelButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
@@ -243,15 +236,13 @@ import UIKit
         contentView.addSubview(borderBottomView)
         
         // done button
-        doneButton = ZFRippleButton()
+        doneButton = UIButton(type: .system)
         doneButton.frame = CGRect(x: 10, y: contentView.frame.height - 10 - 44, width: contentView.frame.width - 20, height: 44)
         doneButton.setTitle(doneButtonTitle, for: .normal)
         doneButton.setTitleColor(.white, for: .normal)
-        doneButton.backgroundColor = highlightColor
-        doneButton.rippleBackgroundColor = highlightColor
-        doneButton.rippleColor = highlightColor.withAlphaComponent(0.6)
+        doneButton.backgroundColor = darkColor.withAlphaComponent(0.5)
         doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        doneButton.layer.cornerRadius = 4
+        doneButton.layer.cornerRadius = 3
         doneButton.layer.masksToBounds = true
         doneButton.addTarget(self, action: #selector(DateTimePicker.dismissView(sender:)), for: .touchUpInside)
         contentView.addSubview(doneButton)
@@ -264,7 +255,7 @@ import UIKit
                                                   y: borderBottomView.frame.origin.y + 2,
                                                   width: 60,
                                                   height: doneButton.frame.origin.y - borderBottomView.frame.origin.y - 10))
-        hourTableView.rowHeight = 40
+        hourTableView.rowHeight = 36
         hourTableView.contentInset = UIEdgeInsetsMake(hourTableView.frame.height / 2, 0, hourTableView.frame.height / 2, 0)
         hourTableView.showsVerticalScrollIndicator = false
         hourTableView.separatorStyle = .none
@@ -275,10 +266,10 @@ import UIKit
         
         // minute table view
         minuteTableView = UITableView(frame: CGRect(x: contentView.frame.width / 2 + extraSpace,
-                                                    y: borderBottomView.frame.origin.y + 1,
+                                                    y: borderBottomView.frame.origin.y + 2,
                                                     width: 60,
                                                     height: doneButton.frame.origin.y - borderBottomView.frame.origin.y - 10))
-        minuteTableView.rowHeight = 40
+        minuteTableView.rowHeight = 36
         minuteTableView.contentInset = UIEdgeInsetsMake(minuteTableView.frame.height / 2, 0, minuteTableView.frame.height / 2, 0)
         minuteTableView.showsVerticalScrollIndicator = false
         minuteTableView.separatorStyle = .none
@@ -292,7 +283,7 @@ import UIKit
                                                   y: borderBottomView.frame.origin.y + 2,
                                                   width: 64,
                                                   height: doneButton.frame.origin.y - borderBottomView.frame.origin.y - 10))
-        amPmTableView.rowHeight = 40
+        amPmTableView.rowHeight = 36
         amPmTableView.contentInset = UIEdgeInsetsMake(amPmTableView.frame.height / 2, 0, amPmTableView.frame.height / 2, 0)
         amPmTableView.showsVerticalScrollIndicator = false
         amPmTableView.separatorStyle = .none
@@ -327,13 +318,13 @@ import UIKit
         // time separators
         separatorTopView = UIView(frame: CGRect(x: 0, y: 0, width: 90 - extraSpace * 2, height: 1))
         separatorTopView.backgroundColor = darkColor.withAlphaComponent(0.2)
-        separatorTopView.center = CGPoint(x: contentView.frame.width / 2, y: borderBottomView.frame.origin.y + 68)
+        separatorTopView.center = CGPoint(x: contentView.frame.width / 2, y: borderBottomView.frame.origin.y + 36)
         separatorTopView.isHidden = isDatePickerOnly
         contentView.addSubview(separatorTopView)
         
         separatorBottomView = UIView(frame: CGRect(x: 0, y: 0, width: 90 - extraSpace * 2, height: 1))
         separatorBottomView.backgroundColor = darkColor.withAlphaComponent(0.2)
-        separatorBottomView.center = CGPoint(x: contentView.frame.width / 2, y: separatorTopView.frame.origin.y + 38)
+        separatorBottomView.center = CGPoint(x: contentView.frame.width / 2, y: separatorTopView.frame.origin.y + 36)
         separatorBottomView.isHidden = isDatePickerOnly
         contentView.addSubview(separatorBottomView)
         
@@ -369,7 +360,7 @@ import UIKit
         resetTime()
     }
     
-    func resetTime(showAnimation: Bool = true) {
+    func resetTime() {
         components = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: selectedDate)
         updateCollectionView(to: selectedDate)
         if let hour = components.hour {
@@ -388,9 +379,9 @@ import UIKit
             }
             hourTableView.selectRow(at: IndexPath(row: expectedRow, section: 0), animated: true, scrollPosition: .middle)
             if hour >= 12 {
-                amPmTableView.selectRow(at: IndexPath(row: 1, section: 0), animated: showAnimation, scrollPosition: .middle)
+                amPmTableView.selectRow(at: IndexPath(row: 1, section: 0), animated: true, scrollPosition: .middle)
             } else {
-                amPmTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: showAnimation, scrollPosition: .middle)
+                amPmTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .middle)
             }
         }
         
@@ -465,11 +456,7 @@ import UIKit
             guard let `self` = self else {
                 return
             }
-            if sender == self.doneButton {
-                self.completionHandler?(self.selectedDate)
-            } else {
-                self.dismissHandler?()
-            }
+            self.completionHandler?(self.selectedDate)
             self.removeFromSuperview()
         }
     }
@@ -697,4 +684,3 @@ extension DateTimePicker: UICollectionViewDataSource, UICollectionViewDelegate {
         }
     }
 }
-

@@ -33,18 +33,18 @@ class AssignmentItem: NSObject, NSCoding {
     override init() { }
     
     required init(coder aDecoder: NSCoder) {
-        id = aDecoder.decodeObject(forKey: "id") as? Int ?? 0
-        checked = aDecoder.decodeObject(forKey: "checked") as? Bool ?? false
+        id = aDecoder.decodeInteger(forKey: "id")
+        checked = aDecoder.decodeBool(forKey: "isChecked")
         title = aDecoder.decodeObject(forKey: "title") as? String ?? ""
         comments = aDecoder.decodeObject(forKey: "comments") as? String ?? ""
         subject = aDecoder.decodeObject(forKey: "subject") as? String ?? ""
         dueDate = aDecoder.decodeObject(forKey: "dueDate") as? Date ?? Date()
-        priority = aDecoder.decodeObject(forKey: "priority") as? Int ?? 0
+        priority = aDecoder.decodeInteger(forKey: "priority")
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id, forKey: "id")
-        aCoder.encode(checked, forKey: "checked")
+        aCoder.encode(checked, forKey: "isChecked")
         aCoder.encode(title, forKey: "title")
         aCoder.encode(comments, forKey: "comments")
         aCoder.encode(subject, forKey: "subject")
@@ -61,6 +61,19 @@ func getRowNum_AssignmentList (id: Int) -> Int {
     }
     print ("NOOOOOOOOOO!!!!!!!!!")
     return -1
+}
+
+func printAssignments () {
+    for var item in assignmentList {
+        print("\(item.id) \(item.checked) " + item.title + " " +  dateFormat_Word(date: item.dueDate) + "\(item.dueDate.hour):\(item.dueDate.minute)")
+    }
+}
+
+func printTableAssignments () {
+    print("--------")
+    for var item in tableAssignmentList {
+        print("\(item.id) \(item.checked) " + item.title + " " +  dateFormat_Word(date: item.dueDate) + "\(item.dueDate.hour):\(item.dueDate.minute)")
+    }
 }
 
 func saveAssignmentList () {

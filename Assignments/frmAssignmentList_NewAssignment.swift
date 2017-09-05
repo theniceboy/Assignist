@@ -11,11 +11,19 @@ import DropDown
 import Presentr
 import Timepiece
 
-class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
+
+var _EDIT_ID_: Int = 0
+var _EDIT_MODE_: Bool = false
+
+class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+
+    
     
     // MARK: - Outlets
     
     // Controls
+    
+    @IBOutlet weak var btnAdd: ZFRippleButton!
     
     @IBOutlet weak var btnSelectSubject: ZFRippleButton!
     
@@ -37,47 +45,90 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     @IBOutlet weak var switchSetNotification: SevenSwitch!
     @IBOutlet weak var btnSetNotification: ZFRippleButton!
     
+    let coachMarksController = CoachMarksController()
+
     
     // Constraints
     
     @IBOutlet weak var _layout_vClearWidthAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_vSuggestionsHeightAnchor: NSLayoutConstraint!
     
-    // MARK: - UI
+    // MARK: - Variables
+    
+    // MARK: UI
     
     var dropSelectSubject = DropDown()
     var _suggestionPositions: [CGFloat] = [65, 113, 165]
     
-    // MARK: - Class Open Var
+    // MARK: Class Open Var
     
-    var _EDIT_MODE_: Bool = false
     var showSuggestions: Bool = false
+    var suggestionCount: Int = 0
     var assignmentItem: AssignmentItem = AssignmentItem()
     
-    // MARK: - Variables used for private functions
+    // MARK: Variables used for private functions
     
     var sgcSetDueTime_lastSelected: Int = 0
+    var sgcSetDueTime_firstOpens: Bool = false
     
-    // MARK: - For btnAdd_Tapped (_:)
+    // MARK: For btnAdd_Tapped (_:)
     
     var tmpSubject: String = ""
     var tmpDueDate: Date = Date()
+    
+    var editAssignment: AssignmentItem = AssignmentItem()
     
     // MARK: - System Override Functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        coachMarksController.dataSource = self
+        
         //curFrmAssignmentList_NewAssignment = self
         
         initializeUI()
         configureKeyboardHidingGestures()
         
-        if (assignmentList.count > 0) {
+        if (assignmentList.count > 0 && false) {
             showSuggestions = true
         }
         
-        if (!_EDIT_MODE_) {
+        if (_EDIT_MODE_) {
+            editAssignment = assignmentList[getRowNum_AssignmentList(id: _EDIT_ID_)]
+            
+            btnAdd.setTitle("Done", for: .normal)
+            
+            btnSelectSubject.setTitle(editAssignment.subject, for: .normal)
+            tmpSubject = editAssignment.subject
+            tfTitle.text = editAssignment.title
+            showClearButton()
+            tvComments.text = editAssignment.comments
+            tmpDueDate = editAssignment.dueDate
+            sgcSetDueTime_firstOpens = true
+            if (tmpDueDate.hour == 7 && tmpDueDate.minute == 30) {
+                do {
+                    try sgcSetDueTime.setIndex(0)
+                } catch { }
+            } else if (tmpDueDate.hour == 11 && tmpDueDate.minute == 59) {
+                do {
+                    try sgcSetDueTime.setIndex(1)
+                } catch { }
+            } else {
+                do {
+                    try sgcSetDueTime.setIndex(2)
+                } catch { }
+            }
+            sgcSetDueTime_firstOpens = false
+        } else {
+            btnAdd.setTitle("Add", for: .normal)
+            tfTitle.text = ""
+            hideClearButton()
+            tvComments.text = ""
+            do {
+                try sgcSetDueTime.setIndex(0)
+            } catch { }
+            
             tmpDueDate = Date(year: Date.tomorrow().year, month: Date.tomorrow().month, day: Date.tomorrow().day, hour: 7, minute: 30, second: 0)
         }
         
@@ -88,7 +139,18 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        showSuggestionArea()
+        if (!_EDIT_MODE_) {
+            showSuggestionArea()
+        }
+        let intro_frmNewAssignment = UserDefaults.standard.object(forKey: "intro_frmNewAssignment")
+        if (intro_frmNewAssignment == nil) {
+            coachMarksController.start(on: self)
+        }
+        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "intro_frmNewAssignment")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        coachMarksController.stop(immediately: true)
     }
     
     // MARK: - Animation Functions
@@ -141,15 +203,24 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         if (!checkForm()) {
             return
         }
-        assignmentItem.id = curAssignmentID
-        curAssignmentID += 1
-        saveCurAssignmentID()
-        assignmentItem.title = (tfTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
-        assignmentItem.comments = tvComments.text
-        assignmentItem.subject = tmpSubject
-        assignmentItem.dueDate = tmpDueDate
+        if (_EDIT_MODE_) {
+            var rowNumber: Int = getRowNum_AssignmentList(id: _EDIT_ID_)
+            assignmentList[rowNumber].title = (tfTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
+            assignmentList[rowNumber].comments = tvComments.text
+            assignmentList[rowNumber].subject = tmpSubject
+            assignmentList[rowNumber].dueDate = tmpDueDate
+        } else {
+            assignmentItem.id = curAssignmentID
+            curAssignmentID += 1
+            saveCurAssignmentID()
+            assignmentItem.title = (tfTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
+            assignmentItem.comments = tvComments.text
+            assignmentItem.subject = tmpSubject
+            assignmentItem.dueDate = tmpDueDate
+            
+            assignmentList.append(assignmentItem)
+        }
         
-        assignmentList.append(assignmentItem)
         saveAssignmentList()
         
         UIView.animate(withDuration: 0.5) {
@@ -172,7 +243,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func tfTitle_EditingChanged(_ sender: Any) {
-        //showSuggestionArea()
         if (tfTitle.text != "") {
             showClearButton()
             tfTitle.errorMessage = ""
@@ -181,10 +251,14 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         }
     }
     @IBAction func tfTitle_EditingDidBegin(_ sender: Any) {
-        showSuggestionArea()
+        if (!_EDIT_MODE_) {
+            //showSuggestionArea()
+        }
     }
     @IBAction func tfTitle_EditingDidEnd(_ sender: Any) {
-        hideSuggestionArea()
+        if (!_EDIT_MODE_) {
+            //hideSuggestionArea()
+        }
     }
     
     @IBAction func btnClear_Tapped(_ sender: Any) {
@@ -202,10 +276,10 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         picker.darkColor = UIColor.darkGray
         picker.doneButtonTitle = "Done"
         picker.todayButtonTitle = "Today"
-        picker.resetTime(showAnimation: false)
+        picker.resetTime()
         picker.is12HourFormat = true
         picker.dateFormat = "MM/dd/yyyy"
-        picker.isDatePickerOnly = false
+        picker.isDatePickerOnly = true
         picker.completionHandler = { date in
             self.tmpDueDate = Date(year: date.year, month: date.month, day: date.day, hour: self.tmpDueDate.hour, minute: self.tmpDueDate.minute, second: 0)
             self.updateDateTime()
@@ -213,33 +287,39 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func sgcSetDueTime_ValueChanged(_ sender: BetterSegmentedControl) {
+        if (sgcSetDueTime_firstOpens) {
+            sgcSetDueTime_firstOpens = false
+            return
+        }
         let selected: String = sender.titles[Int(sender.index)]
         if (selected == "Morning") {
             tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 7, minute: 30, second: 0)
             updateDateTime()
-            //sgcSetDueTime_lastSelected = 0
+            sgcSetDueTime_lastSelected = 0
         } else if (selected == "Midnight") {
             tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 11, minute: 59, second: 0)
             updateDateTime()
-            //sgcSetDueTime_lastSelected = 1
+            sgcSetDueTime_lastSelected = 1
         } else if (selected == "Custom") {
             let min = Date.today()
             let max = Date.today() + 10000000
             let picker = DateTimePicker.show(selected: tmpDueDate, minimumDate: min, maximumDate: max)
             picker.highlightColor = themeColor
             picker.darkColor = UIColor.darkGray
-            picker.doneButtonTitle = "Done"
+            picker.doneButtonTitle = " "
             picker.todayButtonTitle = "Today"
-            picker.resetTime(showAnimation: false)
+            picker.resetTime()
             picker.is12HourFormat = false
             picker.dateFormat = "MM/dd/yyyy, mm:ss aa"
             picker.completionHandler = { date in
                 self.tmpDueDate = Date(year: date.year, month: date.month, day: date.day, hour: date.hour, minute: date.minute, second: 0)
                 self.updateDateTime()
-                //self.sgcSetDueTime_lastSelected = 3
+                self.sgcSetDueTime_lastSelected = 3
             }
             picker.dismissHandler = {
-                //self.sgcSetDueTime.index = self.sgcSetDueTime_lastSelected
+                do {
+                    try self.sgcSetDueTime.setIndex(UInt(self.sgcSetDueTime_lastSelected))
+                } catch { }
             }
         }
     }
@@ -425,5 +505,51 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - Coach
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 5
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                              coachMarkAt index: Int) -> CoachMark {
+        if (index == 0) {
+            return coachMarksController.helper.makeCoachMark(for: btnSelectSubject)
+        } else if (index == 1) {
+            return coachMarksController.helper.makeCoachMark(for: tfTitle)
+        } else if (index == 2) {
+            return coachMarksController.helper.makeCoachMark(for: tvComments)
+        } else if (index == 3) {
+            return coachMarksController.helper.makeCoachMark(for: btnSetDueDate)
+        } else if (index == 4) {
+            return coachMarksController.helper.makeCoachMark(for: sgcSetDueTime)
+        }
+        return coachMarksController.helper.makeCoachMark(for: self.view)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        if (index == 0) {UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: subjectList), forKey: "subjectList")
+            coachViews.bodyView.hintLabel.text = "First Stet: Select the subject of the your new assignment"
+            coachViews.bodyView.nextLabel.text = "Next"
+        } else if (index == 1) {
+            coachViews.bodyView.hintLabel.text = "Second, type in your assignment title"
+            coachViews.bodyView.nextLabel.text = "Next"
+        } else if (index == 2) {
+            coachViews.bodyView.hintLabel.text = "You can put some other notes here, it's optional"
+            coachViews.bodyView.nextLabel.text = "Next"
+        } else if (index == 3) {
+            coachViews.bodyView.hintLabel.text = "Tap here to pick the due date"
+            coachViews.bodyView.nextLabel.text = "Next"
+        } else if (index == 4) {
+            coachViews.bodyView.hintLabel.text = "You can customize the due time here"
+            coachViews.bodyView.nextLabel.text = "Ok"
+        }
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
 }
+
+

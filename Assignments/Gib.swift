@@ -28,6 +28,7 @@ var curFrmAssignmentList_NewAssignment_NewSubject:frmAssignmentList_NewAssignmen
 
 var themeColor = UIColor(red: 74.0 / 255.0, green: 144.0 / 255.0, blue: 226.0 / 255.0, alpha: 1.0) // Theme blue color
 var redColor = UIColor(red: 208.0 / 255.0, green: 2.0 / 255.0, blue: 27.0 / 255.0, alpha: 1.0) // Theme red color
+var scrollGray = UIColor(red: 92.0 / 255.0, green: 94.0 / 255.0, blue: 102.0 / 255.0, alpha: 1.0)
 
 // MARK: - Hash for Date
 
