@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import DropDown
-import Presentr
-import Timepiece
 
 
 var _EDIT_ID_: Int = 0

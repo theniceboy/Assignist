@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import M13Checkbox
 
 var tableAssignmentList: [AssignmentItem] = [] // The assignment list that is displayed
 var tableAssignmentList_checked: [AssignmentItem] = []
