@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         DropDown.startListeningToKeyboard()
         myCalender.firstWeekday = 0
+        
+        for i in 0 ... (UIApplication.shared.scheduledLocalNotifications?.count)! - 1 {
+            if (UIApplication.shared.scheduledLocalNotifications![i].fireDate! < localDate()) {
+                UIApplication.shared.scheduledLocalNotifications?.remove(at: i)
+            }
+        }
+        
+        UIApplication.shared.applicationIconBadgeNumber = 0
+
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

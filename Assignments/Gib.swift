@@ -56,7 +56,7 @@ func daysDifference (date1: Date, date2: Date) -> Int {
 }
 
 func dateFormat_Word (date: Date) -> String {
-    let uday: Int = daysDifference(date1: Date.today(), date2: date)
+    let uday: Int = daysDifference(date1: localDate(), date2: date)
     let nday = dayOfWeek(date: date)
     let formatter = DateFormatter()
     formatter.dateFormat = " (MM/dd)"
@@ -67,15 +67,38 @@ func dateFormat_Word (date: Date) -> String {
     }
     if (abs(uday) < 2) {
         return h_uday[uday]! + advanced_str
-    } else if (weekOfYear(date: date) == weekOfYear(date: Date.today())) {
+    } else if (weekOfYear(date: date) == weekOfYear(date: localDate())) {
         return h_day[nday]! + advanced_str
-    } else if (abs(weekOfYear(date: date) - weekOfYear(date: Date.today())) < 2) {
+    } else if (abs(weekOfYear(date: date) - weekOfYear(date: localDate())) < 2) {
         var str: String = ""
-        if (abs(uday) >= 7 || (uday > 0 && nday < dayOfWeek(date: Date.today())) || (uday < 0 && nday > dayOfWeek(date: Date.today()))) {
+        if (abs(uday) >= 7 || (uday > 0 && nday < dayOfWeek(date: localDate())) || (uday < 0 && nday > dayOfWeek(date: localDate()))) {
             str = ((uday > 0) ? h_week[2] : h_week[0])!
         }
         str += h_day[nday]!
         return str + advanced_str
     }
     return "\(date.month)/\(date.day)/\(date.year)" + advanced_str
+}
+
+func localDate()-> Date {
+    return Date()
+    var interval = TimeZone.current.secondsFromGMT()
+    if (!TimeZone.current.isDaylightSavingTime(for: Date())) {
+        interval -= 3600
+    }
+    return Date().addingTimeInterval(TimeInterval(interval))
+    //return Date().description(with: Locale.current)
+}
+
+func correctedDate1 (year: Int, month: Int, day: Int, hour: Int, minute: Int, second: Int = 0) -> Date {
+    let date = Date(year: year, month: month, day: day, hour: hour, minute: minute, second: second)
+    var interval = TimeZone.current.secondsFromGMT()
+    if (!TimeZone.current.isDaylightSavingTime(for: date)) {
+        interval -= 3600
+    }
+    return date.addingTimeInterval(TimeInterval(interval))
+}
+
+func printDate (date: Date) {
+    print("_______PRINTDATE________ \(date.year).\(date.month).\(date.day)  \(date.hour):\(date.minute)")
 }

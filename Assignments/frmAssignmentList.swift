@@ -33,6 +33,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         tblAssignmentList.delegate = self
         tblAssignmentList.dataSource = self
     
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         curFrmAssignmentList = self
         
@@ -60,6 +61,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         refreshTableAssignmentList()
+        
+        
     }
     
     // MARK: - Actions

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631111D41F5FA00B00F801BF /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631111D31F5FA00B00F801BF /* UserSettings.swift */; };
 		6325F69A1F59041600B22DDA /* Gib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F6991F59041600B22DDA /* Gib.swift */; };
 		6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F69B1F590B1E00B22DDA /* Classes.swift */; };
 		6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA151F58A661006C20DD /* AppDelegate.swift */; };
@@ -158,6 +159,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		631111D31F5FA00B00F801BF /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		6325F6991F59041600B22DDA /* Gib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gib.swift; sourceTree = "<group>"; };
 		6325F69B1F590B1E00B22DDA /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		6373FA121F58A661006C20DD /* Assignments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignments.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,6 +345,7 @@
 				6373FA231F58A661006C20DD /* Info.plist */,
 				6325F6991F59041600B22DDA /* Gib.swift */,
 				6325F69B1F590B1E00B22DDA /* Classes.swift */,
+				631111D31F5FA00B00F801BF /* UserSettings.swift */,
 			);
 			path = Assignments;
 			sourceTree = "<group>";
@@ -971,6 +974,7 @@
 				63B84A281F5E7673005A2A52 /* Presentr.h in Sources */,
 				63B84A291F5E7673005A2A52 /* Presentr.swift in Sources */,
 				63B84A2A1F5E7673005A2A52 /* PresentrAnimation.swift in Sources */,
+				631111D41F5FA00B00F801BF /* UserSettings.swift in Sources */,
 				63B84A2B1F5E7673005A2A52 /* PresentrController.swift in Sources */,
 				63B84A2C1F5E7673005A2A52 /* PresentrShadow.swift in Sources */,
 				63B84A2D1F5E7673005A2A52 /* SourceSansPro-Regular.ttf in Sources */,

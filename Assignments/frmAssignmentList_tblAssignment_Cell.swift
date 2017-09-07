@@ -64,8 +64,8 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
                 }
             }
         }
-        lbSectionHeader.text = "\(assignmentCounter) Assignment" + (assignmentCounter > 1 ? "s" : "") + " Due " + (abs(daysDifference(date1: Date.today(), date2: tableAssignmentList[rowNumber].dueDate)) > 1 ? "On " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate)
-        if (tableAssignmentList[rowNumber].dueDate < Date.today()) {
+        lbSectionHeader.text = "\(assignmentCounter) Assignment" + (assignmentCounter > 1 ? "s" : "") + " Due " + (abs(daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate)) > 1 ? "On " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate)
+        if (tableAssignmentList[rowNumber].dueDate < localDate()) {
             lbSectionHeader.textColor = redColor
         } else {
             lbSectionHeader.textColor = UIColor.darkGray
@@ -116,13 +116,18 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         lbTitle.tag = rowNumber
         lbTitle.text = tableAssignmentList[rowNumber].title
         lbSubject.text = tableAssignmentList[rowNumber].subject
-        let duetime: String = "At " + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? " " : "") + "\(tableAssignmentList[rowNumber].dueDate.hour):" + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? "0" : "") + "\(tableAssignmentList[rowNumber].dueDate.minute)"
+        var duetime: String = "At "// + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? " " : "") + "\(tableAssignmentList[rowNumber].dueDate.hour):" + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? "0" : "") + "\(tableAssignmentList[rowNumber].dueDate.minute)"
+        if (tableAssignmentList[rowNumber].dueDate.hour > 12 || (tableAssignmentList[rowNumber].dueDate.hour == 12 && tableAssignmentList[rowNumber].dueDate.minute > 0)) {
+            duetime = duetime + "\(tableAssignmentList[rowNumber].dueDate.hour - 12):\(tableAssignmentList[rowNumber].dueDate.minute) PM"
+        } else {
+            duetime = duetime + "\(tableAssignmentList[rowNumber].dueDate.hour):\(tableAssignmentList[rowNumber].dueDate.minute) AM"
+        }
         if (tableAssignmentList[rowNumber].checked) {
-            lbDueTime.text = "Due " + (daysDifference(date1: Date.today(), date2: tableAssignmentList[rowNumber].dueDate) > 1 ? "On " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate) + " " + duetime
+            lbDueTime.text = "Due " + (daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate) > 1 ? "On " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate) + " " + duetime
         } else {
             lbDueTime.text = "Due " + duetime
         }
-        if (tableAssignmentList[rowNumber].dueDate.timeIntervalSince1970 < NSDate().timeIntervalSince1970) {
+        if (tableAssignmentList[rowNumber].dueDate.timeIntervalSince1970 < localDate().timeIntervalSince1970) {
             lbDueTime.textColor = redColor
         } else {
             lbDueTime.textColor = scrollGray

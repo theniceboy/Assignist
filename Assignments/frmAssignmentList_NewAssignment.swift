@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import UserNotifications
 
 var _EDIT_ID_: Int = 0
 var _EDIT_MODE_: Bool = false
@@ -19,6 +19,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     // MARK: - Outlets
     
     // Controls
+    
+    @IBOutlet weak var vTopBar: UIView!
     
     @IBOutlet weak var btnAdd: ZFRippleButton!
     
@@ -40,7 +42,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     @IBOutlet weak var vSetNotification: UIView!
     @IBOutlet weak var switchSetNotification: SevenSwitch!
-    @IBOutlet weak var btnSetNotification: ZFRippleButton!
+    //@IBOutlet weak var btnSetNotification: ZFRippleButton!
     
     let coachMarksController = CoachMarksController()
 
@@ -72,6 +74,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     var tmpSubject: String = ""
     var tmpDueDate: Date = Date()
+    var notificationOn: Bool = true
+    var notifyDateTime: Date = Date()
     
     var editAssignment: AssignmentItem = AssignmentItem()
     
@@ -79,6 +83,14 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for _ in 0...10 {
+            print("________________")
+        }
+        
+        for item in subjectList {
+            print(item.color)
+        }
         
         coachMarksController.dataSource = self
         
@@ -98,9 +110,13 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             
             btnSelectSubject.setTitle(editAssignment.subject, for: .normal)
             tmpSubject = editAssignment.subject
+            updateTopBarUI()
+            
             tfTitle.text = editAssignment.title
             showClearButton()
+            
             tvComments.text = editAssignment.comments
+            
             tmpDueDate = editAssignment.dueDate
             sgcSetDueTime_firstOpens = true
             if (tmpDueDate.hour == 7 && tmpDueDate.minute == 30) {
@@ -117,6 +133,16 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                 } catch { }
             }
             sgcSetDueTime_firstOpens = false
+            
+            notificationOn = false
+            for item in UIApplication.shared.scheduledLocalNotifications! {
+                if (item.userInfo!["id"] as! Int == _EDIT_ID_) {
+                    notifyDateTime = item.fireDate!
+                    notificationOn = true
+                    break
+                }
+            }
+            switchSetNotification.setOn(notificationOn, animated: false)
         } else {
             btnAdd.setTitle("Add", for: .normal)
             tfTitle.text = ""
@@ -127,11 +153,15 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             } catch { }
             
             tmpDueDate = Date(year: Date.tomorrow().year, month: Date.tomorrow().month, day: Date.tomorrow().day, hour: 7, minute: 30, second: 0)
+            
+            notificationOn = true
+            updateNotificationTime ()
         }
         
         updateDateTime()
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "addedSubject"), object:nil, queue:nil, using:catchNotification)
+        
     }
     
     
@@ -142,8 +172,9 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         let intro_frmNewAssignment = UserDefaults.standard.object(forKey: "intro_frmNewAssignment")
         if (intro_frmNewAssignment == nil) {
             coachMarksController.start(on: self)
+        } else {
+            tfTitle.becomeFirstResponder()
         }
-        UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "intro_frmNewAssignment")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -206,7 +237,24 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentList[rowNumber].comments = tvComments.text
             assignmentList[rowNumber].subject = tmpSubject
             assignmentList[rowNumber].dueDate = tmpDueDate
+            
+            if (notificationOn) {
+                for item in UIApplication.shared.scheduledLocalNotifications! {
+                    if (item.userInfo!["id"] as! Int == _EDIT_ID_) {
+                        item.fireDate = notifyDateTime
+                        break
+                    }
+                }
+            } else {
+                for var i in 0 ... UIApplication.shared.scheduledLocalNotifications!.count {
+                    if (UIApplication.shared.scheduledLocalNotifications![i].userInfo!["id"] as! Int == _EDIT_ID_) {
+                        UIApplication.shared.scheduledLocalNotifications?.remove(at: i)
+                        break
+                    }
+                }
+            }
         } else {
+            
             assignmentItem.id = curAssignmentID
             curAssignmentID += 1
             saveCurAssignmentID()
@@ -216,6 +264,16 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentItem.dueDate = tmpDueDate
             
             assignmentList.append(assignmentItem)
+            
+            
+            let notification = UILocalNotification()
+            notification.fireDate = notifyDateTime
+            //printDate(date: notification.fireDate!)
+            notification.applicationIconBadgeNumber = 0
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.userInfo = ["id": assignmentItem.id]
+            notification.alertBody = "[" + assignmentItem.subject + "] " + assignmentItem.title
+            UIApplication.shared.scheduleLocalNotification(notification)
         }
         
         saveAssignmentList()
@@ -266,13 +324,13 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     // MARK: Actions - Due Day Time Settings
     
     @IBAction func btnSetDueDate_Tapped(_ sender: Any) {
-        let min = Date.today()
-        let max = Date.today() + 10000000
+        let min = localDate()
+        let max = localDate() + 10000000
         let picker = DateTimePicker.show(selected: tmpDueDate, minimumDate: min, maximumDate: max)
         picker.highlightColor = themeColor
         picker.darkColor = UIColor.darkGray
-        picker.doneButtonTitle = "Done"
-        picker.todayButtonTitle = "Today"
+        //picker.doneButtonTitle = "Done"
+        picker.todayButtonTitle = "Done"
         picker.resetTime()
         picker.is12HourFormat = true
         picker.dateFormat = "MM/dd/yyyy"
@@ -280,6 +338,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         picker.completionHandler = { date in
             self.tmpDueDate = Date(year: date.year, month: date.month, day: date.day, hour: self.tmpDueDate.hour, minute: self.tmpDueDate.minute, second: 0)
             self.updateDateTime()
+            self.updateNotificationTime()
         }
     }
     
@@ -293,25 +352,28 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 7, minute: 30, second: 0)
             updateDateTime()
             sgcSetDueTime_lastSelected = 0
+            updateNotificationTime()
         } else if (selected == "Midnight") {
             tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 11, minute: 59, second: 0)
             updateDateTime()
             sgcSetDueTime_lastSelected = 1
+            updateNotificationTime()
         } else if (selected == "Custom") {
-            let min = Date.today()
-            let max = Date.today() + 10000000
+            let min = localDate()
+            let max = localDate() + 10000000
             let picker = DateTimePicker.show(selected: tmpDueDate, minimumDate: min, maximumDate: max)
             picker.highlightColor = themeColor
             picker.darkColor = UIColor.darkGray
             picker.doneButtonTitle = " "
-            picker.todayButtonTitle = "Today"
+            picker.todayButtonTitle = "Done"
             picker.resetTime()
-            picker.is12HourFormat = false
+            picker.is12HourFormat = true
             picker.dateFormat = "MM/dd/yyyy, mm:ss aa"
             picker.completionHandler = { date in
                 self.tmpDueDate = Date(year: date.year, month: date.month, day: date.day, hour: date.hour, minute: date.minute, second: 0)
                 self.updateDateTime()
                 self.sgcSetDueTime_lastSelected = 3
+                self.updateNotificationTime()
             }
             picker.dismissHandler = {
                 do {
@@ -319,11 +381,24 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                 } catch { }
             }
         }
+        
     }
     
     // MARK: Actions - Notification Settings
     
+    func registerNotification () {
+        let notificationSettings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+        print(UIApplication.shared.isRegisteredForRemoteNotifications)
+    }
+    
     @IBAction func switchSetNotification_ValueChanged(_ sender: Any) {
+        if (switchSetNotification.isOn()) {
+            updateNotificationTime()
+            notificationOn = true
+        } else {
+            notificationOn = false
+        }
     }
     
     @IBAction func btnSetNotification_Tapped(_ sender: Any) {
@@ -360,6 +435,9 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     func initializeUI () {
         
         btnSelectSubject_setup()
+        
+        btnAdd.layer.shadowColor = UIColor.black.withAlphaComponent(0.7).cgColor
+        btnAdd.layer.shadowRadius = 6
         
         tfTitle.errorColor = redColor
         
@@ -401,8 +479,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     }
     
     func updateSubjectDropDataSource () {
-        dropSelectSubject.dataSource = ["+"]
-        for var subject: SubjectItem in subjectList {
+        dropSelectSubject.dataSource = ["                 +"]
+        for subject: SubjectItem in subjectList {
             dropSelectSubject.dataSource.append(subject.name)
         }
         dropSelectSubject.reloadAllComponents()
@@ -441,18 +519,13 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                     
                     return presenter
                 }()
-                
-                
-                self.customPresentViewController(presenter, viewController: self.popupNewSubject, animated: true, completion: {
-                    self.refreshSubjectList()
-                })
-            
-                
+                self.customPresentViewController(presenter, viewController: self.popupNewSubject, animated: true, completion: {})
                 curFrmAssignmentList_NewAssignment_NewSubject.initializeUI()
             } else {
                 self.tmpSubject = item
                 self.btnSelectSubject.setTitle(item, for: .normal)
                 self.setSubjectDropToNormalState()
+                self.updateTopBarUI()
             }
         }
     }
@@ -477,20 +550,65 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     }
     
     func updateDateTime () {
-        lbDueDate.text = "Assignment due " + (abs(daysDifference(date1: Date.today(), date2: tmpDueDate)) > 1 ? "On " : "") + dateFormat_Word(date: tmpDueDate) + " At \(tmpDueDate.hour):\(tmpDueDate.minute)"
+        lbDueDate.text = "Assignment due " + (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 1 ? "On " : "") + dateFormat_Word(date: tmpDueDate) + " "
+        if (tmpDueDate.hour > 12 || (tmpDueDate.hour == 12 && tmpDueDate.minute > 0)) {
+            lbDueDate.text = lbDueDate.text! + "\(tmpDueDate.hour - 12):\(tmpDueDate.minute) PM"
+        } else {
+            lbDueDate.text = lbDueDate.text! + "\(tmpDueDate.hour):\(tmpDueDate.minute) AM"
+        }
+    }
+    
+    func updateTopBarUI () {
+        if (tmpSubject == "") {
+            vTopBar.backgroundColor = UIColor.white
+        } else {
+            vTopBar.backgroundColor = subjectColor(string: tmpSubject)
+        }
     }
     
     func refreshSubjectList () {
-        
         setSubjectDropToNormalState()
         updateSubjectDropDataSource()
         tmpSubject = (subjectList.last?.name)!
         btnSelectSubject.setTitle(self.tmpSubject, for: .normal)
+        updateTopBarUI()
     }
     
     
     func catchNotification(notification:Notification) -> Void {
         refreshSubjectList()
+    }
+    
+    func updateNotificationTime () {
+        if (localDate() > tmpDueDate) {
+            switchSetNotification.setOn(false, animated: true)
+            let alert = UIAlertController(title: "Cannot notify you", message: "This assignment is already over due.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        registerNotification()
+        if (true) {
+            if (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 0) {
+                notifyDateTime = tmpDueDate.addingTimeInterval(-86400)
+                notifyDateTime = Date(year: notifyDateTime.year, month: notifyDateTime.month, day: notifyDateTime.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+                
+                printDate(date: notifyDateTime)
+            } else {
+                notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+                
+                if (!(localDate() < notifyDateTime && notifyDateTime < tmpDueDate)) {
+                    notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: (localDate().hour + tmpDueDate.hour) / 2, minute: 30, second: 0)
+                }
+            }
+        } else {
+            let alert = UIAlertController(title: "Cannot Setup Notification", message: "Notification is disabled for this app! Goto settings -> Assignments -> Notifications to turn on push notification for this app.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            notificationOn = false
+            switchSetNotification.setOn(false, animated: true)
+        }
     }
     
     /*
@@ -543,6 +661,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         } else if (index == 4) {
             coachViews.bodyView.hintLabel.text = "You can customize the due time here"
             coachViews.bodyView.nextLabel.text = "Ok"
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "intro_frmNewAssignment")
         }
         
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)

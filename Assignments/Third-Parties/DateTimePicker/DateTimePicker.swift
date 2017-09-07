@@ -11,7 +11,7 @@ import UIKit
 
 @objc public class DateTimePicker: UIView {
     
-    var contentHeight: CGFloat = 310
+    var contentHeight: CGFloat = 200
     
     // public vars
     public var backgroundViewColor: UIColor? = .clear {
@@ -54,7 +54,7 @@ import UIKit
         }
     }
     
-    public var selectedDate = Date() {
+    public var selectedDate = localDate() {
         didSet {
             resetDateTitle()
         }
@@ -201,7 +201,8 @@ import UIKit
         todayButton = UIButton(type: .system)
         todayButton.setTitle(todayButtonTitle, for: .normal)
         todayButton.setTitleColor(highlightColor, for: .normal)
-        todayButton.addTarget(self, action: #selector(DateTimePicker.setToday), for: .touchUpInside)
+        //todayButton.addTarget(self, action: #selector(DateTimePicker.setToday), for: .touchUpInside)
+        todayButton.addTarget(self, action: #selector(DateTimePicker.dismissView(sender:)), for: .touchUpInside)
         todayButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         todayButton.isHidden = self.minimumDate.compare(Date()) == .orderedDescending || self.maximumDate.compare(Date()) == .orderedAscending
         let todaySize = todayButton.sizeThatFits(CGSize(width: 0, height: 44.0)).width + 20.0
@@ -236,6 +237,7 @@ import UIKit
         contentView.addSubview(borderBottomView)
         
         // done button
+        
         doneButton = UIButton(type: .system)
         doneButton.frame = CGRect(x: 10, y: contentView.frame.height - 10 - 44, width: contentView.frame.width - 20, height: 44)
         doneButton.setTitle(doneButtonTitle, for: .normal)
@@ -244,8 +246,8 @@ import UIKit
         doneButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         doneButton.layer.cornerRadius = 3
         doneButton.layer.masksToBounds = true
-        doneButton.addTarget(self, action: #selector(DateTimePicker.dismissView(sender:)), for: .touchUpInside)
-        contentView.addSubview(doneButton)
+        //doneButton.addTarget(self, action: #selector(DateTimePicker.dismissView(sender:)), for: .touchUpInside)
+        //contentView.addSubview(doneButton)
         
         // if time picker format is 12 hour, we'll need an extra tableview for am/pm
         // the width for this tableview will be 60, so we need extra -30 for x position of hour & minute tableview

@@ -12,6 +12,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="0CK-yy-fkU">
+            <objects>
+                <viewController id="9vE-h7-7kg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cQE-Fr-O1k">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="O6h-rB-6QA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ows-EG-eCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="-1062"/>
+        </scene>
         <!--Frm Assignment List New Assignment-->
         <scene sceneID="DDy-wx-CkQ">
             <objects>
@@ -20,6 +35,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXz-Eq-em6">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="55"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wud-l2-AcV" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                        <rect key="frame" x="668" y="0.0" width="100" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="wzA-4a-IwY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Add">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                <color key="value" red="0.72549019607843135" green="0.98431372549019602" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowRippleEnable" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnAdd_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="7tc-aK-RmN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkS-xb-Pts" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="H05-LC-tI1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                <color key="value" red="0.94901960784313721" green="0.37647058823529411" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowRippleEnable" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnCancel_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="gFb-VL-kix"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.28627450980392155" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AkS-xb-Pts" secondAttribute="bottom" id="NKU-am-jEt"/>
+                                    <constraint firstAttribute="trailing" secondItem="wud-l2-AcV" secondAttribute="trailing" id="OTB-WQ-FXy"/>
+                                    <constraint firstItem="AkS-xb-Pts" firstAttribute="leading" secondItem="sXz-Eq-em6" secondAttribute="leading" id="OZK-CI-9zj"/>
+                                    <constraint firstItem="wud-l2-AcV" firstAttribute="top" secondItem="sXz-Eq-em6" secondAttribute="top" id="TKT-en-T3Z"/>
+                                    <constraint firstAttribute="height" constant="55" id="lXI-W2-m7C"/>
+                                    <constraint firstAttribute="bottom" secondItem="wud-l2-AcV" secondAttribute="bottom" id="nhO-Fv-c0I"/>
+                                    <constraint firstItem="AkS-xb-Pts" firstAttribute="top" secondItem="sXz-Eq-em6" secondAttribute="top" id="rRr-wa-hdg"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abt-jb-m4u">
                                 <rect key="frame" x="0.0" y="55" width="768" height="693"/>
                                 <subviews>
@@ -59,7 +140,7 @@
                                             <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
                                                 <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type in the title of the your assignment (eg. &quot;Math Assignment&quot;)"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Type in your assignment (eg. &quot;Math worksheet 13A&quot;)"/>
                                             <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="The Title of the Assignment"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -174,7 +255,7 @@
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or maybe this assignment is due at your convenience..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-VS-YPA">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or maybe this assignment is due at your convenience..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-VS-YPA">
                                         <rect key="frame" x="30" y="540" width="708" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -187,7 +268,7 @@
                                             <constraint firstAttribute="height" constant="1" id="2g0-dA-gmN"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtG-WC-f1R" userLabel="-">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtG-WC-f1R" userLabel="-">
                                         <rect key="frame" x="40" y="628.5" width="688" height="1"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
@@ -270,26 +351,34 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qp4-iN-NeP" userLabel="vSetNotification">
                                                 <rect key="frame" x="8" y="64" width="692" height="65"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Push Notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzN-WV-7vZ">
-                                                        <rect key="frame" x="12" y="22.5" width="160.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Me a Night Before" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzN-WV-7vZ">
+                                                        <rect key="frame" x="14" y="12" width="203.5" height="21.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can set the time to push notification in app settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5F-a4-hhu">
+                                                        <rect key="frame" x="14" y="33.5" width="402" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVc-ej-0vq" userLabel="switchSetNotification" customClass="SevenSwitch" customModule="Assignments" customModuleProvider="target">
-                                                        <rect key="frame" x="267" y="15" width="68" height="35"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <rect key="frame" x="608" y="15" width="68" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="68" id="Q86-SO-mC0"/>
                                                             <constraint firstAttribute="height" constant="35" id="cFr-Vt-Etk"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
                                                                 <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="NO"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
                                                                 <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
@@ -298,50 +387,21 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="onThumbTintColor">
                                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
-                                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="switchSetNotification_ValueChanged:" destination="zjV-ZC-wLg" eventType="valueChanged" id="YUw-NF-Xg0"/>
                                                         </connections>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rc4-6G-y6l" userLabel="btnSetNotification" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                                        <rect key="frame" x="351" y="10" width="331" height="46"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="46" id="QIR-yU-6Vs"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Set Time to Push">
-                                                            <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
-                                                                <real key="value" value="8"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
-                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
-                                                                <color key="value" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="btnSetNotification_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="qMT-OD-jYK"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="rc4-6G-y6l" firstAttribute="leading" secondItem="uVc-ej-0vq" secondAttribute="trailing" constant="16" id="Fzr-dK-hQd"/>
-                                                    <constraint firstItem="rc4-6G-y6l" firstAttribute="centerY" secondItem="qp4-iN-NeP" secondAttribute="centerY" id="TgP-T7-qy1"/>
+                                                    <constraint firstItem="z5F-a4-hhu" firstAttribute="leading" secondItem="qp4-iN-NeP" secondAttribute="leading" constant="14" id="GGD-cM-XTu"/>
+                                                    <constraint firstItem="z5F-a4-hhu" firstAttribute="top" secondItem="jzN-WV-7vZ" secondAttribute="bottom" id="STM-hi-YKB"/>
                                                     <constraint firstItem="uVc-ej-0vq" firstAttribute="centerY" secondItem="qp4-iN-NeP" secondAttribute="centerY" id="Ykm-Df-lPj"/>
-                                                    <constraint firstAttribute="trailing" secondItem="rc4-6G-y6l" secondAttribute="trailing" constant="10" id="afA-FW-R6l"/>
+                                                    <constraint firstItem="jzN-WV-7vZ" firstAttribute="top" secondItem="qp4-iN-NeP" secondAttribute="top" constant="12" id="b06-bC-9uO"/>
+                                                    <constraint firstItem="jzN-WV-7vZ" firstAttribute="leading" secondItem="qp4-iN-NeP" secondAttribute="leading" constant="14" id="cb9-jT-yVF"/>
                                                     <constraint firstAttribute="height" constant="65" id="d1n-QX-yPF"/>
-                                                    <constraint firstItem="uVc-ej-0vq" firstAttribute="centerX" secondItem="qp4-iN-NeP" secondAttribute="centerX" constant="-45" id="gzz-hb-BIU"/>
-                                                    <constraint firstItem="jzN-WV-7vZ" firstAttribute="centerY" secondItem="qp4-iN-NeP" secondAttribute="centerY" id="ue5-52-hPD"/>
-                                                    <constraint firstItem="jzN-WV-7vZ" firstAttribute="leading" secondItem="qp4-iN-NeP" secondAttribute="leading" constant="12" id="zJl-k0-H0A"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uVc-ej-0vq" secondAttribute="trailing" constant="16" id="zKC-cL-79T"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRo-yw-oUd" userLabel="sgcSetDueTime" customClass="BetterSegmentedControl" customModule="Assignments" customModuleProvider="target">
@@ -387,7 +447,7 @@
                                             <constraint firstItem="vOD-B8-nrw" firstAttribute="leading" secondItem="YFK-Re-hlg" secondAttribute="leading" constant="8" id="u1U-yp-PLt"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnF-sN-a7h" userLabel="btnSetNoDueDate" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnF-sN-a7h" userLabel="btnSetNoDueDate" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                         <rect key="frame" x="134" y="570.5" width="500" height="40"/>
                                         <color key="backgroundColor" red="0.49411764705882355" green="0.82745098039215681" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -428,33 +488,6 @@
                                         <connections>
                                             <action selector="btnSelectSubject_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="IbV-4A-VmR"/>
                                         </connections>
-                                    </button>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3To-O7-k7n" userLabel="sgcSetDueTime" customClass="BetterSegmentedControl" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="337" y="635" width="391" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="6"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="indicatorViewBackgroundColor">
-                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="indicatorViewInset">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JP2-fu-LMw">
-                                        <rect key="frame" x="722" y="588" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -498,81 +531,6 @@
                                     <constraint firstAttribute="trailing" secondItem="vMK-te-0Hv" secondAttribute="trailing" constant="40" id="yny-0q-61v"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXz-Eq-em6">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="55"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6c-6D-ybA">
-                                        <rect key="frame" x="21" y="17" width="60" height="22"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wud-l2-AcV" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="668" y="0.0" width="100" height="55"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="wzA-4a-IwY"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Add">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
-                                                <color key="value" red="0.72549019607843135" green="0.98431372549019602" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
-                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowRippleEnable" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="btnAdd_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="7tc-aK-RmN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkS-xb-Pts" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="55"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="H05-LC-tI1"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="RDn-sv-hFo"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Cancel">
-                                            <color key="titleColor" red="0.85882352941176465" green="0.15686274509803921" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
-                                                <color key="value" red="0.94901960784313721" green="0.37647058823529411" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
-                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowRippleEnable" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="btnCancel_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="gFb-VL-kix"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.28627450980392155" green="0.56470588235294117" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="L6c-6D-ybA" firstAttribute="leading" secondItem="sXz-Eq-em6" secondAttribute="leading" constant="21" id="Ik8-nd-Gu2"/>
-                                    <constraint firstAttribute="bottom" secondItem="AkS-xb-Pts" secondAttribute="bottom" id="NKU-am-jEt"/>
-                                    <constraint firstAttribute="trailing" secondItem="wud-l2-AcV" secondAttribute="trailing" id="OTB-WQ-FXy"/>
-                                    <constraint firstItem="AkS-xb-Pts" firstAttribute="leading" secondItem="sXz-Eq-em6" secondAttribute="leading" id="OZK-CI-9zj"/>
-                                    <constraint firstItem="wud-l2-AcV" firstAttribute="top" secondItem="sXz-Eq-em6" secondAttribute="top" id="TKT-en-T3Z"/>
-                                    <constraint firstItem="L6c-6D-ybA" firstAttribute="top" secondItem="sXz-Eq-em6" secondAttribute="top" constant="17" id="lDk-5j-TAZ"/>
-                                    <constraint firstAttribute="height" constant="55" id="lXI-W2-m7C"/>
-                                    <constraint firstAttribute="bottom" secondItem="wud-l2-AcV" secondAttribute="bottom" id="nhO-Fv-c0I"/>
-                                    <constraint firstItem="AkS-xb-Pts" firstAttribute="top" secondItem="sXz-Eq-em6" secondAttribute="top" id="rRr-wa-hdg"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -592,7 +550,6 @@
                         <outlet property="btnAdd" destination="wud-l2-AcV" id="7An-WP-Bvj"/>
                         <outlet property="btnSelectSubject" destination="Z0w-lt-NHn" id="Qeu-Xn-dnl"/>
                         <outlet property="btnSetDueDate" destination="vOD-B8-nrw" id="kwN-ah-afm"/>
-                        <outlet property="btnSetNotification" destination="rc4-6G-y6l" id="CoV-tR-9rN"/>
                         <outlet property="lbDueDate" destination="fVM-03-jp3" id="JRZ-x0-5Nf"/>
                         <outlet property="lbPlaceHolder_tfComments" destination="3Zf-Gp-T7U" id="nm1-2C-Xha"/>
                         <outlet property="sgcSetDueTime" destination="LRo-yw-oUd" id="Ubf-F5-iYz"/>
@@ -603,6 +560,7 @@
                         <outlet property="vComments" destination="5u8-ic-mPa" id="7CB-K0-fKj"/>
                         <outlet property="vSetNotification" destination="qp4-iN-NeP" id="JGf-fQ-A3Q"/>
                         <outlet property="vSuggestions" destination="4tf-xO-p0L" id="nyD-FN-Czf"/>
+                        <outlet property="vTopBar" destination="sXz-Eq-em6" id="F16-bU-737"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SrW-zc-qHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -779,7 +737,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9s-hx-thN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1130" y="-1040"/>
+            <point key="canvasLocation" x="1982" y="-348"/>
         </scene>
         <!--Item-->
         <scene sceneID="xW7-xh-Go6">
@@ -795,18 +753,31 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFj-pN-0FS" userLabel="vLeft">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="699"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meH-6D-txW">
-                                                <rect key="frame" x="8" y="56" width="46" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <action selector="clearAll:" destination="m1v-VY-3DS" eventType="touchUpInside" id="xys-va-8Xk"/>
-                                                </connections>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0M-Mr-774" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="651" width="284" height="40"/>
+                                                <color key="backgroundColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="IkU-c0-tJS"/>
+                                                </constraints>
+                                                <state key="normal" title="Login to Focus">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                        <color key="value" red="0.62745098040000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                        <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Ab2-n8-xse"/>
+                                            <constraint firstItem="P0M-Mr-774" firstAttribute="leading" secondItem="hFj-pN-0FS" secondAttribute="leading" constant="8" id="NeU-lJ-T8D"/>
+                                            <constraint firstAttribute="bottom" secondItem="P0M-Mr-774" secondAttribute="bottom" constant="8" id="iwB-Rg-bbH"/>
+                                            <constraint firstAttribute="trailing" secondItem="P0M-Mr-774" secondAttribute="trailing" constant="8" id="pqJ-Vd-HRg"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73u-Dj-9et" userLabel="vRight">
