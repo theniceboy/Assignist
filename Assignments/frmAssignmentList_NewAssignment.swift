@@ -12,6 +12,12 @@ import UserNotifications
 var _EDIT_ID_: Int = 0
 var _EDIT_MODE_: Bool = false
 
+
+func registerNotification () {
+    let notificationSettings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
+    UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+}
+
 class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
 
     
@@ -158,6 +164,12 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             updateNotificationTime ()
         }
         
+        if (tvComments.text != "") {
+            lbPlaceHolder_tfComments.isHidden = true
+        } else {
+            lbPlaceHolder_tfComments.isHidden = false
+        }
+        
         updateDateTime()
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "addedSubject"), object:nil, queue:nil, using:catchNotification)
@@ -173,7 +185,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         if (intro_frmNewAssignment == nil) {
             coachMarksController.start(on: self)
         } else {
-            tfTitle.becomeFirstResponder()
+            //tfTitle.becomeFirstResponder()
         }
     }
     
@@ -386,11 +398,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     // MARK: Actions - Notification Settings
     
-    func registerNotification () {
-        let notificationSettings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
-        UIApplication.shared.registerUserNotificationSettings(notificationSettings)
-        print(UIApplication.shared.isRegisteredForRemoteNotifications)
-    }
     
     @IBAction func switchSetNotification_ValueChanged(_ sender: Any) {
         if (switchSetNotification.isOn()) {

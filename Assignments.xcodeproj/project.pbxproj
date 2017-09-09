@@ -10,6 +10,8 @@
 		631111D41F5FA00B00F801BF /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631111D31F5FA00B00F801BF /* UserSettings.swift */; };
 		6325F69A1F59041600B22DDA /* Gib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F6991F59041600B22DDA /* Gib.swift */; };
 		6325F69C1F590B1F00B22DDA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6325F69B1F590B1E00B22DDA /* Classes.swift */; };
+		63681A2D1F638E4000F02FEC /* frmAssignmentList_LoginFocusPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63681A2C1F638E4000F02FEC /* frmAssignmentList_LoginFocusPopup.swift */; };
+		63681A311F6394C800F02FEC /* Drop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63681A301F6394C800F02FEC /* Drop.swift */; };
 		6373FA161F58A661006C20DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA151F58A661006C20DD /* AppDelegate.swift */; };
 		6373FA181F58A661006C20DD /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA171F58A661006C20DD /* LaunchScreen.swift */; };
 		6373FA1A1F58A661006C20DD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA191F58A661006C20DD /* SecondViewController.swift */; };
@@ -18,6 +20,7 @@
 		6373FA221F58A661006C20DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6373FA201F58A661006C20DD /* LaunchScreen.storyboard */; };
 		6373FA2D1F58A661006C20DD /* AssignmentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA2C1F58A661006C20DD /* AssignmentsTests.swift */; };
 		6373FA381F58A661006C20DD /* AssignmentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA371F58A661006C20DD /* AssignmentsUITests.swift */; };
+		637CAAD31F624CE8009D33E6 /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CAAD21F624CE8009D33E6 /* Focus.swift */; };
 		63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */; };
 		63B849D61F5E7673005A2A52 /* BetterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849481F5E760B005A2A52 /* BetterSegmentedControl.swift */; };
 		63B849D71F5E7673005A2A52 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8494A1F5E760B005A2A52 /* DateCollectionViewCell.swift */; };
@@ -162,6 +165,8 @@
 		631111D31F5FA00B00F801BF /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		6325F6991F59041600B22DDA /* Gib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gib.swift; sourceTree = "<group>"; };
 		6325F69B1F590B1E00B22DDA /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		63681A2C1F638E4000F02FEC /* frmAssignmentList_LoginFocusPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_LoginFocusPopup.swift; sourceTree = "<group>"; };
+		63681A301F6394C800F02FEC /* Drop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drop.swift; sourceTree = "<group>"; };
 		6373FA121F58A661006C20DD /* Assignments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA151F58A661006C20DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6373FA171F58A661006C20DD /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
@@ -176,6 +181,7 @@
 		6373FA331F58A661006C20DD /* AssignmentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssignmentsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373FA371F58A661006C20DD /* AssignmentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsUITests.swift; sourceTree = "<group>"; };
 		6373FA391F58A661006C20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		637CAAD21F624CE8009D33E6 /* Focus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
 		63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_NewAssignment_NewSubject.swift; sourceTree = "<group>"; };
 		63B849481F5E760B005A2A52 /* BetterSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSegmentedControl.swift; sourceTree = "<group>"; };
 		63B8494A1F5E760B005A2A52 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -346,6 +352,7 @@
 				6325F6991F59041600B22DDA /* Gib.swift */,
 				6325F69B1F590B1E00B22DDA /* Classes.swift */,
 				631111D31F5FA00B00F801BF /* UserSettings.swift */,
+				637CAAD21F624CE8009D33E6 /* Focus.swift */,
 			);
 			path = Assignments;
 			sourceTree = "<group>";
@@ -375,6 +382,7 @@
 				63FE4DBD1F591BCE00077579 /* frmAssignmentList_tblAssignment_Cell.swift */,
 				63FE4DBF1F591D5600077579 /* frmAssignmentList_NewAssignment.swift */,
 				63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */,
+				63681A2C1F638E4000F02FEC /* frmAssignmentList_LoginFocusPopup.swift */,
 			);
 			name = Forms;
 			sourceTree = "<group>";
@@ -394,6 +402,7 @@
 				63B849CF1F5E760B005A2A52 /* SkyFloatingLabelTextField.swift */,
 				63B849D01F5E760B005A2A52 /* Timepiece */,
 				63B849D51F5E760B005A2A52 /* ZFRippleButton.swift */,
+				63681A301F6394C800F02FEC /* Drop.swift */,
 			);
 			path = "Third-Parties";
 			sourceTree = "<group>";
@@ -912,6 +921,7 @@
 				63B849EA1F5E7673005A2A52 /* CoachMarkInnerLayoutHelper.swift in Sources */,
 				63B849EB1F5E7673005A2A52 /* CoachMarkLayoutHelper.swift in Sources */,
 				63B849EC1F5E7673005A2A52 /* CoachMarkPosition.swift in Sources */,
+				63681A311F6394C800F02FEC /* Drop.swift in Sources */,
 				63B849ED1F5E7673005A2A52 /* UIImage+Bundle.swift in Sources */,
 				63B849EE1F5E7673005A2A52 /* UIView+Layout.swift in Sources */,
 				63B849EF1F5E7673005A2A52 /* CoachMarkBodyDefaultViewHelper.swift in Sources */,
@@ -954,6 +964,7 @@
 				63B84A141F5E7673005A2A52 /* M13CheckboxStrokeController.swift in Sources */,
 				63B84A151F5E7673005A2A52 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				63B84A161F5E7673005A2A52 /* M13CheckboxCheckPathGenerator.swift in Sources */,
+				637CAAD31F624CE8009D33E6 /* Focus.swift in Sources */,
 				63B84A171F5E7673005A2A52 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
 				63B84A181F5E7673005A2A52 /* M13CheckboxPathGenerator.swift in Sources */,
 				63B84A191F5E7673005A2A52 /* M13CheckboxRadioPathGenerator.swift in Sources */,
@@ -966,6 +977,7 @@
 				63B84A201F5E7673005A2A52 /* CrossDissolveAnimation.swift in Sources */,
 				63B84A211F5E7673005A2A52 /* Info.plist in Sources */,
 				63B84A221F5E7673005A2A52 /* KeyboardTranslation.swift in Sources */,
+				63681A2D1F638E4000F02FEC /* frmAssignmentList_LoginFocusPopup.swift in Sources */,
 				63B84A231F5E7673005A2A52 /* ModalCenterPosition.swift in Sources */,
 				63B84A241F5E7673005A2A52 /* ModalSize.swift in Sources */,
 				63B84A251F5E7673005A2A52 /* Montserrat-Regular.ttf in Sources */,
@@ -1168,6 +1180,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7W7V5B7Q6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1181,6 +1194,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -1190,6 +1204,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W7W7V5B7Q6;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1203,6 +1218,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

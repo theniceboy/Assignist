@@ -18,11 +18,14 @@ var myCalender: Calendar = Calendar.current
 
 var __DEFAULT_SUBJECT_NAME = "General"
 
+var loggedInFocus: Bool = false
+
 // MARK: - Live Viewcontrollers
 
 var curFrmAssignmentList: frmAssignmentList = frmAssignmentList()
 var curFrmAssignmentList_NewAssignment: frmAssignmentList_NewAssignment = frmAssignmentList_NewAssignment()
 var curFrmAssignmentList_NewAssignment_NewSubject:frmAssignmentList_NewAssignment_NewSubject = frmAssignmentList_NewAssignment_NewSubject()
+var curFrmAssignmentList_LoginFocusPopup: frmAssignmentList_LoginFocusPopup = frmAssignmentList_LoginFocusPopup()
 
 // MARK: - Colors
 

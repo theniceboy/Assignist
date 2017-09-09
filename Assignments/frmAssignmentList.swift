@@ -12,7 +12,7 @@ var tableAssignmentList: [AssignmentItem] = [] // The assignment list that is di
 var tableAssignmentList_checked: [AssignmentItem] = []
 var tableAssignmentListDivider: Int = 0 // The index of the first item that shoud be in the completed section
 
-class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
     
     // MARK: Form Outlets
     
@@ -21,6 +21,15 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var vRightCenter: UIView!
     @IBOutlet weak var tblAssignmentList: UITableView!
     @IBOutlet weak var btnShowCompleted: ZFRippleButton!
+    
+    @IBOutlet weak var webView: UIWebView!
+    
+    @IBOutlet weak var activityFocus: UIActivityIndicatorView!
+    @IBOutlet weak var btnLoginFocus: ZFRippleButton!
+    
+    // Layout
+    
+    @IBOutlet weak var _layout_activityFocusWidth: NSLayoutConstraint!
     
     // Variables
     
@@ -62,8 +71,65 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         
         refreshTableAssignmentList()
         
-        
+        activityStop()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (userSettings.focusUsername != "" && userSettings.focusPassword != "") {
+            syncAssignmentListWithFocus()
+        } else {
+            loggedInFocus = false
+        }
+    }
+    
+    // MARK: - Focus Login Handler
+    
+    func LoginOvertime () {
+        activityStop()
+        if (!loggedInFocus) {
+            Drop.down("Loggin Overtime. Check Your Internet and Your Login Info", state: .warning)
+        }
+    }
+    
+    func activityStart () {
+        activityFocus.startAnimating()
+        UIView.animate(withDuration: 0.1) {
+            self._layout_activityFocusWidth.constant = 40
+            self.activityFocus.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func activityStop () {
+        activityFocus.stopAnimating()
+        UIView.animate(withDuration: 0.1) {
+            self._layout_activityFocusWidth.constant = 0
+            self.activityFocus.alpha = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    // MARK: - WebView Delegate
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        for _ in 0 ... 10 {
+            //print("__________________")
+        }
+        if ((webView.request?.url?.absoluteString)!.contains("Modules")) {
+            var htmlstr = webView.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('BoxContent')[0].getElementsByTagName('ul')[0].innerHTML")
+            var periodhtml = webView.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('Programs')[0].innerHTML")
+            parseFocusHTML(html: htmlstr!, subjectstr: periodhtml!)
+        } else {
+            print(webView.stringByEvaluatingJavaScript(from: "document.readyState"))
+            webView.stringByEvaluatingJavaScript(from: "document.getElementById('username-input').value='" + userSettings.focusUsername + "';document.getElementsByName('password')[0].value='" + userSettings.focusPassword + "';document.getElementsByClassName('form-button')[0].click()")
+        }
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        print("error")
+        print(error)
+    }
+    
     
     // MARK: - Actions
     
@@ -77,6 +143,10 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         btnShowCompleted.setTitle((showingChecked ? "Hide Completed" : "Show Completed"), for: .normal)
         self.refreshTableAssignmentList()
     }
+    
+    @IBAction func btnLoginFocus_Tapped(_ sender: Any) {
+    }
+    
     
     // MARK: - TableView Delegate & DataSource
     

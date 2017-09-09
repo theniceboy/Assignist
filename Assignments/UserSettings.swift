@@ -17,7 +17,6 @@ class UserSettings: NSObject, NSCoding {
     
     var focusUsername: String = ""
     var focusPassword: String = ""
-    var focusPeriods: [String: String] = [:]
     
     // Functions
     
@@ -26,9 +25,8 @@ class UserSettings: NSObject, NSCoding {
     required init(coder aDecoder: NSCoder) {
         defaultPushNotificationTime_hour = aDecoder.decodeInteger(forKey: "defaultPushNotificationTime_hour")
         defaultPushNotificationTime_minute = aDecoder.decodeInteger(forKey: "defaultPushNotificationTime_minute")
-        focusUsername = aDecoder.decodeObject(forKey: "focusUsername") as? String ?? ""
-        focusPassword = aDecoder.decodeObject(forKey: "focusPassword") as? String ?? ""
-        focusPeriods = aDecoder.decodeObject(forKey: "focusPeriods") as? [String: String] ?? [:]
+        focusUsername = (aDecoder.decodeObject(forKey: "focusUsername") as? String)!
+        focusPassword = (aDecoder.decodeObject(forKey: "focusPassword") as? String)!
     }
     
     func encode(with aCoder: NSCoder) {
@@ -36,7 +34,6 @@ class UserSettings: NSObject, NSCoding {
         aCoder.encode(defaultPushNotificationTime_minute, forKey: "defaultPushNotificationTime_minute")
         aCoder.encode(focusUsername, forKey: "focusUsername")
         aCoder.encode(focusPassword, forKey: "focusPassword")
-        aCoder.encode(focusPeriods, forKey: "focusPeriods")
     }
 }
 
