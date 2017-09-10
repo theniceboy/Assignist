@@ -16,7 +16,7 @@ var subjectList: [SubjectItem] = []
 
 var myCalender: Calendar = Calendar.current
 
-var __DEFAULT_SUBJECT_NAME = "General"
+var __DEFAULT_SUBJECT_NAME = "Uncategorized"
 
 var loggedInFocus: Bool = false
 
@@ -26,6 +26,7 @@ var curFrmAssignmentList: frmAssignmentList = frmAssignmentList()
 var curFrmAssignmentList_NewAssignment: frmAssignmentList_NewAssignment = frmAssignmentList_NewAssignment()
 var curFrmAssignmentList_NewAssignment_NewSubject:frmAssignmentList_NewAssignment_NewSubject = frmAssignmentList_NewAssignment_NewSubject()
 var curFrmAssignmentList_LoginFocusPopup: frmAssignmentList_LoginFocusPopup = frmAssignmentList_LoginFocusPopup()
+var curFrmSettings: frmSettings = frmSettings()
 
 // MARK: - Colors
 

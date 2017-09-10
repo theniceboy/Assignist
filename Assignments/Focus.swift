@@ -35,10 +35,8 @@ func parseFocusHTML (html: String, subjectstr: String) {
         indexNow = html.index(after: indexNow)
     }
  */
-    print(html)
-    if (html.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "") {
-        
-        loggedInFocus = true
+    //print(html)
+    if (html.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "" && userSettings.focusUsername != "" && userSettings.focusPassword != "") {
         
         var indexNow = html.index(after: html.startIndex)
         var substr: String = ""
@@ -78,10 +76,12 @@ func parseFocusHTML (html: String, subjectstr: String) {
         
         var i: Int = 0
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat = "MMM d yyyy h:ss aa"
+        //dateFormatter.dateStyle = .medium
+        //dateFormatter.timeStyle = .short
         var tmpdatestr = ""
-        var tmpdatestrIndex = " ".startIndex
+        //var tmpdatestrIndex = " ".startIndex
+        print(strlist)
         while (i < strlist.count) {
             if (strlist[i].starts(with: "Due:")) {
                 assignmentState = 1
@@ -101,7 +101,9 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 focusAssignmentList.append(newItem)
                 assignmentState = 1
             } else if (assignmentState == 1) {
-                var tmpindex = strlist[i].startIndex
+                tmpdatestr = strlist[i]
+                /*
+                 var tmpindex = strlist[i].startIndex
                 for _ in 0 ... 4 {
                     tmpindex = strlist[i].index(after: tmpindex)
                 }
@@ -120,12 +122,22 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 while (tmpdatestrIndex < tmpdatestr.endIndex && tmpdatestr[tmpdatestrIndex] != " ") {
                     tmpdatestrIndex = tmpdatestr.index(after: tmpdatestrIndex)
                 }
-                tmpdatestr.insert(",", at: tmpdatestrIndex)
+                tmpdatestr.insert("t", at: tmpdatestrIndex)
+                tmpdatestr.insert("a", at: tmpdatestrIndex)
+                tmpdatestr.insert(" ", at: tmpdatestrIndex)
+ */
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
                 focusAssignmentList[focusAssignmentList.count - 1].duedatestr = tmpdatestr
+                print(dateFormatter.string(from: Date()))
+                var date = dateFormatter.date(from: tmpdatestr)!
+                print(date)
                 focusAssignmentList[focusAssignmentList.count - 1].duedate = dateFormatter.date(from: tmpdatestr)!
                 assignmentState = 0
             } else {
-                var number = strlist[i][strlist[i].index(strlist[i].startIndex, offsetBy: 7)]
+                let number = strlist[i][strlist[i].index(strlist[i].startIndex, offsetBy: 7)]
                 curPeriod = Int("\(number)")!
                 assignmentState = 0
             }
@@ -170,7 +182,6 @@ func parseFocusHTML (html: String, subjectstr: String) {
             }
             indexNow = strlist[i].index(after: indexNow)
             indexNow = strlist[i].index(after: indexNow)
-            let tmpIndex = indexNow
             while (strlist[i][indexNow] != " " && indexNow < strlist[i].endIndex) {
                 tmpPeriod.append(strlist[i][indexNow])
                 indexNow = strlist[i].index(after: indexNow)
@@ -185,7 +196,7 @@ func parseFocusHTML (html: String, subjectstr: String) {
             //print(tmpSubject + "  " + tmpPeriod)
         }
         
-        var assignmentExists: Bool = false, subjectExists: Bool = false
+        var assignmentExists: Bool = false, subjectExists: Bool = false, syncedAssignmentCount = 0
         for i in 0 ... (focusAssignmentList.count - 1) {
             focusAssignmentList[i].subject = tmpsubjectList[focusAssignmentList[i].period]!
             assignmentExists = false
@@ -207,17 +218,18 @@ func parseFocusHTML (html: String, subjectstr: String) {
                     }
                 }
                 if (!subjectExists) {
-                    newSubject(name: focusAssignmentList[i].subject)
+                    newSubject(name: focusAssignmentList[i].subject, fromFocus: true)
                 }
                 
-                var assignmentItem = AssignmentItem()
+                let assignmentItem = AssignmentItem()
                 assignmentItem.id = curAssignmentID
                 curAssignmentID += 1
                 saveCurAssignmentID()
                 assignmentItem.title = focusAssignmentList[i].title
-                assignmentItem.comments = "Synced from focus on " + Date().description(with: Locale.current)
+                assignmentItem.comments = "Synced from focus"
                 assignmentItem.subject = focusAssignmentList[i].subject
                 assignmentItem.dueDate = focusAssignmentList[i].duedate
+                assignmentItem.fromFocus = true
                 
                 assignmentList.append(assignmentItem)
                 
@@ -236,22 +248,32 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 
                 let notification = UILocalNotification()
                 notification.fireDate = notifyDateTime
-                //printDate(date: notification.fireDate!)
-                notification.applicationIconBadgeNumber = 0
                 notification.soundName = UILocalNotificationDefaultSoundName
                 notification.userInfo = ["id": assignmentItem.id]
                 notification.alertBody = "[" + assignmentItem.subject + "] " + assignmentItem.title
                 UIApplication.shared.scheduleLocalNotification(notification)
+                
+                syncedAssignmentCount += 1
             }
         }
         
-        curFrmAssignmentList.refreshTableAssignmentList(formatTable: true)
-        curFrmAssignmentList.activityStop()
+        loggedInFocus = true
         
+        if (loginFromSettigns) {
+            SwiftSpinner.sharedInstance.innerColor = UIColor.green.withAlphaComponent(0.5)
+            SwiftSpinner.sharedInstance.outerColor = UIColor.white
+            SwiftSpinner.show(duration: 1.5, title: "Connected To Focus", animated: false)
+            curFrmSettings.showLogoutButton()
+        } else {
+            curFrmAssignmentList.activityStop()
+            Drop.down("Synced \(syncedAssignmentCount) New Assignments From Focus", state: .success, duration: 2, action: {
+            })
+        }
+        
+        curFrmAssignmentList.refreshTableAssignmentList(formatTable: true)
         saveAssignmentList()
         saveSubjectList()
         saveUserSettings()
         
-        Drop.down("Synced Your Assignment List With Focus", state: .success)
     }
 }

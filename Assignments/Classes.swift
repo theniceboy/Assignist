@@ -27,6 +27,7 @@ class AssignmentItem: NSObject, NSCoding {
     var subject: String = ""
     var dueDate: Date = Date()
     var priority: Int = 0 // 0: Normal, 1: !, 2: !!
+    var fromFocus: Bool = false
     
     // Functions
     
@@ -40,6 +41,7 @@ class AssignmentItem: NSObject, NSCoding {
         subject = aDecoder.decodeObject(forKey: "subject") as? String ?? ""
         dueDate = aDecoder.decodeObject(forKey: "dueDate") as? Date ?? Date()
         priority = aDecoder.decodeInteger(forKey: "priority")
+        fromFocus = aDecoder.decodeBool(forKey: "fromFocus")
     }
     
     func encode(with aCoder: NSCoder) {
@@ -50,11 +52,12 @@ class AssignmentItem: NSObject, NSCoding {
         aCoder.encode(subject, forKey: "subject")
         aCoder.encode(dueDate, forKey: "dueDate")
         aCoder.encode(priority, forKey: "priority")
+        aCoder.encode(fromFocus, forKey: "fromFocus")
     }
 }
 
 func getRowNum_AssignmentList (id: Int) -> Int {
-    for var i in 0 ... assignmentList.count - 1 {
+    for i in 0 ... assignmentList.count - 1 {
         if (assignmentList[i].id == id) {
             return i
         }
@@ -64,14 +67,20 @@ func getRowNum_AssignmentList (id: Int) -> Int {
 }
 
 func printAssignments () {
-    for var item in assignmentList {
-        print("\(item.id) \(item.checked) " + item.title + " " +  dateFormat_Word(date: item.dueDate) + "\(item.dueDate.hour):\(item.dueDate.minute)")
+    for item in assignmentList {
+        print("\(item.id) \(item.checked) " + item.title + " " + item.subject + " " +  dateFormat_Word(date: item.dueDate) + "\(item.dueDate.hour):\(item.dueDate.minute)")
+    }
+}
+
+func printSubjects () {
+    for item in subjectList {
+        print(item.name + "\(item.color)")
     }
 }
 
 func printTableAssignments () {
     print("--------")
-    for var item in tableAssignmentList {
+    for item in tableAssignmentList {
         print("\(item.id) \(item.checked) " + item.title + " " +  dateFormat_Word(date: item.dueDate) + "\(item.dueDate.hour):\(item.dueDate.minute)")
     }
 }
@@ -89,17 +98,20 @@ class SubjectItem: NSObject, NSCoding {
     
     var name: String = ""
     var color: UIColor = UIColor.lightGray
+    var fromFocus: Bool = false
     
     // Functions
     
     required init(coder aDecoder: NSCoder) {
         name = (aDecoder.decodeObject(forKey: "name") as? String)!
         color = (aDecoder.decodeObject(forKey: "color") as? UIColor)!
+        fromFocus = aDecoder.decodeBool(forKey: "fromFocus")
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(color, forKey: "color")
+        aCoder.encode(fromFocus, forKey: "fromFocus")
     }
 }
 

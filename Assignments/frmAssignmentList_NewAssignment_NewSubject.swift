@@ -52,6 +52,7 @@ class frmAssignmentList_NewAssignment_NewSubject: UIViewController {
             }
         }
         newSubject(name: name)
+        curFrmAssignmentList.refreshTableSubject()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addedSubject"), object: nil)
         self.dismiss(animated: true, completion: {
         })
@@ -73,20 +74,19 @@ func cgfloatABS (value: CGFloat) -> CGFloat {
     return (value < 0 ? -value : value)
 }
 
-func newSubject (name: String) {
-    let newSubjectItem: SubjectItem = SubjectItem()
-    newSubjectItem.name = name
+func newSubjectColor () -> UIColor {
     var colorOK: Bool = false, newColor: UIColor = UIColor.white
     var firstR: CGFloat = 0, secondR: CGFloat = 0
     var firstG: CGFloat = 0, secondG: CGFloat = 0
     var firstB: CGFloat = 0, secondB: CGFloat = 0
     var firstAlpha: CGFloat = 0, secondAlpha: CGFloat = 0
-    for _ in 0 ... 10000 {
+    //for _ in 0 ... 100000 {
+    while (!colorOK) {
         newColor = randomColor(hue: Hue.random, luminosity: Luminosity.light)
         colorOK = true
         for item in subjectList {
             newColor.getRed(&firstR, green: &firstG, blue: &firstB, alpha: &firstAlpha)
-            if (firstR + firstG + firstB > 2) {
+            if (firstR + firstG + firstB < 1) {
                 colorOK = false
                 break
             }
@@ -98,11 +98,20 @@ func newSubject (name: String) {
                 break
             }
         }
+        /*
         if (colorOK) {
             break
         }
+ */
     }
-    newSubjectItem.color = newColor
+    return newColor
+}
+
+func newSubject (name: String, fromFocus: Bool = false) {
+    let newSubjectItem: SubjectItem = SubjectItem()
+    newSubjectItem.name = name
+    newSubjectItem.color = newSubjectColor()
+    newSubjectItem.fromFocus = fromFocus
     subjectList.append(newSubjectItem)
     saveSubjectList()
 }

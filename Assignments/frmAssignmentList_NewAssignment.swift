@@ -141,7 +141,13 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             sgcSetDueTime_firstOpens = false
             
             notificationOn = false
+            for _ in 0 ... 10 {
+                print("_____________")
+            }
+            print(_EDIT_ID_)
+            printAssignments()
             for item in UIApplication.shared.scheduledLocalNotifications! {
+                print(item.userInfo!["id"])
                 if (item.userInfo!["id"] as! Int == _EDIT_ID_) {
                     notifyDateTime = item.fireDate!
                     notificationOn = true
@@ -244,26 +250,30 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             return
         }
         if (_EDIT_MODE_) {
-            var rowNumber: Int = getRowNum_AssignmentList(id: _EDIT_ID_)
+            let rowNumber: Int = getRowNum_AssignmentList(id: _EDIT_ID_)
             assignmentList[rowNumber].title = (tfTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
             assignmentList[rowNumber].comments = tvComments.text
             assignmentList[rowNumber].subject = tmpSubject
             assignmentList[rowNumber].dueDate = tmpDueDate
             
+            for item in UIApplication.shared.scheduledLocalNotifications! {
+                if (item.userInfo!["id"] as! Int == _EDIT_ID_) {
+                    UIApplication.shared.cancelLocalNotification(item)
+                    break
+                }
+            }
             if (notificationOn) {
-                for item in UIApplication.shared.scheduledLocalNotifications! {
-                    if (item.userInfo!["id"] as! Int == _EDIT_ID_) {
-                        item.fireDate = notifyDateTime
-                        break
-                    }
+                let notification = UILocalNotification()
+                notification.fireDate = notifyDateTime
+                notification.soundName = UILocalNotificationDefaultSoundName
+                for _ in 0 ... 10 {
+                    print("_____________")
                 }
-            } else {
-                for var i in 0 ... UIApplication.shared.scheduledLocalNotifications!.count {
-                    if (UIApplication.shared.scheduledLocalNotifications![i].userInfo!["id"] as! Int == _EDIT_ID_) {
-                        UIApplication.shared.scheduledLocalNotifications?.remove(at: i)
-                        break
-                    }
-                }
+                notification.userInfo = ["id": assignmentList[rowNumber].id]
+                notification.alertBody = "[" + assignmentList[rowNumber].subject + "] " + assignmentList[rowNumber].title
+                //print(notification)
+                UIApplication.shared.scheduleLocalNotification(notification)
+                print(UIApplication.shared.scheduledLocalNotifications)
             }
         } else {
             

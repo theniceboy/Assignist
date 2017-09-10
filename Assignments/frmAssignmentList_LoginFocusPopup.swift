@@ -8,20 +8,6 @@
 
 import UIKit
 
-func syncAssignmentListWithFocus () {
-    let request = URLRequest(url: URL(string: "https://focus.mvcs.org/focus")!)
-    curFrmAssignmentList.webView.loadRequest(request)
-    
-    Drop.down("Logging In To Focus... (It would take a while...)", state: .info, duration: 5) {
-    }
-    curFrmAssignmentList.activityStart()
-    
-    let when = DispatchTime.now() + 40
-    DispatchQueue.main.asyncAfter(deadline: when) {
-        curFrmAssignmentList.LoginOvertime()
-    }
-}
-
 class frmAssignmentList_LoginFocusPopup: UIViewController {
 
     // MARK: - Outlets
@@ -38,6 +24,8 @@ class frmAssignmentList_LoginFocusPopup: UIViewController {
         userSettings.focusPassword = (tfPassword.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
         saveUserSettings()
         
+        Drop.down("Logging In To Focus... (It may take a while...)", state: .info, duration: 3) {
+        }
         syncAssignmentListWithFocus()
         
         self.dismiss(animated: true) {

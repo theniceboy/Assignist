@@ -68,7 +68,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         if (tableAssignmentList[rowNumber].dueDate < localDate()) {
             lbSectionHeader.textColor = redColor
         } else {
-            lbSectionHeader.textColor = UIColor.darkGray
+            lbSectionHeader.textColor = themeColor
         }
     }
     
@@ -156,6 +156,11 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         cChecked.tintColor = subjectUIColor
         
         lbSubject.textColor = subjectUIColor
+        lbSubject.layer.shadowColor = UIColor.darkGray.cgColor
+        lbSubject.layer.shadowOffset = CGSize.zero
+        lbSubject.layer.shadowRadius = 0.5
+        lbSubject.layer.shadowOpacity = 0.2
+        //lbSubject.
         
         btnSegue.rippleColor = subjectUIColor.withAlphaComponent(0.3)
         btnSegue.rippleBackgroundColor = UIColor.white.withAlphaComponent(0)
