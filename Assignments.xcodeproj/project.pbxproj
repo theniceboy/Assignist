@@ -23,6 +23,7 @@
 		6373FA2D1F58A661006C20DD /* AssignmentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA2C1F58A661006C20DD /* AssignmentsTests.swift */; };
 		6373FA381F58A661006C20DD /* AssignmentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA371F58A661006C20DD /* AssignmentsUITests.swift */; };
 		637CAAD31F624CE8009D33E6 /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CAAD21F624CE8009D33E6 /* Focus.swift */; };
+		638C9C3E1F677334005F3565 /* frmAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638C9C3D1F677334005F3565 /* frmAbout.swift */; };
 		63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */; };
 		63B849D61F5E7673005A2A52 /* BetterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849481F5E760B005A2A52 /* BetterSegmentedControl.swift */; };
 		63B849D71F5E7673005A2A52 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8494A1F5E760B005A2A52 /* DateCollectionViewCell.swift */; };
@@ -188,6 +189,7 @@
 		6373FA371F58A661006C20DD /* AssignmentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignmentsUITests.swift; sourceTree = "<group>"; };
 		6373FA391F58A661006C20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		637CAAD21F624CE8009D33E6 /* Focus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
+		638C9C3D1F677334005F3565 /* frmAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAbout.swift; sourceTree = "<group>"; };
 		63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_NewAssignment_NewSubject.swift; sourceTree = "<group>"; };
 		63B849481F5E760B005A2A52 /* BetterSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSegmentedControl.swift; sourceTree = "<group>"; };
 		63B8494A1F5E760B005A2A52 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				63389D9F1F6484A80053A6F4 /* frmAssignmentList_tblSubject_Cell.swift */,
 				63389DA11F6498F10053A6F4 /* frmAssignmentList_EditSubject.swift */,
 				63F50DEF1F65C04A0094C520 /* frmSettings.swift */,
+				638C9C3D1F677334005F3565 /* frmAbout.swift */,
 			);
 			name = Forms;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				63B84A041F5E7673005A2A52 /* InstructionsWindow.swift in Sources */,
 				63B84A051F5E7673005A2A52 /* MaskView.swift in Sources */,
 				63F50DF01F65C04A0094C520 /* frmSettings.swift in Sources */,
+				638C9C3E1F677334005F3565 /* frmAbout.swift in Sources */,
 				63B84A061F5E7673005A2A52 /* OverlaySnapshotView.swift in Sources */,
 				63B84A071F5E7673005A2A52 /* OverlayView.swift in Sources */,
 				63B84A081F5E7673005A2A52 /* M13Checkbox+IB.swift in Sources */,
@@ -1198,7 +1202,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 78FD8TN2F7;
+				DEVELOPMENT_TEAM = FLLKWS94W7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Assignments/Third-Parties",
@@ -1208,7 +1212,7 @@
 				INFOPLIST_FILE = Assignments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cc.cwsoft.Assignment-126";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1222,7 +1226,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 78FD8TN2F7;
+				DEVELOPMENT_TEAM = FLLKWS94W7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Assignments/Third-Parties",
@@ -1232,7 +1236,7 @@
 				INFOPLIST_FILE = Assignments/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "cc.cwsoft.Assignment-126";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.cwsoft.Assignments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

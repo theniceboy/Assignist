@@ -50,6 +50,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     @IBOutlet weak var switchSetNotification: SevenSwitch!
     //@IBOutlet weak var btnSetNotification: ZFRippleButton!
     
+    @IBOutlet weak var btnDeleteAssignment: ZFRippleButton!
+    
     let coachMarksController = CoachMarksController()
 
     
@@ -90,14 +92,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for _ in 0...10 {
-            print("________________")
-        }
-        
-        for item in subjectList {
-            print(item.color)
-        }
-        
         coachMarksController.dataSource = self
         
         //curFrmAssignmentList_NewAssignment = self
@@ -110,7 +104,10 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         }
         
         if (_EDIT_MODE_) {
+            
             editAssignment = assignmentList[getRowNum_AssignmentList(id: _EDIT_ID_)]
+            
+            btnDeleteAssignment.isHidden = editAssignment.fromFocus
             
             btnAdd.setTitle("Done", for: .normal)
             
@@ -141,13 +138,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             sgcSetDueTime_firstOpens = false
             
             notificationOn = false
-            for _ in 0 ... 10 {
-                print("_____________")
-            }
-            print(_EDIT_ID_)
-            printAssignments()
+            
             for item in UIApplication.shared.scheduledLocalNotifications! {
-                print(item.userInfo!["id"])
                 if (item.userInfo!["id"] as! Int == _EDIT_ID_) {
                     notifyDateTime = item.fireDate!
                     notificationOn = true
@@ -156,6 +148,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             }
             switchSetNotification.setOn(notificationOn, animated: false)
         } else {
+            btnDeleteAssignment.isHidden = true
+            
             btnAdd.setTitle("Add", for: .normal)
             tfTitle.text = ""
             hideClearButton()
@@ -256,6 +250,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentList[rowNumber].subject = tmpSubject
             assignmentList[rowNumber].dueDate = tmpDueDate
             
+            assignmentList[rowNumber].notificationOn = notificationOn
+            
             for item in UIApplication.shared.scheduledLocalNotifications! {
                 if (item.userInfo!["id"] as! Int == _EDIT_ID_) {
                     UIApplication.shared.cancelLocalNotification(item)
@@ -271,9 +267,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                 }
                 notification.userInfo = ["id": assignmentList[rowNumber].id]
                 notification.alertBody = "[" + assignmentList[rowNumber].subject + "] " + assignmentList[rowNumber].title
-                //print(notification)
                 UIApplication.shared.scheduleLocalNotification(notification)
-                print(UIApplication.shared.scheduledLocalNotifications)
             }
         } else {
             
@@ -285,17 +279,20 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentItem.subject = tmpSubject
             assignmentItem.dueDate = tmpDueDate
             
+            assignmentItem.notificationOn = notificationOn
+            
             assignmentList.append(assignmentItem)
             
-            
-            let notification = UILocalNotification()
-            notification.fireDate = notifyDateTime
-            //printDate(date: notification.fireDate!)
-            notification.applicationIconBadgeNumber = 0
-            notification.soundName = UILocalNotificationDefaultSoundName
-            notification.userInfo = ["id": assignmentItem.id]
-            notification.alertBody = "[" + assignmentItem.subject + "] " + assignmentItem.title
-            UIApplication.shared.scheduleLocalNotification(notification)
+            if (notificationOn) {
+                let notification = UILocalNotification()
+                notification.fireDate = notifyDateTime
+                //printDate(date: notification.fireDate!)
+                notification.applicationIconBadgeNumber = 0
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.userInfo = ["id": assignmentItem.id]
+                notification.alertBody = "[" + assignmentItem.subject + "] " + assignmentItem.title
+                UIApplication.shared.scheduleLocalNotification(notification)
+            }
         }
         
         saveAssignmentList()
@@ -421,6 +418,17 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     @IBAction func btnSetNotification_Tapped(_ sender: Any) {
     }
     
+    // MARK: Action - Delete Assignment
+    
+    @IBAction func btnDeleteAssignment_Tapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Are You Sure You Want to Delete This Assignment?", message: "This operation cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
+            self.deleteAssignment()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     // MARK: - TextView - tvComments
     
@@ -533,7 +541,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                     presenter.blurBackground = true
                     presenter.keyboardTranslationType = KeyboardTranslationType.moveUp
                     
-                    
                     return presenter
                 }()
                 self.customPresentViewController(presenter, viewController: self.popupNewSubject, animated: true, completion: {})
@@ -567,12 +574,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     }
     
     func updateDateTime () {
-        lbDueDate.text = "Assignment due " + (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 1 ? "On " : "") + dateFormat_Word(date: tmpDueDate) + " "
-        if (tmpDueDate.hour > 12 || (tmpDueDate.hour == 12 && tmpDueDate.minute > 0)) {
-            lbDueDate.text = lbDueDate.text! + "\(tmpDueDate.hour - 12):\(tmpDueDate.minute) PM"
-        } else {
-            lbDueDate.text = lbDueDate.text! + "\(tmpDueDate.hour):\(tmpDueDate.minute) AM"
-        }
+        lbDueDate.text = "Assignment due " + (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 1 ? "on " : "") + dateFormat_Word(date: tmpDueDate) + " "
+        lbDueDate.text = lbDueDate.text! + displayDate(date: tmpDueDate)
     }
     
     func updateTopBarUI () {
@@ -628,6 +631,14 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         }
     }
     
+    func deleteAssignment () {
+        assignmentList.remove(at: getRowNum_AssignmentList(id: _EDIT_ID_))
+        curFrmAssignmentList.refreshTableAssignmentList()
+        saveAssignmentList()
+        self.dismiss(animated: true) {
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -664,7 +675,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
         
         if (index == 0) {UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: subjectList), forKey: "subjectList")
-            coachViews.bodyView.hintLabel.text = "First Stet: Select the subject of the your new assignment"
+            coachViews.bodyView.hintLabel.text = "First Step: Select the subject of the your new assignment"
             coachViews.bodyView.nextLabel.text = "Next"
         } else if (index == 1) {
             coachViews.bodyView.hintLabel.text = "Second, type in your assignment title"

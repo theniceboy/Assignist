@@ -91,13 +91,12 @@ class frmSettings: UIViewController {
         userSettings.focusUsername = username
         userSettings.focusPassword = password
         
-        let request = URLRequest(url: URL(string: "https://focus.mvcs.org/focus")!)
+        //curFrmAssignmentList.webView = UIWebView()
+        let request = URLRequest(url: URL(string: "https://focus.mvcs.org/focus")!)//, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 100.0)
         curFrmAssignmentList.webView.loadHTMLString("", baseURL: URL(string: "about:blank")!)
         curFrmAssignmentList.webView.loadRequest(URLRequest(url: URL(string: "about:blank")!))
         curFrmAssignmentList.webView.reload()
-        print("im good here")
-        curFrmAssignmentList.webView.stringByEvaluatingJavaScript(from: "document.getElementById('username-input').value='" + userSettings.focusUsername + "';document.getElementsByName('password')[0].value='" + userSettings.focusPassword + "';document.getElementsByClassName('form-button')[0].click()")
-        print("still good")
+        curFrmAssignmentList.webView.stringByEvaluatingJavaScript(from: "document.getElementById('username-input').value='" + username + "';document.getElementsByName('password')[0].value='" + password + "';document.getElementsByClassName('form-button')[0].click()")
         curFrmAssignmentList.webView.loadRequest(request)
         
         curFrmAssignmentList.invalidLoginInfoCount = 0
@@ -114,9 +113,7 @@ class frmSettings: UIViewController {
     }
     
     func logoutFocus () {
-        curFrmAssignmentList.webView.loadHTMLString("", baseURL: URL(string: "about:blank")!)
-        curFrmAssignmentList.webView.loadRequest(URLRequest(url: URL(string: "about:blank")!))
-        curFrmAssignmentList.webView.reload()
+        curFrmAssignmentList.webView.loadRequest(URLRequest(url: URL(string: "https://focus.mvcs.org/focus/index.php?logout")!))
         curFrmAssignmentList.activityStop()
         
         tfUsername.text = ""
@@ -137,8 +134,8 @@ class frmSettings: UIViewController {
         var tmpflag = true
         for item in UIApplication.shared.scheduledLocalNotifications! {
             tmpflag = true
-            for i in 0 ... (assignmentList.count - 1) {
-                if (item.userInfo!["id"] as! Int == assignmentList[i].id) {
+            for assignmentitem in assignmentList {
+                if (item.userInfo!["id"] as! Int == assignmentitem.id) {
                     tmpflag = false
                 }
             }
@@ -166,6 +163,8 @@ class frmSettings: UIViewController {
         saveAssignmentList()
         saveSubjectList()
         curFrmAssignmentList.refreshTableAssignmentList()
+        
+        SwiftSpinner.show(duration: 1.5, title: "Logout Completed", animated: false)
         
         hideLogoutButton()
     }

@@ -13,20 +13,90 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Frm About-->
         <scene sceneID="pCK-l0-ftc">
             <objects>
-                <viewController id="wy5-ti-7u8" sceneMemberID="viewController">
+                <viewController id="wy5-ti-7u8" customClass="frmAbout" customModule="Assignments" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WO6-X6-mEP">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hY-Xh-49T">
+                                <rect key="frame" x="0.0" y="0.0" width="540" height="55"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tv-LQ-oHL" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                        <rect key="frame" x="440" y="0.0" width="100" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Rfw-S0-uO7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="0.62745098040000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowRippleEnable" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnClose_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="8k6-bL-lg7"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About This App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6B-8y-4qw">
+                                        <rect key="frame" x="205.5" y="17" width="129" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="8Tv-LQ-oHL" secondAttribute="bottom" id="36k-Vn-Ofh"/>
+                                    <constraint firstItem="D6B-8y-4qw" firstAttribute="centerX" secondItem="5hY-Xh-49T" secondAttribute="centerX" id="BVF-Hk-lz0"/>
+                                    <constraint firstAttribute="height" constant="55" id="Dvi-DT-oA9"/>
+                                    <constraint firstItem="8Tv-LQ-oHL" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="top" id="L2M-8i-vVT"/>
+                                    <constraint firstItem="D6B-8y-4qw" firstAttribute="centerY" secondItem="5hY-Xh-49T" secondAttribute="centerY" id="MWj-R4-iaV"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Tv-LQ-oHL" secondAttribute="trailing" id="QGD-mK-Bhj"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf5-L2-yxF">
+                                <rect key="frame" x="133" y="105" width="275" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="48"/>
+                                <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By David Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doh-nX-aat">
+                                <rect key="frame" x="213.5" y="172.5" width="114.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="doh-nX-aat" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="4Ie-fT-0eJ"/>
+                            <constraint firstItem="5hY-Xh-49T" firstAttribute="trailing" secondItem="B2s-Ul-HnX" secondAttribute="trailing" id="H48-tg-bfO"/>
+                            <constraint firstItem="5hY-Xh-49T" firstAttribute="top" secondItem="B2s-Ul-HnX" secondAttribute="top" id="NOp-sO-Bf7"/>
+                            <constraint firstItem="pf5-L2-yxF" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="T1u-d8-Pcm"/>
+                            <constraint firstItem="5hY-Xh-49T" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" id="adN-gQ-qov"/>
+                            <constraint firstItem="pf5-L2-yxF" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="bottom" constant="50" id="iOi-4Z-7YP"/>
+                            <constraint firstItem="doh-nX-aat" firstAttribute="top" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="10" id="uMe-Ml-hNJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="B2s-Ul-HnX"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZl-Nt-SqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218" y="-1785"/>
+            <point key="canvasLocation" x="-299.4140625" y="-934.375"/>
         </scene>
         <!--Frm Settings-->
         <scene sceneID="0CK-yy-fkU">
@@ -391,6 +461,12 @@
                                             <action selector="btnBackground_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="LI9-59-huC"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This assignment was synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqX-KG-hB1">
+                                        <rect key="frame" x="245.5" y="660" width="277.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lw7-Io-HCZ" userLabel="tfTitle" customClass="SkyFloatingLabelTextField" customModule="Assignments" customModuleProvider="target">
                                         <rect key="frame" x="242" y="30" width="396" height="55"/>
                                         <constraints>
@@ -770,6 +846,28 @@
                                             <action selector="btnSelectSubject_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="IbV-4A-VmR"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBp-bT-9hv" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="647" width="768" height="45"/>
+                                        <color key="backgroundColor" red="0.85882352939999995" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="22L-js-g7V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <state key="normal" title="Delete This Assignment">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="1" green="0.37254901959999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                <color key="value" red="0.85882352939999995" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnDeleteAssignment_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="6Us-vf-g8O"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -781,6 +879,7 @@
                                     <constraint firstItem="YFK-Re-hlg" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="30" id="9Tr-rI-5AH"/>
                                     <constraint firstAttribute="trailing" secondItem="5u8-ic-mPa" secondAttribute="trailing" constant="30" id="DZh-1g-5gP"/>
                                     <constraint firstItem="JtG-WC-f1R" firstAttribute="top" secondItem="UnF-sN-a7h" secondAttribute="bottom" constant="18" id="EAH-bs-BPo"/>
+                                    <constraint firstAttribute="bottom" secondItem="eBp-bT-9hv" secondAttribute="bottom" id="EL2-8G-ERg"/>
                                     <constraint firstItem="vMK-te-0Hv" firstAttribute="top" secondItem="5u8-ic-mPa" secondAttribute="bottom" constant="12" id="GPQ-dz-hBx"/>
                                     <constraint firstItem="5u8-ic-mPa" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="30" id="JA1-Wt-bST"/>
                                     <constraint firstItem="Z0w-lt-NHn" firstAttribute="bottom" secondItem="lw7-Io-HCZ" secondAttribute="bottom" constant="2" id="LoS-NQ-Rx4"/>
@@ -789,22 +888,26 @@
                                     <constraint firstItem="5u8-ic-mPa" firstAttribute="top" secondItem="4tf-xO-p0L" secondAttribute="bottom" constant="4" id="QG3-zD-kZz"/>
                                     <constraint firstAttribute="trailing" secondItem="JtG-WC-f1R" secondAttribute="trailing" constant="40" id="Qnj-74-3Lz"/>
                                     <constraint firstItem="fVM-03-jp3" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="30" id="TFp-K7-DxO"/>
+                                    <constraint firstAttribute="trailing" secondItem="eBp-bT-9hv" secondAttribute="trailing" id="UE0-i8-5Bz"/>
                                     <constraint firstItem="YFK-Re-hlg" firstAttribute="centerX" secondItem="abt-jb-m4u" secondAttribute="centerX" id="Vt4-Ux-68E"/>
                                     <constraint firstItem="4tf-xO-p0L" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="30" id="WZ6-fP-4WF"/>
                                     <constraint firstItem="Z0w-lt-NHn" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="30" id="YYt-uk-HhF"/>
                                     <constraint firstItem="kyU-So-E1z" firstAttribute="leading" secondItem="lw7-Io-HCZ" secondAttribute="trailing" id="YnJ-x6-XHA"/>
                                     <constraint firstItem="kyU-So-E1z" firstAttribute="height" secondItem="lw7-Io-HCZ" secondAttribute="height" id="b8M-KX-PxK"/>
                                     <constraint firstItem="6EO-G5-xSI" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" id="bTe-2Q-lsG"/>
+                                    <constraint firstItem="eBp-bT-9hv" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" id="cID-c3-Dwa"/>
                                     <constraint firstItem="4tf-xO-p0L" firstAttribute="top" secondItem="lw7-Io-HCZ" secondAttribute="bottom" constant="8" id="dPq-gA-zHm"/>
                                     <constraint firstItem="JtG-WC-f1R" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="40" id="f5q-tI-rhk"/>
                                     <constraint firstAttribute="trailing" secondItem="tgp-VS-YPA" secondAttribute="trailing" constant="30" id="gL2-48-yXn"/>
                                     <constraint firstItem="tgp-VS-YPA" firstAttribute="top" secondItem="YFK-Re-hlg" secondAttribute="bottom" constant="18" id="icd-4g-5oO"/>
+                                    <constraint firstItem="oqX-KG-hB1" firstAttribute="centerX" secondItem="abt-jb-m4u" secondAttribute="centerX" id="jPn-qD-XIz"/>
                                     <constraint firstItem="Z0w-lt-NHn" firstAttribute="top" secondItem="abt-jb-m4u" secondAttribute="top" constant="44" id="jQK-Gi-Z30"/>
                                     <constraint firstItem="fVM-03-jp3" firstAttribute="top" secondItem="vMK-te-0Hv" secondAttribute="bottom" constant="14" id="n2w-YG-Pji"/>
                                     <constraint firstItem="6EO-G5-xSI" firstAttribute="top" secondItem="abt-jb-m4u" secondAttribute="top" id="n8J-gV-qdm"/>
                                     <constraint firstItem="vMK-te-0Hv" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="40" id="qht-9a-DTn"/>
                                     <constraint firstAttribute="bottom" secondItem="6EO-G5-xSI" secondAttribute="bottom" id="qxk-vW-OBY"/>
                                     <constraint firstItem="lw7-Io-HCZ" firstAttribute="top" secondItem="abt-jb-m4u" secondAttribute="top" constant="30" id="sGD-7W-Ynb"/>
+                                    <constraint firstAttribute="bottom" secondItem="oqX-KG-hB1" secondAttribute="bottom" constant="15" id="t0U-U0-hTj"/>
                                     <constraint firstAttribute="trailing" secondItem="kyU-So-E1z" secondAttribute="trailing" constant="30" id="tO6-EX-kGi"/>
                                     <constraint firstItem="UnF-sN-a7h" firstAttribute="top" secondItem="tgp-VS-YPA" secondAttribute="bottom" constant="8" id="uLK-xu-c2m"/>
                                     <constraint firstAttribute="trailing" secondItem="fVM-03-jp3" secondAttribute="trailing" constant="30" id="vql-Vk-E9h"/>
@@ -829,6 +932,7 @@
                         <outlet property="_layout_vClearWidthAnchor" destination="vPs-Nj-fDM" id="0UD-2n-4EK"/>
                         <outlet property="_layout_vSuggestionsHeightAnchor" destination="gXa-Se-GIX" id="08f-A2-NGO"/>
                         <outlet property="btnAdd" destination="wud-l2-AcV" id="7An-WP-Bvj"/>
+                        <outlet property="btnDeleteAssignment" destination="eBp-bT-9hv" id="fC0-2W-ued"/>
                         <outlet property="btnSelectSubject" destination="Z0w-lt-NHn" id="Qeu-Xn-dnl"/>
                         <outlet property="btnSetDueDate" destination="vOD-B8-nrw" id="kwN-ah-afm"/>
                         <outlet property="lbDueDate" destination="fVM-03-jp3" id="JRZ-x0-5Nf"/>
@@ -1177,15 +1281,48 @@
                                     <action selector="btnSelectSubject_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="Rjm-Bf-AIS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This subject contains assignment(s) synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Yk-w8F">
+                                <rect key="frame" x="79.5" y="587" width="382" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhS-9v-gLs" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="570" width="540" height="50"/>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="x1p-1K-wmt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="Delete This Subject">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                        <color key="value" red="1" green="0.37254901959999998" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                        <color key="value" red="0.85882352939999995" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnDeleteSubject_Tapped:" destination="Z5F-lL-fCq" eventType="touchUpInside" id="TWa-jW-xq7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YpM-Bx-7Ax" firstAttribute="leading" secondItem="mFz-rF-sy3" secondAttribute="leading" constant="30" id="0VD-60-gFy"/>
                             <constraint firstAttribute="trailing" secondItem="Jn5-Ud-le9" secondAttribute="trailing" id="1nk-e7-Ox0"/>
                             <constraint firstItem="mFz-rF-sy3" firstAttribute="trailing" secondItem="YpM-Bx-7Ax" secondAttribute="trailing" constant="30" id="4n3-Se-6Md"/>
+                            <constraint firstAttribute="trailing" secondItem="JhS-9v-gLs" secondAttribute="trailing" id="53L-iJ-Yme"/>
+                            <constraint firstItem="BAu-Yk-w8F" firstAttribute="centerX" secondItem="a0c-0p-RJE" secondAttribute="centerX" id="B1T-0m-lBa"/>
+                            <constraint firstItem="mFz-rF-sy3" firstAttribute="bottom" secondItem="JhS-9v-gLs" secondAttribute="bottom" id="F6g-zC-jvV"/>
                             <constraint firstItem="IcN-jQ-y2X" firstAttribute="top" secondItem="YpM-Bx-7Ax" secondAttribute="bottom" constant="12" id="KTR-Xa-e2i"/>
                             <constraint firstItem="mFz-rF-sy3" firstAttribute="trailing" secondItem="IcN-jQ-y2X" secondAttribute="trailing" constant="30" id="L8q-og-tUU"/>
                             <constraint firstItem="Jn5-Ud-le9" firstAttribute="leading" secondItem="a0c-0p-RJE" secondAttribute="leading" id="Y1m-0y-ugF"/>
+                            <constraint firstItem="JhS-9v-gLs" firstAttribute="leading" secondItem="a0c-0p-RJE" secondAttribute="leading" id="Yc5-2X-CAc"/>
+                            <constraint firstAttribute="bottom" secondItem="BAu-Yk-w8F" secondAttribute="bottom" constant="15" id="cfd-28-RS4"/>
                             <constraint firstItem="IcN-jQ-y2X" firstAttribute="leading" secondItem="mFz-rF-sy3" secondAttribute="leading" constant="30" id="jSv-Qb-Swn"/>
                             <constraint firstItem="mFz-rF-sy3" firstAttribute="trailing" secondItem="Qrf-z7-BVV" secondAttribute="trailing" constant="30" id="pDh-kb-h76"/>
                             <constraint firstItem="Qrf-z7-BVV" firstAttribute="top" secondItem="Jn5-Ud-le9" secondAttribute="bottom" constant="20" id="rir-E3-ddY"/>
@@ -1197,6 +1334,7 @@
                     </view>
                     <connections>
                         <outlet property="btnChangeColor" destination="YpM-Bx-7Ax" id="dxJ-qW-JY1"/>
+                        <outlet property="btnDeleteSubject" destination="JhS-9v-gLs" id="9od-9s-KzD"/>
                         <outlet property="btnResetColor" destination="IcN-jQ-y2X" id="cFC-UM-hLn"/>
                         <outlet property="tfName" destination="Qrf-z7-BVV" id="Gh6-XV-fyA"/>
                         <outlet property="vTopBar" destination="Jn5-Ud-le9" id="Kek-rI-ZJ1"/>
@@ -1300,7 +1438,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBN-Zm-LAv" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                         <state key="normal" title="Settings">
                                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -1313,6 +1451,9 @@
                                                         <state key="normal" title="About">
                                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="wy5-ti-7u8" kind="presentation" modalPresentationStyle="formSheet" id="NJx-Ov-v3I"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

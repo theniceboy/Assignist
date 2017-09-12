@@ -76,12 +76,13 @@ func parseFocusHTML (html: String, subjectstr: String) {
         
         var i: Int = 0
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MMM d yyyy h:ss aa"
         //dateFormatter.dateStyle = .medium
         //dateFormatter.timeStyle = .short
         var tmpdatestr = ""
         //var tmpdatestrIndex = " ".startIndex
-        print(strlist)
+        //print(strlist)
         while (i < strlist.count) {
             if (strlist[i].starts(with: "Due:")) {
                 assignmentState = 1
@@ -131,9 +132,9 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 tmpdatestr.remove(at: tmpdatestr.startIndex)
                 tmpdatestr.remove(at: tmpdatestr.startIndex)
                 focusAssignmentList[focusAssignmentList.count - 1].duedatestr = tmpdatestr
-                print(dateFormatter.string(from: Date()))
-                var date = dateFormatter.date(from: tmpdatestr)!
-                print(date)
+                //print(dateFormatter.string(from: Date()))
+                //let date = dateFormatter.date(from: tmpdatestr)!
+                //print(date)
                 focusAssignmentList[focusAssignmentList.count - 1].duedate = dateFormatter.date(from: tmpdatestr)!
                 assignmentState = 0
             } else {

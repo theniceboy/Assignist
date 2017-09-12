@@ -335,6 +335,7 @@ import UIKit
         updateCollectionView(to: selectedDate)
         
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US")
         formatter.dateFormat = "dd/MM/YYYY"
         for i in 0..<dates.count {
             let date = dates[i]
@@ -398,6 +399,7 @@ import UIKit
             return
         }
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US")
         formatter.dateFormat = dateFormat
         dateTitleLabel.text = formatter.string(from: selectedDate)
         dateTitleLabel.sizeToFit()
@@ -432,6 +434,7 @@ import UIKit
     
     func updateCollectionView(to currentDate: Date) {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US")
         formatter.dateFormat = "dd/MM/YYYY"
         for i in 0..<dates.count {
             let date = dates[i]

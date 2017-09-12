@@ -18,6 +18,7 @@ class frmAssignmentList_EditSubject: UIViewController {
     @IBOutlet weak var tfName: SkyFloatingLabelTextField!
     @IBOutlet weak var btnChangeColor: ZFRippleButton!
     @IBOutlet weak var btnResetColor: ZFRippleButton!
+    @IBOutlet weak var btnDeleteSubject: ZFRippleButton!
     
     // MARK: - Variables
     
@@ -68,7 +69,41 @@ class frmAssignmentList_EditSubject: UIViewController {
         vTopBar.backgroundColor = subjectList[_EDIT_SUBJECT_ROW - 1].color
     }
     
+    @IBAction func btnDeleteSubject_Tapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Are You Sure You Want to Delete This Subject?", message: "This will also delete all of the assignments under this subject.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
+            self.deleteSubject()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - System Functions
+    
+    func deleteSubject () {
+        for i in 0 ... (subjectList.count - 1) {
+            if (subjectList[i].name == subjectList[_EDIT_SUBJECT_ROW - 1].name) {
+                if (assignmentList.count > 0) {
+                    var j = 0
+                    while (j < assignmentList.count) {
+                        if (assignmentList[j].subject == subjectList[i].name) {
+                            assignmentList.remove(at: j)
+                            j -= 1
+                        }
+                        j += 1
+                    }
+                }
+                subjectList.remove(at: i)
+                saveAssignmentList()
+                saveSubjectList()
+                break
+            }
+        }
+        curFrmAssignmentList.tblSubjectList.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.top)
+        curFrmAssignmentList.refreshTableAssignmentList()
+        self.dismiss(animated: true) {
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +118,21 @@ class frmAssignmentList_EditSubject: UIViewController {
         btnChangeColor.layer.cornerRadius = 8
         
         btnResetColor.layer.cornerRadius = 8
+        
+        for i in 0 ... (subjectList.count - 1) {
+            if (subjectList[i].name == subjectList[_EDIT_SUBJECT_ROW - 1].name) {
+                var flag = false
+                if (assignmentList.count > 0) {
+                    for j in 0 ... (assignmentList.count - 1) {
+                        if (assignmentList[j].fromFocus && assignmentList[j].subject == subjectList[i].name) {
+                            flag = true
+                            break
+                        }
+                    }
+                }
+                btnDeleteSubject.isHidden = flag
+            }
+        }
     }
 
 }

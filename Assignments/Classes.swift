@@ -28,6 +28,7 @@ class AssignmentItem: NSObject, NSCoding {
     var dueDate: Date = Date()
     var priority: Int = 0 // 0: Normal, 1: !, 2: !!
     var fromFocus: Bool = false
+    var notificationOn: Bool = false
     
     // Functions
     
@@ -42,6 +43,7 @@ class AssignmentItem: NSObject, NSCoding {
         dueDate = aDecoder.decodeObject(forKey: "dueDate") as? Date ?? Date()
         priority = aDecoder.decodeInteger(forKey: "priority")
         fromFocus = aDecoder.decodeBool(forKey: "fromFocus")
+        notificationOn = aDecoder.decodeBool(forKey: "notificationOn")
     }
     
     func encode(with aCoder: NSCoder) {
@@ -53,6 +55,7 @@ class AssignmentItem: NSObject, NSCoding {
         aCoder.encode(dueDate, forKey: "dueDate")
         aCoder.encode(priority, forKey: "priority")
         aCoder.encode(fromFocus, forKey: "fromFocus")
+        aCoder.encode(notificationOn, forKey: "notificationOn")
     }
 }
 

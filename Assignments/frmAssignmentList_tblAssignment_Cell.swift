@@ -64,7 +64,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
                 }
             }
         }
-        lbSectionHeader.text = "\(assignmentCounter) Assignment" + (assignmentCounter > 1 ? "s" : "") + " Due " + (abs(daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate)) > 1 ? "On " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate)
+        lbSectionHeader.text = "\(assignmentCounter) Assignment" + (assignmentCounter > 1 ? "s" : "") + " Due " + (abs(daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate)) > 1 ? "on " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate)
         if (tableAssignmentList[rowNumber].dueDate < localDate()) {
             lbSectionHeader.textColor = redColor
         } else {
@@ -117,13 +117,9 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         lbTitle.text = tableAssignmentList[rowNumber].title
         lbSubject.text = tableAssignmentList[rowNumber].subject
         var duetime: String = "At "// + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? " " : "") + "\(tableAssignmentList[rowNumber].dueDate.hour):" + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? "0" : "") + "\(tableAssignmentList[rowNumber].dueDate.minute)"
-        if (tableAssignmentList[rowNumber].dueDate.hour > 12 || (tableAssignmentList[rowNumber].dueDate.hour == 12 && tableAssignmentList[rowNumber].dueDate.minute > 0)) {
-            duetime = duetime + "\(tableAssignmentList[rowNumber].dueDate.hour - 12):\(tableAssignmentList[rowNumber].dueDate.minute) PM"
-        } else {
-            duetime = duetime + "\(tableAssignmentList[rowNumber].dueDate.hour):\(tableAssignmentList[rowNumber].dueDate.minute) AM"
-        }
+        duetime = duetime + displayDate(date: tableAssignmentList[rowNumber].dueDate)
         if (tableAssignmentList[rowNumber].checked) {
-            lbDueTime.text = "Due " + (daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate) > 1 ? "On " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate) + " " + duetime
+            lbDueTime.text = "Due " + (daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate) > 1 ? "on " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate) + " " + duetime
         } else {
             lbDueTime.text = "Due " + duetime
         }
@@ -187,8 +183,36 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         
         if (cChecked.checkState == M13Checkbox.CheckState.checked) {
             assignmentList[assignmentRow].checked = true
+            for item in UIApplication.shared.scheduledLocalNotifications! {
+                if (item.userInfo!["id"] as! Int == assignmentList[assignmentRow].id) {
+                    UIApplication.shared.cancelLocalNotification(item)
+                    break
+                }
+            }
         } else {
             assignmentList[assignmentRow].checked = false
+            if (assignmentList[assignmentRow].notificationOn) {
+                var notifyDateTime = Date(), tmpDueDate = assignmentList[assignmentRow].dueDate
+                if (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 0) {
+                    notifyDateTime = tmpDueDate.addingTimeInterval(-86400)
+                    notifyDateTime = Date(year: notifyDateTime.year, month: notifyDateTime.month, day: notifyDateTime.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+                    
+                    //printDate(date: notifyDateTime)
+                } else {
+                    notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+                    
+                    if (!(localDate() < notifyDateTime && notifyDateTime < tmpDueDate)) {
+                        notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: (localDate().hour + tmpDueDate.hour) / 2, minute: 30, second: 0)
+                    }
+                }
+                let notification = UILocalNotification()
+                notification.fireDate = notifyDateTime
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.userInfo = ["id": assignmentList[assignmentRow].id]
+                notification.alertBody = "[" + assignmentList[assignmentRow].subject + "] " + assignmentList[assignmentRow].title
+                UIApplication.shared.scheduleLocalNotification(notification)
+            }
+            
         }
         saveAssignmentList()
         
@@ -198,7 +222,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             let assignmentID = tableAssignmentList[rowNumber].id
             var targetRow: Int = 0
             curFrmAssignmentList.formatTableData()
-            for var i: Int in 0 ... (tableAssignmentList.count - 1) {
+            for i: Int in 0 ... (tableAssignmentList.count - 1) {
                 if (assignmentID == tableAssignmentList[i].id) {
                     targetRow = i
                     break

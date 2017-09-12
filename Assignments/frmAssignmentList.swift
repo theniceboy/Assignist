@@ -195,8 +195,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             if (invalidLoginInfoCount > 10) {
                 progressDone = true
-                print("Invalid username/password")
-                print(loginFromSettigns)
                 if (loginFromSettigns) {
                     SwiftSpinner.sharedInstance.innerColor = UIColor.white
                     SwiftSpinner.sharedInstance.outerColor = UIColor.red.withAlphaComponent(0.5)

@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DropDown.startListeningToKeyboard()
         myCalender.firstWeekday = 0
         
-        for i in 0 ... (UIApplication.shared.scheduledLocalNotifications?.count)! - 1 {
-            if (UIApplication.shared.scheduledLocalNotifications![i].fireDate! < localDate()) {
-                UIApplication.shared.scheduledLocalNotifications?.remove(at: i)
+        for item in UIApplication.shared.scheduledLocalNotifications! {
+            if ((item.fireDate?.addingTimeInterval(TimeInterval(-86400)))! < localDate()) {
+                UIApplication.shared.cancelLocalNotification(item)
             }
         }
         

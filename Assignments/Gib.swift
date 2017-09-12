@@ -38,10 +38,17 @@ var scrollGray = UIColor(red: 92.0 / 255.0, green: 94.0 / 255.0, blue: 102.0 / 2
 
 let h_iday: [String: Int] = ["Monday": 1, "Tuesday": 2, "Wednesday": 3, "Thursday": 4, "Friday": 5, "Saturday": 6, "Sunday": 7]
 let h_day: [Int: String] = [1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday", 7: "Sunday"]
-let h_uday: [Int: String] = [-1: "yesterday", 0: "today", 1: "tomorrow"]
-let h_week: [Int: String] = [0: "last ", 1: "", 2: "next "]
+let h_uday: [Int: String] = [-1: "Yesterday", 0: "Today", 1: "Tomorrow"]
+let h_week: [Int: String] = [0: "Last ", 1: "", 2: "Next "]
 
 // MARK: - Global Functions
+
+func displayDate (date: Date) -> String {
+    if (date.hour > 12 || (date.hour == 12 && date.minute > 0)) {
+        return "\(date.hour - 12):" + (date.minute < 10 ? "0" : "") + "\(date.minute) PM"
+    }
+    return "\(date.hour):" + (date.minute < 10 ? "0" : "") + "\(date.minute) AM"
+}
 
 func weekOfYear (date: Date) -> Int {
     return myCalender.component(.weekOfYear, from: date)
@@ -63,6 +70,7 @@ func dateFormat_Word (date: Date) -> String {
     let uday: Int = daysDifference(date1: localDate(), date2: date)
     let nday = dayOfWeek(date: date)
     let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "en_US")
     formatter.dateFormat = " (MM/dd)"
     //let advanced_str: String = (abs(uday) > 1 ? (uday > 1 ? "（\(uday) days later）" : "（\(abs(uday)) days ago）") : "")
     let advanced_str: String = " (\(date.month)/\(date.day))"

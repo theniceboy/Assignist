@@ -52,11 +52,13 @@ class DateCollectionViewCell: UICollectionViewCell {
         self.darkColor = darkColor
         
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "EEEE"
         dayLabel.text = dateFormatter.string(from: date).uppercased()
         dayLabel.textColor = isSelected == true ? .white : darkColor.withAlphaComponent(0.5)
         
         let numberFormatter = DateFormatter()
+        numberFormatter.locale = Locale(identifier: "en_US")
         numberFormatter.dateFormat = "d"
         numberLabel.text = numberFormatter.string(from: date)
         numberLabel.textColor = isSelected == true ? .white : darkColor

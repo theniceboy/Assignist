@@ -303,6 +303,7 @@ extension Date {
     /// - returns: The created `String` instance.
     public func stringIn(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateStyle = dateStyle
         dateFormatter.timeStyle = timeStyle
 
