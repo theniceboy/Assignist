@@ -81,7 +81,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNy-k0-tGb">
-                                <rect key="frame" x="368.5" y="521.5" width="53" height="33"/>
+                                <rect key="frame" x="368.5" y="525" width="53" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <state key="normal" title="Github">
                                     <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -91,18 +91,18 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an open source application. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uc-wQ-Km3">
-                                <rect key="frame" x="136" y="499.5" width="268.5" height="20.5"/>
+                                <rect key="frame" x="136" y="505.5" width="268.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download the source code from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buf-b4-cFd">
-                                <rect key="frame" x="117.5" y="528" width="245" height="21"/>
+                                <rect key="frame" x="117.5" y="530" width="245" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are more than welcomed to point out bug in the code. Pull request and issues are welcomed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyX-Dx-blj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are more than welcomed to point out any bug in the code. Pull requests and issues are welcomed too." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyX-Dx-blj">
                                 <rect key="frame" x="50" y="555" width="440" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="qna-7g-YvU"/>
@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-la-UhJ">
-                                <rect key="frame" x="161.5" y="465" width="217" height="32"/>
+                                <rect key="frame" x="161.5" y="471" width="217" height="32"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <state key="normal" title="Visit the Developer's Website">
                                     <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,12 +133,12 @@
                             <constraint firstItem="B2s-Ul-HnX" firstAttribute="trailing" secondItem="UyX-Dx-blj" secondAttribute="trailing" constant="50" id="Oqz-nN-940"/>
                             <constraint firstItem="UyX-Dx-blj" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" constant="50" id="PmB-Sc-PdB"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="T1u-d8-Pcm"/>
-                            <constraint firstItem="UyX-Dx-blj" firstAttribute="top" secondItem="Buf-b4-cFd" secondAttribute="bottom" constant="6" id="TAq-TZ-W8v"/>
+                            <constraint firstItem="UyX-Dx-blj" firstAttribute="top" secondItem="Buf-b4-cFd" secondAttribute="bottom" constant="4" id="TAq-TZ-W8v"/>
                             <constraint firstItem="B2s-Ul-HnX" firstAttribute="bottom" secondItem="UyX-Dx-blj" secondAttribute="bottom" constant="20" id="Zob-eq-eLT"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" id="adN-gQ-qov"/>
                             <constraint firstItem="Buf-b4-cFd" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" constant="-30" id="d3t-Qh-oGo"/>
-                            <constraint firstItem="Buf-b4-cFd" firstAttribute="top" secondItem="3Uc-wQ-Km3" secondAttribute="bottom" constant="8" id="d5g-pA-yK0"/>
-                            <constraint firstItem="UNy-k0-tGb" firstAttribute="centerY" secondItem="Buf-b4-cFd" secondAttribute="centerY" id="hGi-dE-E1n"/>
+                            <constraint firstItem="Buf-b4-cFd" firstAttribute="top" secondItem="3Uc-wQ-Km3" secondAttribute="bottom" constant="4" id="d5g-pA-yK0"/>
+                            <constraint firstItem="UNy-k0-tGb" firstAttribute="centerY" secondItem="Buf-b4-cFd" secondAttribute="centerY" constant="1" id="hGi-dE-E1n"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="bottom" constant="50" id="iOi-4Z-7YP"/>
                             <constraint firstItem="3Uc-wQ-Km3" firstAttribute="top" secondItem="8qb-la-UhJ" secondAttribute="bottom" constant="2" id="sHW-wP-uhR"/>
                             <constraint firstItem="doh-nX-aat" firstAttribute="top" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="10" id="uMe-Ml-hNJ"/>
@@ -354,11 +354,14 @@
                                             <action selector="btnLoginFocus_Tapped:" destination="9vE-h7-7kg" eventType="touchUpInside" id="RHq-Gj-VGW"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Focus login feature is only available to MVC students. This feature will be supporting more schools in the future" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-IL-nYy">
-                                        <rect key="frame" x="14" y="267.5" width="312" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-IL-nYy">
+                                        <rect key="frame" x="14" y="267.5" width="312" height="110"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="gQP-4b-W0M"/>
+                                            <constraint firstAttribute="height" constant="110" id="gQP-4b-W0M"/>
                                         </constraints>
+                                        <string key="text">Focus login feature is only available to MVC students. This feature will be supporting more schools in the future.
+
+ If your school uses Focus and you want this feature available for your school, please contact me via email: assignment.app.feedback@gmail.com</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
