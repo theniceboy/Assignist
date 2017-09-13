@@ -423,12 +423,12 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         
         if (formatTable) {
             formatTableData()
+            btnListIsEmpty.isHidden = !(tableAssignmentList.count == 0)
         }
         //printTableAssignments()
         refreshShowCompletedButton()
         tblAssignmentList.reloadData()
         
-        btnListIsEmpty.isHidden = !(tableSubjectList.count == 0)
         
         refreshTableSubject()
     }
@@ -492,7 +492,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             coachViews.bodyView.hintLabel.text = "Tap here to add a new assignment."
             coachViews.bodyView.nextLabel.text = "OK"
         } else if (index == 1) {
-            coachViews.bodyView.hintLabel.text = "If you are a MVC student, you can login to Focus in settings."
+            coachViews.bodyView.hintLabel.text = "See more options in settings. You can connect to MVC Focus if you are a MVCS student."
             coachViews.bodyView.nextLabel.text = "OK"
             UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "firstOpen")
         }
