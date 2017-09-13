@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         myCalender.firstWeekday = 0
         
         for item in UIApplication.shared.scheduledLocalNotifications! {
-            if ((item.fireDate?.addingTimeInterval(TimeInterval(-86400)))! < localDate()) {
+            if ((item.fireDate)! < localDate()) {
                 UIApplication.shared.cancelLocalNotification(item)
             }
         }

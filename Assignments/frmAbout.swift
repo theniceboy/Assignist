@@ -20,6 +20,14 @@ class frmAbout: UIViewController {
         }
     }
     
+    @IBAction func btnGithub_Tapped(_ sender: Any) {
+        UIApplication.shared.openURL(URL(string: "http://github.com/theniceboy/Assignments")!)
+    }
+    
+    @IBAction func btnVisitDeveloperWebsite_Tapped(_ sender: Any) {
+        UIApplication.shared.openURL(URL(string: "http://cwsoft.cc")!)
+    }
+    
     // MARK: - System Override Functions
     
     override func viewDidLoad() {

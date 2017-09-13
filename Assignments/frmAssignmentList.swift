@@ -35,9 +35,12 @@ func syncAssignmentListWithFocus () {
 }
 
 
-class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate {
+class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
     
     // MARK: Form Outlets
+    
+    @IBOutlet weak var btnListIsEmpty: UIButton!
+    
     
     @IBOutlet weak var vLeft: UIView!
     @IBOutlet weak var tblSubjectList: UITableView!
@@ -47,10 +50,16 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var tblAssignmentList: UITableView!
     @IBOutlet weak var btnShowCompleted: ZFRippleButton!
     
+    @IBOutlet weak var btnAddNew: ZFRippleButton!
+    
     @IBOutlet weak var webView: UIWebView!
     
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var lbSyncingWithFocus: UILabel!
+    
+    @IBOutlet weak var btnSettings: ZFRippleButton!
+    
+    let coachMarksController = CoachMarksController()
     
     // Layout
     
@@ -71,6 +80,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         tblAssignmentList.dataSource = self
         tblSubjectList.delegate = self
         tblSubjectList.dataSource = self
+        coachMarksController.dataSource = self
     
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -96,6 +106,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             if (nsCurAssignmentID != nil) {
                 curAssignmentID = NSKeyedUnarchiver.unarchiveObject(with: nsCurAssignmentID as! Data) as! Int
             }
+            
             loadedFromSystem = true
         }
         
@@ -122,6 +133,13 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             syncAssignmentListWithFocus()
         } else {
             loggedInFocus = false
+        }
+        
+        
+        let nsfirstOpen = UserDefaults.standard.object(forKey: "firstOpen")
+        if (nsfirstOpen == nil) {
+            print("start")
+            coachMarksController.start(on: self)
         }
     }
     
@@ -410,6 +428,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         refreshShowCompletedButton()
         tblAssignmentList.reloadData()
         
+        btnListIsEmpty.isHidden = !(tableSubjectList.count == 0)
+        
         refreshTableSubject()
     }
     
@@ -449,6 +469,36 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     
+    // MARK: - Coach
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 2
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                              coachMarkAt index: Int) -> CoachMark {
+        if (index == 0) {
+            return coachMarksController.helper.makeCoachMark(for: btnAddNew)
+        } else if (index == 1) {
+            return coachMarksController.helper.makeCoachMark(for: btnSettings)
+        }
+        return coachMarksController.helper.makeCoachMark(for: self.view)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        if (index == 0) {UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: subjectList), forKey: "subjectList")
+            coachViews.bodyView.hintLabel.text = "Tap here to add a new assignment."
+            coachViews.bodyView.nextLabel.text = "OK"
+        } else if (index == 1) {
+            coachViews.bodyView.hintLabel.text = "If you are a MVC student, you can login to Focus in settings."
+            coachViews.bodyView.nextLabel.text = "OK"
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "firstOpen")
+        }
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
     
     /*
      // MARK: - Navigation

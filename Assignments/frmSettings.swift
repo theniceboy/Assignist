@@ -14,6 +14,10 @@ class frmSettings: UIViewController {
 
     // MARK: - Outlets
     
+    @IBOutlet weak var btnStNotifications: UIButton!
+    @IBOutlet weak var btnStFocus: UIButton!
+    
+    @IBOutlet weak var vNotificationSettings: UIView!
     @IBOutlet weak var vFocus: UIView!
     
     // MARK: From vFocus
@@ -24,6 +28,10 @@ class frmSettings: UIViewController {
     @IBOutlet weak var btnLogoutFocus: ZFRippleButton!
     
     @IBOutlet weak var _layout_vLogoutFocus: NSLayoutConstraint!
+    
+    // MARK: from vNotifications
+    
+    @IBOutlet weak var timePicker: UIDatePicker!
     
     // MARK: - Variables
     
@@ -39,6 +47,11 @@ class frmSettings: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.btnBackground_Tapped(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        // For vNotifications
+        
+        let defaultDate = Date(year: 1991, month: 12, day: 27, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+        timePicker.setDate(defaultDate, animated: false)
         
         // For vFocus
         btnLoginFocus.layer.cornerRadius = 8
@@ -56,6 +69,30 @@ class frmSettings: UIViewController {
     @IBAction func btnDone_Tapped(_ sender: Any) {
         self.dismiss(animated: true) {
         }
+    }
+    
+    @IBAction func btnStNotification_Tapped(_ sender: Any) {
+        vNotificationSettings.isHidden = false
+        vFocus.isHidden = true
+        
+        btnStNotifications.backgroundColor = UIColor.white
+        btnStFocus.backgroundColor = UIColor.groupTableViewBackground
+    }
+    
+    @IBAction func btnStFocus_Tapped(_ sender: Any) {
+        vNotificationSettings.isHidden = true
+        vFocus.isHidden = false
+        
+        btnStNotifications.backgroundColor = UIColor.groupTableViewBackground
+        btnStFocus.backgroundColor = UIColor.white
+    }
+    
+    // MARK: - From vNotifications
+    
+    @IBAction func timePicker_ValueChanged(_ sender: Any) {
+        userSettings.defaultPushNotificationTime_hour = timePicker.date.hour
+        userSettings.defaultPushNotificationTime_minute = timePicker.date.minute
+        saveUserSettings()
     }
     
     // MARK: - From vFocus
