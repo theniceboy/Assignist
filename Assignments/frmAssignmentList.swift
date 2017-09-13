@@ -148,7 +148,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     func LoginOvertime () {
         activityStop()
         if (!loggedInFocus) {
-            Drop.down("Loggin Overtime. Please Check Your Internet.", state: .warning)
+            Drop.down("Loggin Timeout. Please Check Your Internet.", state: .warning)
         }
     }
     

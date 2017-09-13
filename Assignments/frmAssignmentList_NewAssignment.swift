@@ -42,6 +42,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     @IBOutlet weak var lbPlaceHolder_tfComments: UILabel!
     
     @IBOutlet weak var lbDueDate: UILabel!
+    @IBOutlet weak var vSetDueDayTime: UIView!
     @IBOutlet weak var btnSetDueDate: ZFRippleButton!
     
     @IBOutlet weak var sgcSetDueTime: BetterSegmentedControl!
@@ -120,6 +121,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             
             tvComments.text = editAssignment.comments
             
+            vSetDueDayTime.isHidden = editAssignment.fromFocus
+            
             tmpDueDate = editAssignment.dueDate
             sgcSetDueTime_firstOpens = true
             if (tmpDueDate.hour == 7 && tmpDueDate.minute == 30) {
@@ -182,7 +185,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             showSuggestionArea()
         }
         let intro_frmNewAssignment = UserDefaults.standard.object(forKey: "intro_frmNewAssignment")
-        if (intro_frmNewAssignment == nil) {
+        if (intro_frmNewAssignment == nil && !_EDIT_MODE_) {
             coachMarksController.start(on: self)
         } else {
             //tfTitle.becomeFirstResponder()

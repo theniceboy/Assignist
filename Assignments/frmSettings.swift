@@ -67,6 +67,14 @@ class frmSettings: UIViewController {
     // MARK: - Universal
     
     @IBAction func btnDone_Tapped(_ sender: Any) {
+        for item in UIApplication.shared.scheduledLocalNotifications! {
+            if (item.fireDate?.hour == userSettings.defaultPushNotificationTime_hour && item.fireDate?.minute == userSettings.defaultPushNotificationTime_minute) {
+                item.fireDate = Date(year: (item.fireDate?.year)!, month: (item.fireDate?.month)!, day: (item.fireDate?.day)!, hour: timePicker.date.hour, minute: timePicker.date.minute, second: 0)
+            }
+        }
+        userSettings.defaultPushNotificationTime_hour = timePicker.date.hour
+        userSettings.defaultPushNotificationTime_minute = timePicker.date.minute
+        saveUserSettings()
         self.dismiss(animated: true) {
         }
     }
@@ -90,9 +98,6 @@ class frmSettings: UIViewController {
     // MARK: - From vNotifications
     
     @IBAction func timePicker_ValueChanged(_ sender: Any) {
-        userSettings.defaultPushNotificationTime_hour = timePicker.date.hour
-        userSettings.defaultPushNotificationTime_minute = timePicker.date.minute
-        saveUserSettings()
     }
     
     // MARK: - From vFocus
@@ -144,7 +149,7 @@ class frmSettings: UIViewController {
             if (!loggedInFocus && !curFrmAssignmentList.webView.isLoading && self.showOvertime) {
                 SwiftSpinner.sharedInstance.innerColor = UIColor.white
                 SwiftSpinner.sharedInstance.outerColor = UIColor.yellow.withAlphaComponent(0.5)
-                SwiftSpinner.show(duration: 2.0, title: "Connection Overtime, Try Again Later", animated: false)
+                SwiftSpinner.show(duration: 2.0, title: "Connection Timeout, Try Again Later", animated: false)
             }
         }
     }
@@ -219,6 +224,8 @@ class frmSettings: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self._layout_vLogoutFocus.constant = 0
             self.view.layoutIfNeeded()
+        }
+        self.dismiss(animated: true) {
         }
     }
     
