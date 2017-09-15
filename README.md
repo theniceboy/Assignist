@@ -1,3 +1,5 @@
+[Download Assignist Now!][2]
+
 ## Assignments
 Manage all your assignments in a very simple way!
 
@@ -9,9 +11,10 @@ Focus syncing feature will be supporting more schools in the future! If your sch
 Swift 4.0
 
 ### Version:
-0.1.0 build 5
+0.1.1 build 2
 
 ### Author:
 [David Chen][1]
 
 [1]:	http://cwsoft.cc
+[2]:  https://itunes.apple.com/us/app/assignments/id1281376562
