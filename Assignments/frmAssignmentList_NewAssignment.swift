@@ -34,6 +34,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     @IBOutlet weak var tfTitle: SkyFloatingLabelTextField!
     @IBOutlet weak var vClear: UIView!
+    @IBOutlet weak var vTitleBlocker: UIView!
     
     @IBOutlet weak var vSuggestions: UIView!
     
@@ -109,6 +110,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             editAssignment = assignmentList[getRowNum_AssignmentList(id: _EDIT_ID_)]
             
             btnDeleteAssignment.isHidden = editAssignment.fromFocus
+            vTitleBlocker.isHidden = !editAssignment.fromFocus
             
             btnAdd.setTitle("Done", for: .normal)
             
@@ -273,7 +275,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                 UIApplication.shared.scheduleLocalNotification(notification)
             }
         } else {
-            
             assignmentItem.id = curAssignmentID
             curAssignmentID += 1
             saveCurAssignmentID()

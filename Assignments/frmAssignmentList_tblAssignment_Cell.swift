@@ -164,7 +164,6 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     
     func setCheckStateUI (checked: Bool) {
         if (checked) {
-            assignmentList[assignmentRow].checked = true
             UIView.animate(withDuration: 0.1, animations: {
                 self.vSubjectBlockingArea.backgroundColor = self.subjectUIColor.withAlphaComponent(0.2)
                 self.vMaster.backgroundColor = self.subjectUIColor.withAlphaComponent(0.1)
@@ -214,6 +213,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             }
             
         }
+        assignmentList[assignmentRow].checkedDate = Date()
         saveAssignmentList()
         
         setCheckStateUI(checked: assignmentList[assignmentRow].checked)

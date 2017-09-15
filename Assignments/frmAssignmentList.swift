@@ -394,7 +394,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             if (tableAssignmentList_checked.count > 1) {
                 for i in 0 ... (tableAssignmentList_checked.count - 2) {
                     for j in (i + 1) ... (tableAssignmentList_checked.count - 1) {
-                        if (tableAssignmentList_checked[i].dueDate.timeIntervalSince1970 > tableAssignmentList_checked[j].dueDate.timeIntervalSince1970) {
+                        if (tableAssignmentList_checked[i].checkedDate.timeIntervalSince1970 < tableAssignmentList_checked[j].checkedDate.timeIntervalSince1970) {
                             swaptable_checked(a: i, b: j)
                         }
                     }

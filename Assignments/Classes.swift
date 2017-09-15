@@ -29,6 +29,7 @@ class AssignmentItem: NSObject, NSCoding {
     var priority: Int = 0 // 0: Normal, 1: !, 2: !!
     var fromFocus: Bool = false
     var notificationOn: Bool = false
+    var checkedDate: Date = Date()
     
     // Functions
     
@@ -44,6 +45,7 @@ class AssignmentItem: NSObject, NSCoding {
         priority = aDecoder.decodeInteger(forKey: "priority")
         fromFocus = aDecoder.decodeBool(forKey: "fromFocus")
         notificationOn = aDecoder.decodeBool(forKey: "notificationOn")
+        checkedDate = aDecoder.decodeObject(forKey: "checkedDate") as? Date ?? Date()
     }
     
     func encode(with aCoder: NSCoder) {
@@ -56,6 +58,7 @@ class AssignmentItem: NSObject, NSCoding {
         aCoder.encode(priority, forKey: "priority")
         aCoder.encode(fromFocus, forKey: "fromFocus")
         aCoder.encode(notificationOn, forKey: "notificationOn")
+        aCoder.encode(checkedDate, forKey: "checkedDate")
     }
 }
 
