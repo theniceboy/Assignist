@@ -42,6 +42,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     @IBOutlet weak var tvComments: UITextView!
     @IBOutlet weak var lbPlaceHolder_tfComments: UILabel!
     
+    @IBOutlet weak var sgcSetPriority: BetterSegmentedControl!
+    
     @IBOutlet weak var lbDueDate: UILabel!
     @IBOutlet weak var vSetDueDayTime: UIView!
     @IBOutlet weak var btnSetDueDate: ZFRippleButton!
@@ -83,6 +85,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     // MARK: For btnAdd_Tapped (_:)
     
     var tmpSubject: String = ""
+    var tmpPriority: Int = 0
     var tmpDueDate: Date = Date()
     var notificationOn: Bool = true
     var notifyDateTime: Date = Date()
@@ -123,6 +126,10 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             
             tvComments.text = editAssignment.comments
             
+            do {
+                try sgcSetPriority.setIndex(UInt(editAssignment.priority))
+            } catch { }
+            
             vSetDueDayTime.isHidden = editAssignment.fromFocus
             
             tmpDueDate = editAssignment.dueDate
@@ -153,6 +160,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             }
             switchSetNotification.setOn(notificationOn, animated: false)
         } else {
+            vTitleBlocker.isHidden = true
             btnDeleteAssignment.isHidden = true
             
             btnAdd.setTitle("Add", for: .normal)
@@ -253,6 +261,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentList[rowNumber].title = (tfTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
             assignmentList[rowNumber].comments = tvComments.text
             assignmentList[rowNumber].subject = tmpSubject
+            assignmentList[rowNumber].priority = tmpPriority
             assignmentList[rowNumber].dueDate = tmpDueDate
             
             assignmentList[rowNumber].notificationOn = notificationOn
@@ -267,9 +276,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                 let notification = UILocalNotification()
                 notification.fireDate = notifyDateTime
                 notification.soundName = UILocalNotificationDefaultSoundName
-                for _ in 0 ... 10 {
-                    print("_____________")
-                }
                 notification.userInfo = ["id": assignmentList[rowNumber].id]
                 notification.alertBody = "[" + assignmentList[rowNumber].subject + "] " + assignmentList[rowNumber].title
                 UIApplication.shared.scheduleLocalNotification(notification)
@@ -281,6 +287,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentItem.title = (tfTitle.text?.trimmingCharacters(in: .whitespacesAndNewlines))!
             assignmentItem.comments = tvComments.text
             assignmentItem.subject = tmpSubject
+            assignmentItem.priority = tmpPriority
             assignmentItem.dueDate = tmpDueDate
             
             assignmentItem.notificationOn = notificationOn
@@ -342,6 +349,21 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     @IBAction func btnClear_Tapped(_ sender: Any) {
         tfTitle.text = ""
         tfTitle_EditingChanged(self)
+    }
+    
+    // MARK: Actions - Set Priority Settings
+    
+    @IBAction func sgcSetPriority_ValueChanged(_ sender: BetterSegmentedControl) {
+        let selected: String = sender.titles[Int(sender.index)]
+        if (selected == "Normal") {
+            tmpPriority = 0
+        } else if (selected == "!") {
+            tmpPriority = 1
+        } else if (selected == "!!") {
+            tmpPriority = 2
+        } else if (selected == "!!!") {
+            tmpPriority = 3
+        }
     }
     
     // MARK: Actions - Due Day Time Settings
@@ -480,6 +502,10 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         vComments.layer.borderColor = themeColor.cgColor
         tvComments_FocusOff()
         
+        sgcSetPriority.layer.borderColor = themeColor.cgColor
+        sgcSetPriority.layer.borderWidth = 0.8
+        sgcSetPriority.titles = ["Normal", "!", "!!", "!!!"]
+        
         sgcSetDueTime.layer.borderColor = themeColor.cgColor
         sgcSetDueTime.layer.borderWidth = 0.8
         sgcSetDueTime.titles = ["Morning", "Midnight", "Custom"]
@@ -508,7 +534,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     }
     
     func updateSubjectDropDataSource () {
-        dropSelectSubject.dataSource = ["                 +"]
+        dropSelectSubject.dataSource = [" + Add New Subject "]
         for subject: SubjectItem in subjectList {
             dropSelectSubject.dataSource.append(subject.name)
         }

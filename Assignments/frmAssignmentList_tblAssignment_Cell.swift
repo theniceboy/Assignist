@@ -17,6 +17,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     @IBOutlet weak var vSubjectBlockingArea: UIView!
     @IBOutlet weak var lbSubject: UILabel!
     @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var lbPriority: UILabel!
     @IBOutlet weak var vChecked: UIView!
     @IBOutlet weak var lbSectionHeader: UILabel!
     @IBOutlet weak var lbDueTime: UILabel!
@@ -24,6 +25,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     
     @IBOutlet weak var _layout_vMasterTopMargin: NSLayoutConstraint!
     @IBOutlet weak var _layout_vMasterHeightAnchor: NSLayoutConstraint!
+    @IBOutlet weak var _layout_lbPriorityWidth: NSLayoutConstraint!
     
     // MARK: - UI
     
@@ -31,6 +33,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     var cChecked: M13Checkbox = M13Checkbox()
     var rowNumber: Int = 0
     var assignmentRow: Int = 0
+    var priorityStr: [String] = ["", "!", "!!", "!!!"]
     
     // MARK: - Functions
     
@@ -104,6 +107,15 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         }
         
         assignmentRow = getRowNum_AssignmentList(id: tableAssignmentList[rowNumber].id)
+        
+        if (tableAssignmentList[rowNumber].priority == 0) {
+            _layout_lbPriorityWidth.constant = 0
+            self.layoutIfNeeded()
+        } else {
+            lbPriority.text = priorityStr[tableAssignmentList[rowNumber].priority]
+            _layout_lbPriorityWidth.constant = 20
+            self.layoutIfNeeded()
+        }
         
         vMaster.layer.shadowColor = UIColor.black.cgColor
         vMaster.layer.shadowOffset = CGSize.zero
