@@ -9,7 +9,7 @@ Focus syncing feature will be supporting more schools in the future! If your sch
 Swift 4.0
 
 ### Version:
-0.1.0 build 4
+0.1.0 build 5
 
 ### Author:
 [David Chen][1]
