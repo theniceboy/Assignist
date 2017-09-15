@@ -227,7 +227,7 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 curAssignmentID += 1
                 saveCurAssignmentID()
                 assignmentItem.title = focusAssignmentList[i].title
-                assignmentItem.comments = "Synced from focus"
+                assignmentItem.comments = "" //"Synced from focus"
                 assignmentItem.subject = focusAssignmentList[i].subject
                 assignmentItem.dueDate = focusAssignmentList[i].duedate
                 assignmentItem.fromFocus = true
