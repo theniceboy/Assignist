@@ -12,6 +12,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="TrebuchetMS.ttf">
+            <string>TrebuchetMS</string>
+        </array>
+        <array key="TrebuchetMSBold.ttf">
+            <string>TrebuchetMS-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Frm About-->
         <scene sceneID="pCK-l0-ftc">
@@ -21,6 +29,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ssignist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf5-L2-yxF">
+                                <rect key="frame" x="180.5" y="155" width="243.5" height="84"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="72"/>
+                                <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By David Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doh-nX-aat">
+                                <rect key="frame" x="315.5" y="231" width="108.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNy-k0-tGb">
+                                <rect key="frame" x="367" y="526.5" width="52" height="32"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <state key="normal" title="Github">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnGithub_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="QX2-Xl-oat"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an open source application. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uc-wQ-Km3">
+                                <rect key="frame" x="135" y="506.5" width="270" height="20"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download the source code from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buf-b4-cFd">
+                                <rect key="frame" x="118.5" y="531" width="242" height="20"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are more than welcomed to point out any bug in the code. Pull requests and issues are welcomed too." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyX-Dx-blj">
+                                <rect key="frame" x="50" y="555" width="440" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="qna-7g-YvU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-la-UhJ">
+                                <rect key="frame" x="159" y="472.5" width="221" height="32"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <state key="normal" title="Visit the Developer's Website">
+                                    <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnVisitDeveloperWebsite_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="cef-EK-new"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wxk-fo-9cu">
+                                <rect key="frame" x="97" y="145" width="104" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="0l1-uD-pWz"/>
+                                    <constraint firstAttribute="width" constant="104" id="tS3-gu-Uxt"/>
+                                </constraints>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hY-Xh-49T">
                                 <rect key="frame" x="0.0" y="0.0" width="540" height="55"/>
                                 <subviews>
@@ -52,7 +120,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About This App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6B-8y-4qw">
-                                        <rect key="frame" x="205.5" y="17" width="129" height="22"/>
+                                        <rect key="frame" x="205" y="17" width="129" height="22"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -68,80 +136,29 @@
                                     <constraint firstAttribute="trailing" secondItem="8Tv-LQ-oHL" secondAttribute="trailing" id="QGD-mK-Bhj"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf5-L2-yxF">
-                                <rect key="frame" x="174" y="105" width="193.5" height="58"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="48"/>
-                                <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By David Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doh-nX-aat">
-                                <rect key="frame" x="213.5" y="172.5" width="114.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNy-k0-tGb">
-                                <rect key="frame" x="368.5" y="525" width="53" height="33"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                <state key="normal" title="Github">
-                                    <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnGithub_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="QX2-Xl-oat"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is an open source application. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uc-wQ-Km3">
-                                <rect key="frame" x="136" y="505.5" width="268.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download the source code from" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buf-b4-cFd">
-                                <rect key="frame" x="117.5" y="530" width="245" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are more than welcomed to point out any bug in the code. Pull requests and issues are welcomed too." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyX-Dx-blj">
-                                <rect key="frame" x="50" y="555" width="440" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="qna-7g-YvU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-la-UhJ">
-                                <rect key="frame" x="161.5" y="471" width="217" height="32"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <state key="normal" title="Visit the Developer's Website">
-                                    <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnVisitDeveloperWebsite_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="cef-EK-new"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="doh-nX-aat" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="4Ie-fT-0eJ"/>
                             <constraint firstItem="3Uc-wQ-Km3" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="8ZM-Ue-qXr"/>
                             <constraint firstItem="8qb-la-UhJ" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="8x4-LJ-AHs"/>
+                            <constraint firstItem="pf5-L2-yxF" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="bottom" constant="100" id="9ce-L4-eQx"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="trailing" secondItem="B2s-Ul-HnX" secondAttribute="trailing" id="H48-tg-bfO"/>
                             <constraint firstItem="UNy-k0-tGb" firstAttribute="leading" secondItem="Buf-b4-cFd" secondAttribute="trailing" constant="6" id="KoW-bl-BRv"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="top" secondItem="B2s-Ul-HnX" secondAttribute="top" id="NOp-sO-Bf7"/>
                             <constraint firstItem="B2s-Ul-HnX" firstAttribute="trailing" secondItem="UyX-Dx-blj" secondAttribute="trailing" constant="50" id="Oqz-nN-940"/>
                             <constraint firstItem="UyX-Dx-blj" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" constant="50" id="PmB-Sc-PdB"/>
-                            <constraint firstItem="pf5-L2-yxF" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="T1u-d8-Pcm"/>
+                            <constraint firstItem="doh-nX-aat" firstAttribute="top" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="-8" id="QDp-cR-7mw"/>
                             <constraint firstItem="UyX-Dx-blj" firstAttribute="top" secondItem="Buf-b4-cFd" secondAttribute="bottom" constant="4" id="TAq-TZ-W8v"/>
+                            <constraint firstItem="pf5-L2-yxF" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" constant="32" id="Urt-uQ-iy8"/>
                             <constraint firstItem="B2s-Ul-HnX" firstAttribute="bottom" secondItem="UyX-Dx-blj" secondAttribute="bottom" constant="20" id="Zob-eq-eLT"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" id="adN-gQ-qov"/>
+                            <constraint firstItem="doh-nX-aat" firstAttribute="trailing" secondItem="pf5-L2-yxF" secondAttribute="trailing" id="cEv-om-CzF"/>
                             <constraint firstItem="Buf-b4-cFd" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" constant="-30" id="d3t-Qh-oGo"/>
                             <constraint firstItem="Buf-b4-cFd" firstAttribute="top" secondItem="3Uc-wQ-Km3" secondAttribute="bottom" constant="4" id="d5g-pA-yK0"/>
+                            <constraint firstItem="pf5-L2-yxF" firstAttribute="leading" secondItem="Wxk-fo-9cu" secondAttribute="trailing" constant="-20" id="gVL-ME-cdq"/>
                             <constraint firstItem="UNy-k0-tGb" firstAttribute="centerY" secondItem="Buf-b4-cFd" secondAttribute="centerY" constant="1" id="hGi-dE-E1n"/>
-                            <constraint firstItem="pf5-L2-yxF" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="bottom" constant="50" id="iOi-4Z-7YP"/>
                             <constraint firstItem="3Uc-wQ-Km3" firstAttribute="top" secondItem="8qb-la-UhJ" secondAttribute="bottom" constant="2" id="sHW-wP-uhR"/>
-                            <constraint firstItem="doh-nX-aat" firstAttribute="top" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="10" id="uMe-Ml-hNJ"/>
+                            <constraint firstItem="Wxk-fo-9cu" firstAttribute="bottom" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="-4" id="vn3-EI-Nyy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B2s-Ul-HnX"/>
                     </view>
@@ -794,13 +811,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignment Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVM-03-jp3">
-                                        <rect key="frame" x="30" y="421" width="708" height="22"/>
+                                        <rect key="frame" x="30" y="416" width="708" height="22"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMK-te-0Hv" userLabel="-">
-                                        <rect key="frame" x="40" y="406" width="688" height="1"/>
+                                        <rect key="frame" x="40" y="401" width="688" height="1"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="2g0-dA-gmN"/>
@@ -829,7 +846,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFK-Re-hlg" userLabel="vSetDueDayTime">
-                                        <rect key="frame" x="30" y="455" width="708" height="129"/>
+                                        <rect key="frame" x="30" y="450" width="708" height="129"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOD-B8-nrw" userLabel="btnSetDueDate" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="0.0" width="270.5" height="50"/>
@@ -963,16 +980,16 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Assignment Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvS-jK-x8k">
-                                        <rect key="frame" x="40" y="359" width="200" height="21"/>
+                                        <rect key="frame" x="40" y="356.5" width="200" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsj-1u-1Tl" userLabel="sgcSetDueTime" customClass="BetterSegmentedControl" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="340" y="344" width="388" height="50"/>
+                                        <rect key="frame" x="340" y="344" width="388" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="UHS-f5-Dm5"/>
+                                            <constraint firstAttribute="height" constant="45" id="UHS-f5-Dm5"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -1907,18 +1924,48 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXK-pE-NuB" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                                <rect key="frame" x="40" y="668" width="644" height="60"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="Mnu-BU-hif"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shadowRippleEnable" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                        <color key="value" red="0.62745098040000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnUncheck_Tapped:" destination="m1v-VY-3DS" eventType="touchUpInside" id="0JZ-Uj-sc1"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="sXK-pE-NuB" secondAttribute="bottom" constant="20" id="1pG-4d-Pen"/>
                                             <constraint firstItem="s3t-wS-Cru" firstAttribute="centerY" secondItem="73u-Dj-9et" secondAttribute="centerY" id="7Eg-a0-0j1"/>
                                             <constraint firstAttribute="bottom" secondItem="7Z6-CQ-3te" secondAttribute="bottom" id="NoL-mM-aJ1"/>
                                             <constraint firstItem="CRh-sT-Gqc" firstAttribute="leading" secondItem="73u-Dj-9et" secondAttribute="leading" constant="8" id="QB4-RV-ubW"/>
                                             <constraint firstItem="7Z6-CQ-3te" firstAttribute="leading" secondItem="73u-Dj-9et" secondAttribute="leading" constant="8" id="Qif-cs-VXW"/>
                                             <constraint firstItem="CRh-sT-Gqc" firstAttribute="top" secondItem="73u-Dj-9et" secondAttribute="top" constant="5" id="bIW-p5-dOv"/>
                                             <constraint firstItem="s3t-wS-Cru" firstAttribute="centerX" secondItem="73u-Dj-9et" secondAttribute="centerX" id="e2L-eD-e13"/>
+                                            <constraint firstAttribute="trailing" secondItem="sXK-pE-NuB" secondAttribute="trailing" constant="40" id="iFp-lZ-jEe"/>
                                             <constraint firstAttribute="trailing" secondItem="CRh-sT-Gqc" secondAttribute="trailing" constant="8" id="jw9-sx-Wx5"/>
                                             <constraint firstAttribute="trailing" secondItem="7Z6-CQ-3te" secondAttribute="trailing" constant="8" id="uHw-E6-AW5"/>
                                             <constraint firstItem="7Z6-CQ-3te" firstAttribute="top" secondItem="CRh-sT-Gqc" secondAttribute="bottom" id="vy1-zr-52G"/>
+                                            <constraint firstItem="sXK-pE-NuB" firstAttribute="leading" secondItem="73u-Dj-9et" secondAttribute="leading" constant="40" id="yT8-kw-our"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1945,11 +1992,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="zSQ-Ef-RUX"/>
                     <connections>
+                        <outlet property="_layout_btnUnCheck" destination="1pG-4d-Pen" id="qC6-J7-rFV"/>
                         <outlet property="_layout_vRightTopHeightAnchor" destination="Xtt-wF-act" id="0iN-pc-kzV"/>
                         <outlet property="btnAddNew" destination="oYj-Ae-L7o" id="Obk-a8-r6F"/>
                         <outlet property="btnListIsEmpty" destination="s3t-wS-Cru" id="31Y-L8-3BU"/>
                         <outlet property="btnSettings" destination="uBN-Zm-LAv" id="KCx-Sb-xDA"/>
                         <outlet property="btnShowCompleted" destination="ea9-jF-3dr" id="rOb-ym-lWe"/>
+                        <outlet property="btnUncheck" destination="sXK-pE-NuB" id="1Rp-by-rox"/>
                         <outlet property="lbSyncingWithFocus" destination="pBB-NX-xL1" id="kQG-DN-ouu"/>
                         <outlet property="progressView" destination="Rdd-xR-1Ma" id="rmV-J9-3Lq"/>
                         <outlet property="tblAssignmentList" destination="Aw0-oc-Vub" id="6DU-Hj-P3F"/>
@@ -1967,6 +2016,7 @@
     </scenes>
     <resources>
         <image name="EmptyList" width="770" height="808"/>
+        <image name="Logo" width="324" height="510"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

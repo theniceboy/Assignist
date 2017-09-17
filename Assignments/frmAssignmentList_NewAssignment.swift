@@ -122,7 +122,9 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             updateTopBarUI()
             
             tfTitle.text = editAssignment.title
-            showClearButton()
+            if (!editAssignment.fromFocus) {
+                showClearButton()
+            }
             
             tvComments.text = editAssignment.comments
             
@@ -164,6 +166,13 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             btnDeleteAssignment.isHidden = true
             
             btnAdd.setTitle("Add", for: .normal)
+            
+            if (!curFrmAssignmentList.showAllSubjectAssignment) {
+                btnSelectSubject.setTitle(curFrmAssignmentList.currentSubjectName, for: .normal)
+                tmpSubject = curFrmAssignmentList.currentSubjectName
+                updateTopBarUI()
+            }
+            
             tfTitle.text = ""
             hideClearButton()
             tvComments.text = ""
@@ -610,7 +619,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     func updateTopBarUI () {
         if (tmpSubject == "") {
-            vTopBar.backgroundColor = UIColor.white
+            vTopBar.backgroundColor = themeColor
         } else {
             vTopBar.backgroundColor = subjectColor(string: tmpSubject)
         }

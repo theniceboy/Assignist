@@ -59,11 +59,15 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var btnSettings: ZFRippleButton!
     
+    @IBOutlet weak var btnUncheck: ZFRippleButton!
+    
+    
     let coachMarksController = CoachMarksController()
     
     // Layout
     
     @IBOutlet weak var _layout_vRightTopHeightAnchor: NSLayoutConstraint!
+    @IBOutlet weak var _layout_btnUnCheck: NSLayoutConstraint!
     
     // Variables
     
@@ -269,6 +273,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
+    @IBAction func btnUncheck_Tapped(_ sender: Any) {
+    }
     
     // MARK: - TableView Delegate & DataSource
     
@@ -337,7 +343,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func swaptable_checked (a: Int, b: Int) {
-        var c = tableAssignmentList_checked[a]
+        let c = tableAssignmentList_checked[a]
         tableAssignmentList_checked[a] = tableAssignmentList_checked[b]
         tableAssignmentList_checked[b] = c
     }
@@ -451,6 +457,22 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         self.performSegue(withIdentifier: "segueShowFrmNewAssignment", sender: self)
     }
     
+    // MARK: - btnUncheck
+    
+    func showUncheckButton () {
+        _layout_btnUnCheck.constant = -80
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) {
+            self._layout_btnUnCheck.constant = 20
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    func hideUncheckButton () {
+        
+    }
+    
     // MARK: - Test Only
     
     @IBAction func clearAll(_ sender: Any) {
@@ -467,6 +489,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         refreshTableAssignmentList()
  */
     }
+    
+    // MARK{ 
     
     
     // MARK: - Coach

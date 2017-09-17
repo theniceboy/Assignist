@@ -80,29 +80,29 @@ func newSubjectColor () -> UIColor {
     var firstG: CGFloat = 0, secondG: CGFloat = 0
     var firstB: CGFloat = 0, secondB: CGFloat = 0
     var firstAlpha: CGFloat = 0, secondAlpha: CGFloat = 0
-    //for _ in 0 ... 100000 {
-    while (!colorOK) {
+    for _ in 0 ... 100000 {
+    //while (!colorOK) {
         newColor = randomColor(hue: Hue.random, luminosity: Luminosity.light)
         colorOK = true
         for item in subjectList {
             newColor.getRed(&firstR, green: &firstG, blue: &firstB, alpha: &firstAlpha)
-            if (firstR + firstG + firstB < 1) {
+            if (firstR + firstG + firstB < 0.9) {
                 colorOK = false
                 break
             }
             item.color.getRed(&secondR, green: &secondG, blue: &secondB, alpha: &secondAlpha)
             if (cgfloatABS(value: (firstR - secondR)) +
                 cgfloatABS(value: (firstG - secondG)) +
-                cgfloatABS(value: (firstB - secondB)) < 0.3) {
+                cgfloatABS(value: (firstB - secondB)) < 0.6) {
                 colorOK = false
                 break
             }
         }
-        /*
+        
         if (colorOK) {
             break
         }
- */
+ 
     }
     return newColor
 }
