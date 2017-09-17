@@ -426,15 +426,12 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func refreshTableAssignmentList (formatTable: Bool = true, refreshSubject: Bool = true) {
-        
         if (formatTable) {
             formatTableData()
             btnListIsEmpty.isHidden = !(tableAssignmentList.count == 0)
         }
-        //printTableAssignments()
         refreshShowCompletedButton()
         tblAssignmentList.reloadData()
-        
         
         refreshTableSubject()
     }

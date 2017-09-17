@@ -13,6 +13,9 @@
         <array key="TrebuchetMSBold.ttf">
             <string>TrebuchetMS-Bold</string>
         </array>
+        <array key="TrebuchetMSItalic.ttf">
+            <string>TrebuchetMS-Italic</string>
+        </array>
     </customFonts>
     <scenes>
         <!--View Controller-->
@@ -29,20 +32,37 @@
                                 <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="rE4-g4-65k">
-                                <rect key="frame" x="350" y="259" width="324" height="250"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ssignist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pys-cU-LLZ">
+                                <rect key="frame" x="393" y="306" width="338" height="116.5"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="100"/>
+                                <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="DXL-w5-mhS">
+                                <rect key="frame" x="291" y="280.5" width="104" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="Oqg-ZY-fGp"/>
+                                    <constraint firstAttribute="height" constant="140" id="WfX-sD-RrV"/>
+                                    <constraint firstAttribute="width" constant="104" id="vWT-if-GkQ"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By David Chen" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a12-La-qKm">
+                                <rect key="frame" x="583" y="409" width="147.5" height="27"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Italic" family="Trebuchet MS" pointSize="23"/>
+                                <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="DXL-w5-mhS" firstAttribute="bottom" secondItem="Pys-cU-LLZ" secondAttribute="bottom" constant="-2" id="1j4-7m-cyU"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="rE4-g4-65k" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="CQf-yr-jgi"/>
+                            <constraint firstItem="a12-La-qKm" firstAttribute="top" secondItem="Pys-cU-LLZ" secondAttribute="bottom" constant="-13.5" id="89M-sq-Hkc"/>
+                            <constraint firstItem="Pys-cU-LLZ" firstAttribute="leading" secondItem="DXL-w5-mhS" secondAttribute="trailing" constant="-2" id="QQ7-Zw-iaX"/>
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="SfN-ll-jLj"/>
+                            <constraint firstItem="Pys-cU-LLZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="50" id="Spg-D4-4Px"/>
+                            <constraint firstItem="Pys-cU-LLZ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-20" id="VHN-AG-uJR"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstItem="rE4-g4-65k" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="se6-7N-9RY"/>
+                            <constraint firstItem="a12-La-qKm" firstAttribute="trailing" secondItem="Pys-cU-LLZ" secondAttribute="trailing" id="tXV-d6-ZBC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
