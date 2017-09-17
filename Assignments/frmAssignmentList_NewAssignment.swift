@@ -63,6 +63,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     @IBOutlet weak var _layout_vClearWidthAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_vSuggestionsHeightAnchor: NSLayoutConstraint!
+    @IBOutlet weak var _layout_NotificationTopMargin: NSLayoutConstraint!
     
     // MARK: - Variables
     
@@ -133,6 +134,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             } catch { }
             
             vSetDueDayTime.isHidden = editAssignment.fromFocus
+            _layout_NotificationTopMargin.constant = (editAssignment.fromFocus ? 14 : 110)
             
             tmpDueDate = editAssignment.dueDate
             sgcSetDueTime_firstOpens = true
@@ -179,6 +181,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             do {
                 try sgcSetDueTime.setIndex(0)
             } catch { }
+            
+            _layout_NotificationTopMargin.constant = 110
             
             tmpDueDate = Date(year: Date.tomorrow().year, month: Date.tomorrow().month, day: Date.tomorrow().day, hour: 7, minute: 30, second: 0)
             
@@ -472,7 +476,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     }
     
     func tvComments_FocusOff () {
-        vComments.layer.borderWidth = 0.7
+        vComments.layer.borderWidth = 0.8
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {

@@ -86,14 +86,14 @@ func newSubjectColor () -> UIColor {
         colorOK = true
         for item in subjectList {
             newColor.getRed(&firstR, green: &firstG, blue: &firstB, alpha: &firstAlpha)
-            if (firstR + firstG + firstB < 0.9) {
+            if (firstR + firstG + firstB < 1) {
                 colorOK = false
                 break
             }
             item.color.getRed(&secondR, green: &secondG, blue: &secondB, alpha: &secondAlpha)
             if (cgfloatABS(value: (firstR - secondR)) +
                 cgfloatABS(value: (firstG - secondG)) +
-                cgfloatABS(value: (firstB - secondB)) < 0.6) {
+                cgfloatABS(value: (firstB - secondB)) < 0.4) {
                 colorOK = false
                 break
             }

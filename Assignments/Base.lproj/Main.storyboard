@@ -794,9 +794,9 @@
                                                     <outlet property="delegate" destination="zjV-ZC-wLg" id="T8G-ih-0Uk"/>
                                                 </connections>
                                             </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add any comment to this assignment if you need. (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zf-Gp-T7U" userLabel="lbPlaceHolder_tfComments">
-                                                <rect key="frame" x="5" y="8" width="384.5" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add any comment to this assignment if you need to. (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zf-Gp-T7U" userLabel="lbPlaceHolder_tfComments">
+                                                <rect key="frame" x="8" y="8" width="366" height="15.5"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="13"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -804,7 +804,7 @@
                                         <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstItem="3Zf-Gp-T7U" firstAttribute="top" secondItem="5u8-ic-mPa" secondAttribute="top" constant="8" id="1ca-bd-8Gi"/>
-                                            <constraint firstItem="3Zf-Gp-T7U" firstAttribute="leading" secondItem="5u8-ic-mPa" secondAttribute="leading" constant="5" id="8LK-wk-l3E"/>
+                                            <constraint firstItem="3Zf-Gp-T7U" firstAttribute="leading" secondItem="5u8-ic-mPa" secondAttribute="leading" constant="8" id="8LK-wk-l3E"/>
                                             <constraint firstAttribute="bottom" secondItem="vhP-h1-1yL" secondAttribute="bottom" id="HsF-Ho-apP"/>
                                             <constraint firstAttribute="height" constant="70" id="by0-DK-aox"/>
                                             <constraint firstItem="vhP-h1-1yL" firstAttribute="top" secondItem="5u8-ic-mPa" secondAttribute="top" id="jrJ-so-ygv"/>
@@ -848,7 +848,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFK-Re-hlg" userLabel="vSetDueDayTime">
-                                        <rect key="frame" x="30" y="449" width="708" height="129"/>
+                                        <rect key="frame" x="30" y="449" width="708" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOD-B8-nrw" userLabel="btnSetDueDate" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="0.0" width="270.5" height="50"/>
@@ -883,62 +883,6 @@
                                                     <constraint firstAttribute="width" constant="1" id="6cv-lc-oxd"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qp4-iN-NeP" userLabel="vSetNotification">
-                                                <rect key="frame" x="8" y="64" width="692" height="65"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Me a Night Before" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzN-WV-7vZ">
-                                                        <rect key="frame" x="14" y="12" width="206.5" height="21"/>
-                                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
-                                                        <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can set the time to push notification in app settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5F-a4-hhu">
-                                                        <rect key="frame" x="14" y="33" width="402.5" height="19"/>
-                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
-                                                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVc-ej-0vq" userLabel="switchSetNotification" customClass="SevenSwitch" customModule="Assignments" customModuleProvider="target">
-                                                        <rect key="frame" x="608" y="15" width="68" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="68" id="Q86-SO-mC0"/>
-                                                            <constraint firstAttribute="height" constant="35" id="cFr-Vt-Etk"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
-                                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="onThumbTintColor">
-                                                                <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="switchSetNotification_ValueChanged:" destination="zjV-ZC-wLg" eventType="valueChanged" id="YUw-NF-Xg0"/>
-                                                        </connections>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="z5F-a4-hhu" firstAttribute="leading" secondItem="qp4-iN-NeP" secondAttribute="leading" constant="14" id="GGD-cM-XTu"/>
-                                                    <constraint firstItem="z5F-a4-hhu" firstAttribute="top" secondItem="jzN-WV-7vZ" secondAttribute="bottom" id="STM-hi-YKB"/>
-                                                    <constraint firstItem="uVc-ej-0vq" firstAttribute="centerY" secondItem="qp4-iN-NeP" secondAttribute="centerY" id="Ykm-Df-lPj"/>
-                                                    <constraint firstItem="jzN-WV-7vZ" firstAttribute="top" secondItem="qp4-iN-NeP" secondAttribute="top" constant="12" id="b06-bC-9uO"/>
-                                                    <constraint firstItem="jzN-WV-7vZ" firstAttribute="leading" secondItem="qp4-iN-NeP" secondAttribute="leading" constant="14" id="cb9-jT-yVF"/>
-                                                    <constraint firstAttribute="height" constant="65" id="d1n-QX-yPF"/>
-                                                    <constraint firstAttribute="trailing" secondItem="uVc-ej-0vq" secondAttribute="trailing" constant="16" id="zKC-cL-79T"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRo-yw-oUd" userLabel="sgcSetDueTime" customClass="BetterSegmentedControl" customModule="Assignments" customModuleProvider="target">
                                                 <rect key="frame" x="309" y="0.0" width="390.5" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -967,18 +911,15 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="vOD-B8-nrw" firstAttribute="top" secondItem="YFK-Re-hlg" secondAttribute="top" id="2NZ-K9-b7a"/>
-                                            <constraint firstAttribute="bottom" secondItem="qp4-iN-NeP" secondAttribute="bottom" id="335-ic-OaO"/>
                                             <constraint firstAttribute="trailing" secondItem="LRo-yw-oUd" secondAttribute="trailing" constant="8" id="3h8-62-5Hl"/>
+                                            <constraint firstAttribute="height" constant="50" id="64S-1W-WBR"/>
                                             <constraint firstItem="UMU-I3-mvl" firstAttribute="leading" secondItem="vOD-B8-nrw" secondAttribute="trailing" constant="15" id="90K-wj-fF9"/>
                                             <constraint firstItem="UMU-I3-mvl" firstAttribute="top" secondItem="YFK-Re-hlg" secondAttribute="top" constant="4" id="AEa-hs-hrt"/>
                                             <constraint firstItem="UMU-I3-mvl" firstAttribute="centerX" secondItem="YFK-Re-hlg" secondAttribute="centerX" constant="-60" id="BF7-J4-xj3"/>
-                                            <constraint firstAttribute="trailing" secondItem="qp4-iN-NeP" secondAttribute="trailing" constant="8" id="CPU-Oa-xT9"/>
-                                            <constraint firstItem="qp4-iN-NeP" firstAttribute="top" secondItem="vOD-B8-nrw" secondAttribute="bottom" constant="14" id="JIB-f8-BHB"/>
                                             <constraint firstItem="LRo-yw-oUd" firstAttribute="leading" secondItem="UMU-I3-mvl" secondAttribute="trailing" constant="15" id="N9q-th-eug"/>
                                             <constraint firstItem="LRo-yw-oUd" firstAttribute="bottom" secondItem="vOD-B8-nrw" secondAttribute="bottom" id="OMI-dn-kA2"/>
                                             <constraint firstItem="UMU-I3-mvl" firstAttribute="bottom" secondItem="vOD-B8-nrw" secondAttribute="bottom" constant="-4" id="iS4-lm-hRA"/>
                                             <constraint firstItem="LRo-yw-oUd" firstAttribute="top" secondItem="YFK-Re-hlg" secondAttribute="top" id="jha-Y3-Dic"/>
-                                            <constraint firstItem="qp4-iN-NeP" firstAttribute="leading" secondItem="YFK-Re-hlg" secondAttribute="leading" constant="8" id="kOg-tk-Nbu"/>
                                             <constraint firstItem="vOD-B8-nrw" firstAttribute="leading" secondItem="YFK-Re-hlg" secondAttribute="leading" constant="8" id="u1U-yp-PLt"/>
                                         </constraints>
                                     </view>
@@ -1015,6 +956,62 @@
                                             <action selector="sgcSetPriority_ValueChanged:" destination="zjV-ZC-wLg" eventType="valueChanged" id="o4c-Qj-nZJ"/>
                                         </connections>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qp4-iN-NeP" userLabel="vSetNotification">
+                                        <rect key="frame" x="40" y="512" width="688" height="65"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Me a Night Before" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzN-WV-7vZ">
+                                                <rect key="frame" x="14" y="12" width="206.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
+                                                <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can set the time to push notification in app settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5F-a4-hhu">
+                                                <rect key="frame" x="14" y="33" width="402.5" height="19"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
+                                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVc-ej-0vq" userLabel="switchSetNotification" customClass="SevenSwitch" customModule="Assignments" customModuleProvider="target">
+                                                <rect key="frame" x="604" y="15" width="68" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="68" id="Q86-SO-mC0"/>
+                                                    <constraint firstAttribute="height" constant="35" id="cFr-Vt-Etk"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                                        <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                        <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                                        <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="onThumbTintColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="switchSetNotification_ValueChanged:" destination="zjV-ZC-wLg" eventType="valueChanged" id="YUw-NF-Xg0"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.8980392157" green="0.92549019610000005" blue="0.97254901959999995" alpha="1" colorSpace="deviceRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="z5F-a4-hhu" firstAttribute="leading" secondItem="qp4-iN-NeP" secondAttribute="leading" constant="14" id="GGD-cM-XTu"/>
+                                            <constraint firstItem="z5F-a4-hhu" firstAttribute="top" secondItem="jzN-WV-7vZ" secondAttribute="bottom" id="STM-hi-YKB"/>
+                                            <constraint firstItem="uVc-ej-0vq" firstAttribute="centerY" secondItem="qp4-iN-NeP" secondAttribute="centerY" id="Ykm-Df-lPj"/>
+                                            <constraint firstItem="jzN-WV-7vZ" firstAttribute="top" secondItem="qp4-iN-NeP" secondAttribute="top" constant="12" id="b06-bC-9uO"/>
+                                            <constraint firstItem="jzN-WV-7vZ" firstAttribute="leading" secondItem="qp4-iN-NeP" secondAttribute="leading" constant="14" id="cb9-jT-yVF"/>
+                                            <constraint firstAttribute="height" constant="65" id="d1n-QX-yPF"/>
+                                            <constraint firstAttribute="trailing" secondItem="uVc-ej-0vq" secondAttribute="trailing" constant="16" id="zKC-cL-79T"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1033,6 +1030,7 @@
                                     <constraint firstItem="xsj-1u-1Tl" firstAttribute="top" secondItem="5u8-ic-mPa" secondAttribute="bottom" constant="12" id="KLV-wx-Fsz"/>
                                     <constraint firstItem="Z0w-lt-NHn" firstAttribute="bottom" secondItem="lw7-Io-HCZ" secondAttribute="bottom" constant="2" id="LoS-NQ-Rx4"/>
                                     <constraint firstItem="5u8-ic-mPa" firstAttribute="top" secondItem="4tf-xO-p0L" secondAttribute="bottom" constant="4" id="QG3-zD-kZz"/>
+                                    <constraint firstItem="qp4-iN-NeP" firstAttribute="top" secondItem="vMK-te-0Hv" secondAttribute="bottom" constant="110" id="ScE-hk-c9o"/>
                                     <constraint firstItem="fVM-03-jp3" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="30" id="TFp-K7-DxO"/>
                                     <constraint firstAttribute="trailing" secondItem="eBp-bT-9hv" secondAttribute="trailing" id="UE0-i8-5Bz"/>
                                     <constraint firstItem="YFK-Re-hlg" firstAttribute="centerX" secondItem="abt-jb-m4u" secondAttribute="centerX" id="Vt4-Ux-68E"/>
@@ -1045,9 +1043,11 @@
                                     <constraint firstItem="eBp-bT-9hv" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" id="cID-c3-Dwa"/>
                                     <constraint firstItem="4tf-xO-p0L" firstAttribute="top" secondItem="lw7-Io-HCZ" secondAttribute="bottom" constant="8" id="dPq-gA-zHm"/>
                                     <constraint firstItem="CvS-jK-x8k" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="40" id="ehG-T6-ka7"/>
+                                    <constraint firstItem="qp4-iN-NeP" firstAttribute="leading" secondItem="abt-jb-m4u" secondAttribute="leading" constant="40" id="em8-P2-hYk"/>
                                     <constraint firstItem="oqX-KG-hB1" firstAttribute="centerX" secondItem="abt-jb-m4u" secondAttribute="centerX" id="jPn-qD-XIz"/>
                                     <constraint firstItem="Z0w-lt-NHn" firstAttribute="top" secondItem="abt-jb-m4u" secondAttribute="top" constant="44" id="jQK-Gi-Z30"/>
                                     <constraint firstItem="xsj-1u-1Tl" firstAttribute="leading" secondItem="CvS-jK-x8k" secondAttribute="trailing" constant="100" id="l4J-DW-aSy"/>
+                                    <constraint firstAttribute="trailing" secondItem="qp4-iN-NeP" secondAttribute="trailing" constant="40" id="lIf-2W-If3"/>
                                     <constraint firstAttribute="trailing" secondItem="xsj-1u-1Tl" secondAttribute="trailing" constant="40" id="mXO-OU-afp"/>
                                     <constraint firstItem="fVM-03-jp3" firstAttribute="top" secondItem="vMK-te-0Hv" secondAttribute="bottom" constant="14" id="n2w-YG-Pji"/>
                                     <constraint firstItem="6EO-G5-xSI" firstAttribute="top" secondItem="abt-jb-m4u" secondAttribute="top" id="n8J-gV-qdm"/>
@@ -1076,6 +1076,7 @@
                         <viewLayoutGuide key="safeArea" id="6U7-u6-gDz"/>
                     </view>
                     <connections>
+                        <outlet property="_layout_NotificationTopMargin" destination="ScE-hk-c9o" id="lJn-QI-8gQ"/>
                         <outlet property="_layout_vClearWidthAnchor" destination="vPs-Nj-fDM" id="0UD-2n-4EK"/>
                         <outlet property="_layout_vSuggestionsHeightAnchor" destination="gXa-Se-GIX" id="08f-A2-NGO"/>
                         <outlet property="btnAdd" destination="wud-l2-AcV" id="7An-WP-Bvj"/>
@@ -1462,6 +1463,13 @@
                                     <action selector="btnDeleteSubject_Tapped:" destination="Z5F-lL-fCq" eventType="touchUpInside" id="TWa-jW-xq7"/>
                                 </connections>
                             </button>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZd-ho-13o">
+                                <rect key="frame" x="30" y="75" width="480" height="64"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="cAQ-kD-NxL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1471,6 +1479,7 @@
                             <constraint firstAttribute="trailing" secondItem="JhS-9v-gLs" secondAttribute="trailing" id="53L-iJ-Yme"/>
                             <constraint firstItem="BAu-Yk-w8F" firstAttribute="centerX" secondItem="a0c-0p-RJE" secondAttribute="centerX" id="B1T-0m-lBa"/>
                             <constraint firstItem="mFz-rF-sy3" firstAttribute="bottom" secondItem="JhS-9v-gLs" secondAttribute="bottom" id="F6g-zC-jvV"/>
+                            <constraint firstItem="XZd-ho-13o" firstAttribute="leading" secondItem="mFz-rF-sy3" secondAttribute="leading" constant="30" id="JgJ-3Q-PCF"/>
                             <constraint firstItem="IcN-jQ-y2X" firstAttribute="top" secondItem="YpM-Bx-7Ax" secondAttribute="bottom" constant="12" id="KTR-Xa-e2i"/>
                             <constraint firstItem="mFz-rF-sy3" firstAttribute="trailing" secondItem="IcN-jQ-y2X" secondAttribute="trailing" constant="30" id="L8q-og-tUU"/>
                             <constraint firstItem="Jn5-Ud-le9" firstAttribute="leading" secondItem="a0c-0p-RJE" secondAttribute="leading" id="Y1m-0y-ugF"/>
@@ -1478,9 +1487,11 @@
                             <constraint firstAttribute="bottom" secondItem="BAu-Yk-w8F" secondAttribute="bottom" constant="15" id="cfd-28-RS4"/>
                             <constraint firstItem="IcN-jQ-y2X" firstAttribute="leading" secondItem="mFz-rF-sy3" secondAttribute="leading" constant="30" id="jSv-Qb-Swn"/>
                             <constraint firstItem="mFz-rF-sy3" firstAttribute="trailing" secondItem="Qrf-z7-BVV" secondAttribute="trailing" constant="30" id="pDh-kb-h76"/>
+                            <constraint firstItem="XZd-ho-13o" firstAttribute="top" secondItem="Jn5-Ud-le9" secondAttribute="bottom" constant="20" id="qac-CJ-iYS"/>
                             <constraint firstItem="Qrf-z7-BVV" firstAttribute="top" secondItem="Jn5-Ud-le9" secondAttribute="bottom" constant="20" id="rir-E3-ddY"/>
                             <constraint firstItem="Qrf-z7-BVV" firstAttribute="leading" secondItem="mFz-rF-sy3" secondAttribute="leading" constant="30" id="tyF-Fi-ujm"/>
                             <constraint firstItem="YpM-Bx-7Ax" firstAttribute="top" secondItem="Qrf-z7-BVV" secondAttribute="bottom" constant="25" id="vei-X2-4Vj"/>
+                            <constraint firstItem="mFz-rF-sy3" firstAttribute="trailing" secondItem="XZd-ho-13o" secondAttribute="trailing" constant="30" id="xFy-9B-5ei"/>
                             <constraint firstItem="Jn5-Ud-le9" firstAttribute="top" secondItem="mFz-rF-sy3" secondAttribute="top" id="xZo-kb-EaT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mFz-rF-sy3"/>
@@ -1490,6 +1501,7 @@
                         <outlet property="btnDeleteSubject" destination="JhS-9v-gLs" id="9od-9s-KzD"/>
                         <outlet property="btnResetColor" destination="IcN-jQ-y2X" id="cFC-UM-hLn"/>
                         <outlet property="tfName" destination="Qrf-z7-BVV" id="Gh6-XV-fyA"/>
+                        <outlet property="vNameBlocker" destination="XZd-ho-13o" id="DIV-QA-2RZ"/>
                         <outlet property="vTopBar" destination="Jn5-Ud-le9" id="Kek-rI-ZJ1"/>
                     </connections>
                 </viewController>

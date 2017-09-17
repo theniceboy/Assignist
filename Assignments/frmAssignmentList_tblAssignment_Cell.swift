@@ -173,12 +173,12 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     
     func setCheckStateUI (checked: Bool) {
         if (checked) {
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.vSubjectBlockingArea.backgroundColor = self.subjectUIColor.withAlphaComponent(0.2)
                 self.vMaster.backgroundColor = self.subjectUIColor.withAlphaComponent(0.1)
             })
         } else {
-            UIView.animate(withDuration: 0.1, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.vSubjectBlockingArea.backgroundColor = UIColor.white
                 self.vMaster.backgroundColor = UIColor.white
             })
@@ -256,6 +256,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             
             (curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: rowNumber, section: 0)) as! frmAsignmentList_tblAssignmentListCell).loadCell()
         } else {
+            /*
             if (rowNumber < tableAssignmentListDivider) {
                 tableAssignmentList.remove(at: rowNumber)
                 UIView.animate(withDuration: 0.3, delay: 0.2, animations: {
@@ -268,6 +269,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             } else {
                 
             }
+ */
         }
     }
     

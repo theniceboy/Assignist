@@ -16,6 +16,7 @@ class frmAssignmentList_EditSubject: UIViewController {
     
     @IBOutlet weak var vTopBar: UIView!
     @IBOutlet weak var tfName: SkyFloatingLabelTextField!
+    @IBOutlet weak var vNameBlocker: UIView!
     @IBOutlet weak var btnChangeColor: ZFRippleButton!
     @IBOutlet weak var btnResetColor: ZFRippleButton!
     @IBOutlet weak var btnDeleteSubject: ZFRippleButton!
@@ -130,6 +131,7 @@ class frmAssignmentList_EditSubject: UIViewController {
                         }
                     }
                 }
+                vNameBlocker.isHidden = !flag
                 btnDeleteSubject.isHidden = flag
             }
         }
