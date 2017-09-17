@@ -36,14 +36,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By David Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doh-nX-aat">
-                                <rect key="frame" x="315.5" y="231" width="108.5" height="19.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <rect key="frame" x="315.5" y="231" width="108.5" height="20"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                 <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNy-k0-tGb">
-                                <rect key="frame" x="367" y="526.5" width="52" height="32"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <rect key="frame" x="367" y="525" width="54" height="32"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                 <state key="normal" title="Github">
                                     <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -73,8 +73,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-la-UhJ">
-                                <rect key="frame" x="159" y="472.5" width="221" height="32"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                <rect key="frame" x="153.5" y="472.5" width="232" height="32"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                 <state key="normal" title="Visit the Developer's Website">
                                     <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -97,7 +97,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="Rfw-S0-uO7"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -120,8 +120,8 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About This App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6B-8y-4qw">
-                                        <rect key="frame" x="205" y="17" width="129" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <rect key="frame" x="213.5" y="18" width="114" height="20"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -156,7 +156,7 @@
                             <constraint firstItem="Buf-b4-cFd" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" constant="-30" id="d3t-Qh-oGo"/>
                             <constraint firstItem="Buf-b4-cFd" firstAttribute="top" secondItem="3Uc-wQ-Km3" secondAttribute="bottom" constant="4" id="d5g-pA-yK0"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="leading" secondItem="Wxk-fo-9cu" secondAttribute="trailing" constant="-20" id="gVL-ME-cdq"/>
-                            <constraint firstItem="UNy-k0-tGb" firstAttribute="centerY" secondItem="Buf-b4-cFd" secondAttribute="centerY" constant="1" id="hGi-dE-E1n"/>
+                            <constraint firstItem="UNy-k0-tGb" firstAttribute="centerY" secondItem="Buf-b4-cFd" secondAttribute="centerY" id="hGi-dE-E1n"/>
                             <constraint firstItem="3Uc-wQ-Km3" firstAttribute="top" secondItem="8qb-la-UhJ" secondAttribute="bottom" constant="2" id="sHW-wP-uhR"/>
                             <constraint firstItem="Wxk-fo-9cu" firstAttribute="bottom" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="-4" id="vn3-EI-Nyy"/>
                         </constraints>
@@ -178,12 +178,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z1-u6-6Ff">
                                 <rect key="frame" x="0.0" y="0.0" width="540" height="55"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEc-Ku-J71">
+                                        <rect key="frame" x="238.5" y="17" width="64.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOn-Ey-xPH" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                         <rect key="frame" x="440" y="0.0" width="100" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="j3T-ff-WbJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -205,12 +211,6 @@
                                             <action selector="btnDone_Tapped:" destination="9vE-h7-7kg" eventType="touchUpInside" id="0KH-Ej-rgY"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEc-Ku-J71">
-                                        <rect key="frame" x="236" y="17" width="69" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -231,7 +231,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="yYd-8Q-eU5"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                         <state key="normal" title="Push Notification Settings">
                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -245,7 +245,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="pfq-3b-xvs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                         <state key="normal" title="Connect To MVCS Focus">
                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -276,18 +276,18 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you a MVC student?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9P-cM-q3S">
-                                        <rect key="frame" x="70.5" y="20" width="199.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <rect key="frame" x="76" y="20" width="189" height="21"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BEt-Fh-YdW" userLabel="tfTitle" customClass="SkyFloatingLabelTextField" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="56.5" width="300" height="50"/>
+                                        <rect key="frame" x="20" y="56" width="300" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="9pe-F2-PM3"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
@@ -316,12 +316,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hTa-rK-bgK" userLabel="tfTitle" customClass="SkyFloatingLabelTextField" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="126.5" width="300" height="50"/>
+                                        <rect key="frame" x="20" y="126" width="300" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="hsW-Kc-1ss"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
@@ -350,12 +350,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K1q-eS-UsX" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="206.5" width="300" height="45"/>
+                                        <rect key="frame" x="20" y="206" width="300" height="45"/>
                                         <color key="backgroundColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ozP-RN-VDt"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                         <state key="normal" title="Login to MVCS Focus">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -372,14 +372,14 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsv-IL-nYy">
-                                        <rect key="frame" x="14" y="267.5" width="312" height="110"/>
+                                        <rect key="frame" x="14" y="267" width="312" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="110" id="gQP-4b-W0M"/>
                                         </constraints>
                                         <string key="text">Focus login feature is only available to MVC students. This feature will be supporting more schools in the future.
 
  If your school uses Focus and you want this feature available for your school, please contact me via email: assignment.app.feedback@gmail.com</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -392,7 +392,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="sGd-1D-9gV"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                 <state key="normal" title="Logout From Focus">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -445,26 +445,27 @@
                                 <rect key="frame" x="200" y="55" width="340" height="565"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BDF-4c-mYt">
-                                        <rect key="frame" x="0.0" y="61" width="340" height="200"/>
+                                        <rect key="frame" x="0.0" y="60" width="340" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="xJ3-ld-Ub8"/>
                                         </constraints>
                                         <date key="date" timeIntervalSinceReferenceDate="526970571.69207001">
                                             <!--2017-09-13 04:42:51 +0000-->
                                         </date>
+                                        <locale key="locale" localeIdentifier="en_US"/>
                                         <connections>
                                             <action selector="timePicker_ValueChanged:" destination="9vE-h7-7kg" eventType="valueChanged" id="gyd-Da-Dtj"/>
                                         </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Time for Push Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRO-RX-LUG">
-                                        <rect key="frame" x="48.5" y="30" width="243" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <rect key="frame" x="52" y="30" width="236" height="20"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This setting will only affect assignments that will be adding in the future" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-a0-tsn">
                                         <rect key="frame" x="20" y="515" width="300" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -534,7 +535,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="wzA-4a-IwY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                         <state key="normal" title="Add">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -561,7 +562,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="H05-LC-tI1"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -602,8 +603,8 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This assignment was synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqX-KG-hB1">
-                                        <rect key="frame" x="245.5" y="660" width="277.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <rect key="frame" x="252" y="660.5" width="265" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -613,7 +614,7 @@
                                             <constraint firstAttribute="height" constant="55" id="QHJ-Gl-XcK"/>
                                         </constraints>
                                         <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
@@ -647,11 +648,12 @@
                                             <action selector="tfTitle_TouchUpOutside:" destination="zjV-ZC-wLg" eventType="touchUpOutside" id="ukD-K8-q8Z"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0w-lt-NHn" userLabel="btnSetDueDate" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0w-lt-NHn" userLabel="btnSetSubject" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                         <rect key="frame" x="30" y="44" width="200" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="tFp-Am-vsr"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                         <state key="normal" title="Select Subject">
                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -675,7 +677,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="WJJ-7z-4BZ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                 <state key="normal" title="Clear">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -811,8 +813,8 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignment Due Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVM-03-jp3">
-                                        <rect key="frame" x="30" y="416" width="708" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <rect key="frame" x="30" y="416" width="708" height="21"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -829,7 +831,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="22L-js-g7V"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                         <state key="normal" title="Delete This Assignment">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -846,7 +848,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFK-Re-hlg" userLabel="vSetDueDayTime">
-                                        <rect key="frame" x="30" y="450" width="708" height="129"/>
+                                        <rect key="frame" x="30" y="449" width="708" height="129"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOD-B8-nrw" userLabel="btnSetDueDate" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="0.0" width="270.5" height="50"/>
@@ -854,6 +856,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="1sa-2q-sio"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                 <state key="normal" title="Set Due Date">
                                                     <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </state>
@@ -884,14 +887,14 @@
                                                 <rect key="frame" x="8" y="64" width="692" height="65"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify Me a Night Before" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzN-WV-7vZ">
-                                                        <rect key="frame" x="14" y="12" width="203.5" height="21.5"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                        <rect key="frame" x="14" y="12" width="206.5" height="21"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can set the time to push notification in app settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5F-a4-hhu">
-                                                        <rect key="frame" x="14" y="33.5" width="402" height="19.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <rect key="frame" x="14" y="33" width="402.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -980,13 +983,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Assignment Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvS-jK-x8k">
-                                        <rect key="frame" x="40" y="356.5" width="200" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <rect key="frame" x="40" y="356.5" width="192.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsj-1u-1Tl" userLabel="sgcSetDueTime" customClass="BetterSegmentedControl" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="340" y="344" width="388" height="45"/>
+                                        <rect key="frame" x="332.5" y="344" width="395.5" height="45"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="UHS-f5-Dm5"/>
@@ -1168,7 +1171,7 @@
                                     <constraint firstAttribute="height" constant="50" id="5o0-dB-njR"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
@@ -1205,6 +1208,7 @@
                                     <constraint firstAttribute="height" constant="40" id="F8w-0l-jd2"/>
                                     <constraint firstAttribute="width" constant="100" id="ab3-mD-iHy"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1227,6 +1231,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiW-EY-a5S" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="100" height="40"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1286,7 +1291,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="MP2-Xg-aia"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1313,7 +1318,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="DME-ke-dh3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1350,7 +1355,7 @@
                                     <constraint firstAttribute="height" constant="55" id="APn-yX-iYW"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
@@ -1384,7 +1389,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pd2-MK-LJk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                 <state key="normal" title="Get a Random Color">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1412,6 +1417,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="opr-qZ-kFP"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                 <state key="normal" title="Reset Color">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1429,8 +1435,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This subject contains assignment(s) synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Yk-w8F">
-                                <rect key="frame" x="79.5" y="587" width="382" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <rect key="frame" x="86.5" y="587.5" width="367.5" height="17.5"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1440,7 +1446,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="x1p-1K-wmt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                 <state key="normal" title="Delete This Subject">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1533,8 +1539,8 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYC-u5-Zgj">
-                                                                    <rect key="frame" x="38" y="19.5" width="208" height="21"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <rect key="frame" x="38" y="21.5" width="208" height="17.5"/>
+                                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -1591,23 +1597,24 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u86-G6-fbR">
                                                 <rect key="frame" x="0.0" y="708" width="300" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBN-Zm-LAv" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                        <state key="normal" title="Settings">
-                                                            <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="9vE-h7-7kg" kind="presentation" modalPresentationStyle="formSheet" id="TJw-qH-ONT"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cst-SW-cMm" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                                         <rect key="frame" x="150" y="0.0" width="150" height="40"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                         <state key="normal" title="About">
                                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
                                                             <segue destination="wy5-ti-7u8" kind="presentation" modalPresentationStyle="formSheet" id="NJx-Ov-v3I"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBN-Zm-LAv" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                                                        <state key="normal" title="Settings">
+                                                            <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="9vE-h7-7kg" kind="presentation" modalPresentationStyle="formSheet" id="TJw-qH-ONT"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1654,7 +1661,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="d7p-cK-jVh"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                         <state key="normal" title="Add New">
                                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -1674,7 +1681,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="140" id="VN4-ir-iYV"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                         <state key="normal" title="Show Completed">
                                                             <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -1689,8 +1696,8 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Assignments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pq-Ae-xcK">
-                                                        <rect key="frame" x="282" y="12" width="144.5" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <rect key="frame" x="299" y="12" width="130" height="20"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1704,24 +1711,24 @@
                                                         <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </progressView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syncing With Focus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBB-NX-xL1">
-                                                        <rect key="frame" x="290" y="33" width="128" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <rect key="frame" x="305" y="32" width="119.5" height="16.5"/>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="pBB-NX-xL1" firstAttribute="centerX" secondItem="8Pq-Ae-xcK" secondAttribute="centerX" id="1Fc-Uw-aaw"/>
                                                     <constraint firstItem="pBB-NX-xL1" firstAttribute="top" secondItem="8Pq-Ae-xcK" secondAttribute="bottom" id="De5-Z2-EDM"/>
                                                     <constraint firstAttribute="bottom" secondItem="Rdd-xR-1Ma" secondAttribute="bottom" id="GNb-tj-ODV"/>
                                                     <constraint firstItem="Rdd-xR-1Ma" firstAttribute="top" secondItem="ea9-jF-3dr" secondAttribute="bottom" constant="2" id="J5s-5U-D61"/>
                                                     <constraint firstItem="oYj-Ae-L7o" firstAttribute="top" secondItem="CRh-sT-Gqc" secondAttribute="top" constant="2" id="LZx-GF-H3M"/>
                                                     <constraint firstAttribute="trailing" secondItem="oYj-Ae-L7o" secondAttribute="trailing" id="NRZ-ej-a03"/>
-                                                    <constraint firstItem="pBB-NX-xL1" firstAttribute="centerX" secondItem="CRh-sT-Gqc" secondAttribute="centerX" id="NVy-vn-4so"/>
                                                     <constraint firstAttribute="height" constant="60" id="Xtt-wF-act"/>
                                                     <constraint firstAttribute="trailing" secondItem="Rdd-xR-1Ma" secondAttribute="trailing" constant="12" id="ZrB-Da-u2f"/>
                                                     <constraint firstItem="ea9-jF-3dr" firstAttribute="top" secondItem="CRh-sT-Gqc" secondAttribute="top" constant="2" id="g3B-na-bV0"/>
                                                     <constraint firstItem="ea9-jF-3dr" firstAttribute="leading" secondItem="CRh-sT-Gqc" secondAttribute="leading" constant="8" id="hzQ-Og-Pac"/>
-                                                    <constraint firstItem="8Pq-Ae-xcK" firstAttribute="centerX" secondItem="CRh-sT-Gqc" secondAttribute="centerX" id="jJU-M8-ktc"/>
+                                                    <constraint firstItem="8Pq-Ae-xcK" firstAttribute="centerX" secondItem="CRh-sT-Gqc" secondAttribute="centerX" constant="10" id="jJU-M8-ktc"/>
                                                     <constraint firstItem="Rdd-xR-1Ma" firstAttribute="leading" secondItem="CRh-sT-Gqc" secondAttribute="leading" constant="12" id="q81-Vc-W5q"/>
                                                     <constraint firstItem="8Pq-Ae-xcK" firstAttribute="top" secondItem="CRh-sT-Gqc" secondAttribute="top" constant="12" id="sPC-n4-84p"/>
                                                     <constraint firstItem="Rdd-xR-1Ma" firstAttribute="top" secondItem="oYj-Ae-L7o" secondAttribute="bottom" constant="2" id="wox-ui-wvF"/>
@@ -1772,20 +1779,20 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz4-as-8Dg">
-                                                                                    <rect key="frame" x="34" y="35" width="20" height="21"/>
+                                                                                    <rect key="frame" x="34" y="33" width="20" height="21"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="20" id="ABZ-Ha-vsb"/>
                                                                                     </constraints>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="18"/>
                                                                                     <color key="textColor" red="0.85882352939999995" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJ5-5g-0l3" userLabel="lbTitle">
-                                                                                    <rect key="frame" x="54" y="35" width="548" height="22"/>
+                                                                                    <rect key="frame" x="54" y="33" width="548" height="22"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="22" id="tpV-3G-hSQ"/>
                                                                                     </constraints>
-                                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
@@ -1797,17 +1804,17 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GC-rq-sub">
-                                                                                    <rect key="frame" x="34" y="12" width="568" height="21"/>
-                                                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                                    <rect key="frame" x="34" y="12" width="568" height="19"/>
+                                                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9N-ZM-fHl">
-                                                                                    <rect key="frame" x="34" y="60" width="38" height="21"/>
+                                                                                    <rect key="frame" x="34" y="57" width="36.5" height="21"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="21" id="LlH-wL-pFR"/>
                                                                                     </constraints>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
@@ -1853,7 +1860,7 @@
                                                                                 <constraint firstItem="Jyr-Cc-0H7" firstAttribute="firstBaseline" secondItem="w0i-N5-DVd" secondAttribute="firstBaseline" id="TBH-2i-UcP"/>
                                                                                 <constraint firstItem="hyi-kA-mkK" firstAttribute="centerY" secondItem="arg-Pk-sQf" secondAttribute="centerY" id="V5i-va-6cv"/>
                                                                                 <constraint firstItem="w0i-N5-DVd" firstAttribute="leading" secondItem="arg-Pk-sQf" secondAttribute="leading" id="XFU-uM-ea0"/>
-                                                                                <constraint firstItem="o9N-ZM-fHl" firstAttribute="top" secondItem="gJ5-5g-0l3" secondAttribute="bottom" constant="3" id="XMb-Nj-cMv"/>
+                                                                                <constraint firstItem="o9N-ZM-fHl" firstAttribute="top" secondItem="gJ5-5g-0l3" secondAttribute="bottom" constant="2" id="XMb-Nj-cMv"/>
                                                                                 <constraint firstItem="kz4-as-8Dg" firstAttribute="centerY" secondItem="gJ5-5g-0l3" secondAttribute="centerY" id="cV8-I1-Rdj"/>
                                                                                 <constraint firstAttribute="height" constant="90" id="iIg-6b-GgG"/>
                                                                                 <constraint firstItem="iX5-Im-N2s" firstAttribute="top" secondItem="arg-Pk-sQf" secondAttribute="top" id="iMe-7b-Fbp"/>
@@ -1868,8 +1875,8 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02l-JD-TLz">
-                                                                            <rect key="frame" x="28" y="16" width="42" height="21"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <rect key="frame" x="28" y="16" width="42" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>

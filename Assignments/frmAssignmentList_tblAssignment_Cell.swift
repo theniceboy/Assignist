@@ -84,6 +84,8 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         //}
     }
     
+    let priorityXPosition: [CGFloat] = [0, 15, 20, 25]
+    
     func loadCell() {
         
         // Set Cell UI
@@ -108,14 +110,9 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         
         assignmentRow = getRowNum_AssignmentList(id: tableAssignmentList[rowNumber].id)
         
-        if (tableAssignmentList[rowNumber].priority == 0) {
-            _layout_lbPriorityWidth.constant = 0
-            self.layoutIfNeeded()
-        } else {
-            lbPriority.text = priorityStr[tableAssignmentList[rowNumber].priority]
-            _layout_lbPriorityWidth.constant = 20
-            self.layoutIfNeeded()
-        }
+        lbPriority.text = priorityStr[tableAssignmentList[rowNumber].priority]
+        _layout_lbPriorityWidth.constant = priorityXPosition[tableAssignmentList[rowNumber].priority]
+        self.layoutIfNeeded()
         
         vMaster.layer.shadowColor = UIColor.black.cgColor
         vMaster.layer.shadowOffset = CGSize.zero
@@ -131,7 +128,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         var duetime: String = "At "// + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? " " : "") + "\(tableAssignmentList[rowNumber].dueDate.hour):" + (tableAssignmentList[rowNumber].dueDate.minute < 10 ? "0" : "") + "\(tableAssignmentList[rowNumber].dueDate.minute)"
         duetime = duetime + displayDate(date: tableAssignmentList[rowNumber].dueDate)
         if (tableAssignmentList[rowNumber].checked) {
-            lbDueTime.text = "Due " + (daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate) > 1 ? "on " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate) + " " + duetime
+            lbDueTime.text = "Due " + (daysDifference(date1: localDate(), date2: tableAssignmentList[rowNumber].dueDate) > 1 ? "On " : "") + dateFormat_Word(date: tableAssignmentList[rowNumber].dueDate) + " " + duetime
         } else {
             lbDueTime.text = "Due " + duetime
         }
