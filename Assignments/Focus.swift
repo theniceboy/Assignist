@@ -38,8 +38,14 @@ func parseFocusHTML (html: String, subjectstr: String) {
     //print(html)
     if (html.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "" && userSettings.focusUsername != "" && userSettings.focusPassword != "") {
         
+        // Set all newFromFocus to false
+        if (assignmentList.count > 0) {
+            for i in 0 ... (assignmentList.count - 1) {
+                assignmentList[i].newFromFocus = false
+            }
+        }
+        
         var indexNow = html.index(after: html.startIndex)
-        var substr: String = ""
         var strlist: [String] = []
         indexNow = html.startIndex
         
@@ -172,89 +178,96 @@ func parseFocusHTML (html: String, subjectstr: String) {
             indexNow = subjectstr.index(after: indexNow)
         }
         
-        var tmpSubject = "", tmpPeriod = ""
-        for i in 0 ... (strlist.count - 1) {
-            tmpSubject = ""
-            tmpPeriod = ""
-            indexNow = strlist[i].startIndex
-            while (strlist[i][indexNow] != "-" && indexNow < strlist[i].endIndex) {
-                tmpSubject.append(strlist[i][indexNow])
+        var tmpSubject = "", tmpPeriod = "", syncedAssignmentCount = 0
+        if (strlist.count > 0) {
+            for i in 0 ... (strlist.count - 1) {
+                tmpSubject = ""
+                tmpPeriod = ""
+                indexNow = strlist[i].startIndex
+                while (strlist[i][indexNow] != "-" && indexNow < strlist[i].endIndex) {
+                    tmpSubject.append(strlist[i][indexNow])
+                    indexNow = strlist[i].index(after: indexNow)
+                }
                 indexNow = strlist[i].index(after: indexNow)
-            }
-            indexNow = strlist[i].index(after: indexNow)
-            indexNow = strlist[i].index(after: indexNow)
-            while (strlist[i][indexNow] != " " && indexNow < strlist[i].endIndex) {
-                tmpPeriod.append(strlist[i][indexNow])
                 indexNow = strlist[i].index(after: indexNow)
-            }
-            indexNow = strlist[i].index(after: indexNow)
-            tmpPeriod = ""
-            while (strlist[i][indexNow] != " " && indexNow < strlist[i].endIndex) {
-                tmpPeriod.append(strlist[i][indexNow])
+                while (strlist[i][indexNow] != " " && indexNow < strlist[i].endIndex) {
+                    tmpPeriod.append(strlist[i][indexNow])
+                    indexNow = strlist[i].index(after: indexNow)
+                }
                 indexNow = strlist[i].index(after: indexNow)
+                tmpPeriod = ""
+                while (strlist[i][indexNow] != " " && indexNow < strlist[i].endIndex) {
+                    tmpPeriod.append(strlist[i][indexNow])
+                    indexNow = strlist[i].index(after: indexNow)
+                }
+                tmpsubjectList[Int(tmpPeriod)!] = tmpSubject.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                //print(tmpSubject + "  " + tmpPeriod)
             }
-            tmpsubjectList[Int(tmpPeriod)!] = tmpSubject.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            //print(tmpSubject + "  " + tmpPeriod)
-        }
-        
-        var assignmentExists: Bool = false, subjectExists: Bool = false, syncedAssignmentCount = 0
-        for i in 0 ... (focusAssignmentList.count - 1) {
-            focusAssignmentList[i].subject = tmpsubjectList[focusAssignmentList[i].period]!
-            assignmentExists = false
-            if (assignmentList.count > 0) {
-                for aindex in 0 ... (assignmentList.count - 1) {
-                    if (focusAssignmentList[i].title == assignmentList[aindex].title && focusAssignmentList[i].subject == assignmentList[aindex].subject) {
-                        assignmentList[aindex].dueDate = focusAssignmentList[i].duedate
-                        assignmentExists = true
-                        break
+            
+            var assignmentExists: Bool = false, subjectExists: Bool = false
+            for i in 0 ... (focusAssignmentList.count - 1) {
+                focusAssignmentList[i].subject = tmpsubjectList[focusAssignmentList[i].period]!
+                assignmentExists = false
+                if (assignmentList.count > 0) {
+                    for aindex in 0 ... (assignmentList.count - 1) {
+                        // Synced assignment but the date might be different
+                        if (focusAssignmentList[i].title == assignmentList[aindex].title && focusAssignmentList[i].subject == assignmentList[aindex].subject) {
+                            if (assignmentList[aindex].dueDate != focusAssignmentList[i].duedate) {
+                                assignmentList[aindex].newFromFocus = true
+                                assignmentList[aindex].dueDate = focusAssignmentList[i].duedate
+                            }
+                            assignmentExists = true
+                            break
+                        }
                     }
                 }
-            }
-            if (!assignmentExists) {
-                subjectExists = false
-                for item in subjectList {
-                    if (focusAssignmentList[i].subject == item.name) {
-                        subjectExists = true
-                        break
+                if (!assignmentExists) {
+                    subjectExists = false
+                    for item in subjectList {
+                        if (focusAssignmentList[i].subject == item.name) {
+                            subjectExists = true
+                            break
+                        }
                     }
-                }
-                if (!subjectExists) {
-                    newSubject(name: focusAssignmentList[i].subject, fromFocus: true)
-                }
-                
-                let assignmentItem = AssignmentItem()
-                assignmentItem.id = curAssignmentID
-                curAssignmentID += 1
-                saveCurAssignmentID()
-                assignmentItem.title = focusAssignmentList[i].title
-                assignmentItem.comments = "" //"Synced from focus"
-                assignmentItem.subject = focusAssignmentList[i].subject
-                assignmentItem.dueDate = focusAssignmentList[i].duedate
-                assignmentItem.fromFocus = true
-                
-                assignmentList.append(assignmentItem)
-                
-                var notifyDateTime = Date(), tmpDueDate = focusAssignmentList[i].duedate
-                registerNotification()
-                if (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 0) {
-                    notifyDateTime = tmpDueDate.addingTimeInterval(-86400)
-                    notifyDateTime = Date(year: notifyDateTime.year, month: notifyDateTime.month, day: notifyDateTime.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
-                } else {
-                    notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+                    if (!subjectExists) {
+                        newSubject(name: focusAssignmentList[i].subject, fromFocus: true)
+                    }
                     
-                    if (!(localDate() < notifyDateTime && notifyDateTime < tmpDueDate)) {
-                        notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: (localDate().hour + tmpDueDate.hour) / 2, minute: 30, second: 0)
+                    let assignmentItem = AssignmentItem()
+                    assignmentItem.id = curAssignmentID
+                    curAssignmentID += 1
+                    saveCurAssignmentID()
+                    assignmentItem.title = focusAssignmentList[i].title
+                    assignmentItem.comments = "" //"Synced from focus"
+                    assignmentItem.subject = focusAssignmentList[i].subject
+                    assignmentItem.dueDate = focusAssignmentList[i].duedate
+                    assignmentItem.fromFocus = true
+                    assignmentItem.newFromFocus = true
+                    
+                    assignmentList.append(assignmentItem)
+                    
+                    var notifyDateTime = Date(), tmpDueDate = focusAssignmentList[i].duedate
+                    registerNotification()
+                    if (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 0) {
+                        notifyDateTime = tmpDueDate.addingTimeInterval(-86400)
+                        notifyDateTime = Date(year: notifyDateTime.year, month: notifyDateTime.month, day: notifyDateTime.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+                    } else {
+                        notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
+                        
+                        if (!(localDate() < notifyDateTime && notifyDateTime < tmpDueDate)) {
+                            notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: (localDate().hour + tmpDueDate.hour) / 2, minute: 30, second: 0)
+                        }
                     }
+                    
+                    let notification = UILocalNotification()
+                    notification.fireDate = notifyDateTime
+                    notification.soundName = UILocalNotificationDefaultSoundName
+                    notification.userInfo = ["id": assignmentItem.id]
+                    notification.alertBody = "[" + assignmentItem.subject + "] " + assignmentItem.title
+                    UIApplication.shared.scheduleLocalNotification(notification)
+                    
+                    syncedAssignmentCount += 1
                 }
-                
-                let notification = UILocalNotification()
-                notification.fireDate = notifyDateTime
-                notification.soundName = UILocalNotificationDefaultSoundName
-                notification.userInfo = ["id": assignmentItem.id]
-                notification.alertBody = "[" + assignmentItem.subject + "] " + assignmentItem.title
-                UIApplication.shared.scheduleLocalNotification(notification)
-                
-                syncedAssignmentCount += 1
             }
         }
         

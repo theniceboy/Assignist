@@ -43,7 +43,7 @@ let h_week: [Int: String] = [0: "Last ", 1: "", 2: "Next "]
 
 // MARK: - Global Functions
 
-func displayDate (date: Date) -> String {
+func displayTime (date: Date) -> String {
     if (date.hour > 12 || (date.hour == 12 && date.minute > 0)) {
         return "\(date.hour - 12):" + (date.minute < 10 ? "0" : "") + "\(date.minute) PM"
     }

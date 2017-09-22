@@ -58,12 +58,22 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     let coachMarksController = CoachMarksController()
 
+    // --- Time Selector ---
+    
+    @IBOutlet weak var lbTSDueDateTime: UILabel!
+    @IBOutlet weak var dtTSTimePicker: UIDatePicker!
+    @IBOutlet weak var btnTSDismiss: UIButton!
+    
+    // --/ Time Selector /--
+    
+    
     
     // Constraints
     
     @IBOutlet weak var _layout_vClearWidthAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_vSuggestionsHeightAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_NotificationTopMargin: NSLayoutConstraint!
+    @IBOutlet weak var _layout_vTimeSelectorTopMargin: NSLayoutConstraint!
     
     // MARK: - Variables
     
@@ -382,7 +392,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     // MARK: Actions - Due Day Time Settings
     
     @IBAction func btnSetDueDate_Tapped(_ sender: Any) {
-        let min = localDate()
+        let min = localDate().timeIntervalSince1970 < tmpDueDate.timeIntervalSince1970 ? localDate() - 86400 : tmpDueDate - 86400
         let max = localDate() + 10000000
         let picker = DateTimePicker.show(selected: tmpDueDate, minimumDate: min, maximumDate: max)
         picker.highlightColor = themeColor
@@ -400,6 +410,13 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         }
     }
     
+    @IBAction func sgcSetDueTime_Tapped(_ sender: BetterSegmentedControl) {
+        let selected: String = sender.titles[Int(sender.index)]
+        if (selected == "Custom") {
+            showTimePicker()
+        }
+    }
+    
     @IBAction func sgcSetDueTime_ValueChanged(_ sender: BetterSegmentedControl) {
         if (sgcSetDueTime_firstOpens) {
             sgcSetDueTime_firstOpens = false
@@ -412,34 +429,58 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             sgcSetDueTime_lastSelected = 0
             updateNotificationTime()
         } else if (selected == "Midnight") {
-            tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 11, minute: 59, second: 0)
+            tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: 23, minute: 59, second: 0)
             updateDateTime()
             sgcSetDueTime_lastSelected = 1
             updateNotificationTime()
         } else if (selected == "Custom") {
-            let min = localDate()
-            let max = localDate() + 10000000
-            let picker = DateTimePicker.show(selected: tmpDueDate, minimumDate: min, maximumDate: max)
-            picker.highlightColor = themeColor
-            picker.darkColor = UIColor.darkGray
-            picker.doneButtonTitle = " "
-            picker.todayButtonTitle = "Done"
-            picker.resetTime()
-            picker.is12HourFormat = true
-            picker.dateFormat = "MM/dd/yyyy, mm:ss aa"
-            picker.completionHandler = { date in
-                self.tmpDueDate = Date(year: date.year, month: date.month, day: date.day, hour: date.hour, minute: date.minute, second: 0)
-                self.updateDateTime()
-                self.sgcSetDueTime_lastSelected = 3
-                self.updateNotificationTime()
-            }
-            picker.dismissHandler = {
-                do {
-                    try self.sgcSetDueTime.setIndex(UInt(self.sgcSetDueTime_lastSelected))
-                } catch { }
-            }
+            showTimePicker()
         }
         
+    }
+    
+    // MARK: Actions - TimePicker
+    
+    var TimePicker_Value: Date = Date()
+    
+    func showTimePicker () {
+        UIView.animate(withDuration: 0.3) {
+            self._layout_vTimeSelectorTopMargin.constant = -220
+            self.view.layoutIfNeeded()
+        }
+        dtTSTimePicker_ValueChanged(self)
+        btnTSDismiss.isHidden = false
+    }
+    
+    func hideTimePicker () {
+        UIView.animate(withDuration: 0.3) {
+            self._layout_vTimeSelectorTopMargin.constant = 0
+            self.view.layoutIfNeeded()
+        }
+        btnTSDismiss.isHidden = true
+    }
+    
+    @IBAction func btnTSCancel_Tapped(_ sender: Any) {
+        do {
+            try self.sgcSetDueTime.setIndex(UInt(self.sgcSetDueTime_lastSelected))
+        } catch { }
+        hideTimePicker()
+    }
+    
+    @IBAction func btnTSDone_Tapped(_ sender: Any) {
+        tmpDueDate = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: dtTSTimePicker.date.hour, minute: dtTSTimePicker.date.minute, second: 0)
+        updateDateTime()
+        sgcSetDueTime_lastSelected = 3
+        updateNotificationTime()
+        hideTimePicker()
+    }
+    
+    @IBAction func btnTSDismiss_Tapped(_ sender: Any) {
+        btnTSDone_Tapped(self)
+    }
+    
+    @IBAction func dtTSTimePicker_ValueChanged(_ sender: Any) {
+        lbTSDueDateTime.text = "Due " + (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 1 ? "on " : "") + dateFormat_Word(date: tmpDueDate) + " " + displayTime(date: dtTSTimePicker.date)
     }
     
     // MARK: Actions - Notification Settings
@@ -525,6 +566,8 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         
         vSetNotification.layer.cornerRadius = 6
         switchSetNotification.layer.cornerRadius = 6
+        
+        hideTimePicker()
         
         self.view.layoutIfNeeded()
     }
@@ -618,7 +661,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     func updateDateTime () {
         lbDueDate.text = "Assignment due " + (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 1 ? "on " : "") + dateFormat_Word(date: tmpDueDate) + " "
-        lbDueDate.text = lbDueDate.text! + displayDate(date: tmpDueDate)
+        lbDueDate.text = lbDueDate.text! + displayTime(date: tmpDueDate)
     }
     
     func updateTopBarUI () {
@@ -643,7 +686,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     }
     
     func updateNotificationTime () {
-        if (localDate() > tmpDueDate) {
+        if (localDate() > tmpDueDate && notificationOn) {
             switchSetNotification.setOn(false, animated: true)
             let alert = UIAlertController(title: "Cannot notify you", message: "This assignment is already over due.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))

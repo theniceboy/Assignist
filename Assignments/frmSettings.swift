@@ -167,9 +167,11 @@ class frmSettings: UIViewController {
         showOvertime = false
         saveUserSettings()
         var tmpAssignmentList: [AssignmentItem] = []
-        for i in 0 ... (assignmentList.count - 1) {
-            if (!assignmentList[i].fromFocus) {
-                tmpAssignmentList.append(assignmentList[i])
+        if (assignmentList.count > 0) {
+            for i in 0 ... (assignmentList.count - 1) {
+                if (!assignmentList[i].fromFocus) {
+                    tmpAssignmentList.append(assignmentList[i])
+                }
             }
         }
         assignmentList = tmpAssignmentList
@@ -187,17 +189,19 @@ class frmSettings: UIViewController {
         }
         
         var tmpSubjectList: [SubjectItem] = [], tmpFlag: Bool = false
-        for i in 0 ... (subjectList.count - 1) {
-            tmpFlag = false
-            if (assignmentList.count > 0) {
-                for j in 0 ... (assignmentList.count - 1) {
-                    if (subjectList[i].name == tmpAssignmentList[j].subject) {
-                        tmpFlag = true
+        if (subjectList.count > 0) {
+            for i in 0 ... (subjectList.count - 1) {
+                tmpFlag = false
+                if (assignmentList.count > 0) {
+                    for j in 0 ... (assignmentList.count - 1) {
+                        if (subjectList[i].name == tmpAssignmentList[j].subject) {
+                            tmpFlag = true
+                        }
                     }
                 }
-            }
-            if (tmpFlag || !subjectList[i].fromFocus) {
-                tmpSubjectList.append(subjectList[i])
+                if (tmpFlag || !subjectList[i].fromFocus) {
+                    tmpSubjectList.append(subjectList[i])
+                }
             }
         }
         subjectList = tmpSubjectList

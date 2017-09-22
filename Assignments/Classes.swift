@@ -28,6 +28,7 @@ class AssignmentItem: NSObject, NSCoding {
     var dueDate: Date = Date()
     var priority: Int = 0 // 0: Normal, 1: !, 2: !!
     var fromFocus: Bool = false
+    var newFromFocus: Bool = false
     var notificationOn: Bool = false
     var checkedDate: Date = Date()
     
@@ -44,6 +45,7 @@ class AssignmentItem: NSObject, NSCoding {
         dueDate = aDecoder.decodeObject(forKey: "dueDate") as? Date ?? Date()
         priority = aDecoder.decodeInteger(forKey: "priority")
         fromFocus = aDecoder.decodeBool(forKey: "fromFocus")
+        newFromFocus = aDecoder.decodeBool(forKey: "newFromFocus")
         notificationOn = aDecoder.decodeBool(forKey: "notificationOn")
         checkedDate = aDecoder.decodeObject(forKey: "checkedDate") as? Date ?? Date()
     }
@@ -57,15 +59,18 @@ class AssignmentItem: NSObject, NSCoding {
         aCoder.encode(dueDate, forKey: "dueDate")
         aCoder.encode(priority, forKey: "priority")
         aCoder.encode(fromFocus, forKey: "fromFocus")
+        aCoder.encode(newFromFocus, forKey: "newFromFocus")
         aCoder.encode(notificationOn, forKey: "notificationOn")
         aCoder.encode(checkedDate, forKey: "checkedDate")
     }
 }
 
 func getRowNum_AssignmentList (id: Int) -> Int {
-    for i in 0 ... assignmentList.count - 1 {
-        if (assignmentList[i].id == id) {
-            return i
+    if (assignmentList.count > 0) {
+        for i in 0 ... (assignmentList.count - 1) {
+            if (assignmentList[i].id == id) {
+                return i
+            }
         }
     }
     print ("NOOOOOOOOOO!!!!!!!!!")
