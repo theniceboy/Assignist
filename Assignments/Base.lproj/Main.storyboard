@@ -423,7 +423,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="ZtW-sb-Q34"/>
                                         </constraints>
-                                        <string key="text">This app logs into Focus for you with the login information you provide.  This App is only reading the Focus webpage after you login, and the app will not modify or leak any of your information.</string>
+                                        <string key="text">This app logs into Focus for you using a built-in web browser with the login information you provide.  This App is only reading the Focus webpage after you login, and the app will not modify or leak any of your information.</string>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
