@@ -35,7 +35,7 @@ func syncAssignmentListWithFocus () {
 }
 
 
-class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, FSCalendarDelegate, FSCalendarDataSource, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
     
     // MARK: Form Outlets
     
@@ -59,15 +59,19 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var btnSettings: ZFRippleButton!
     
-    @IBOutlet weak var btnUncheck: ZFRippleButton!
+    @IBOutlet weak var vRightExt: UIView!
+    @IBOutlet weak var fsCalendar: FSCalendar!
+    @IBOutlet weak var btnToggleCalendar: ZFRippleButton!
     
     
     let coachMarksController = CoachMarksController()
     
     // Layout
+
     
     @IBOutlet weak var _layout_vRightTopHeightAnchor: NSLayoutConstraint!
-    @IBOutlet weak var _layout_btnUnCheck: NSLayoutConstraint!
+    @IBOutlet weak var _layout_vRightExt_WidthAnchor: NSLayoutConstraint!
+    @IBOutlet weak var _layout_vRight_Trailing: NSLayoutConstraint!
     
     // Variables
     
@@ -75,6 +79,37 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     var currentSubjectName: String = ""
     
     var loadedFromSystem: Bool = false
+    
+    // MARK: - UI Setup
+    
+    func UISetup () {
+        
+        
+        _layout_vRightTopHeightAnchor.constant = 46
+        lbSyncingWithFocus.alpha = 1
+        
+        
+        btnToggleCalendar.layer.shadowColor = UIColor.black.cgColor
+        btnToggleCalendar.layer.shadowOffset = CGSize.zero
+        btnToggleCalendar.layer.shadowOpacity = 0.1
+        btnToggleCalendar.layer.shadowRadius = 8
+        
+        vRightExt.layer.shadowColor = UIColor.black.cgColor
+        vRightExt.layer.shadowOffset = CGSize.zero
+        vRightExt.layer.shadowOpacity = 0.1
+        vRightExt.layer.shadowRadius = 8
+        
+        hideCalendar()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    var wasShowingCalendarInLandscape: Bool = false
+    @objc func rotated () {
+        if (ShowingCalendar) {
+            showCalendar()
+        }
+    }
     
     // MARK: - System Override Functions
     
@@ -122,12 +157,11 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             saveSubjectList()
         }
         
-        _layout_vRightTopHeightAnchor.constant = 46
-        lbSyncingWithFocus.alpha = 1
-        
         refreshTableAssignmentList()
         
         activityStop()
+        
+        UISetup()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -273,8 +307,40 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
-    @IBAction func btnUncheck_Tapped(_ sender: Any) {
+    var ShowingCalendar: Bool = false
+    
+    func showCalendar () {
+        btnToggleCalendar.setImage(UIImage(named: "arrow-right"), for: .normal)
+        UIView.animate(withDuration: 0.2, animations: {
+            self._layout_vRightExt_WidthAnchor.constant = 240
+            if (UIDeviceOrientationIsLandscape(UIDevice.current.orientation)) {
+                self._layout_vRight_Trailing.constant = 240
+            } else {
+                self._layout_vRight_Trailing.constant = 0
+            }
+            self.view.layoutIfNeeded()
+        })
+        ShowingCalendar = true
     }
+    
+    func hideCalendar () {
+        btnToggleCalendar.setImage(UIImage(named: "arrow-left"), for: .normal)
+        UIView.animate(withDuration: 0.2, animations: {
+            self._layout_vRightExt_WidthAnchor.constant = 0
+            self._layout_vRight_Trailing.constant = 0
+            self.view.layoutIfNeeded()
+        })
+        ShowingCalendar = false
+    }
+    
+    @IBAction func btnToggleCalendar_Tapped(_ sender: Any) {
+        if (ShowingCalendar) {
+            hideCalendar()
+        } else {
+            showCalendar()
+        }
+    }
+    
     
     // MARK: - TableView Delegate & DataSource
     
@@ -453,23 +519,36 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         _EDIT_MODE_ = true
         self.performSegue(withIdentifier: "segueShowFrmNewAssignment", sender: self)
     }
+
+    // MARK:- FSCalendarDataSource
     
-    // MARK: - btnUncheck
+    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+        return "Today"
+    }
     
-    func showUncheckButton () {
-        _layout_btnUnCheck.constant = -80
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.3) {
-            self._layout_btnUnCheck.constant = 20
-            self.view.layoutIfNeeded()
-        }
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        return "Sub"
+    }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        return 1
+    }
+    
+    // MARK:- FSCalendarDelegate
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         
     }
     
-    func hideUncheckButton () {
-        
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
     }
     
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+    }
     // MARK: - Test Only
     
     @IBAction func clearAll(_ sender: Any) {
@@ -487,7 +566,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
  */
     }
     
-    // MARK{ 
+    // MARK
     
     
     // MARK: - Coach

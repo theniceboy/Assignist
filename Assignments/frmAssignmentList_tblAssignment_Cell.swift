@@ -91,26 +91,27 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         vNewFromFocus.backgroundColor = new ? UIColor.orange : UIColor.clear
     }
     
+    func shouldShowSectionHeader () -> Bool {
+        if (rowNumber == 0) {
+            return true
+        }
+        if (rowNumber == uncheckedTableAssignmentCount) {
+            return true
+        }
+        if (!onSameDay(date1: tableAssignmentList[rowNumber - 1].dueDate, date2: tableAssignmentList[rowNumber].dueDate)) {
+            return true
+        }
+        return false
+    }
+    
     func loadCell() {
         
         // Set Cell UI
         
-        if (rowNumber == 0) {
+        if (shouldShowSectionHeader()) {
             showSectionHeader()
         } else {
-            if (tableAssignmentList[rowNumber].checked) {
-                if (tableAssignmentList[rowNumber - 1].checked) {
-                    hideSectionHeader()
-                } else {
-                    showSectionHeader()
-                }
-            } else {
-                if (onSameDay(date1: tableAssignmentList[rowNumber - 1].dueDate, date2: tableAssignmentList[rowNumber].dueDate)) {
-                    hideSectionHeader()
-                } else {
-                    showSectionHeader()
-                }
-            }
+            hideSectionHeader()
         }
         
         assignmentRow = getRowNum_AssignmentList(id: tableAssignmentList[rowNumber].id)
@@ -156,7 +157,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         cChecked.stateChangeAnimation = .expand(.fill)
         cChecked.boxType = .square
         cChecked.cornerRadius = 4
-        cChecked.animationDuration = 0.1
+        cChecked.animationDuration = 0.2
         for subview in vChecked.subviews {
             subview.removeFromSuperview()
         }
