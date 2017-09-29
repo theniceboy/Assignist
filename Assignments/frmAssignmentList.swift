@@ -11,10 +11,13 @@ import UIKit
 var tableAssignmentList: [AssignmentItem] = [] // The assignment list that is displayed
 var tableAssignmentList_checked: [AssignmentItem] = []
 var tableAssignmentListDivider: Int = 0 // The index of the first item that shoud be in the completed section
-var uncheckedTableAssignmentCount: Int = 0
 
 var tableSubjectList: [SubjectItem] = []
 var tableSubjectList_selectedRow: Int = 0
+
+var tableLongTerm: [AssignmentItem] = []
+
+var calendarEvents: [String: Int] = [:]
 
 
 func syncAssignmentListWithFocus () {
@@ -35,7 +38,7 @@ func syncAssignmentListWithFocus () {
 }
 
 
-class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate, FSCalendarDelegate, FSCalendarDataSource, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UIWebViewDelegate, FSCalendarDelegate, FSCalendarDataSource, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
     
     // MARK: Form Outlets
     
@@ -60,6 +63,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var btnSettings: ZFRippleButton!
     
     @IBOutlet weak var vRightExt: UIView!
+    @IBOutlet weak var tblLongTerm: UITableView!
     @IBOutlet weak var fsCalendar: FSCalendar!
     @IBOutlet weak var btnToggleCalendar: ZFRippleButton!
     
@@ -68,7 +72,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // Layout
 
-    
     @IBOutlet weak var _layout_vRightTopHeightAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_vRightExt_WidthAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_vRight_Trailing: NSLayoutConstraint!
@@ -162,6 +165,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         activityStop()
         
         UISetup()
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -303,28 +308,34 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         btnShowCompleted.setTitle((showingChecked ? "Hide Completed" : "Show Completed"), for: .normal)
         self.refreshTableAssignmentList()
         if (showingChecked) {
-            tblAssignmentList.scrollToRow(at: IndexPath(row: uncheckedTableAssignmentCount, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+            tblAssignmentList.scrollToRow(at: IndexPath(row: tableAssignmentListDivider, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
         }
     }
     
     var ShowingCalendar: Bool = false
     
     func showCalendar () {
+        
         btnToggleCalendar.setImage(UIImage(named: "arrow-right"), for: .normal)
+        btnToggleCalendar.setTitle("Less", for: .normal)
         UIView.animate(withDuration: 0.2, animations: {
-            self._layout_vRightExt_WidthAnchor.constant = 240
-            if (UIDeviceOrientationIsLandscape(UIDevice.current.orientation)) {
-                self._layout_vRight_Trailing.constant = 240
-            } else {
+            self._layout_vRightExt_WidthAnchor.constant = 250
+            if (self.interfaceOrientation == UIInterfaceOrientation.portrait || self.interfaceOrientation == UIInterfaceOrientation.portraitUpsideDown) {
                 self._layout_vRight_Trailing.constant = 0
+            } else {
+                self._layout_vRight_Trailing.constant = 250
             }
             self.view.layoutIfNeeded()
         })
         ShowingCalendar = true
+        fsCalendar.reloadData()
+        
+        refreshLongTerm()
     }
     
     func hideCalendar () {
         btnToggleCalendar.setImage(UIImage(named: "arrow-left"), for: .normal)
+        btnToggleCalendar.setTitle("More", for: .normal)
         UIView.animate(withDuration: 0.2, animations: {
             self._layout_vRightExt_WidthAnchor.constant = 0
             self._layout_vRight_Trailing.constant = 0
@@ -363,6 +374,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             return 1
         } else if (tableView == tblSubjectList) {
             return 1
+        } else if (tableView == tblLongTerm) {
+            return 1
         }
         return 0
     }
@@ -372,6 +385,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             return tableAssignmentList.count
         } else if (tableView == tblSubjectList) {
             return tableSubjectList.count
+        } else if (tableView == tblLongTerm) {
+            return tableLongTerm.count
         }
         return 0
     }
@@ -380,6 +395,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         if (tableView == tblAssignmentList) {
             return ""
         } else if (tableView == tblSubjectList) {
+            return ""
+        } else if (tableView == tblLongTerm) {
             return ""
         }
         return ""
@@ -396,8 +413,27 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.rowNumber = indexPath.row
             cell.loadCell()
             return cell
+        } else if (tableView == tblLongTerm) {
+            let cell: frmAssignmentList_tblLongTerm_Cell = tableView.dequeueReusableCell(withIdentifier: "tblLongTermCell_Identifier", for: indexPath) as! frmAssignmentList_tblLongTerm_Cell
+            cell.rowNumber = indexPath.row
+            cell.loadCell()
+            return cell
         }
         return UITableViewCell()
+    }
+    
+    var tblAssignmentsScrollState: Int = 0
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView == tblAssignmentList && tblAssignmentsScrollState == 0 && ShowingCalendar) {
+            refreshCalendarSelection()
+        }
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        if (scrollView == tblAssignmentList) {
+            tblAssignmentsScrollState = 0
+        }
     }
     
     // MARK: - Table View Data
@@ -417,6 +453,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     func formatTableData () {
         tableAssignmentList = []
         tableAssignmentList_checked = []
+        calendarEvents = [:]
         if (assignmentList.count == 0) {
             return
         }
@@ -462,18 +499,24 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                         }
                     }
                 }
-            }
-            if (tableAssignmentList_checked.count > 1) {
-                for i in 0 ... (tableAssignmentList_checked.count - 2) {
-                    for j in (i + 1) ... (tableAssignmentList_checked.count - 1) {
-                        if (tableAssignmentList_checked[i].checkedDate.timeIntervalSince1970 < tableAssignmentList_checked[j].checkedDate.timeIntervalSince1970) {
-                            swaptable_checked(a: i, b: j)
-                        }
+                for i in 0 ... (tableAssignmentList.count - 1) {
+                    if (calendarEvents["\(tableAssignmentList[i].dueDate.year)-\(tableAssignmentList[i].dueDate.month)-\(tableAssignmentList[i].dueDate.day)"] == nil) {
+                        calendarEvents["\(tableAssignmentList[i].dueDate.year)-\(tableAssignmentList[i].dueDate.month)-\(tableAssignmentList[i].dueDate.day)"] = 1
+                    } else {
+                        calendarEvents["\(tableAssignmentList[i].dueDate.year)-\(tableAssignmentList[i].dueDate.month)-\(tableAssignmentList[i].dueDate.day)"]! += 1
                     }
                 }
             }
-            uncheckedTableAssignmentCount = tableAssignmentList.count
             if (showingChecked) {
+                if (tableAssignmentList_checked.count > 1) {
+                    for i in 0 ... (tableAssignmentList_checked.count - 2) {
+                        for j in (i + 1) ... (tableAssignmentList_checked.count - 1) {
+                            if (tableAssignmentList_checked[i].checkedDate.timeIntervalSince1970 < tableAssignmentList_checked[j].checkedDate.timeIntervalSince1970) {
+                                swaptable_checked(a: i, b: j)
+                            }
+                        }
+                    }
+                }
                 tableAssignmentList.append(contentsOf: tableAssignmentList_checked)
             }
         }
@@ -500,6 +543,11 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         tblAssignmentList.reloadData()
         
         refreshTableSubject()
+        
+        if (ShowingCalendar) {
+            refreshCalendarSelection()
+            refreshLongTerm()
+        }
     }
     
     func refreshTableSubject() {
@@ -512,6 +560,18 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         tblSubjectList.reloadData()
     }
     
+    func refreshLongTerm () {
+        tableLongTerm = []
+        if (assignmentList.count > 0) {
+            for i in 0 ... (assignmentList.count - 1) {
+                if (!assignmentList[i].checked && assignmentList[i].longTerm) {
+                    tableLongTerm.append(assignmentList[i])
+                }
+            }
+        }
+        tblLongTerm.reloadData()
+    }
+    
     // MARK: - Table View Action
     
     func editAssignment (id: Int) {
@@ -519,36 +579,59 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         _EDIT_MODE_ = true
         self.performSegue(withIdentifier: "segueShowFrmNewAssignment", sender: self)
     }
-
-    // MARK:- FSCalendarDataSource
     
-    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
-        return "Today"
+    // MARK: - FSCalendar Functions
+    
+    func refreshCalendarSelection () {
+        if (tblAssignmentList.indexPathsForVisibleRows == nil) {
+            return
+        }
+        let visibleRows: [IndexPath] = tblAssignmentList.indexPathsForVisibleRows!
+        if (visibleRows.count > 0) {
+            fsCalendar.select(tableAssignmentList[visibleRows[0].row].dueDate)
+        }
+    }
+
+    // MARK: - FSCalendarDataSource
+    
+    func min (a: Int, b: Int) -> Int {
+        return a < b ? a : b
     }
     
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        return "Sub"
+        if (calendarEvents["\(date.year)-\(date.month)-\(date.day)"] == nil) {
+            return ""
+        }
+        var str = ""
+        for _ in 1 ... min(a: calendarEvents["\(date.year)-\(date.month)-\(date.day)"]!, b: 3) {
+            str = str + "•"
+        }
+        return str
     }
     
-    func maximumDate(for calendar: FSCalendar) -> Date {
-        return Date()
-    }
+    // MARK: - FSCalendarDelegate
     
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return 1
-    }
-    
-    // MARK:- FSCalendarDelegate
-    
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.fsCalendar.layoutIfNeeded()
+        fsCalendar.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if (tableAssignmentList.count > 0) {
+            for i in 0 ... (tableAssignmentList.count - 1) {
+                if (onSameDay(date1: tableAssignmentList[i].dueDate, date2: date)) {
+                    tblAssignmentsScrollState = 1
+                    tblAssignmentList.selectRow(at: IndexPath(row: i, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.top)
+                    break
+                }
+            }
+        }
     }
     
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        //fsCalendar.reloadData()
     }
+    
     // MARK: - Test Only
     
     @IBAction func clearAll(_ sender: Any) {

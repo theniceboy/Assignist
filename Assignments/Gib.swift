@@ -43,6 +43,10 @@ let h_week: [Int: String] = [0: "Last ", 1: "", 2: "Next "]
 
 // MARK: - Global Functions
 
+func onSameDay (date1: Date, date2: Date) -> Bool {
+    return (date1.year == date2.year && date1.month == date2.month && date1.day == date2.day)
+}
+
 func displayTime (date: Date) -> String {
     if (date.hour > 12 || (date.hour == 12 && date.minute > 0)) {
         return "\(date.hour - 12):" + (date.minute < 10 ? "0" : "") + "\(date.minute) PM"

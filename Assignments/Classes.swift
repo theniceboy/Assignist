@@ -31,6 +31,7 @@ class AssignmentItem: NSObject, NSCoding {
     var newFromFocus: Bool = false
     var notificationOn: Bool = false
     var checkedDate: Date = Date()
+    var longTerm: Bool = false
     
     // Functions
     
@@ -48,6 +49,7 @@ class AssignmentItem: NSObject, NSCoding {
         newFromFocus = aDecoder.decodeBool(forKey: "newFromFocus")
         notificationOn = aDecoder.decodeBool(forKey: "notificationOn")
         checkedDate = aDecoder.decodeObject(forKey: "checkedDate") as? Date ?? Date()
+        longTerm = aDecoder.decodeBool(forKey: "longTerm")
     }
     
     func encode(with aCoder: NSCoder) {
@@ -62,6 +64,7 @@ class AssignmentItem: NSObject, NSCoding {
         aCoder.encode(newFromFocus, forKey: "newFromFocus")
         aCoder.encode(notificationOn, forKey: "notificationOn")
         aCoder.encode(checkedDate, forKey: "checkedDate")
+        aCoder.encode(longTerm, forKey: "longTerm")
     }
 }
 

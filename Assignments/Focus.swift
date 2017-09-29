@@ -18,6 +18,13 @@ class focusAssignmentItem {
     var duedate: Date = Date()
 }
 
+func subchar (charlist: [Character], a: Int, b: Int) -> String {
+    var str = ""
+    for i in a ... b {
+        str.append(charlist[i])
+    }
+    return str
+}
 
 func parseFocusHTML (html: String, subjectstr: String) {
     //print(html)
@@ -183,6 +190,23 @@ func parseFocusHTML (html: String, subjectstr: String) {
             for i in 0 ... (strlist.count - 1) {
                 tmpSubject = ""
                 tmpPeriod = ""
+                
+                var chars = Array(strlist[i])
+                var j = 0, charl = chars.count
+                while (j < charl - 7) {
+                    if (subchar(charlist: chars, a: j, b: j + 8) == " - Period") {
+                        break
+                    }
+                    tmpSubject.append(chars[j])
+                    j += 1
+                }
+                j += 10
+                while (j < chars.count - 1 && chars[j] != " ") {
+                    tmpPeriod.append(chars[j])
+                    j += 1
+                }
+                
+                /*
                 indexNow = strlist[i].startIndex
                 while (strlist[i][indexNow] != "-" && indexNow < strlist[i].endIndex) {
                     tmpSubject.append(strlist[i][indexNow])
@@ -200,9 +224,16 @@ func parseFocusHTML (html: String, subjectstr: String) {
                     tmpPeriod.append(strlist[i][indexNow])
                     indexNow = strlist[i].index(after: indexNow)
                 }
+ */
                 tmpsubjectList[Int(tmpPeriod)!] = tmpSubject.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
                 //print(tmpSubject + "  " + tmpPeriod)
             }
+            
+            /*
+ [0]    String    "ASB Leadership - Period 1 - BCD - 070 - Jennifer  Keathley"
+             [1]    String    "Chemistry Hon - Period 2 - BCD - 001 - Marsha  Tarr"    [2]    String    "Spanish I - Period 3 - BCD - 255 - Michael  Lanham"    [3]    String    "AP Govt &amp; Politics US - Period 4 - ACD - 149 - Alexis  Salerno"    [4]    String    "Precal/Trig Hon - Period 5 - ACD - 235 - Kent  Tarr"    [5]    String    "English II Hon - Period 6 - ACD - 001 - Amber  West"    [6]    String    "Biblical Narrative-Discipleship - Period 7 - ACD - 003 - Jeremy  Scott"
+ */
+            
             
             var assignmentExists: Bool = false, subjectExists: Bool = false
             for i in 0 ... (focusAssignmentList.count - 1) {

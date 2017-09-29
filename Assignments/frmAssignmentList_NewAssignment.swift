@@ -42,6 +42,9 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     @IBOutlet weak var tvComments: UITextView!
     @IBOutlet weak var lbPlaceHolder_tfComments: UILabel!
     
+    @IBOutlet weak var vLongTerm: UIView!
+    @IBOutlet weak var switchLongTerm: SevenSwitch!
+    
     @IBOutlet weak var sgcSetPriority: BetterSegmentedControl!
     
     @IBOutlet weak var lbDueDate: UILabel!
@@ -97,6 +100,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     var tmpSubject: String = ""
     var tmpPriority: Int = 0
+    var tmpLongTerm: Bool = false
     var tmpDueDate: Date = Date()
     var notificationOn: Bool = true
     var notifyDateTime: Date = Date()
@@ -142,6 +146,9 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             do {
                 try sgcSetPriority.setIndex(UInt(editAssignment.priority))
             } catch { }
+            
+            tmpLongTerm = editAssignment.longTerm
+            switchLongTerm.setOn(tmpLongTerm, animated: true)
             
             vSetDueDayTime.isHidden = editAssignment.fromFocus
             _layout_NotificationTopMargin.constant = (editAssignment.fromFocus ? 14 : 110)
@@ -285,6 +292,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentList[rowNumber].comments = tvComments.text
             assignmentList[rowNumber].subject = tmpSubject
             assignmentList[rowNumber].priority = tmpPriority
+            assignmentList[rowNumber].longTerm = tmpLongTerm
             assignmentList[rowNumber].dueDate = tmpDueDate
             
             assignmentList[rowNumber].notificationOn = notificationOn
@@ -311,6 +319,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             assignmentItem.comments = tvComments.text
             assignmentItem.subject = tmpSubject
             assignmentItem.priority = tmpPriority
+            assignmentItem.longTerm = tmpLongTerm
             assignmentItem.dueDate = tmpDueDate
             
             assignmentItem.notificationOn = notificationOn
@@ -387,6 +396,12 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         } else if (selected == "!!!") {
             tmpPriority = 3
         }
+    }
+    
+    // MARK: Actions - Long Term
+    
+    @IBAction func switchLongTerm_ValueChanged(_ sender: Any) {
+        tmpLongTerm = switchLongTerm.on
     }
     
     // MARK: Actions - Due Day Time Settings
@@ -559,6 +574,9 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         sgcSetPriority.layer.borderColor = themeColor.cgColor
         sgcSetPriority.layer.borderWidth = 0.8
         sgcSetPriority.titles = ["Normal", "!", "!!", "!!!"]
+        
+        vLongTerm.layer.cornerRadius = 6
+        switchLongTerm.layer.cornerRadius = 6
         
         sgcSetDueTime.layer.borderColor = themeColor.cgColor
         sgcSetDueTime.layer.borderWidth = 0.8

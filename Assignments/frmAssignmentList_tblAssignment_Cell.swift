@@ -38,10 +38,14 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     
     // MARK: - Functions
     
-    func onSameDay (date1: Date, date2: Date) -> Bool {
-        return (date1.year == date2.year && date1.month == date2.month && date1.day == date2.day)
+    func highLight () {
+        UIView.animate(withDuration: 0.3, animations: {
+                self.vSubjectBlockingArea.backgroundColor = self.subjectUIColor.withAlphaComponent(0.5)
+                self.vMaster.backgroundColor = self.subjectUIColor.withAlphaComponent(0.4)
+        }) { (true) in
+            self.setCheckStateUI(checked: assignmentList[self.assignmentRow].checked)
+        }
     }
-    
     
     // MARK: - Load
     
@@ -95,13 +99,16 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         if (rowNumber == 0) {
             return true
         }
-        if (rowNumber == uncheckedTableAssignmentCount) {
+        if (rowNumber == tableAssignmentListDivider) {
             return true
         }
-        if (!onSameDay(date1: tableAssignmentList[rowNumber - 1].dueDate, date2: tableAssignmentList[rowNumber].dueDate)) {
-            return true
+        if (rowNumber > tableAssignmentListDivider) {
+            return false
         }
-        return false
+        if (onSameDay(date1: tableAssignmentList[rowNumber - 1].dueDate, date2: tableAssignmentList[rowNumber].dueDate)) {
+            return false
+        }
+        return true
     }
     
     func loadCell() {
@@ -241,6 +248,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         setCheckStateUI(checked: assignmentList[assignmentRow].checked)
         
         if (curFrmAssignmentList.showingChecked) {
+            
             let assignmentID = tableAssignmentList[rowNumber].id
             var targetRow: Int = 0
             curFrmAssignmentList.formatTableData()
@@ -250,24 +258,19 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
                     break
                 }
             }
-            if (rowNumber == tableAssignmentListDivider || rowNumber == tableAssignmentListDivider - 1) {
-                
+            
+            UIView.animate(withDuration: 0.2, delay: 0, animations: {
                 curFrmAssignmentList.tblAssignmentList.moveRow(at: IndexPath(row: self.rowNumber, section: 0), to: IndexPath(row: targetRow, section: 0))
-                //DispatchQueue.main.async {
-                    curFrmAssignmentList.refreshTableAssignmentList(formatTable: false)
-                //}
-            } else {
-                UIView.animate(withDuration: 0.2, delay: 0.2, animations: {
-                    curFrmAssignmentList.tblAssignmentList.moveRow(at: IndexPath(row: self.rowNumber, section: 0), to: IndexPath(row: targetRow, section: 0))
-                })
-                let when = DispatchTime.now() + 0.4
-                DispatchQueue.main.asyncAfter(deadline: when) {
-                    curFrmAssignmentList.refreshTableAssignmentList(formatTable: false)
-                }
+            })
+            
+            let when = DispatchTime.now() + 0.2
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                curFrmAssignmentList.refreshTableAssignmentList(formatTable: false)
             }
             
             
-            (curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: rowNumber, section: 0)) as! frmAsignmentList_tblAssignmentListCell).loadCell()
+            //(curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: rowNumber, section: 0)) as! frmAsignmentList_tblAssignmentListCell).loadCell()
+ 
         } else {
             /*
             if (rowNumber < tableAssignmentListDivider) {
