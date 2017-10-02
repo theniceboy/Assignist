@@ -57,7 +57,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             self.layoutIfNeeded()
         //}
         
-        if (tableAssignmentList[rowNumber].checked) {
+        if (rowNumber >= tableAssignmentListDivider) {
             lbSectionHeader.text = "Completed"
             lbSectionHeader.textColor = UIColor.gray
             return
@@ -246,6 +246,18 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         saveAssignmentList()
         
         setCheckStateUI(checked: assignmentList[assignmentRow].checked)
+        if (assignmentList[assignmentRow].checked) {
+            checkedIDBeforeFocusSync.append(assignmentList[assignmentRow].id)
+        } else {
+            if (checkedIDBeforeFocusSync.count > 0) {
+                for i in 0 ... (checkedIDBeforeFocusSync.count - 1) {
+                    if (checkedIDBeforeFocusSync[i] == assignmentList[assignmentRow].id) {
+                        checkedIDBeforeFocusSync.remove(at: i)
+                        break
+                    }
+                }
+            }
+        }
         
         if (curFrmAssignmentList.showingChecked) {
             

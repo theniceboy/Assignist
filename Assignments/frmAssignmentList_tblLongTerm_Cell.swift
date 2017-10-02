@@ -30,13 +30,13 @@ class frmAssignmentList_tblLongTerm_Cell: UITableViewCell {
         tmpAssignment = tableLongTerm[rowNumber]
         subjectUIColor = subjectColor(string: tmpAssignment.subject)
         
-        //vMaster.layer.shadowColor = UIColor.black.cgColor
-        //vMaster.layer.shadowOffset = CGSize.zero
-        //vMaster.layer.shadowOpacity = 0.1
-        //vMaster.layer.shadowRadius = 3
-        //vMaster.layer.cornerRadius = 6
+        vMaster.layer.shadowColor = UIColor.black.cgColor
+        vMaster.layer.shadowOffset = CGSize.zero
+        vMaster.layer.shadowOpacity = 0.1
+        vMaster.layer.shadowRadius = 3
+        vMaster.layer.cornerRadius = 6
         
-        //vSubject.layer.cornerRadius = 6
+        vSubject.layer.cornerRadius = 6
         vSubject.layer.backgroundColor = subjectUIColor.cgColor
         
         
