@@ -19,6 +19,8 @@ var tableLongTerm: [AssignmentItem] = []
 
 var calendarEvents: [String: Int] = [:]
 
+var checkedIDBeforeFocusSync: [Int] = []
+
 
 func syncAssignmentListWithFocus () {
     let request = URLRequest(url: URL(string: "https://focus.mvcs.org/focus")!)
@@ -91,16 +93,21 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         _layout_vRightTopHeightAnchor.constant = 46
         lbSyncingWithFocus.alpha = 1
         
+        //btnToggleCalendar.layer.borderColor = themeColor.cgColor
+        //btnToggleCalendar.layer.borderWidth = 0.5
         
-        btnToggleCalendar.layer.shadowColor = UIColor.black.cgColor
+        btnToggleCalendar.layer.shadowColor = themeColor.cgColor
         btnToggleCalendar.layer.shadowOffset = CGSize.zero
-        btnToggleCalendar.layer.shadowOpacity = 0.1
-        btnToggleCalendar.layer.shadowRadius = 8
+        btnToggleCalendar.layer.shadowOpacity = 0.3
+        btnToggleCalendar.layer.shadowRadius = 7
+ 
         
+        /*
         vRightExt.layer.shadowColor = UIColor.black.cgColor
         vRightExt.layer.shadowOffset = CGSize.zero
-        vRightExt.layer.shadowOpacity = 0.1
+        vRightExt.layer.shadowOpacity = 0.0
         vRightExt.layer.shadowRadius = 8
+ */
         
         hideCalendar()
         
@@ -317,7 +324,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     func showCalendar () {
         
         btnToggleCalendar.setImage(UIImage(named: "arrow-right"), for: .normal)
-        btnToggleCalendar.setTitle("Less", for: .normal)
+        btnToggleCalendar.setTitle("  Less", for: .normal)
         UIView.animate(withDuration: 0.2, animations: {
             self._layout_vRightExt_WidthAnchor.constant = 250
             if (self.interfaceOrientation == UIInterfaceOrientation.portrait || self.interfaceOrientation == UIInterfaceOrientation.portraitUpsideDown) {
@@ -335,7 +342,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func hideCalendar () {
         btnToggleCalendar.setImage(UIImage(named: "arrow-left"), for: .normal)
-        btnToggleCalendar.setTitle("More", for: .normal)
+        btnToggleCalendar.setTitle("  More", for: .normal)
         UIView.animate(withDuration: 0.2, animations: {
             self._layout_vRightExt_WidthAnchor.constant = 0
             self._layout_vRight_Trailing.constant = 0

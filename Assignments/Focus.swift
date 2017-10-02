@@ -315,7 +315,28 @@ func parseFocusHTML (html: String, subjectstr: String) {
             })
         }
         
+        for item in checkedIDBeforeFocusSync {
+            if (assignmentList.count > 0) {
+                for i in 0 ... (assignmentList.count - 1) {
+                    if (assignmentList[i].id == item) {
+                        assignmentList[i].checked = false
+                        break
+                    }
+                }
+            }
+        }
         curFrmAssignmentList.refreshTableAssignmentList(formatTable: true)
+        for item in checkedIDBeforeFocusSync {
+            if (assignmentList.count > 0) {
+                for i in 0 ... (assignmentList.count - 1) {
+                    if (assignmentList[i].id == item) {
+                        assignmentList[i].checked = true
+                        break
+                    }
+                }
+            }
+        }
+        checkedIDBeforeFocusSync = []
         saveAssignmentList()
         saveSubjectList()
         saveUserSettings()
