@@ -148,7 +148,6 @@
 		63B84A2E1F5E7673005A2A52 /* TransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849C31F5E760B005A2A52 /* TransitionType.swift */; };
 		63B84A2F1F5E7673005A2A52 /* ColorDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849C51F5E760B005A2A52 /* ColorDefinition.swift */; };
 		63B84A301F5E7673005A2A52 /* Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849C61F5E760B005A2A52 /* Hue.swift */; };
-		63B84A311F5E7673005A2A52 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 63B849C71F5E760B005A2A52 /* Info.plist */; };
 		63B84A321F5E7673005A2A52 /* Luminosity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849C81F5E760B005A2A52 /* Luminosity.swift */; };
 		63B84A331F5E7673005A2A52 /* RandomColor.h in Sources */ = {isa = PBXBuildFile; fileRef = 63B849C91F5E760B005A2A52 /* RandomColor.h */; };
 		63B84A341F5E7673005A2A52 /* RandomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849CA1F5E760B005A2A52 /* RandomColor.swift */; };
@@ -348,7 +347,6 @@
 		63B849C31F5E760B005A2A52 /* TransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionType.swift; sourceTree = "<group>"; };
 		63B849C51F5E760B005A2A52 /* ColorDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDefinition.swift; sourceTree = "<group>"; };
 		63B849C61F5E760B005A2A52 /* Hue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hue.swift; sourceTree = "<group>"; };
-		63B849C71F5E760B005A2A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63B849C81F5E760B005A2A52 /* Luminosity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luminosity.swift; sourceTree = "<group>"; };
 		63B849C91F5E760B005A2A52 /* RandomColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RandomColor.h; sourceTree = "<group>"; };
 		63B849CA1F5E760B005A2A52 /* RandomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomColor.swift; sourceTree = "<group>"; };
@@ -861,7 +859,6 @@
 			children = (
 				63B849C51F5E760B005A2A52 /* ColorDefinition.swift */,
 				63B849C61F5E760B005A2A52 /* Hue.swift */,
-				63B849C71F5E760B005A2A52 /* Info.plist */,
 				63B849C81F5E760B005A2A52 /* Luminosity.swift */,
 				63B849C91F5E760B005A2A52 /* RandomColor.h */,
 				63B849CA1F5E760B005A2A52 /* RandomColor.swift */,
@@ -1156,7 +1153,6 @@
 				63B84A2E1F5E7673005A2A52 /* TransitionType.swift in Sources */,
 				63B84A2F1F5E7673005A2A52 /* ColorDefinition.swift in Sources */,
 				63B84A301F5E7673005A2A52 /* Hue.swift in Sources */,
-				63B84A311F5E7673005A2A52 /* Info.plist in Sources */,
 				63B84A321F5E7673005A2A52 /* Luminosity.swift in Sources */,
 				63B84A331F5E7673005A2A52 /* RandomColor.h in Sources */,
 				63B84A341F5E7673005A2A52 /* RandomColor.swift in Sources */,
@@ -1273,7 +1269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1324,7 +1320,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

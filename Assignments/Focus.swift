@@ -46,10 +46,8 @@ func parseFocusHTML (html: String, subjectstr: String) {
     if (html.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "" && userSettings.focusUsername != "" && userSettings.focusPassword != "") {
         
         // Set all newFromFocus to false
-        if (assignmentList.count > 0) {
-            for i in 0 ... (assignmentList.count - 1) {
-                assignmentList[i].newFromFocus = false
-            }
+        for item in assignmentList {
+            item.newFromFocus = false
         }
         
         var indexNow = html.index(after: html.startIndex)
@@ -244,8 +242,9 @@ func parseFocusHTML (html: String, subjectstr: String) {
                         // Synced assignment but the date might be different
                         if (focusAssignmentList[i].title == assignmentList[aindex].title && focusAssignmentList[i].subject == assignmentList[aindex].subject) {
                             if (assignmentList[aindex].dueDate != focusAssignmentList[i].duedate) {
-                                assignmentList[aindex].newFromFocus = true
+                                //assignmentList[aindex].newFromFocus = true
                                 assignmentList[aindex].dueDate = focusAssignmentList[i].duedate
+                                //syncedAssignmentCount += 1
                             }
                             assignmentExists = true
                             break

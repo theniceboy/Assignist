@@ -52,8 +52,9 @@ class frmAssignmentList_tblSubject_Cell: UITableViewCell {
         if (tableSubjectList_selectedRow == rowNumber) {
             vContent.backgroundColor = themeColor.withAlphaComponent(0.2)
         } else {
-            vContent.backgroundColor = UIColor.clear
+            vContent.backgroundColor = UIColor.clear.withAlphaComponent(0)
         }
+        self.backgroundColor = UIColor.clear.withAlphaComponent(0)
     }
     
     @IBAction func btnEdit_Tapped(_ sender: Any) {

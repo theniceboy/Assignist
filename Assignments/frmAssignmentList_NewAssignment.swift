@@ -159,7 +159,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                 do {
                     try sgcSetDueTime.setIndex(0)
                 } catch { }
-            } else if (tmpDueDate.hour == 11 && tmpDueDate.minute == 59) {
+            } else if (tmpDueDate.hour == 23 && tmpDueDate.minute == 59) {
                 do {
                     try sgcSetDueTime.setIndex(1)
                 } catch { }
@@ -168,7 +168,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
                     try sgcSetDueTime.setIndex(2)
                 } catch { }
             }
-            sgcSetDueTime_firstOpens = false
             
             notificationOn = false
             

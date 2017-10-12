@@ -54,6 +54,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var vRightCenter: UIView!
     @IBOutlet weak var tblAssignmentList: UITableView!
     @IBOutlet weak var btnShowCompleted: ZFRippleButton!
+    @IBOutlet weak var lbPullToRefresh: UILabel!
     
     @IBOutlet weak var btnAddNew: ZFRippleButton!
     
@@ -69,8 +70,9 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var fsCalendar: FSCalendar!
     @IBOutlet weak var btnToggleCalendar: ZFRippleButton!
     
-    
     let coachMarksController = CoachMarksController()
+    
+    private let refreshControl = UIRefreshControl()
     
     // Layout
 
@@ -101,6 +103,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         btnToggleCalendar.layer.shadowOpacity = 0.3
         btnToggleCalendar.layer.shadowRadius = 7
  
+        lbPullToRefresh.alpha = 0
         
         /*
         vRightExt.layer.shadowColor = UIColor.black.cgColor
@@ -112,6 +115,15 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         hideCalendar()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        if (userSettings.focusUsername != "" && userSettings.focusPassword != "") {
+            setupRefreshControl()
+        }
+    }
+    
+    func setupRefreshControl () {
+        refreshControl.addTarget(self, action: #selector(refreshFocusAssignments), for: .valueChanged)
+        tblAssignmentList.addSubview(refreshControl)
     }
     
     var wasShowingCalendarInLandscape: Bool = false
@@ -172,8 +184,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         activityStop()
         
         UISetup()
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -194,6 +204,12 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     // MARK: - Focus Login Handler
+    
+    @objc func refreshFocusAssignments () {
+        loginFromSettigns = false
+        syncAssignmentListWithFocus()
+        refreshControl.endRefreshing()
+    }
     
     func LoginOvertime () {
         activityStop()
@@ -256,7 +272,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             if (webView.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('form-error')[0].innerHTML")?.contains("Invalid username/password"))! {
                 invalidLoginInfoCount += 1
             } else {
-                self.progressView.progress += 0.0011
+                self.progressView.progress += (loggedInFocus ? 0.0015 : 0.0011)
                 if self.progressView.progress >= 0.95 {
                     self.progressView.progress = 0.95
                 }
@@ -304,6 +320,27 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: - Actions
+    
+    lazy var popupNewSubject: frmAssignmentList_NewAssignment_NewSubject = {
+        let popupViewController = self.storyboard?.instantiateViewController(withIdentifier: "sidNewSubject")
+        return popupViewController as! frmAssignmentList_NewAssignment_NewSubject
+    }()
+    
+    @IBAction func btnAddSubject_Tapped(_ sender: Any) {
+        let presenter: Presentr = {
+            let customPresentationType = PresentationType.custom(width: ModalSize.custom(size: 450.0), height: ModalSize.custom(size: 170.0), center: ModalCenterPosition.topCenter)
+            let presenter = Presentr(presentationType: customPresentationType)
+            presenter.transitionType = TransitionType.coverHorizontalFromRight
+            presenter.dismissOnSwipe = false
+            presenter.dismissOnTap = false
+            presenter.blurBackground = true
+            presenter.keyboardTranslationType = KeyboardTranslationType.moveUp
+            
+            return presenter
+        }()
+        self.customPresentViewController(presenter, viewController: self.popupNewSubject, animated: true, completion: {})
+        curFrmAssignmentList_NewAssignment_NewSubject.initializeUI()
+    }
     
     @IBAction func btnAdd_Tapped(_ sender: Any) {
         _EDIT_MODE_ = false
@@ -432,8 +469,15 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     var tblAssignmentsScrollState: Int = 0
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView == tblAssignmentList && tblAssignmentsScrollState == 0 && ShowingCalendar) {
-            refreshCalendarSelection()
+        if (scrollView == tblAssignmentList) {
+            if (scrollView.contentOffset.y < -40) {
+                lbPullToRefresh.alpha = (scrollView.contentOffset.y < -100.0 ? -140.0 : scrollView.contentOffset.y + 40) / -140.0
+            } else {
+                lbPullToRefresh.alpha = 0
+            }
+            if (tblAssignmentsScrollState == 0 && ShowingCalendar) {
+                refreshCalendarSelection()
+            }
         }
     }
     
