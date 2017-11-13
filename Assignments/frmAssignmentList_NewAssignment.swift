@@ -58,6 +58,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     //@IBOutlet weak var btnSetNotification: ZFRippleButton!
     
     @IBOutlet weak var btnDeleteAssignment: ZFRippleButton!
+    @IBOutlet weak var lbAssignmentSyncedFromFocus: UILabel!
     
     let coachMarksController = CoachMarksController()
 
@@ -128,6 +129,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             editAssignment = assignmentList[getRowNum_AssignmentList(id: _EDIT_ID_)]
             
             btnDeleteAssignment.isHidden = editAssignment.fromFocus
+            lbAssignmentSyncedFromFocus.isHidden = false
             vTitleBlocker.isHidden = !editAssignment.fromFocus
             
             btnAdd.setTitle("Done", for: .normal)
@@ -157,6 +159,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             sgcSetDueTime_firstOpens = true
             if (tmpDueDate.hour == 7 && tmpDueDate.minute == 30) {
                 do {
+                    sgcSetDueTime_firstOpens = false
                     try sgcSetDueTime.setIndex(0)
                 } catch { }
             } else if (tmpDueDate.hour == 23 && tmpDueDate.minute == 59) {
@@ -182,6 +185,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         } else {
             vTitleBlocker.isHidden = true
             btnDeleteAssignment.isHidden = true
+            lbAssignmentSyncedFromFocus.isHidden = true
             
             btnAdd.setTitle("Add", for: .normal)
             

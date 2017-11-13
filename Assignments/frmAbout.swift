@@ -12,7 +12,6 @@ class frmAbout: UIViewController {
 
     // MARK: - Outlets
     
-    
     // MARK: - Actions
     
     @IBAction func btnClose_Tapped(_ sender: Any) {
@@ -32,6 +31,9 @@ class frmAbout: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
 
     }
 

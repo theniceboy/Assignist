@@ -14,6 +14,7 @@ class focusAssignmentItem {
     var title: String = ""
     var duedatestr: String = ""
     var period: Int = 0
+
     var subject: String = ""
     var duedate: Date = Date()
 }
@@ -223,7 +224,7 @@ func parseFocusHTML (html: String, subjectstr: String) {
                     indexNow = strlist[i].index(after: indexNow)
                 }
  */
-                tmpsubjectList[Int(tmpPeriod)!] = tmpSubject.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                tmpsubjectList[Int(tmpPeriod)!] = tmpSubject.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).replacingOccurrences(of: "&amp;", with: "&")
                 //print(tmpSubject + "  " + tmpPeriod)
             }
             
@@ -232,6 +233,11 @@ func parseFocusHTML (html: String, subjectstr: String) {
              [1]    String    "Chemistry Hon - Period 2 - BCD - 001 - Marsha  Tarr"    [2]    String    "Spanish I - Period 3 - BCD - 255 - Michael  Lanham"    [3]    String    "AP Govt &amp; Politics US - Period 4 - ACD - 149 - Alexis  Salerno"    [4]    String    "Precal/Trig Hon - Period 5 - ACD - 235 - Kent  Tarr"    [5]    String    "English II Hon - Period 6 - ACD - 001 - Amber  West"    [6]    String    "Biblical Narrative-Discipleship - Period 7 - ACD - 003 - Jeremy  Scott"
  */
             
+            
+            for item in focusAssignmentList {
+                item.title = item.title.replacingOccurrences(of: "&amp;", with: "&")
+                item.subject = item.subject.replacingOccurrences(of: "&amp;", with: "&")
+            }
             
             var assignmentExists: Bool = false, subjectExists: Bool = false
             for i in 0 ... (focusAssignmentList.count - 1) {
@@ -251,6 +257,7 @@ func parseFocusHTML (html: String, subjectstr: String) {
                         }
                     }
                 }
+                
                 if (!assignmentExists) {
                     subjectExists = false
                     for item in subjectList {

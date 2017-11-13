@@ -57,6 +57,7 @@
 		638C9C3E1F677334005F3565 /* frmAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638C9C3D1F677334005F3565 /* frmAbout.swift */; };
 		63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */; };
 		63AA535D1F7E08C3006DECEF /* frmAssignmentList_tblLongTerm_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA535C1F7E08C3006DECEF /* frmAssignmentList_tblLongTerm_Cell.swift */; };
+		63B82A491F9DC4AC0074CE2D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B82A481F9DC4AB0074CE2D /* Reachability.swift */; };
 		63B849D61F5E7673005A2A52 /* BetterSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849481F5E760B005A2A52 /* BetterSegmentedControl.swift */; };
 		63B849D71F5E7673005A2A52 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8494A1F5E760B005A2A52 /* DateCollectionViewCell.swift */; };
 		63B849D81F5E7673005A2A52 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8494B1F5E760B005A2A52 /* DateTimePicker.swift */; };
@@ -65,7 +66,6 @@
 		63B849DB1F5E7673005A2A52 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849501F5E760B005A2A52 /* DPDConstants.swift */; };
 		63B849DC1F5E7673005A2A52 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849511F5E760B005A2A52 /* DPDKeyboardListener.swift */; };
 		63B849DD1F5E7673005A2A52 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849521F5E760B005A2A52 /* DPDUIView+Extension.swift */; };
-		63B849DE1F5E7673005A2A52 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 63B849531F5E760B005A2A52 /* Info.plist */; };
 		63B849DF1F5E7673005A2A52 /* DropDownCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = 63B849551F5E760B005A2A52 /* DropDownCell.xib */; };
 		63B849E01F5E7673005A2A52 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849571F5E760B005A2A52 /* DropDown+Appearance.swift */; };
 		63B849E11F5E7673005A2A52 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849581F5E760B005A2A52 /* DropDown.swift */; };
@@ -132,7 +132,6 @@
 		63B84A1E1F5E7673005A2A52 /* CoverVerticalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849B31F5E760B005A2A52 /* CoverVerticalAnimation.swift */; };
 		63B84A1F1F5E7673005A2A52 /* CoverVerticalFromTopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849B41F5E760B005A2A52 /* CoverVerticalFromTopAnimation.swift */; };
 		63B84A201F5E7673005A2A52 /* CrossDissolveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849B51F5E760B005A2A52 /* CrossDissolveAnimation.swift */; };
-		63B84A211F5E7673005A2A52 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 63B849B61F5E760B005A2A52 /* Info.plist */; };
 		63B84A221F5E7673005A2A52 /* KeyboardTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849B71F5E760B005A2A52 /* KeyboardTranslation.swift */; };
 		63B84A231F5E7673005A2A52 /* ModalCenterPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849B81F5E760B005A2A52 /* ModalCenterPosition.swift */; };
 		63B84A241F5E7673005A2A52 /* ModalSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B849B91F5E760B005A2A52 /* ModalSize.swift */; };
@@ -256,6 +255,7 @@
 		638C9C3D1F677334005F3565 /* frmAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAbout.swift; sourceTree = "<group>"; };
 		63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_NewAssignment_NewSubject.swift; sourceTree = "<group>"; };
 		63AA535C1F7E08C3006DECEF /* frmAssignmentList_tblLongTerm_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_tblLongTerm_Cell.swift; sourceTree = "<group>"; };
+		63B82A481F9DC4AB0074CE2D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		63B849481F5E760B005A2A52 /* BetterSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSegmentedControl.swift; sourceTree = "<group>"; };
 		63B8494A1F5E760B005A2A52 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		63B8494B1F5E760B005A2A52 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
@@ -520,6 +520,7 @@
 				63B849991F5E760B005A2A52 /* M13CheckBox */,
 				63B849AE1F5E760B005A2A52 /* Presentr */,
 				63B849C41F5E760B005A2A52 /* RandomColor */,
+				63B82A481F9DC4AB0074CE2D /* Reachability.swift */,
 				63B849CB1F5E760B005A2A52 /* SevenSwitch.swift */,
 				63B849CC1F5E760B005A2A52 /* SkyFloatingLabelTextField */,
 				63B849CF1F5E760B005A2A52 /* SkyFloatingLabelTextField.swift */,
@@ -1044,6 +1045,7 @@
 				63583DFF1F798BD5000DCFA0 /* FSCalendarCollectionView.h in Sources */,
 				63583E001F798BD5000DCFA0 /* FSCalendarDynamicHeader.h in Sources */,
 				63583E011F798BD5000DCFA0 /* FSCalendarDelegationFactory.h in Sources */,
+				63B82A491F9DC4AC0074CE2D /* Reachability.swift in Sources */,
 				63583E021F798BD5000DCFA0 /* FSCalendarExtensions.m in Sources */,
 				63583E031F798BD5000DCFA0 /* FSCalendarDelegationProxy.h in Sources */,
 				63583E041F798BD5000DCFA0 /* FSCalendar+Deprecated.m in Sources */,
@@ -1062,7 +1064,6 @@
 				63B849DB1F5E7673005A2A52 /* DPDConstants.swift in Sources */,
 				63B849DC1F5E7673005A2A52 /* DPDKeyboardListener.swift in Sources */,
 				63B849DD1F5E7673005A2A52 /* DPDUIView+Extension.swift in Sources */,
-				63B849DE1F5E7673005A2A52 /* Info.plist in Sources */,
 				63B849DF1F5E7673005A2A52 /* DropDownCell.xib in Sources */,
 				63B849E01F5E7673005A2A52 /* DropDown+Appearance.swift in Sources */,
 				63B849E11F5E7673005A2A52 /* DropDown.swift in Sources */,
@@ -1134,7 +1135,6 @@
 				63B84A1E1F5E7673005A2A52 /* CoverVerticalAnimation.swift in Sources */,
 				63B84A1F1F5E7673005A2A52 /* CoverVerticalFromTopAnimation.swift in Sources */,
 				63B84A201F5E7673005A2A52 /* CrossDissolveAnimation.swift in Sources */,
-				63B84A211F5E7673005A2A52 /* Info.plist in Sources */,
 				63B84A221F5E7673005A2A52 /* KeyboardTranslation.swift in Sources */,
 				63681A2D1F638E4000F02FEC /* frmAssignmentList_LoginFocusPopup.swift in Sources */,
 				63B84A231F5E7673005A2A52 /* ModalCenterPosition.swift in Sources */,

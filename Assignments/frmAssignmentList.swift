@@ -23,6 +23,11 @@ var checkedIDBeforeFocusSync: [Int] = []
 
 
 func syncAssignmentListWithFocus () {
+    
+    DispatchQueue.main.async {
+        curFrmAssignmentList.ckeckInternet()
+    }
+    
     let request = URLRequest(url: URL(string: "https://focus.mvcs.org/focus")!)
     curFrmAssignmentList.webView.loadHTMLString("", baseURL: URL(string: "about:blank")!)
     curFrmAssignmentList.webView.loadRequest(URLRequest(url: URL(string: "about:blank")!))
@@ -31,12 +36,6 @@ func syncAssignmentListWithFocus () {
     
     curFrmAssignmentList.activityStart()
     
-    /*
-    let when = DispatchTime.now() + 40
-    DispatchQueue.main.asyncAfter(deadline: when) {
-        curFrmAssignmentList.LoginOvertime()
-    }
- */
 }
 
 
@@ -179,11 +178,59 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             saveSubjectList()
         }
         
+        let nsfirstOpen = UserDefaults.standard.object(forKey: "replacedSpecial")
+        if (nsfirstOpen == nil) {
+            for item in assignmentList {
+                item.title = item.title.replacingOccurrences(of: "&amp;", with: "&")
+                item.subject = item.subject.replacingOccurrences(of: "&amp;", with: "&")
+            }
+            for item in subjectList {
+                item.name = item.name.replacingOccurrences(of: "&amp;", with: "&")
+            }
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "replacedSpecial")
+        }
+        
+        
+        for i in 0 ... (subjectList.count - 1) {
+            if (subjectList[i].name.contains("&amp;")) {
+                if (assignmentList.count > 0) {
+                    var j = 0
+                    while (j < assignmentList.count) {
+                        if (assignmentList[j].subject == subjectList[i].name) {
+                            assignmentList.remove(at: j)
+                            j -= 1
+                        }
+                        j += 1
+                    }
+                }
+                subjectList.remove(at: i)
+            }
+        }
+        
+        
+        saveAssignmentList()
+        saveSubjectList()
+        
         refreshTableAssignmentList()
         
         activityStop()
         
         UISetup()
+    }
+    
+    // Internet Check
+    func ckeckInternet() {
+        let status = Reach().connectionStatus()
+        switch status {
+        case .unknown, .offline:
+            activityStop()
+            webView.stopLoading()
+            Drop.down("Internet is Not Available.", state: .warning)
+        case .online(.wwan):
+            print("Connected via WWAN")
+        case .online(.wiFi):
+            print("Connected via WiFi")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -215,6 +262,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         activityStop()
         if (!loggedInFocus) {
             Drop.down("Loggin Timeout. Please Check Your Internet.", state: .warning)
+            webView.stopLoading()
+            myTimer.invalidate()
         }
     }
     
@@ -668,12 +717,25 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        var flag = true
         if (tableAssignmentList.count > 0) {
             for i in 0 ... (tableAssignmentList.count - 1) {
                 if (onSameDay(date1: tableAssignmentList[i].dueDate, date2: date)) {
-                    tblAssignmentsScrollState = 1
-                    tblAssignmentList.selectRow(at: IndexPath(row: i, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.top)
-                    break
+                    if (flag) {
+                        tblAssignmentsScrollState = 1
+                        tblAssignmentList.selectRow(at: IndexPath(row: i, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.middle)
+                        flag = false
+                    }
+                    if let row = curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: i, section: 0)) {
+                        (row as! frmAsignmentList_tblAssignmentListCell).highLight()
+                    } else {
+                        let when = DispatchTime.now() + 0.2
+                        DispatchQueue.main.asyncAfter(deadline: when) {
+                            if let row = curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: i, section: 0)) {
+                                (row as! frmAsignmentList_tblAssignmentListCell).highLight()
+                            }
+                        }
+                    }
                 }
             }
         }

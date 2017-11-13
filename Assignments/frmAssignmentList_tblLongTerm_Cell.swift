@@ -57,9 +57,11 @@ class frmAssignmentList_tblLongTerm_Cell: UITableViewCell {
             for i in 0 ... (tableAssignmentList.count - 1) {
                 if (tableAssignmentList[i].id == tmpAssignment.id) {
                     
-                    curFrmAssignmentList.tblAssignmentList.scrollToRow(at: IndexPath(row: i, section: 0), at: UITableViewScrollPosition.top, animated: false)
+                    curFrmAssignmentList.tblAssignmentList.scrollToRow(at: IndexPath(row: i, section: 0), at: UITableViewScrollPosition.middle, animated: false)
                     //print(curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: i, section: 0)))
-                    (curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: i, section: 0)) as! frmAsignmentList_tblAssignmentListCell).highLight()
+                    if let row = curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: i, section: 0)) {
+                        (row as! frmAsignmentList_tblAssignmentListCell).highLight()
+                    }
                     break
                 }
             }
