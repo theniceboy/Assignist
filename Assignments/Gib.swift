@@ -16,7 +16,7 @@ var subjectList: [SubjectItem] = []
 
 var myCalender: Calendar = Calendar.current
 
-var __DEFAULT_SUBJECT_NAME = "Uncategorized"
+let __DEFAULT_SUBJECT_NAME = "Uncategorized"
 
 var loggedInFocus: Bool = false
 
@@ -31,7 +31,7 @@ var curFrmSettings: frmSettings = frmSettings()
 // MARK: - Colors
 
 var themeColor = UIColor(red: 74.0 / 255.0, green: 144.0 / 255.0, blue: 226.0 / 255.0, alpha: 1.0) // Theme blue color
-var redColor = UIColor(red: 208.0 / 255.0, green: 2.0 / 255.0, blue: 27.0 / 255.0, alpha: 1.0) // Theme red color
+var redColor = UIColor(red: 208.0 / 255.0, green: 2.0 / 255.0, blue: 27.0 / 255.0, alpha: 1.0) // red color
 var scrollGray = UIColor(red: 92.0 / 255.0, green: 94.0 / 255.0, blue: 102.0 / 255.0, alpha: 1.0)
 
 // MARK: - Hash for Date
@@ -49,7 +49,7 @@ func onSameDay (date1: Date, date2: Date) -> Bool {
 
 func displayTime (date: Date) -> String {
     if (date.hour > 12 || (date.hour == 12 && date.minute > 0)) {
-        return "\(date.hour - 12):" + (date.minute < 10 ? "0" : "") + "\(date.minute) PM"
+        return "\((date.hour == 12 ? 12 : date.hour - 12)):" + (date.minute < 10 ? "0" : "") + "\(date.minute) PM"
     }
     return "\(date.hour):" + (date.minute < 10 ? "0" : "") + "\(date.minute) AM"
 }

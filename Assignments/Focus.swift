@@ -317,8 +317,13 @@ func parseFocusHTML (html: String, subjectstr: String) {
             curFrmSettings.showLogoutButton()
         } else {
             curFrmAssignmentList.activityStop()
-            Drop.down("Synced \(syncedAssignmentCount) New Assignments From Focus", state: .success, duration: 2, action: {
-            })
+            if (syncedAssignmentCount == 0) {
+                Drop.down("Your assignment list is up to date", state: .success, duration: 1.5, action: {
+                })
+            } else {
+                Drop.down("Synced \(syncedAssignmentCount) New Assignments From Focus", state: .success, duration: 1.5, action: {
+                })
+            }
         }
         
         for item in checkedIDBeforeFocusSync {

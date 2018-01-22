@@ -225,7 +225,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         case .unknown, .offline:
             activityStop()
             webView.stopLoading()
-            Drop.down("Internet is Not Available.", state: .warning)
+            Drop.down("Internet is currently not available", state: .warning, duration: 1.5, action: {
+            })
         case .online(.wwan):
             print("Connected via WWAN")
         case .online(.wiFi):
