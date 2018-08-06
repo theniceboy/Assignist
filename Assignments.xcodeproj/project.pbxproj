@@ -55,6 +55,7 @@
 		6373FA381F58A661006C20DD /* AssignmentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373FA371F58A661006C20DD /* AssignmentsUITests.swift */; };
 		637CAAD31F624CE8009D33E6 /* Focus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637CAAD21F624CE8009D33E6 /* Focus.swift */; };
 		638C9C3E1F677334005F3565 /* frmAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638C9C3D1F677334005F3565 /* frmAbout.swift */; };
+		638CB6B221185F880008820F /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638CB6B121185F880008820F /* SearchTextField.swift */; };
 		63A6564C1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */; };
 		63AA535D1F7E08C3006DECEF /* frmAssignmentList_tblLongTerm_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AA535C1F7E08C3006DECEF /* frmAssignmentList_tblLongTerm_Cell.swift */; };
 		63B82A491F9DC4AC0074CE2D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B82A481F9DC4AB0074CE2D /* Reachability.swift */; };
@@ -253,6 +254,7 @@
 		6373FA391F58A661006C20DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		637CAAD21F624CE8009D33E6 /* Focus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focus.swift; sourceTree = "<group>"; };
 		638C9C3D1F677334005F3565 /* frmAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAbout.swift; sourceTree = "<group>"; };
+		638CB6B121185F880008820F /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		63A6564B1F5C7556005734FA /* frmAssignmentList_NewAssignment_NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_NewAssignment_NewSubject.swift; sourceTree = "<group>"; };
 		63AA535C1F7E08C3006DECEF /* frmAssignmentList_tblLongTerm_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frmAssignmentList_tblLongTerm_Cell.swift; sourceTree = "<group>"; };
 		63B82A481F9DC4AB0074CE2D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				63B849D51F5E760B005A2A52 /* ZFRippleButton.swift */,
 				63681A301F6394C800F02FEC /* Drop.swift */,
 				63BD7FF91F65CA5C00063A34 /* SwiftSpinner.swift */,
+				638CB6B121185F880008820F /* SearchTextField.swift */,
 			);
 			path = "Third-Parties";
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 				63B849F31F5E7673005A2A52 /* CoachMarkDisplayManager.swift in Sources */,
 				63B849F41F5E7673005A2A52 /* BlurringOverlayStyleManager.swift in Sources */,
 				63B849F51F5E7673005A2A52 /* OverlayStyleManager.swift in Sources */,
+				638CB6B221185F880008820F /* SearchTextField.swift in Sources */,
 				63B849F61F5E7673005A2A52 /* TranslucentOverlayStyleManager.swift in Sources */,
 				63B849F71F5E7673005A2A52 /* SkipViewDisplayManager.swift in Sources */,
 				63B849F81F5E7673005A2A52 /* FlowManager.swift in Sources */,
@@ -1334,7 +1338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FLLKWS94W7;
+				DEVELOPMENT_TEAM = W7W7V5B7Q6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Assignments/Third-Parties",
@@ -1359,7 +1363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FLLKWS94W7;
+				DEVELOPMENT_TEAM = W7W7V5B7Q6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Assignments/Third-Parties",

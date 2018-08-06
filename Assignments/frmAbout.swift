@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class frmAbout: UIViewController {
+class frmAbout: UIViewController, MFMailComposeViewControllerDelegate {
 
     // MARK: - Outlets
     
@@ -16,6 +17,25 @@ class frmAbout: UIViewController {
     
     @IBAction func btnClose_Tapped(_ sender: Any) {
         self.dismiss(animated: true) {
+        }
+    }
+    @IBAction func btnEmail_Tapped(_ sender: Any) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["assignment.app.feedback@gmail.com"])
+            mail.setSubject("Assignist App Feedback")
+            mail.setMessageBody("", isHTML: true)
+            present(mail, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Unable to Send Email?", message: "Your email is not configured.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true) {
         }
     }
     

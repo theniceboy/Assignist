@@ -31,6 +31,7 @@ var curFrmSettings: frmSettings = frmSettings()
 // MARK: - Colors
 
 var themeColor = UIColor(red: 74.0 / 255.0, green: 144.0 / 255.0, blue: 226.0 / 255.0, alpha: 1.0) // Theme blue color
+var themeColor_Trans = UIColor(red: 74.0 / 255.0, green: 144.0 / 255.0, blue: 226.0 / 255.0, alpha: 0.8) // Theme blue color
 var redColor = UIColor(red: 208.0 / 255.0, green: 2.0 / 255.0, blue: 27.0 / 255.0, alpha: 1.0) // red color
 var scrollGray = UIColor(red: 92.0 / 255.0, green: 94.0 / 255.0, blue: 102.0 / 255.0, alpha: 1.0)
 

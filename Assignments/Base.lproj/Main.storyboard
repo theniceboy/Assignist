@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="TrebuchetMS.ttf">
-            <string>TrebuchetMS</string>
-        </array>
-        <array key="TrebuchetMSBold.ttf">
-            <string>TrebuchetMS-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Frm About-->
         <scene sceneID="pCK-l0-ftc">
@@ -36,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qb-la-UhJ">
-                                <rect key="frame" x="153.5" y="568" width="232" height="32"/>
+                                <rect key="frame" x="154" y="568" width="232" height="32"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
                                 <state key="normal" title="Visit the Developer's Website">
                                     <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About This App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6B-8y-4qw">
-                                        <rect key="frame" x="213.5" y="18" width="114" height="20"/>
+                                        <rect key="frame" x="213" y="17.5" width="114" height="20"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -90,7 +82,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By David Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doh-nX-aat">
-                                <rect key="frame" x="315" y="231" width="108.5" height="20"/>
+                                <rect key="frame" x="315.5" y="231" width="108.5" height="20"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                 <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -102,24 +94,50 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wxk-fo-9cu">
-                                <rect key="frame" x="97" y="145" width="104" height="90"/>
+                                <rect key="frame" x="96.5" y="145" width="104" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="0l1-uD-pWz"/>
                                     <constraint firstAttribute="width" constant="104" id="tS3-gu-Uxt"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have any suggestions or issues while using this app, please feel free to contact me via email: " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiB-jh-9fn">
+                                <rect key="frame" x="80" y="488.5" width="380" height="33"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUU-jP-4ma">
+                                <rect key="frame" x="139.5" y="521.5" width="261" height="30"/>
+                                <state key="normal" title="assignment.app.feedback@gmail.com"/>
+                                <connections>
+                                    <action selector="btnEmail_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="aQL-Pi-8sd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or you can..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhN-cL-Uyc">
+                                <rect key="frame" x="228.5" y="551.5" width="83" height="16.5"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8qb-la-UhJ" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="8x4-LJ-AHs"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="bottom" constant="100" id="9ce-L4-eQx"/>
+                            <constraint firstItem="8qb-la-UhJ" firstAttribute="top" secondItem="GhN-cL-Uyc" secondAttribute="bottom" id="DUl-4u-n0X"/>
+                            <constraint firstItem="eUU-jP-4ma" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="F5A-fN-Yv5"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="trailing" secondItem="B2s-Ul-HnX" secondAttribute="trailing" id="H48-tg-bfO"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="top" secondItem="B2s-Ul-HnX" secondAttribute="top" id="NOp-sO-Bf7"/>
+                            <constraint firstItem="GhN-cL-Uyc" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="QCG-Up-Y2N"/>
                             <constraint firstItem="doh-nX-aat" firstAttribute="top" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="-8" id="QDp-cR-7mw"/>
+                            <constraint firstItem="GhN-cL-Uyc" firstAttribute="top" secondItem="eUU-jP-4ma" secondAttribute="bottom" id="Rti-gK-BTe"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" constant="32" id="Urt-uQ-iy8"/>
+                            <constraint firstItem="eUU-jP-4ma" firstAttribute="top" secondItem="SiB-jh-9fn" secondAttribute="bottom" id="XKP-XM-e9j"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" id="adN-gQ-qov"/>
                             <constraint firstItem="doh-nX-aat" firstAttribute="trailing" secondItem="pf5-L2-yxF" secondAttribute="trailing" id="cEv-om-CzF"/>
+                            <constraint firstItem="SiB-jh-9fn" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" constant="80" id="cql-4c-Rtl"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="leading" secondItem="Wxk-fo-9cu" secondAttribute="trailing" constant="-20" id="gVL-ME-cdq"/>
+                            <constraint firstItem="B2s-Ul-HnX" firstAttribute="trailing" secondItem="SiB-jh-9fn" secondAttribute="trailing" constant="80" id="ifz-IE-ccy"/>
                             <constraint firstItem="B2s-Ul-HnX" firstAttribute="bottom" secondItem="8qb-la-UhJ" secondAttribute="bottom" constant="20" id="r0e-iZ-hA7"/>
                             <constraint firstItem="Wxk-fo-9cu" firstAttribute="bottom" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="-4" id="vn3-EI-Nyy"/>
                         </constraints>
@@ -142,7 +160,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="540" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEc-Ku-J71">
-                                        <rect key="frame" x="238.5" y="17" width="64.5" height="21"/>
+                                        <rect key="frame" x="238" y="17" width="64.5" height="21"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -239,7 +257,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you a MVC student?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9P-cM-q3S">
-                                        <rect key="frame" x="76" y="20" width="189" height="21"/>
+                                        <rect key="frame" x="75.5" y="20" width="189" height="21"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -341,7 +359,7 @@
                                         </constraints>
                                         <string key="text">Focus login feature is only available to MVC students. This feature will be supporting more schools in the future.
 
- If your school uses Focus and you want this feature available for your school, please contact me via email: assignment.app.feedback@gmail.com</string>
+ If your school uses Focus and you want this feature to be available for your school, please contact me via email: assignment.app.feedback@gmail.com</string>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -579,12 +597,12 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This assignment was synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqX-KG-hB1">
-                                        <rect key="frame" x="252" y="660.5" width="265" height="17.5"/>
+                                        <rect key="frame" x="251.5" y="660.5" width="265" height="17.5"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lw7-Io-HCZ" userLabel="tfTitle" customClass="SkyFloatingLabelTextField" customModule="Assignments" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lw7-Io-HCZ" userLabel="tfTitle" customClass="SearchTextField" customModule="Assignments" customModuleProvider="target">
                                         <rect key="frame" x="242" y="30" width="396" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="QHJ-Gl-XcK"/>
@@ -618,6 +636,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="The Title of the Assignment"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="tfTextField_EditingChanged:" destination="zjV-ZC-wLg" eventType="editingChanged" id="RO9-yc-DWQ"/>
                                             <action selector="tfTitle_EditingChanged:" destination="zjV-ZC-wLg" eventType="editingChanged" id="WgN-Wa-BOD"/>
                                             <action selector="tfTitle_EditingDidBegin:" destination="zjV-ZC-wLg" eventType="editingDidBegin" id="Pso-61-7KU"/>
                                             <action selector="tfTitle_EditingDidEnd:" destination="zjV-ZC-wLg" eventType="editingDidEnd" id="4Xj-4O-PDp"/>
@@ -916,7 +935,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRo-yw-oUd" userLabel="sgcSetDueTime" customClass="BetterSegmentedControl" customModule="Assignments" customModuleProvider="target">
-                                                <rect key="frame" x="309" y="0.0" width="390.5" height="50"/>
+                                                <rect key="frame" x="309.5" y="0.0" width="390.5" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -956,7 +975,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Assignment Priority:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvS-jK-x8k">
-                                        <rect key="frame" x="40" y="291.5" width="192.5" height="21"/>
+                                        <rect key="frame" x="40" y="291" width="192.5" height="21"/>
                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="18"/>
                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1328,6 +1347,29 @@
                                     <action selector="tfName_EditingChanged:" destination="XVy-nX-cd2" eventType="editingChanged" id="EGM-tl-s28"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiW-EY-a5S" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                <rect key="frame" x="20" y="115" width="100" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnCancel_Tapped:" destination="XVy-nX-cd2" eventType="touchUpInside" id="y77-Lz-klG"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYA-eq-VZJ" userLabel="btnAdd" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                 <rect key="frame" x="904" y="115" width="100" height="40"/>
                                 <color key="backgroundColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -1353,29 +1395,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnAdd_Tapped:" destination="XVy-nX-cd2" eventType="touchUpInside" id="WXZ-MC-3yW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiW-EY-a5S" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                <rect key="frame" x="20" y="115" width="100" height="40"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
-                                        <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
-                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="btnCancel_Tapped:" destination="XVy-nX-cd2" eventType="touchUpInside" id="y77-Lz-klG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1561,13 +1580,13 @@
                                     <action selector="btnSelectSubject_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="Rjm-Bf-AIS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This subject contains assignment(s) synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Yk-w8F">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This subject contains assignment(s) synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Yk-w8F">
                                 <rect key="frame" x="86.5" y="587.5" width="367.5" height="17.5"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhS-9v-gLs" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhS-9v-gLs" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="570" width="540" height="50"/>
                                 <color key="backgroundColor" red="0.85882352939999995" green="0.15686274510000001" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1589,7 +1608,7 @@
                                     <action selector="btnDeleteSubject_Tapped:" destination="Z5F-lL-fCq" eventType="touchUpInside" id="TWa-jW-xq7"/>
                                 </connections>
                             </button>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZd-ho-13o">
+                            <view hidden="YES" alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZd-ho-13o">
                                 <rect key="frame" x="30" y="75" width="480" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1646,14 +1665,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LcR-Id-h3a" userLabel="vMaster">
                                 <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                                 <subviews>
-                                    <webView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D6D-Mn-K4h">
-                                        <rect key="frame" x="-17" y="28" width="691" height="624"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="m1v-VY-3DS" id="q6n-CB-ZgO"/>
-                                        </connections>
-                                    </webView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73u-Dj-9et" userLabel="vRight">
                                         <rect key="frame" x="290" y="0.0" width="494" height="748"/>
                                         <subviews>
@@ -1694,7 +1705,7 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="arg-Pk-sQf" userLabel="vMaster">
-                                                                            <rect key="frame" x="21" y="10" width="456" height="90"/>
+                                                                            <rect key="frame" x="21" y="13" width="456" height="90"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iX5-Im-N2s" userLabel="vSubject">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="22" height="90"/>
@@ -1724,7 +1735,7 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz4-as-8Dg">
-                                                                                    <rect key="frame" x="34" y="33" width="20" height="21"/>
+                                                                                    <rect key="frame" x="34" y="33.5" width="20" height="21"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="20" id="ABZ-Ha-vsb"/>
                                                                                     </constraints>
@@ -1829,7 +1840,7 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02l-JD-TLz">
-                                                                            <rect key="frame" x="35" y="16" width="42" height="20"/>
+                                                                            <rect key="frame" x="35" y="19" width="42" height="20"/>
                                                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -1940,7 +1951,7 @@
                                                         <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </progressView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Syncing With Focus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBB-NX-xL1">
-                                                        <rect key="frame" x="190" y="32" width="119.5" height="16.5"/>
+                                                        <rect key="frame" x="189.5" y="32" width="119.5" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -2200,13 +2211,13 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="60"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="swl-0g-Hcu">
-                                                                            <rect key="frame" x="2" y="4" width="240" height="52"/>
+                                                                            <rect key="frame" x="2" y="6" width="240" height="48"/>
                                                                             <subviews>
                                                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qk-gj-9Fe">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="52"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="48"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WBL-F8-keG">
-                                                                                            <rect key="frame" x="8" y="0.0" width="8" height="52"/>
+                                                                                            <rect key="frame" x="8" y="0.0" width="8" height="48"/>
                                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="8" id="PMZ-cy-KsN"/>
@@ -2222,19 +2233,19 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ci-Oq-wvK">
-                                                                                    <rect key="frame" x="18" y="6" width="218" height="17.5"/>
+                                                                                    <rect key="frame" x="18" y="8" width="218" height="17.5"/>
                                                                                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                                                     <color key="textColor" white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNF-zx-gEW">
-                                                                                    <rect key="frame" x="18" y="24" width="218" height="13"/>
+                                                                                    <rect key="frame" x="18" y="25.5" width="218" height="15.5"/>
                                                                                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="13"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPO-gj-6sE" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="51.5"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="48"/>
                                                                                     <userDefinedRuntimeAttributes>
                                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
                                                                                     </userDefinedRuntimeAttributes>
@@ -2354,7 +2365,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="85"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Long-Term Assignments:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnW-vs-Diw">
-                                                        <rect key="frame" x="34.5" y="42" width="183" height="20"/>
+                                                        <rect key="frame" x="35" y="42" width="183" height="20"/>
                                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
                                                         <color key="textColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -2392,6 +2403,14 @@
                                             <constraint firstItem="eBA-Ub-aGg" firstAttribute="leading" secondItem="WEv-6V-irb" secondAttribute="leading" id="xzT-Bg-6HV"/>
                                         </constraints>
                                     </view>
+                                    <webView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D6D-Mn-K4h">
+                                        <rect key="frame" x="251" y="237" width="793" height="511"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="m1v-VY-3DS" id="q6n-CB-ZgO"/>
+                                        </connections>
+                                    </webView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

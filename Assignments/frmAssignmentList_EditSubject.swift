@@ -120,6 +120,7 @@ class frmAssignmentList_EditSubject: UIViewController {
         
         btnResetColor.layer.cornerRadius = 8
         
+        /*
         for i in 0 ... (subjectList.count - 1) {
             if (subjectList[i].name == subjectList[_EDIT_SUBJECT_ROW - 1].name) {
                 var flag = false
@@ -135,6 +136,7 @@ class frmAssignmentList_EditSubject: UIViewController {
                 btnDeleteSubject.isHidden = flag
             }
         }
+ */
     }
 
 }

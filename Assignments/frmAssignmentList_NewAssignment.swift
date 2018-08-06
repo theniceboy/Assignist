@@ -18,7 +18,7 @@ func registerNotification () {
     UIApplication.shared.registerUserNotificationSettings(notificationSettings)
 }
 
-class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+class frmAssignmentList_NewAssignment: UIViewController, UITextFieldDelegate, UITextViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
 
     
     
@@ -32,7 +32,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     
     @IBOutlet weak var btnSelectSubject: ZFRippleButton!
     
-    @IBOutlet weak var tfTitle: SkyFloatingLabelTextField!
+    @IBOutlet weak var tfTitle: SearchTextField!
     @IBOutlet weak var vClear: UIView!
     @IBOutlet weak var vTitleBlocker: UIView!
     
@@ -209,6 +209,13 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
             notificationOn = true
             updateNotificationTime ()
         }
+        
+        var filterStr: [String] = []
+        for assignment in assignmentList {
+            filterStr.append(assignment.title)
+        }
+        tfTitle.filterStrings(filterStr)
+        tfTitle.maxNumberOfResults = 10
         
         if (tvComments.text != "") {
             lbPlaceHolder_tfComments.isHidden = true
@@ -563,6 +570,11 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         btnAdd.layer.shadowRadius = 6
         
         tfTitle.errorColor = redColor
+        tfTitle.theme.font = UIFont.systemFont(ofSize: 16)
+        tfTitle.theme.bgColor = themeColor_Trans
+        tfTitle.theme.fontColor = UIColor.white
+        tfTitle.theme.separatorColor = UIColor (red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
+        tfTitle.theme.cellHeight = 50
         
         _layout_vClearWidthAnchor.constant = 0
         vSuggestions.isUserInteractionEnabled = false
@@ -746,6 +758,10 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
         }
     }
     
+    // MARK: - Suggestion
+    
+    @IBAction func tfTextField_EditingChanged(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
@@ -759,7 +775,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextViewDelegate, Coa
     // MARK: - Coach
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 5
+        return 0
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController,

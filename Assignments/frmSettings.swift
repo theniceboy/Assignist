@@ -130,6 +130,7 @@ class frmSettings: UIViewController {
         SwiftSpinner.sharedInstance.outerColor = UIColor.white
         SwiftSpinner.show("Connecting To Focus", animated: true)
         
+        
         userSettings.focusUsername = username
         userSettings.focusPassword = password
         
@@ -144,7 +145,7 @@ class frmSettings: UIViewController {
         curFrmAssignmentList.invalidLoginInfoCount = 0
         curFrmAssignmentList.timerStart()
         
-        let when = DispatchTime.now() + 30
+        let when = DispatchTime.now() + 50
         DispatchQueue.main.asyncAfter(deadline: when) {
             if (!loggedInFocus && !curFrmAssignmentList.webView.isLoading && self.showOvertime) {
                 SwiftSpinner.sharedInstance.innerColor = UIColor.white
