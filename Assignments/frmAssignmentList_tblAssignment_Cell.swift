@@ -56,12 +56,12 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             self.lbSectionHeader.alpha = 1.0
             self.layoutIfNeeded()
         //}
-        
+        /*
         if (rowNumber >= tableAssignmentListDivider) {
             lbSectionHeader.text = "Completed"
             lbSectionHeader.textColor = UIColor.gray
             return
-        }
+        }*/
         
         var assignmentCounter: Int = 1
         if (rowNumber < tableAssignmentList.count - 1) {
@@ -98,12 +98,6 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
     func shouldShowSectionHeader () -> Bool {
         if (rowNumber == 0) {
             return true
-        }
-        if (rowNumber == tableAssignmentListDivider) {
-            return true
-        }
-        if (rowNumber > tableAssignmentListDivider) {
-            return false
         }
         if (onSameDay(date1: tableAssignmentList[rowNumber - 1].dueDate, date2: tableAssignmentList[rowNumber].dueDate)) {
             return false
@@ -211,6 +205,8 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         
         if (cChecked.checkState == M13Checkbox.CheckState.checked) {
             assignmentList[assignmentRow].checked = true
+            visibleCompletedAssignmentCount += 1
+            tableAssignmentListCompletedCount += 1
             for item in UIApplication.shared.scheduledLocalNotifications! {
                 if (item.userInfo!["id"] as! Int == assignmentList[assignmentRow].id) {
                     UIApplication.shared.cancelLocalNotification(item)
@@ -219,6 +215,8 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             }
         } else {
             assignmentList[assignmentRow].checked = false
+            visibleCompletedAssignmentCount -= 1
+            tableAssignmentListCompletedCount -= 1
             if (assignmentList[assignmentRow].notificationOn) {
                 var notifyDateTime = Date(), tmpDueDate = assignmentList[assignmentRow].dueDate
                 if (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 0) {
@@ -242,6 +240,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             }
             
         }
+        curFrmAssignmentList.refreshShowCompletedButton()
         assignmentList[assignmentRow].checkedDate = Date()
         saveAssignmentList()
         
@@ -258,7 +257,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
                 }
             }
         }
-        
+        /*
         if (curFrmAssignmentList.showingChecked) {
             
             let assignmentID = tableAssignmentList[rowNumber].id
@@ -284,7 +283,7 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             //(curFrmAssignmentList.tblAssignmentList.cellForRow(at: IndexPath(row: rowNumber, section: 0)) as! frmAsignmentList_tblAssignmentListCell).loadCell()
  
         } else {
-            /*
+         
             if (rowNumber < tableAssignmentListDivider) {
                 tableAssignmentList.remove(at: rowNumber)
                 UIView.animate(withDuration: 0.3, delay: 0.2, animations: {
@@ -297,8 +296,8 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             } else {
                 
             }
- */
         }
+         */
     }
     
     @IBAction func btnSegue_Tapped(_ sender: Any) {

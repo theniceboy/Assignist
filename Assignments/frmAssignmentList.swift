@@ -9,8 +9,11 @@
 import UIKit
 
 var tableAssignmentList: [AssignmentItem] = [] // The assignment list that is displayed
-var tableAssignmentList_checked: [AssignmentItem] = []
-var tableAssignmentListDivider: Int = 0 // The index of the first item that shoud be in the completed section
+var tableAssignmentCurrentCell: frmAsignmentList_tblAssignmentListCell?
+//var tableAssignmentList_checked: [AssignmentItem] = []
+//var tableAssignmentListDivider: Int = 0 // The index of the first item that shoud be in the completed section
+var tableAssignmentListCompletedCount: Int = 0 // The number of assignment items in the table that were completed.
+var visibleCompletedAssignmentCount: Int = 0 // The number of assignment items that are both visible and completed.
 
 var tableSubjectList: [SubjectItem] = []
 var tableSubjectList_selectedRow: Int = 0
@@ -104,12 +107,12 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
  
         lbPullToRefresh.alpha = 0
         
-        /*
+        
         vRightExt.layer.shadowColor = UIColor.black.cgColor
         vRightExt.layer.shadowOffset = CGSize.zero
         vRightExt.layer.shadowOpacity = 0.0
-        vRightExt.layer.shadowRadius = 8
- */
+        vRightExt.layer.shadowRadius = 12
+ 
         
         hideCalendar()
         
@@ -397,21 +400,57 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     var showingChecked: Bool = false
+    var legacyTableAssignment: AssignmentItem?
     @IBAction func btnShowCompleted_Tapped(_ sender: Any) {
-        showingChecked = !showingChecked
-        btnShowCompleted.setTitle((showingChecked ? "Hide Completed" : "Show Completed"), for: .normal)
-        self.refreshTableAssignmentList()
-        if (showingChecked) {
-            tblAssignmentList.scrollToRow(at: IndexPath(row: tableAssignmentListDivider, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+        //print("current legacy name:", assignmentList[tableAssignmentCurrentCell?.assignmentRow ?? 0].title)
+        var tableRow: Int = 0
+        if let currentCell = tableAssignmentCurrentCell {
+            for i in 0 ..< tableAssignmentList.count {
+                if tableAssignmentList[i].id == assignmentList[currentCell.assignmentRow].id {
+                    tableRow = i
+                    break
+                }
+            }
+        } else {
+            tableAssignmentCurrentCell = tblAssignmentList.visibleCells.first as! frmAsignmentList_tblAssignmentListCell
         }
+        for i in 0 ... 1000 {
+            if tableRow - i > -1 {
+                if !tableAssignmentList[tableRow - i].checked {
+                    legacyTableAssignment = tableAssignmentList[tableRow - i]
+                    break
+                }
+            }
+            if tableRow + i < tableAssignmentList.count {
+                if !tableAssignmentList[tableRow + i].checked {
+                    legacyTableAssignment = tableAssignmentList[tableRow + i]
+                    break
+                }
+            }
+        }
+    
+        showingChecked = !showingChecked
+        //btnShowCompleted.setTitle(showingChecked ? "Hide Completed" : "Show Completed", for: .normal)
+        //print("legacy: ", legacyTableAssignment?.title)
+        
+        refreshTableAssignmentList(formatTable: true, refreshSubject: true)
+        for i in 0 ..< tableAssignmentList.count {
+            if (tableAssignmentList[i].id == legacyTableAssignment?.id) {
+                //print("scroll to:", tableAssignmentList[i].title, legacyTableAssignment?.title)
+                tblAssignmentList.scrollToRow(at: IndexPath(row: (i - 1 < 0 ? i : i - 1), section: 0), at: UITableViewScrollPosition.top, animated: true)
+                break
+            }
+        }
+        
+        refreshShowCompletedButton()
+ 
     }
     
     var ShowingCalendar: Bool = false
     
     func showCalendar () {
-        
         btnToggleCalendar.setImage(UIImage(named: "arrow-right"), for: .normal)
-        btnToggleCalendar.setTitle("  Less", for: .normal)
+        btnToggleCalendar.setTitle("  Hide", for: .normal)
         UIView.animate(withDuration: 0.2, animations: {
             self._layout_vRightExt_WidthAnchor.constant = 250
             if (self.interfaceOrientation == UIInterfaceOrientation.portrait || self.interfaceOrientation == UIInterfaceOrientation.portraitUpsideDown) {
@@ -419,6 +458,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             } else {
                 self._layout_vRight_Trailing.constant = 250
             }
+            self.vRightExt.layer.shadowOpacity = 0.2
             self.view.layoutIfNeeded()
         })
         ShowingCalendar = true
@@ -433,6 +473,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         UIView.animate(withDuration: 0.2, animations: {
             self._layout_vRightExt_WidthAnchor.constant = 0
             self._layout_vRight_Trailing.constant = 0
+            self.vRightExt.layer.shadowOpacity = 0.0
             self.view.layoutIfNeeded()
         })
         ShowingCalendar = false
@@ -460,6 +501,18 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             
             tableSubjectList_selectedRow = indexPath.row
             refreshTableAssignmentList(formatTable: true, refreshSubject: true)
+            if tableAssignmentList.count > 1 && showingChecked {
+                var _targetRow: Int = 0, _targetValue: Int = 10000, _tmpValue: Int = 0
+                for i in 0 ..< tableAssignmentList.count {
+                    _tmpValue = abs(daysDifference(date1: tableAssignmentList[i].dueDate, date2: Date.today()))
+                    if _tmpValue < _targetValue {
+                        print("testing:", _targetValue, _tmpValue, _targetRow)
+                        _targetValue = _tmpValue
+                        _targetRow = i
+                    }
+                }
+                tblAssignmentList.scrollToRow(at: IndexPath(row: (_targetRow - 1 < 0 ? _targetRow : _targetRow - 1), section: 0), at: .middle, animated: true)
+            }
         }
     }
     
@@ -528,6 +581,11 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             if (tblAssignmentsScrollState == 0 && ShowingCalendar) {
                 refreshCalendarSelection()
             }
+            if let cell: UITableViewCell = tblAssignmentList.visibleCells.first {
+                tableAssignmentCurrentCell = cell as! frmAsignmentList_tblAssignmentListCell
+            } else {
+                tableAssignmentCurrentCell = nil
+            }
         }
     }
     
@@ -544,49 +602,52 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         tableAssignmentList[a] = tableAssignmentList[b]
         tableAssignmentList[b] = c
     }
-    
+    /*
     func swaptable_checked (a: Int, b: Int) {
         let c = tableAssignmentList_checked[a]
         tableAssignmentList_checked[a] = tableAssignmentList_checked[b]
         tableAssignmentList_checked[b] = c
     }
+ */
     
     func formatTableData () {
         tableAssignmentList = []
-        tableAssignmentList_checked = []
+        tableAssignmentListCompletedCount = 0
+        visibleCompletedAssignmentCount = 0
         calendarEvents = [:]
         if (assignmentList.count == 0) {
             return
         }
         if (assignmentList.count == 1) {
-            if (showAllSubjectAssignment) {
+            if (showAllSubjectAssignment || currentSubjectName == assignmentList[0].subject) {
                 if (assignmentList[0].checked) {
-                    tableAssignmentList_checked.append(assignmentList[0])
-                } else {
-                    tableAssignmentList.append(assignmentList[0])
-                }
-            } else if (currentSubjectName == assignmentList[0].subject) {
-                if (assignmentList[0].checked) {
-                    tableAssignmentList_checked.append(assignmentList[0])
+                    if (showingChecked) {
+                        tableAssignmentList.append(assignmentList[0])
+                        visibleCompletedAssignmentCount += 1
+                    }
+                    tableAssignmentListCompletedCount = 1
                 } else {
                     tableAssignmentList.append(assignmentList[0])
                 }
             }
         } else {
-            for i in 0 ... (assignmentList.count - 1) {
+            for i in 0 ..< assignmentList.count {
                 if (!showAllSubjectAssignment && currentSubjectName != assignmentList[i].subject) {
                     continue
                 }
                 if (assignmentList[i].checked) {
-                    tableAssignmentList_checked.append(assignmentList[i])
+                    if (showingChecked) {
+                        tableAssignmentList.append(assignmentList[i])
+                        visibleCompletedAssignmentCount += 1
+                    }
+                    tableAssignmentListCompletedCount += 1
                 } else {
                     tableAssignmentList.append(assignmentList[i])
                 }
             }
-            tableAssignmentListDivider = tableAssignmentList.count
             if (tableAssignmentList.count > 1) {
                 for i in 0 ... (tableAssignmentList.count - 2) {
-                    for j in (i + 1) ... (tableAssignmentList.count - 1) {
+                    for j in (i + 1) ..< tableAssignmentList.count {
                         if (tableAssignmentList[i].dueDate.timeIntervalSince1970 > tableAssignmentList[j].dueDate.timeIntervalSince1970) {
                             swaptable(a: i, b: j)
                         } else if (tableAssignmentList[i].dueDate == tableAssignmentList[j].dueDate) {
@@ -595,12 +656,16 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                             } else if (tableAssignmentList[i].priority == tableAssignmentList[j].priority) {
                                 if (tableAssignmentList[i].subject.compare(tableAssignmentList[j].subject) == ComparisonResult.orderedDescending) {
                                     swaptable(a: i, b: j)
+                                } else if (tableAssignmentList[i].subject == tableAssignmentList[j].subject) {
+                                    if (tableAssignmentList[i].title.compare(tableAssignmentList[j].title) == ComparisonResult.orderedDescending) {
+                                        swaptable(a: i, b: j)
+                                    }
                                 }
                             }
                         }
                     }
                 }
-                for i in 0 ... (tableAssignmentList.count - 1) {
+                for i in 0 ..< tableAssignmentList.count {
                     if (calendarEvents["\(tableAssignmentList[i].dueDate.year)-\(tableAssignmentList[i].dueDate.month)-\(tableAssignmentList[i].dueDate.day)"] == nil) {
                         calendarEvents["\(tableAssignmentList[i].dueDate.year)-\(tableAssignmentList[i].dueDate.month)-\(tableAssignmentList[i].dueDate.day)"] = 1
                     } else {
@@ -608,6 +673,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                     }
                 }
             }
+            /*
             if (showingChecked) {
                 if (tableAssignmentList_checked.count > 1) {
                     for i in 0 ... (tableAssignmentList_checked.count - 2) {
@@ -620,19 +686,37 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
                 tableAssignmentList.append(contentsOf: tableAssignmentList_checked)
             }
+ */
         }
     }
     
-    func refreshShowCompletedButton () {
-        if (tableAssignmentList_checked.count == 0) {
-            showingChecked = false
-            btnShowCompleted.setTitle("Show Completed", for: .normal)
-            btnShowCompleted.isEnabled = false
-            btnShowCompleted.setTitleColor(scrollGray, for: .normal)
+    public func refreshShowCompletedButton () {
+        //print("ssssssssssss-", visibleCompletedAssignmentCount)
+        visibleCompletedAssignmentCount = 0
+        for item in tableAssignmentList {
+            if item.checked {
+                visibleCompletedAssignmentCount += 1
+            }
+        }
+        if (visibleCompletedAssignmentCount == 0) {
+            if (tableAssignmentListCompletedCount == 0) {
+                //showingChecked = false
+                //btnShowCompleted.setTitle("Show Completed", for: .normal)
+                btnShowCompleted.isEnabled = false
+                btnShowCompleted.setTitleColor(scrollGray, for: .normal)
+            } else {
+                //showingChecked = true
+                btnShowCompleted.setTitle("Show Completed", for: .normal)
+                btnShowCompleted.isEnabled = true
+                btnShowCompleted.setTitleColor(themeColor, for: .normal)
+            }
         } else {
+            showingChecked = true
             btnShowCompleted.isEnabled = true
+            btnShowCompleted.setTitle("Hide Completed", for: .normal)
             btnShowCompleted.setTitleColor(themeColor, for: .normal)
         }
+        
     }
     
     func refreshTableAssignmentList (formatTable: Bool = true, refreshSubject: Bool = true) {
@@ -641,14 +725,40 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             btnListIsEmpty.isHidden = !(tableAssignmentList.count == 0)
         }
         refreshShowCompletedButton()
+        print(tableAssignmentList)
         tblAssignmentList.reloadData()
-        
         refreshTableSubject()
-        
         if (ShowingCalendar) {
             refreshCalendarSelection()
             refreshLongTerm()
         }
+        /*
+        var tableRow: Int = 0
+        if let currentCell = tableAssignmentCurrentCell {
+            for i in 0 ..< tableAssignmentList.count {
+                if tableAssignmentList[i].id == assignmentList[currentCell.assignmentRow].id {
+                    tableRow = i
+                    break
+                }
+            }
+        } else {
+            tableAssignmentCurrentCell = tblAssignmentList.visibleCells.first as! frmAsignmentList_tblAssignmentListCell
+        }
+        for i in 0 ... 1000 {
+            if tableRow - i > -1 {
+                if !tableAssignmentList[tableRow - i].checked {
+                    legacyTableAssignment = tableAssignmentList[tableRow - i]
+                    break
+                }
+            }
+            if tableRow + i < tableAssignmentList.count {
+                if !tableAssignmentList[tableRow + i].checked {
+                    legacyTableAssignment = tableAssignmentList[tableRow + i]
+                    break
+                }
+            }
+        }
+ */
     }
     
     func refreshTableSubject() {
