@@ -74,26 +74,35 @@ func cgfloatABS (value: CGFloat) -> CGFloat {
     return (value < 0 ? -value : value)
 }
 
-func newSubjectColor () -> UIColor {
+func newSubjectColor (currentColor: UIColor = UIColor.white) -> UIColor {
     var colorOK: Bool = false, newColor: UIColor = UIColor.white
     var firstR: CGFloat = 0, secondR: CGFloat = 0
     var firstG: CGFloat = 0, secondG: CGFloat = 0
     var firstB: CGFloat = 0, secondB: CGFloat = 0
     var firstAlpha: CGFloat = 0, secondAlpha: CGFloat = 0
+    var tmpSubjectList = subjectList, tmpsubject = SubjectItem()
+    tmpsubject.color = currentColor
+    tmpSubjectList.append(tmpsubject)
+    var meanvalue: CGFloat = 100
     for _ in 0 ... 100000 {
     //while (!colorOK) {
-        newColor = randomColor(hue: Hue.random, luminosity: Luminosity.light)
+        newColor = randomColor(hue: Hue.random, luminosity: Luminosity.random)
         colorOK = true
-        for item in subjectList {
+        for item in tmpSubjectList {
             newColor.getRed(&firstR, green: &firstG, blue: &firstB, alpha: &firstAlpha)
-            if (firstR + firstG + firstB < 1) {
+            if (firstR + firstG + firstB > 2.4 || firstR + firstG + firstB < 0.8) {
+                colorOK = false
+                break
+            }
+            meanvalue = (firstR + firstG + firstB) / 3.0
+            if (abs(meanvalue - firstR) < 0.05 && abs(meanvalue - firstG) < 0.05 && abs(meanvalue - firstB) < 0.05) {
                 colorOK = false
                 break
             }
             item.color.getRed(&secondR, green: &secondG, blue: &secondB, alpha: &secondAlpha)
             if (cgfloatABS(value: (firstR - secondR)) +
                 cgfloatABS(value: (firstG - secondG)) +
-                cgfloatABS(value: (firstB - secondB)) < 0.4) {
+                cgfloatABS(value: (firstB - secondB)) < 0.6) {
                 colorOK = false
                 break
             }
@@ -103,6 +112,9 @@ func newSubjectColor () -> UIColor {
             break
         }
  
+    }
+    if colorOK == false {
+        return UIColor.black
     }
     return newColor
 }

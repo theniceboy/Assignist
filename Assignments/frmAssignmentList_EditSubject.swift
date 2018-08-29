@@ -62,7 +62,7 @@ class frmAssignmentList_EditSubject: UIViewController {
     }
     
     @IBAction func btnChangeColor_Tapped(_ sender: Any) {
-        tmpColor = newSubjectColor()
+        tmpColor = newSubjectColor(currentColor: tmpColor)
         vTopBar.backgroundColor = tmpColor
     }
     

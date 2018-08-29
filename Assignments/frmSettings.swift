@@ -62,6 +62,8 @@ class frmSettings: UIViewController {
         } else {
             hideLogoutButton()
         }
+        
+        btnStFocus_Tapped(self)
     }
     
     // MARK: - Universal
