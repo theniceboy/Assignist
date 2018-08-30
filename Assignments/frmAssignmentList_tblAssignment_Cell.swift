@@ -205,6 +205,10 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         
         if (cChecked.checkState == M13Checkbox.CheckState.checked) {
             assignmentList[assignmentRow].checked = true
+            if curFrmAssignmentList.showingChecked < 2 {
+                curFrmAssignmentList.partialCheckedItemIndex[assignmentList[assignmentRow].id] = 1
+                curFrmAssignmentList.showingChecked = 1
+            }
             visibleCompletedAssignmentCount += 1
             tableAssignmentListCompletedCount += 1
             for item in UIApplication.shared.scheduledLocalNotifications! {
@@ -215,6 +219,14 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
             }
         } else {
             assignmentList[assignmentRow].checked = false
+            if curFrmAssignmentList.showingChecked < 2 {
+                if let _ = curFrmAssignmentList.partialCheckedItemIndex[assignmentList[assignmentRow].id] {
+                    curFrmAssignmentList.partialCheckedItemIndex.removeValue(forKey: assignmentList[assignmentRow].id)
+                }
+                if curFrmAssignmentList.partialCheckedItemIndex.count == 0 {
+                    curFrmAssignmentList.showingChecked = 0
+                }
+            }
             visibleCompletedAssignmentCount -= 1
             tableAssignmentListCompletedCount -= 1
             if (assignmentList[assignmentRow].notificationOn) {

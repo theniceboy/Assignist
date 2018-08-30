@@ -399,10 +399,10 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         _EDIT_MODE_ = false
     }
     
-    var showingChecked: Bool = false
+    var showingChecked: Int = 0 // 0: not showing, 1: partial, 2: showing all
+    var partialCheckedItemIndex: [Int: Int] = [:]
     var legacyTableAssignment: AssignmentItem?
     @IBAction func btnShowCompleted_Tapped(_ sender: Any) {
-        //print("current legacy name:", assignmentList[tableAssignmentCurrentCell?.assignmentRow ?? 0].title)
         var tableRow: Int = 0
         if let currentCell = tableAssignmentCurrentCell {
             for i in 0 ..< tableAssignmentList.count {
@@ -412,32 +412,38 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             }
         } else {
-            tableAssignmentCurrentCell = tblAssignmentList.visibleCells.first as! frmAsignmentList_tblAssignmentListCell
-        }
-        for i in 0 ... 1000 {
-            if tableRow - i > -1 {
-                if !tableAssignmentList[tableRow - i].checked {
-                    legacyTableAssignment = tableAssignmentList[tableRow - i]
-                    break
-                }
+            if let firstCell = tblAssignmentList.visibleCells.first {
+                tableAssignmentCurrentCell = firstCell as! frmAsignmentList_tblAssignmentListCell
             }
-            if tableRow + i < tableAssignmentList.count {
-                if !tableAssignmentList[tableRow + i].checked {
-                    legacyTableAssignment = tableAssignmentList[tableRow + i]
-                    break
+        }
+        if tableAssignmentList.count > 0 {
+            for i in 0 ... 1000 {
+                if tableRow - i > -1 {
+                    if !tableAssignmentList[tableRow - i].checked {
+                        legacyTableAssignment = tableAssignmentList[tableRow - i]
+                        break
+                    }
+                }
+                if tableRow + i < tableAssignmentList.count {
+                    if !tableAssignmentList[tableRow + i].checked {
+                        legacyTableAssignment = tableAssignmentList[tableRow + i]
+                        break
+                    }
                 }
             }
         }
     
-        showingChecked = !showingChecked
-        //btnShowCompleted.setTitle(showingChecked ? "Hide Completed" : "Show Completed", for: .normal)
-        //print("legacy: ", legacyTableAssignment?.title)
+        if showingChecked == 0 {
+            showingChecked = 2
+        } else if showingChecked == 1 || showingChecked == 2 {
+            showingChecked = 0
+        }
         
         refreshTableAssignmentList(formatTable: true, refreshSubject: true)
         for i in 0 ..< tableAssignmentList.count {
             if (tableAssignmentList[i].id == legacyTableAssignment?.id) {
                 //print("scroll to:", tableAssignmentList[i].title, legacyTableAssignment?.title)
-                tblAssignmentList.scrollToRow(at: IndexPath(row: (i - 1 < 0 ? i : i - 1), section: 0), at: UITableViewScrollPosition.top, animated: true)
+                tblAssignmentList.scrollToRow(at: IndexPath(row: (i - 1 < 0 ? i : i - 1), section: 0), at: UITableViewScrollPosition.top, animated: false)
                 break
             }
         }
@@ -495,23 +501,28 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             if (indexPath.row == 0) {
                 showAllSubjectAssignment = true
             } else {
+                if currentSubjectName != tableSubjectList[indexPath.row].name && showingChecked == 1 {
+                    showingChecked = 0
+                }
                 showAllSubjectAssignment = false
                 currentSubjectName = tableSubjectList[indexPath.row].name
             }
             
+            
             tableSubjectList_selectedRow = indexPath.row
             refreshTableAssignmentList(formatTable: true, refreshSubject: true)
-            if tableAssignmentList.count > 1 && showingChecked {
+            if tableAssignmentList.count > 1 && showingChecked > 0 {
                 var _targetRow: Int = 0, _targetValue: Int = 10000, _tmpValue: Int = 0
                 for i in 0 ..< tableAssignmentList.count {
                     _tmpValue = abs(daysDifference(date1: tableAssignmentList[i].dueDate, date2: Date.today()))
                     if _tmpValue < _targetValue {
-                        print("testing:", _targetValue, _tmpValue, _targetRow)
                         _targetValue = _tmpValue
                         _targetRow = i
                     }
                 }
-                tblAssignmentList.scrollToRow(at: IndexPath(row: (_targetRow - 1 < 0 ? _targetRow : _targetRow - 1), section: 0), at: .middle, animated: true)
+                if ((_targetRow - 1 < 0 ? _targetRow : _targetRow - 1) < tableAssignmentList.count) {
+                    tblAssignmentList.scrollToRow(at: IndexPath(row: (_targetRow - 1 < 0 ? _targetRow : _targetRow - 1), section: 0), at: .middle, animated: true)
+                }
             }
         }
     }
@@ -615,15 +626,23 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         tableAssignmentListCompletedCount = 0
         visibleCompletedAssignmentCount = 0
         calendarEvents = [:]
+        if (showingChecked == 0) {
+            partialCheckedItemIndex = [:]
+        }
         if (assignmentList.count == 0) {
             return
         }
         if (assignmentList.count == 1) {
             if (showAllSubjectAssignment || currentSubjectName == assignmentList[0].subject) {
                 if (assignmentList[0].checked) {
-                    if (showingChecked) {
+                    if (showingChecked == 2) {
                         tableAssignmentList.append(assignmentList[0])
                         visibleCompletedAssignmentCount += 1
+                    } else if (showingChecked == 1) {
+                        if let _ = partialCheckedItemIndex[assignmentList[0].id] {
+                            tableAssignmentList.append(assignmentList[0])
+                            visibleCompletedAssignmentCount += 1
+                        }
                     }
                     tableAssignmentListCompletedCount = 1
                 } else {
@@ -636,9 +655,14 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                     continue
                 }
                 if (assignmentList[i].checked) {
-                    if (showingChecked) {
+                    if (showingChecked == 2) {
                         tableAssignmentList.append(assignmentList[i])
                         visibleCompletedAssignmentCount += 1
+                    } else if (showingChecked == 1) {
+                        if let _ = partialCheckedItemIndex[assignmentList[i].id] {
+                            tableAssignmentList.append(assignmentList[i])
+                            visibleCompletedAssignmentCount += 1
+                        }
                     }
                     tableAssignmentListCompletedCount += 1
                 } else {
@@ -691,7 +715,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     public func refreshShowCompletedButton () {
-        //print("ssssssssssss-", visibleCompletedAssignmentCount)
         visibleCompletedAssignmentCount = 0
         for item in tableAssignmentList {
             if item.checked {
@@ -711,7 +734,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                 btnShowCompleted.setTitleColor(themeColor, for: .normal)
             }
         } else {
-            showingChecked = true
             btnShowCompleted.isEnabled = true
             btnShowCompleted.setTitle("Hide Completed", for: .normal)
             btnShowCompleted.setTitleColor(themeColor, for: .normal)
@@ -725,7 +747,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             btnListIsEmpty.isHidden = !(tableAssignmentList.count == 0)
         }
         refreshShowCompletedButton()
-        print(tableAssignmentList)
         tblAssignmentList.reloadData()
         refreshTableSubject()
         if (ShowingCalendar) {
