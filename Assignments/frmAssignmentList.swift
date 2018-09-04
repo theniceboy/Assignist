@@ -24,6 +24,8 @@ var calendarEvents: [String: Int] = [:]
 
 var checkedIDBeforeFocusSync: [Int] = []
 
+var overdueUnchecked = true
+
 
 func syncAssignmentListWithFocus () {
     
@@ -250,7 +252,47 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         let nsfirstOpen = UserDefaults.standard.object(forKey: "firstOpen")
         if (nsfirstOpen == nil) {
             print("start")
+            coachMarksController.overlay.color = UIColor.black.withAlphaComponent(0.3)
+            coachMarksController.overlay.allowTap = true
             coachMarksController.start(on: self)
+        }
+        
+        if overdueUnchecked {
+            overdueUnchecked = false
+            var overdues: [AssignmentItem] = []
+            for item in tableAssignmentList {
+                if daysDifference(date1: item.dueDate, date2: Date.today()) > 0 && !item.checked {
+                    overdues.append(item)
+                }
+            }
+            if (overdues.count > 9) {
+                let alert = UIAlertController(title: "You have \(overdues.count) overdue (due yesterday or earlier) assignment item\(overdues.count > 1 ? "s" : ""), do you want to check them off?", message: "You can always uncheck them later.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+                    self.showingChecked = 1
+                    for item in overdues {
+                        item.checked = true
+                        assignmentList[getRowNum_AssignmentList(id: item.id)].checked = true
+                        self.partialCheckedItemIndex[item.id] = 1
+                    }
+                    saveAssignmentList()
+                    self.refreshTableAssignmentList()
+                    if tableAssignmentList.count > 4 {
+                        var _targetRow: Int = 0, _targetValue: Int = 10000, _tmpValue: Int = 0
+                        for i in 0 ..< tableAssignmentList.count {
+                            _tmpValue = abs(daysDifference(date1: tableAssignmentList[i].dueDate, date2: Date.today()))
+                            if _tmpValue < _targetValue {
+                                _targetValue = _tmpValue
+                                _targetRow = i
+                            }
+                        }
+                        if ((_targetRow - 1 < 0 ? _targetRow : _targetRow - 1) < tableAssignmentList.count) {
+                            self.tblAssignmentList.scrollToRow(at: IndexPath(row: (_targetRow - 1 < 0 ? _targetRow : _targetRow - 1), section: 0), at: .middle, animated: true)
+                        }
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -511,7 +553,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             
             tableSubjectList_selectedRow = indexPath.row
             refreshTableAssignmentList(formatTable: true, refreshSubject: true)
-            if tableAssignmentList.count > 1 && showingChecked > 0 {
+            if tableAssignmentList.count > 4 && showingChecked > 0 {
                 var _targetRow: Int = 0, _targetValue: Int = 10000, _tmpValue: Int = 0
                 for i in 0 ..< tableAssignmentList.count {
                     _tmpValue = abs(daysDifference(date1: tableAssignmentList[i].dueDate, date2: Date.today()))

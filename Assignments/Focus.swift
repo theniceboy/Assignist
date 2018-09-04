@@ -325,7 +325,7 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 })
             }
         }
-        
+        /*
         for item in checkedIDBeforeFocusSync {
             if (assignmentList.count > 0) {
                 for i in 0 ... (assignmentList.count - 1) {
@@ -336,7 +336,6 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 }
             }
         }
-        curFrmAssignmentList.refreshTableAssignmentList(formatTable: true)
         for item in checkedIDBeforeFocusSync {
             if (assignmentList.count > 0) {
                 for i in 0 ... (assignmentList.count - 1) {
@@ -348,6 +347,8 @@ func parseFocusHTML (html: String, subjectstr: String) {
             }
         }
         checkedIDBeforeFocusSync = []
+ */
+        curFrmAssignmentList.refreshTableAssignmentList(formatTable: true)
         saveAssignmentList()
         saveSubjectList()
         saveUserSettings()

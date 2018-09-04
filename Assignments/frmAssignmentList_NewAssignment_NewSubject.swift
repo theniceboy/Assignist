@@ -90,7 +90,7 @@ func newSubjectColor (currentColor: UIColor = UIColor.white) -> UIColor {
         colorOK = true
         for item in tmpSubjectList {
             newColor.getRed(&firstR, green: &firstG, blue: &firstB, alpha: &firstAlpha)
-            if (firstR + firstG + firstB > 2.4 || firstR + firstG + firstB < 0.8) {
+            if (firstR + firstG + firstB > 2.1 || firstR + firstG + firstB < 1.0) {
                 colorOK = false
                 break
             }
@@ -102,7 +102,7 @@ func newSubjectColor (currentColor: UIColor = UIColor.white) -> UIColor {
             item.color.getRed(&secondR, green: &secondG, blue: &secondB, alpha: &secondAlpha)
             if (cgfloatABS(value: (firstR - secondR)) +
                 cgfloatABS(value: (firstG - secondG)) +
-                cgfloatABS(value: (firstB - secondB)) < 0.6) {
+                cgfloatABS(value: (firstB - secondB)) < 0.7) {
                 colorOK = false
                 break
             }

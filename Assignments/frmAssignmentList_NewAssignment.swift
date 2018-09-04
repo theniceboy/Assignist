@@ -732,8 +732,6 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextFieldDelegate, UI
             if (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 0) {
                 notifyDateTime = tmpDueDate.addingTimeInterval(-86400)
                 notifyDateTime = Date(year: notifyDateTime.year, month: notifyDateTime.month, day: notifyDateTime.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
-                
-                printDate(date: notifyDateTime)
             } else {
                 notifyDateTime = Date(year: tmpDueDate.year, month: tmpDueDate.month, day: tmpDueDate.day, hour: userSettings.defaultPushNotificationTime_hour, minute: userSettings.defaultPushNotificationTime_minute, second: 0)
                 
