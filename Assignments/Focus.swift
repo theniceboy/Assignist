@@ -28,6 +28,7 @@ func subchar (charlist: [Character], a: Int, b: Int) -> String {
 }
 
 func parseFocusHTML (html: String, subjectstr: String) {
+    print(subjectstr)
     //print(html)
     /*
     var subEndIndex = html.startIndex
@@ -44,6 +45,96 @@ func parseFocusHTML (html: String, subjectstr: String) {
     }
  */
     //print(html)
+    let html3="""
+    <li style="font-weight: bold;">Period 7 - ACD - 215 - Kent  Tarr</li><li style="padding-left: 5px;"><table style="width: 100%; border-spacing: 0;"><tbody><tr style="border-bottom: solid #CCC 1px">
+    <td>AP Cal Basic Integration Rules #1</td>
+    <td style="width: 180px;"> Due: Sep 25 2018 12:00 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>AP Cal Basic Integration Rules #2</td>
+    <td style="width: 180px;"> Due: Sep 26 2018 12:00 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>AP Cal Basic Integration Quiz</td>
+    <td style="width: 180px;"> Due: Sep 27 2018 12:00 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>AP Cal Integration by Parts #1</td>
+    <td style="width: 180px;"> Due: Oct 01 2018 12:00 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>AP Cal Integration by Parts #2</td>
+    <td style="width: 180px;"> Due: Oct 01 2018 12:00 am</td>
+    </tr></tbody></table></li><li style="font-weight: bold;">Period 3 - S1 - BCD - 159 - Joseph  Polwrek</li><li style="padding-left: 5px;"><table style="width: 100%; border-spacing: 0;"><tbody><tr style="border-bottom: solid #CCC 1px">
+    <td>Unit 2 Quiz</td>
+    <td style="width: 180px;"> Due: Sep 25 2018 9:11 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Ch 6 Sec 2</td>
+    <td style="width: 180px;"> Due: Sep 25 2018 10:52 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Ch 6 Sec 3</td>
+    <td style="width: 180px;"> Due: Sep 26 2018 10:53 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Unit 2 Test</td>
+    <td style="width: 180px;"> Due: Sep 28 2018 10:53 am</td>
+    </tr></tbody></table></li><li style="font-weight: bold;">Period 2 - BCD - 001 - John  Clymer</li><li style="padding-left: 5px;"><table style="width: 100%; border-spacing: 0;"><tbody><tr style="border-bottom: solid #CCC 1px">
+    <td>3.3 Lego with Dimensions</td>
+    <td style="width: 180px;"> Due: Sep 25 2018 10:32 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>3.4 Measurement and Statistics</td>
+    <td style="width: 180px;"> Due: Sep 28 2018 10:00 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>3.3 Dimensioned Drawing File</td>
+    <td style="width: 180px;"> Due: Sep 28 2018 10:08 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>3.3 Thingiverse</td>
+    <td style="width: 180px;"> Due: Sep 28 2018 10:33 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>3.5 Puzzle Cube Combinations</td>
+    <td style="width: 180px;"> Due: Oct 02 2018 10:06 am</td>
+    </tr></tbody></table></li><li style="font-weight: bold;">Period 5 - ACD - 351 - John  Clymer</li><li style="padding-left: 5px;"><table style="width: 100%; border-spacing: 0;"><tbody><tr style="border-bottom: solid #CCC 1px">
+    <td>HW 6C</td>
+    <td style="width: 180px;"> Due: Sep 26 2018 10:56 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>HW 6D</td>
+    <td style="width: 180px;"> Due: Sep 27 2018 10:57 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Quiz 2.1 </td>
+    <td style="width: 180px;"> Due: Sep 27 2018 10:58 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>HW 7A</td>
+    <td style="width: 180px;"> Due: Sep 28 2018 10:57 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Quiz 2.2</td>
+    <td style="width: 180px;"> Due: Oct 02 2018 11:02 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>HW 7B</td>
+    <td style="width: 180px;"> Due: Oct 03 2018 10:59 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>HW 7C</td>
+    <td style="width: 180px;"> Due: Oct 05 2018 11:00 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Unit 2 Test</td>
+    <td style="width: 180px;"> Due: Oct 09 2018 11:03 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Formal Lab 1</td>
+    <td style="width: 180px;"> Due: Oct 10 2018 10:59 am</td>
+    </tr></tbody></table></li><li style="font-weight: bold;">Period 4 - ACD - 069 - Nathan  Gentilin</li><li style="padding-left: 5px;"><table style="width: 100%; border-spacing: 0;"><tbody><tr style="border-bottom: solid #CCC 1px">
+    <td>Journal Check</td>
+    <td style="width: 180px;"> Due: Sep 27 2018 9:52 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>College Essay</td>
+    <td style="width: 180px;"> Due: Oct 01 2018 9:47 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Due: Richard II, Acts 1-3</td>
+    <td style="width: 180px;"> Due: Oct 01 2018 9:48 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Due: Richard II, Acts 4-5</td>
+    <td style="width: 180px;"> Due: Oct 04 2018 9:51 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>Due: Wuthering Heights 1-170</td>
+    <td style="width: 180px;"> Due: Oct 08 2018 9:52 am</td>
+    </tr><tr style="border-bottom: solid #CCC 1px">
+    <td>RIchard II Essay</td>
+    <td style="width: 180px;"> Due: Oct 11 2018 9:52 am</td>
+    </tr></tbody></table></li>
+"""
     if (html.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "" && userSettings.focusUsername != "" && userSettings.focusPassword != "") {
         
         // Set all newFromFocus to false
@@ -92,14 +183,24 @@ func parseFocusHTML (html: String, subjectstr: String) {
         dateFormatter.dateFormat = "MMM d yyyy h:ss aa"
         //dateFormatter.dateStyle = .medium
         //dateFormatter.timeStyle = .short
-        var tmpdatestr = ""
+        var tmpdatestr = "", tmpnextdatestr = ""
         //var tmpdatestrIndex = " ".startIndex
         //print(strlist)
         while (i < strlist.count) {
-            if (strlist[i].starts(with: "Due:")) {
+            tmpdatestr = strlist[i]
+            tmpdatestr.remove(at: tmpdatestr.startIndex)
+            tmpdatestr.remove(at: tmpdatestr.startIndex)
+            tmpdatestr.remove(at: tmpdatestr.startIndex)
+            tmpdatestr.remove(at: tmpdatestr.startIndex)
+            if (strlist[i].starts(with: "Due:") && dateFormatter.date(from: tmpdatestr) != nil) {
                 assignmentState = 1
             } else if (i < strlist.count - 1) {
-                if (strlist[i + 1].starts(with: "Due:")) {
+                tmpnextdatestr = strlist[i + 1]
+                tmpnextdatestr.removeFirst()
+                tmpnextdatestr.removeFirst()
+                tmpnextdatestr.removeFirst()
+                tmpnextdatestr.removeFirst()
+                if (strlist[i + 1].starts(with: "Due:") && dateFormatter.date(from: tmpnextdatestr) != nil) {
                     assignmentState = 0
                 } else {
                     assignmentState = 2
@@ -114,35 +215,6 @@ func parseFocusHTML (html: String, subjectstr: String) {
                 focusAssignmentList.append(newItem)
                 assignmentState = 1
             } else if (assignmentState == 1) {
-                tmpdatestr = strlist[i]
-                /*
-                 var tmpindex = strlist[i].startIndex
-                for _ in 0 ... 4 {
-                    tmpindex = strlist[i].index(after: tmpindex)
-                }
-                tmpdatestr = String(strlist[i][tmpindex..<strlist[i].endIndex]).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                tmpdatestrIndex = tmpdatestr.startIndex
-                while (tmpdatestrIndex < tmpdatestr.endIndex && tmpdatestr[tmpdatestrIndex] != " ") {
-                    tmpdatestrIndex = tmpdatestr.index(after: tmpdatestrIndex)
-                }
-                tmpdatestrIndex = tmpdatestr.index(after: tmpdatestrIndex)
-                while (tmpdatestrIndex < tmpdatestr.endIndex && tmpdatestr[tmpdatestrIndex] != " ") {
-                    tmpdatestrIndex = tmpdatestr.index(after: tmpdatestrIndex)
-                }
-                tmpdatestr.insert(",", at: tmpdatestrIndex)
-                tmpdatestrIndex = tmpdatestr.index(after: tmpdatestrIndex)
-                tmpdatestrIndex = tmpdatestr.index(after: tmpdatestrIndex)
-                while (tmpdatestrIndex < tmpdatestr.endIndex && tmpdatestr[tmpdatestrIndex] != " ") {
-                    tmpdatestrIndex = tmpdatestr.index(after: tmpdatestrIndex)
-                }
-                tmpdatestr.insert("t", at: tmpdatestrIndex)
-                tmpdatestr.insert("a", at: tmpdatestrIndex)
-                tmpdatestr.insert(" ", at: tmpdatestrIndex)
- */
-                tmpdatestr.remove(at: tmpdatestr.startIndex)
-                tmpdatestr.remove(at: tmpdatestr.startIndex)
-                tmpdatestr.remove(at: tmpdatestr.startIndex)
-                tmpdatestr.remove(at: tmpdatestr.startIndex)
                 focusAssignmentList[focusAssignmentList.count - 1].duedatestr = tmpdatestr
                 //print(dateFormatter.string(from: Date()))
                 //let date = dateFormatter.date(from: tmpdatestr)!
