@@ -921,23 +921,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // MARK: - Test Only
     
-    @IBAction func clearAll(_ sender: Any) {
-        printAssignments()
-        /*
-        assignmentList = []
-        subjectList = []
-        let defaultSubject = SubjectItem()
-        defaultSubject.name = __DEFAULT_SUBJECT_NAME
-        defaultSubject.color = UIColor.darkGray
-        subjectList.append(defaultSubject)
-        saveAssignmentList()
-        saveSubjectList()
-        refreshTableAssignmentList()
- */
-    }
-    
-    // MARK
-    
     
     // MARK: - Coach
     
