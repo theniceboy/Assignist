@@ -9,6 +9,7 @@
 import UIKit
 
 var loginFromSettigns: Bool = false
+var connectingFocusInProgress: Bool = false // to prevent showing "connection time out" after logging out from Focus
 
 class frmSettings: UIViewController {
 
@@ -146,13 +147,15 @@ class frmSettings: UIViewController {
         
         curFrmAssignmentList.invalidLoginInfoCount = 0
         curFrmAssignmentList.timerStart()
+        connectingFocusInProgress = true
         
         let when = DispatchTime.now() + 50
         DispatchQueue.main.asyncAfter(deadline: when) {
-            if (!loggedInFocus && !curFrmAssignmentList.webView.isLoading && self.showOvertime) {
+            if (!loggedInFocus && !curFrmAssignmentList.webView.isLoading && self.showOvertime && connectingFocusInProgress) {
                 SwiftSpinner.sharedInstance.innerColor = UIColor.white
                 SwiftSpinner.sharedInstance.outerColor = UIColor.yellow.withAlphaComponent(0.5)
                 SwiftSpinner.show(duration: 2.0, title: "Connection Timeout, Try Again Later", animated: false)
+                connectingFocusInProgress = false
             }
         }
     }
@@ -213,6 +216,7 @@ class frmSettings: UIViewController {
         saveSubjectList()
         curFrmAssignmentList.refreshTableAssignmentList()
         
+        connectingFocusInProgress = false
         SwiftSpinner.show(duration: 1.5, title: "Logout Completed", animated: false)
         
         hideLogoutButton()

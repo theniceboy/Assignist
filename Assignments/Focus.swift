@@ -42,9 +42,10 @@ func parseFocusHTML (html: String, subjectstr: String) {
         }
         indexNow = html.index(after: indexNow)
     }
+     print(html)
+     print("______SubjectStr")
+     print(subjectstr)
  */
-    //print(html)
-    
     if (html.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) != "" && userSettings.focusUsername != "" && userSettings.focusPassword != "") {
         
         // Set all newFromFocus to false
@@ -98,18 +99,22 @@ func parseFocusHTML (html: String, subjectstr: String) {
         //print(strlist)
         while (i < strlist.count) {
             tmpdatestr = strlist[i]
-            tmpdatestr.remove(at: tmpdatestr.startIndex)
-            tmpdatestr.remove(at: tmpdatestr.startIndex)
-            tmpdatestr.remove(at: tmpdatestr.startIndex)
-            tmpdatestr.remove(at: tmpdatestr.startIndex)
+            if tmpdatestr.count > 3 {
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
+                tmpdatestr.remove(at: tmpdatestr.startIndex)
+            }
             if (strlist[i].starts(with: "Due:") && dateFormatter.date(from: tmpdatestr) != nil) {
                 assignmentState = 1
             } else if (i < strlist.count - 1) {
                 tmpnextdatestr = strlist[i + 1]
-                tmpnextdatestr.removeFirst()
-                tmpnextdatestr.removeFirst()
-                tmpnextdatestr.removeFirst()
-                tmpnextdatestr.removeFirst()
+                if tmpnextdatestr.count > 3 {
+                    tmpnextdatestr.removeFirst()
+                    tmpnextdatestr.removeFirst()
+                    tmpnextdatestr.removeFirst()
+                    tmpnextdatestr.removeFirst()
+                }
                 if (strlist[i + 1].starts(with: "Due:") && dateFormatter.date(from: tmpnextdatestr) != nil) {
                     assignmentState = 0
                 } else {
