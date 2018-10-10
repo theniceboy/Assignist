@@ -151,7 +151,7 @@ class frmSettings: UIViewController {
         
         let when = DispatchTime.now() + 50
         DispatchQueue.main.asyncAfter(deadline: when) {
-            if (!loggedInFocus && !curFrmAssignmentList.webView.isLoading && self.showOvertime && connectingFocusInProgress) {
+            if (!loggedInFocus && self.showOvertime && connectingFocusInProgress) {
                 SwiftSpinner.sharedInstance.innerColor = UIColor.white
                 SwiftSpinner.sharedInstance.outerColor = UIColor.yellow.withAlphaComponent(0.5)
                 SwiftSpinner.show(duration: 2.0, title: "Connection Timeout, Try Again Later", animated: false)
