@@ -526,7 +526,7 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextFieldDelegate, UI
     // MARK: Action - Delete Assignment
     
     @IBAction func btnDeleteAssignment_Tapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Are You Sure You Want to Delete This Assignment?", message: "This operation cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Are You Sure You Want to Delete This Assignment?", message: "", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.default, handler: { (action) in
             self.deleteAssignment()
         }))
@@ -752,6 +752,9 @@ class frmAssignmentList_NewAssignment: UIViewController, UITextFieldDelegate, UI
         assignmentList.remove(at: getRowNum_AssignmentList(id: _EDIT_ID_))
         curFrmAssignmentList.refreshTableAssignmentList()
         saveAssignmentList()
+        curFrmAssignmentList.undoStatus = 2
+        curFrmAssignmentList.undoItem = editAssignment
+        curFrmAssignmentList.popupUndoButton()
         self.dismiss(animated: true) {
         }
     }

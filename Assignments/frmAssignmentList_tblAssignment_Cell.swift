@@ -205,20 +205,33 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         
         if (cChecked.checkState == M13Checkbox.CheckState.checked) {
             assignmentList[assignmentRow].checked = true
+            /*
             if curFrmAssignmentList.showingChecked < 2 {
                 curFrmAssignmentList.partialCheckedItemIndex[assignmentList[assignmentRow].id] = 1
                 curFrmAssignmentList.showingChecked = 1
             }
-            visibleCompletedAssignmentCount += 1
-            tableAssignmentListCompletedCount += 1
+ */
+            //visibleCompletedAssignmentCount += 1
+            //tableAssignmentListCompletedCount += 1
             for item in UIApplication.shared.scheduledLocalNotifications! {
                 if (item.userInfo!["id"] as! Int == assignmentList[assignmentRow].id) {
                     UIApplication.shared.cancelLocalNotification(item)
                     break
                 }
             }
+            if !showingCompleted {
+                tableAssignmentList.remove(at: rowNumber)
+                curFrmAssignmentList.tblAssignmentList.deleteRows(at: [IndexPath(row: rowNumber, section: 0)], with: UITableViewRowAnimation.right)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                    curFrmAssignmentList.tblAssignmentList.reloadData()
+                })
+                curFrmAssignmentList.undoStatus = 1
+                curFrmAssignmentList.undoRow = assignmentRow
+                curFrmAssignmentList.popupUndoButton()
+            }
         } else {
             assignmentList[assignmentRow].checked = false
+            /*
             if curFrmAssignmentList.showingChecked < 2 {
                 if let _ = curFrmAssignmentList.partialCheckedItemIndex[assignmentList[assignmentRow].id] {
                     curFrmAssignmentList.partialCheckedItemIndex.removeValue(forKey: assignmentList[assignmentRow].id)
@@ -227,8 +240,15 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
                     curFrmAssignmentList.showingChecked = 0
                 }
             }
-            visibleCompletedAssignmentCount -= 1
-            tableAssignmentListCompletedCount -= 1
+            */
+            //visibleCompletedAssignmentCount -= 1
+            //tableAssignmentListCompletedCount -= 1
+            showingCompleted = false
+            for item in assignmentList {
+                if item.checked {
+                    showingCompleted = true
+                }
+            }
             if (assignmentList[assignmentRow].notificationOn) {
                 var notifyDateTime = Date(), tmpDueDate = assignmentList[assignmentRow].dueDate
                 if (abs(daysDifference(date1: localDate(), date2: tmpDueDate)) > 0) {

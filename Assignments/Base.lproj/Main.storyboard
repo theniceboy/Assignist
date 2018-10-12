@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1820,11 +1820,42 @@
                                                             <outlet property="delegate" destination="m1v-VY-3DS" id="dtF-dj-Ypj"/>
                                                         </connections>
                                                     </tableView>
+                                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HK-Kb-2GR" userLabel="btnUndo" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                                        <rect key="frame" x="99" y="603" width="300" height="60"/>
+                                                        <color key="backgroundColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="7Lg-xz-sr9"/>
+                                                            <constraint firstAttribute="width" constant="300" id="ggF-Sh-Bmz"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
+                                                        <color key="tintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <state key="normal" title="UNCKECK ITEM">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleShadowColor" red="0.54226852380000001" green="0.81778683900000004" blue="0.90961211919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                                <real key="value" value="9"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                                <color key="value" red="0.54226852383306612" green="0.81778683899168325" blue="0.90961211919784546" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="btnUndo_Tapped:" destination="m1v-VY-3DS" eventType="touchUpInside" id="j4t-6V-O5r"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Aw0-oc-Vub" firstAttribute="leading" secondItem="7Z6-CQ-3te" secondAttribute="leading" id="98y-J2-mNM"/>
                                                     <constraint firstAttribute="trailing" secondItem="Aw0-oc-Vub" secondAttribute="trailing" id="QRR-e3-Y1n"/>
+                                                    <constraint firstAttribute="bottom" secondItem="3HK-Kb-2GR" secondAttribute="bottom" constant="20" id="aG3-il-VEA"/>
                                                     <constraint firstAttribute="bottom" secondItem="Aw0-oc-Vub" secondAttribute="bottom" id="tq2-9z-O8K"/>
+                                                    <constraint firstItem="3HK-Kb-2GR" firstAttribute="centerX" secondItem="7Z6-CQ-3te" secondAttribute="centerX" id="yKE-mA-xPa"/>
                                                 </constraints>
                                             </view>
                                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SNy-fq-tct">
@@ -2386,6 +2417,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="zSQ-Ef-RUX"/>
                     <connections>
+                        <outlet property="_layout_btnUndo_Bottom" destination="aG3-il-VEA" id="E9i-29-nmX"/>
                         <outlet property="_layout_vRightExt_WidthAnchor" destination="8XD-Xm-Gyk" id="hBZ-dO-0Uq"/>
                         <outlet property="_layout_vRightTopHeightAnchor" destination="Xtt-wF-act" id="0iN-pc-kzV"/>
                         <outlet property="_layout_vRight_Trailing" destination="NGP-kC-jEC" id="veG-07-d59"/>
@@ -2394,6 +2426,7 @@
                         <outlet property="btnSettings" destination="uBN-Zm-LAv" id="KCx-Sb-xDA"/>
                         <outlet property="btnShowCompleted" destination="ea9-jF-3dr" id="rOb-ym-lWe"/>
                         <outlet property="btnToggleCalendar" destination="sXK-pE-NuB" id="62j-JV-maz"/>
+                        <outlet property="btnUndo" destination="3HK-Kb-2GR" id="fsq-Ww-f0q"/>
                         <outlet property="fsCalendar" destination="eBA-Ub-aGg" id="3BS-1K-pQq"/>
                         <outlet property="lbPullToRefresh" destination="vw7-lV-sa6" id="y9L-ID-oyx"/>
                         <outlet property="lbSyncingWithFocus" destination="pBB-NX-xL1" id="kQG-DN-ouu"/>

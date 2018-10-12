@@ -12,8 +12,10 @@ var tableAssignmentList: [AssignmentItem] = [] // The assignment list that is di
 var tableAssignmentCurrentCell: frmAsignmentList_tblAssignmentListCell?
 //var tableAssignmentList_checked: [AssignmentItem] = []
 //var tableAssignmentListDivider: Int = 0 // The index of the first item that shoud be in the completed section
-var tableAssignmentListCompletedCount: Int = 0 // The number of assignment items in the table that were completed.
-var visibleCompletedAssignmentCount: Int = 0 // The number of assignment items that are both visible and completed.
+//var tableAssignmentListCompletedCount: Int = 0 // The number of assignment items in the table that were completed.
+//var visibleCompletedAssignmentCount: Int = 0 // The number of assignment items that are both visible and completed.
+
+var showingCompleted: Bool = false
 
 var tableSubjectList: [SubjectItem] = []
 var tableSubjectList_selectedRow: Int = 0
@@ -78,11 +80,15 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     private let refreshControl = UIRefreshControl()
     
+    @IBOutlet weak var btnUndo: ZFRippleButton!
+
+    
     // Layout
 
     @IBOutlet weak var _layout_vRightTopHeightAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_vRightExt_WidthAnchor: NSLayoutConstraint!
     @IBOutlet weak var _layout_vRight_Trailing: NSLayoutConstraint!
+    @IBOutlet weak var _layout_btnUndo_Bottom: NSLayoutConstraint!
     
     // Variables
     
@@ -91,10 +97,13 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var loadedFromSystem: Bool = false
     
+    var undoStatus: Int = 0 // 0: Nothing to undo, 1: uncheck item, 2: undo delete
+    var undoRow: Int = 0
+    var undoItem: AssignmentItem = AssignmentItem()
+    
     // MARK: - UI Setup
     
     func UISetup () {
-        
         
         _layout_vRightTopHeightAnchor.constant = 46
         lbSyncingWithFocus.alpha = 1
@@ -102,21 +111,24 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         //btnToggleCalendar.layer.borderColor = themeColor.cgColor
         //btnToggleCalendar.layer.borderWidth = 0.5
         
-        btnToggleCalendar.layer.shadowColor = themeColor.cgColor
+        btnToggleCalendar.layer.shadowColor = UIColor.black.cgColor
         btnToggleCalendar.layer.shadowOffset = CGSize.zero
-        btnToggleCalendar.layer.shadowOpacity = 0.3
-        btnToggleCalendar.layer.shadowRadius = 7
+        btnToggleCalendar.layer.shadowOpacity = 0.2
+        btnToggleCalendar.layer.shadowRadius = 6
  
         lbPullToRefresh.alpha = 0
-        
         
         vRightExt.layer.shadowColor = UIColor.black.cgColor
         vRightExt.layer.shadowOffset = CGSize.zero
         vRightExt.layer.shadowOpacity = 0.0
         vRightExt.layer.shadowRadius = 12
  
-        
         hideCalendar()
+        
+        btnUndo.layer.shadowColor = themeColor.cgColor
+        btnUndo.layer.shadowOffset = CGSize.zero
+        btnUndo.layer.shadowOpacity = 0.6
+        btnUndo.layer.shadowRadius = 6
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
         
@@ -268,7 +280,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             if (overdues.count > 9) {
                 let alert = UIAlertController(title: "You have \(overdues.count) overdue (due yesterday or earlier) assignment item\(overdues.count > 1 ? "s" : ""), do you want to check them off?", message: "You can always uncheck them later.", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-                    self.showingChecked = 1
+                    self.btnShowCompleted_Tapped(self)
                     for item in overdues {
                         item.checked = true
                         assignmentList[getRowNum_AssignmentList(id: item.id)].checked = true
@@ -280,10 +292,13 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                         var _targetRow: Int = 0, _targetValue: Int = 10000, _tmpValue: Int = 0
                         for i in 0 ..< tableAssignmentList.count {
                             _tmpValue = abs(daysDifference(date1: tableAssignmentList[i].dueDate, date2: Date.today()))
-                            if _tmpValue < _targetValue {
+                            if _tmpValue < _targetValue || _tmpValue == _targetValue && i < _targetRow {
                                 _targetValue = _tmpValue
                                 _targetRow = i
                             }
+                        }
+                        if _targetRow > 0 {
+                            _targetRow -= 1
                         }
                         if ((_targetRow - 1 < 0 ? _targetRow : _targetRow - 1) < tableAssignmentList.count) {
                             self.tblAssignmentList.scrollToRow(at: IndexPath(row: (_targetRow - 1 < 0 ? _targetRow : _targetRow - 1), section: 0), at: .middle, animated: true)
@@ -441,7 +456,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         _EDIT_MODE_ = false
     }
     
-    var showingChecked: Int = 0 // 0: not showing, 1: partial, 2: showing all
+    //var showingChecked: Int = 0 // 0: not showing, 1: partial, 2: showing all
     var partialCheckedItemIndex: [Int: Int] = [:]
     var legacyTableAssignment: AssignmentItem?
     @IBAction func btnShowCompleted_Tapped(_ sender: Any) {
@@ -474,14 +489,30 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             }
         }
-    
+        /*
         if showingChecked == 0 {
             showingChecked = 2
         } else if showingChecked == 1 || showingChecked == 2 {
             showingChecked = 0
         }
-        
-        refreshTableAssignmentList(formatTable: true, refreshSubject: true)
+ */
+        showingCompleted = !showingCompleted
+        if showingCompleted {
+            refreshTableAssignmentList(formatTable: true, refreshSubject: true)
+        } else {
+            var indexpaths: [IndexPath] = []
+            for i in 0 ..< tableAssignmentList.count {
+                if tableAssignmentList[i].checked {
+                    indexpaths.append(IndexPath(row: i, section: 0))
+                }
+            }
+            formatTableData()
+            tblAssignmentList.deleteRows(at: indexpaths, with: UITableViewRowAnimation.fade)
+            self.refreshShowCompletedButton()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: {
+                self.refreshTableAssignmentList(formatTable: false, refreshSubject: true)
+            })
+        }
         for i in 0 ..< tableAssignmentList.count {
             if (tableAssignmentList[i].id == legacyTableAssignment?.id) {
                 //print("scroll to:", tableAssignmentList[i].title, legacyTableAssignment?.title)
@@ -489,9 +520,6 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                 break
             }
         }
-        
-        refreshShowCompletedButton()
- 
     }
     
     var ShowingCalendar: Bool = false
@@ -535,6 +563,73 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         }
     }
     
+    @IBAction func btnUndo_Tapped(_ sender: Any) {
+        if undoStatus == 1 {
+            assignmentList[undoRow].checked = false
+            refreshTableAssignmentList(formatTable: true, refreshSubject: true)
+            highlightUndoItem(id: assignmentList[undoRow].id)
+        } else if undoStatus == 2 {
+            assignmentList.append(undoItem)
+            refreshTableAssignmentList(formatTable: true, refreshSubject: true)
+            highlightUndoItem(id: undoItem.id)
+        }
+        undoStatus = 0
+        fadeoutUndoButton()
+    }
+    
+    func highlightUndoItem (id: Int) {
+        for i in 0 ..< tableAssignmentList.count {
+            if tableAssignmentList[i].id == id {
+                tblAssignmentList.scrollToRow(at: IndexPath(row: i, section: 0), at: .middle, animated: false)
+                if let cell = self.tblAssignmentList.cellForRow(at: IndexPath(row: i, section: 0)) {
+                    (cell as! frmAsignmentList_tblAssignmentListCell).highLight()
+                }
+                return
+            }
+        }
+        showAllSubjectAssignment = true
+        tableSubjectList_selectedRow = 0
+        refreshTableAssignmentList(formatTable: true, refreshSubject: true)
+        for i in 0 ..< tableAssignmentList.count {
+            if tableAssignmentList[i].id == id {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                    self.tblAssignmentList.scrollToRow(at: IndexPath(row: i, section: 0), at: .middle, animated: false)
+                    if let cell = self.tblAssignmentList.cellForRow(at: IndexPath(row: i, section: 0)) {
+                        (cell as! frmAsignmentList_tblAssignmentListCell).highLight()
+                    }
+                })
+                return
+            }
+        }
+    }
+    
+    var undoDisappearTimer: Timer = Timer()
+    func popupUndoButton () {
+        if undoStatus == 0 {
+            return
+        }
+        undoDisappearTimer.invalidate()
+        btnUndo.isEnabled = true
+        btnUndo.setTitle(undoStatus == 1 ? "UNCKECK ITEM" : "RESTORE ITEM DELETED", for: .normal)
+        _layout_btnUndo_Bottom.constant = -btnUndo.layer.bounds.height
+        btnUndo.alpha = 0
+        vRight.layoutIfNeeded()
+        _layout_btnUndo_Bottom.constant = 20
+        UIView.animate(withDuration: 0.6) {
+            self.btnUndo.alpha = 1
+            self.vRight.layoutIfNeeded()
+        }
+        undoDisappearTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.fadeoutUndoButton), userInfo: nil, repeats: false)
+        
+    }
+    @objc func fadeoutUndoButton () {
+        btnUndo.isEnabled = false
+        _layout_btnUndo_Bottom.constant = -btnUndo.layer.bounds.height
+        UIView.animate(withDuration: 0.3) {
+            self.btnUndo.alpha = 0
+            self.vRight.layoutIfNeeded()
+        }
+    }
     
     // MARK: - TableView Delegate & DataSource
     
@@ -543,9 +638,11 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             if (indexPath.row == 0) {
                 showAllSubjectAssignment = true
             } else {
+                /*
                 if currentSubjectName != tableSubjectList[indexPath.row].name && showingChecked == 1 {
                     showingChecked = 0
                 }
+                */
                 showAllSubjectAssignment = false
                 currentSubjectName = tableSubjectList[indexPath.row].name
             }
@@ -553,14 +650,17 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             
             tableSubjectList_selectedRow = indexPath.row
             refreshTableAssignmentList(formatTable: true, refreshSubject: true)
-            if tableAssignmentList.count > 4 && showingChecked > 0 {
+            if tableAssignmentList.count > 4 && showingCompleted {
                 var _targetRow: Int = 0, _targetValue: Int = 10000, _tmpValue: Int = 0
                 for i in 0 ..< tableAssignmentList.count {
                     _tmpValue = abs(daysDifference(date1: tableAssignmentList[i].dueDate, date2: Date.today()))
-                    if _tmpValue < _targetValue {
+                    if _tmpValue < _targetValue || _tmpValue == _targetValue && i < _targetRow {
                         _targetValue = _tmpValue
                         _targetRow = i
                     }
+                }
+                if _targetRow > 0 {
+                    _targetRow -= 1
                 }
                 if ((_targetRow - 1 < 0 ? _targetRow : _targetRow - 1) < tableAssignmentList.count) {
                     tblAssignmentList.scrollToRow(at: IndexPath(row: (_targetRow - 1 < 0 ? _targetRow : _targetRow - 1), section: 0), at: .middle, animated: true)
@@ -665,28 +765,30 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func formatTableData () {
         tableAssignmentList = []
-        tableAssignmentListCompletedCount = 0
-        visibleCompletedAssignmentCount = 0
+        //tableAssignmentListCompletedCount = 0
+        //visibleCompletedAssignmentCount = 0
         calendarEvents = [:]
+        /*
         if (showingChecked == 0) {
             partialCheckedItemIndex = [:]
         }
+         */
         if (assignmentList.count == 0) {
             return
         }
         if (assignmentList.count == 1) {
             if (showAllSubjectAssignment || currentSubjectName == assignmentList[0].subject) {
                 if (assignmentList[0].checked) {
-                    if (showingChecked == 2) {
+                    if showingCompleted {
                         tableAssignmentList.append(assignmentList[0])
-                        visibleCompletedAssignmentCount += 1
-                    } else if (showingChecked == 1) {
+                        //visibleCompletedAssignmentCount += 1
+                    }/* else if (showingChecked == 1) {
                         if let _ = partialCheckedItemIndex[assignmentList[0].id] {
                             tableAssignmentList.append(assignmentList[0])
-                            visibleCompletedAssignmentCount += 1
+                            //visibleCompletedAssignmentCount += 1
                         }
-                    }
-                    tableAssignmentListCompletedCount = 1
+                    }*/
+                    //tableAssignmentListCompletedCount = 1
                 } else {
                     tableAssignmentList.append(assignmentList[0])
                 }
@@ -697,16 +799,16 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
                     continue
                 }
                 if (assignmentList[i].checked) {
-                    if (showingChecked == 2) {
+                    if showingCompleted {
                         tableAssignmentList.append(assignmentList[i])
-                        visibleCompletedAssignmentCount += 1
-                    } else if (showingChecked == 1) {
+                        //visibleCompletedAssignmentCount += 1
+                    }/* else if (showingChecked == 1) {
                         if let _ = partialCheckedItemIndex[assignmentList[i].id] {
                             tableAssignmentList.append(assignmentList[i])
-                            visibleCompletedAssignmentCount += 1
+                            //visibleCompletedAssignmentCount += 1
                         }
-                    }
-                    tableAssignmentListCompletedCount += 1
+                    }*/
+                    //tableAssignmentListCompletedCount += 1
                 } else {
                     tableAssignmentList.append(assignmentList[i])
                 }
@@ -757,12 +859,28 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     public func refreshShowCompletedButton () {
+        /*
         visibleCompletedAssignmentCount = 0
         for item in tableAssignmentList {
             if item.checked {
                 visibleCompletedAssignmentCount += 1
             }
         }
+ */
+        btnShowCompleted.isEnabled = false
+        btnShowCompleted.setTitleColor(scrollGray, for: .normal)
+        for item in assignmentList {
+            if item.checked {
+                btnShowCompleted.isEnabled = true
+                btnShowCompleted.setTitleColor(themeColor, for: .normal)
+            }
+        }
+        if showingCompleted {
+            btnShowCompleted.setTitle("Hide Completed", for: .normal)
+        } else {
+            btnShowCompleted.setTitle("Show Compleded", for: .normal)
+        }
+        /*
         if (visibleCompletedAssignmentCount == 0) {
             if (tableAssignmentListCompletedCount == 0) {
                 //showingChecked = false
@@ -780,7 +898,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             btnShowCompleted.setTitle("Hide Completed", for: .normal)
             btnShowCompleted.setTitleColor(themeColor, for: .normal)
         }
-        
+        */
     }
     
     func refreshTableAssignmentList (formatTable: Bool = true, refreshSubject: Bool = true) {
