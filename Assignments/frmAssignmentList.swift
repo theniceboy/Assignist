@@ -76,7 +76,8 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var fsCalendar: FSCalendar!
     @IBOutlet weak var btnToggleCalendar: ZFRippleButton!
     
-    let coachMarksController = CoachMarksController()
+    let startupCoach = CoachMarksController()
+    let subjectColorCoach = CoachMarksController()
     
     private let refreshControl = UIRefreshControl()
     
@@ -157,7 +158,10 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         tblAssignmentList.dataSource = self
         tblSubjectList.delegate = self
         tblSubjectList.dataSource = self
-        coachMarksController.dataSource = self
+        startupCoach.dataSource = self
+        subjectColorCoach.dataSource = self
+        startupCoach.coachID = 1
+        subjectColorCoach.coachID = 2
     
         UIApplication.shared.applicationIconBadgeNumber = 0
         
@@ -263,10 +267,15 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let nsfirstOpen = UserDefaults.standard.object(forKey: "firstOpen")
         if (nsfirstOpen == nil) {
-            print("start")
-            coachMarksController.overlay.color = UIColor.black.withAlphaComponent(0.3)
-            coachMarksController.overlay.allowTap = true
-            coachMarksController.start(on: self)
+            startupCoach.overlay.color = UIColor.black.withAlphaComponent(0.3)
+            startupCoach.overlay.allowTap = true
+            startupCoach.start(on: self)
+        }
+        let nsfirstColor = UserDefaults.standard.object(forKey: "firstColor")
+        if (nsfirstColor == nil && subjectList.count > 1) {
+            subjectColorCoach.overlay.color = UIColor.black.withAlphaComponent(0.3)
+            subjectColorCoach.overlay.allowTap = true
+            subjectColorCoach.start(on: self)
         }
         
         if overdueUnchecked {
@@ -1043,31 +1052,44 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     // MARK: - Coach
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
-        return 2
+        if coachMarksController.coachID == 1 {
+            return 2
+        } else {
+            return 1
+        }
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController,
                               coachMarkAt index: Int) -> CoachMark {
-        if (index == 0) {
-            return coachMarksController.helper.makeCoachMark(for: btnAddNew)
-        } else if (index == 1) {
-            return coachMarksController.helper.makeCoachMark(for: btnSettings)
+        if coachMarksController.coachID == 1 {
+            if (index == 0) {
+                return coachMarksController.helper.makeCoachMark(for: btnAddNew)
+            } else if (index == 1) {
+                return coachMarksController.helper.makeCoachMark(for: btnSettings)
+            }
+            return coachMarksController.helper.makeCoachMark(for: self.view)
+        } else {
+            let cell: frmAssignmentList_tblSubject_Cell = tblSubjectList.cellForRow(at: IndexPath(row: 2, section: 0)) as! frmAssignmentList_tblSubject_Cell
+            return coachMarksController.helper.makeCoachMark(for: cell.btnEditSubject)
         }
-        return coachMarksController.helper.makeCoachMark(for: self.view)
     }
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
-        
-        if (index == 0) {UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: subjectList), forKey: "subjectList")
-            coachViews.bodyView.hintLabel.text = "Tap here to add a new assignment."
-            coachViews.bodyView.nextLabel.text = "OK"
-        } else if (index == 1) {
-            coachViews.bodyView.hintLabel.text = "See more options in settings. You can connect to MVC Focus if you are a MVCS student."
-            coachViews.bodyView.nextLabel.text = "OK"
-            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "firstOpen")
+        if coachMarksController.coachID == 1 {
+            if (index == 0) {
+                coachViews.bodyView.hintLabel.text = "Tap here to add a new assignment."
+                coachViews.bodyView.nextLabel.text = "OK"
+            } else if (index == 1) {
+                coachViews.bodyView.hintLabel.text = "See more options in here. You can connect to MVC Focus if you are a MVCS student."
+                coachViews.bodyView.nextLabel.text = "OK"
+                UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "firstOpen")
+            }
+        } else {
+            coachViews.bodyView.hintLabel.text = "You can change the subject color if you want."
+            coachViews.bodyView.nextLabel.text = "Cool"
+            UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: true), forKey: "firstColor")
         }
-        
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
     

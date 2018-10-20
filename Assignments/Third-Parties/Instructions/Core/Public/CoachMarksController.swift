@@ -31,6 +31,7 @@ public class CoachMarksController {
     // MARK: - Public properties
     /// Implement the data source protocol and supply
     /// the coach marks to display.
+    public var coachID: Int = 0
     public weak var dataSource: CoachMarksControllerDataSource?
 
     /// Implement the delegate protocol, which methods will

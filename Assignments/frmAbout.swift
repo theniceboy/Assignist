@@ -13,12 +13,24 @@ class frmAbout: UIViewController, MFMailComposeViewControllerDelegate {
 
     // MARK: - Outlets
     
+    @IBOutlet weak var vShareSourceFrame: UIView!
+    
     // MARK: - Actions
     
     @IBAction func btnClose_Tapped(_ sender: Any) {
         self.dismiss(animated: true) {
         }
     }
+    
+    @IBAction func btnShare_Tapped(_ sender: Any) {
+        if let name = URL(string: "https://itunes.apple.com/app/apple-store/id1281376562") {
+            let activityController = UIActivityViewController(activityItems: [name], applicationActivities: nil)
+            activityController.popoverPresentationController?.sourceView = vShareSourceFrame
+            self.present(activityController, animated: true, completion: nil)
+        }
+    }
+    
+    
     @IBAction func btnEmail_Tapped(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
@@ -44,7 +56,7 @@ class frmAbout: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func btnVisitDeveloperWebsite_Tapped(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: "http://cwsoft.cc")!)
+        UIApplication.shared.openURL(URL(string: "http://cwsoft.net")!)
     }
     
     // MARK: - System Override Functions

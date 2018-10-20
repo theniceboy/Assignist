@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.23.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.16.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,12 +30,15 @@
                                 <state key="normal" title="Visit the Developer's Website">
                                     <color key="titleColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnVisitDeveloperWebsite_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="jER-zF-g6e"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hY-Xh-49T">
                                 <rect key="frame" x="0.0" y="0.0" width="540" height="55"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tv-LQ-oHL" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
-                                        <rect key="frame" x="440" y="0.0" width="100" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="Rfw-S0-uO7"/>
                                         </constraints>
@@ -67,15 +70,45 @@
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhA-um-ow6" customClass="ZFRippleButton" customModule="Assignments" customModuleProvider="target">
+                                        <rect key="frame" x="440" y="0.0" width="100" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="BrT-cD-2WA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="17"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                <color key="value" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                <color key="value" red="0.62745098040000002" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trackTouchLocation" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shadowRippleEnable" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnShare_Tapped:" destination="wy5-ti-7u8" eventType="touchUpInside" id="XOl-FU-iBV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28627450980000002" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="8Tv-LQ-oHL" secondAttribute="bottom" id="36k-Vn-Ofh"/>
                                     <constraint firstItem="D6B-8y-4qw" firstAttribute="centerX" secondItem="5hY-Xh-49T" secondAttribute="centerX" id="BVF-Hk-lz0"/>
                                     <constraint firstAttribute="height" constant="55" id="Dvi-DT-oA9"/>
+                                    <constraint firstAttribute="trailing" secondItem="uhA-um-ow6" secondAttribute="trailing" id="FmG-We-lx1"/>
                                     <constraint firstItem="8Tv-LQ-oHL" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="top" id="L2M-8i-vVT"/>
                                     <constraint firstItem="D6B-8y-4qw" firstAttribute="centerY" secondItem="5hY-Xh-49T" secondAttribute="centerY" id="MWj-R4-iaV"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Tv-LQ-oHL" secondAttribute="trailing" id="QGD-mK-Bhj"/>
+                                    <constraint firstAttribute="bottom" secondItem="uhA-um-ow6" secondAttribute="bottom" id="Xal-h2-9ko"/>
+                                    <constraint firstItem="uhA-um-ow6" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="top" id="ZHr-oz-vp2"/>
+                                    <constraint firstItem="8Tv-LQ-oHL" firstAttribute="leading" secondItem="5hY-Xh-49T" secondAttribute="leading" id="inM-1g-7s5"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By David Chen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doh-nX-aat">
@@ -116,6 +149,13 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dr8-4E-t8G">
+                                <rect key="frame" x="490" y="63" width="50" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="MYB-i2-Wi3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -128,6 +168,7 @@
                             <constraint firstItem="GhN-cL-Uyc" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" id="QCG-Up-Y2N"/>
                             <constraint firstItem="doh-nX-aat" firstAttribute="top" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="-8" id="QDp-cR-7mw"/>
                             <constraint firstItem="GhN-cL-Uyc" firstAttribute="top" secondItem="eUU-jP-4ma" secondAttribute="bottom" id="Rti-gK-BTe"/>
+                            <constraint firstItem="dr8-4E-t8G" firstAttribute="trailing" secondItem="B2s-Ul-HnX" secondAttribute="trailing" id="TBK-Sr-9Rk"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="centerX" secondItem="WO6-X6-mEP" secondAttribute="centerX" constant="32" id="Urt-uQ-iy8"/>
                             <constraint firstItem="eUU-jP-4ma" firstAttribute="top" secondItem="SiB-jh-9fn" secondAttribute="bottom" id="XKP-XM-e9j"/>
                             <constraint firstItem="5hY-Xh-49T" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" id="adN-gQ-qov"/>
@@ -135,15 +176,20 @@
                             <constraint firstItem="SiB-jh-9fn" firstAttribute="leading" secondItem="B2s-Ul-HnX" secondAttribute="leading" constant="80" id="cql-4c-Rtl"/>
                             <constraint firstItem="pf5-L2-yxF" firstAttribute="leading" secondItem="Wxk-fo-9cu" secondAttribute="trailing" constant="-20" id="gVL-ME-cdq"/>
                             <constraint firstItem="B2s-Ul-HnX" firstAttribute="trailing" secondItem="SiB-jh-9fn" secondAttribute="trailing" constant="80" id="ifz-IE-ccy"/>
+                            <constraint firstItem="dr8-4E-t8G" firstAttribute="width" secondItem="uhA-um-ow6" secondAttribute="width" multiplier="1:2" id="m0o-dl-yGI"/>
                             <constraint firstItem="B2s-Ul-HnX" firstAttribute="bottom" secondItem="8qb-la-UhJ" secondAttribute="bottom" constant="20" id="r0e-iZ-hA7"/>
                             <constraint firstItem="Wxk-fo-9cu" firstAttribute="bottom" secondItem="pf5-L2-yxF" secondAttribute="bottom" constant="-4" id="vn3-EI-Nyy"/>
+                            <constraint firstItem="dr8-4E-t8G" firstAttribute="top" secondItem="5hY-Xh-49T" secondAttribute="bottom" constant="8" id="zr6-WF-hyj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B2s-Ul-HnX"/>
                     </view>
+                    <connections>
+                        <outlet property="vShareSourceFrame" destination="dr8-4E-t8G" id="Kx7-by-gyr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZl-Nt-SqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1982" y="-1027"/>
+            <point key="canvasLocation" x="1981.6406249999998" y="-1027.34375"/>
         </scene>
         <!--Frm Settings-->
         <scene sceneID="0CK-yy-fkU">
@@ -1522,7 +1568,7 @@
                                     <action selector="btnSelectSubject_Tapped:" destination="zjV-ZC-wLg" eventType="touchUpInside" id="Rjm-Bf-AIS"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This subject contains assignment(s) synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Yk-w8F">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This subject contains assignment(s) synced from Focus" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAu-Yk-w8F">
                                 <rect key="frame" x="86.5" y="587.5" width="367.5" height="17.5"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
