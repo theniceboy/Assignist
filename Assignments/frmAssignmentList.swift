@@ -582,6 +582,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
             refreshTableAssignmentList(formatTable: true, refreshSubject: true)
             highlightUndoItem(id: undoItem.id)
         }
+        saveAssignmentList()
         undoStatus = 0
         fadeoutUndoButton()
     }
