@@ -148,6 +148,9 @@ class frmAsignmentList_tblAssignmentListCell: UITableViewCell {
         } else {
             lbDueTime.text = "Due " + duetime
         }
+        if tableAssignmentList[rowNumber].comments.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
+            lbDueTime.text = (lbDueTime.text ?? "") + "   (Notes: " + tableAssignmentList[rowNumber].comments.trimmingCharacters(in: .whitespacesAndNewlines) + ")"
+        }
         if (tableAssignmentList[rowNumber].dueDate.timeIntervalSince1970 < localDate().timeIntervalSince1970) {
             lbDueTime.textColor = redColor
         } else {

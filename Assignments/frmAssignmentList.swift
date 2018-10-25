@@ -32,7 +32,7 @@ var overdueUnchecked = true
 func syncAssignmentListWithFocus () {
     
     DispatchQueue.main.async {
-        curFrmAssignmentList.ckeckInternet()
+        curFrmAssignmentList.checkInternet()
     }
     
     let request = URLRequest(url: URL(string: "https://focus.mvcs.org/focus")!)
@@ -240,7 +240,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     // Internet Check
-    func ckeckInternet() {
+    func checkInternet() {
         let status = Reach().connectionStatus()
         switch status {
         case .unknown, .offline:
@@ -620,7 +620,7 @@ class frmAssignmentList: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         undoDisappearTimer.invalidate()
         btnUndo.isEnabled = true
-        btnUndo.setTitle(undoStatus == 1 ? "UNCKECK ITEM" : "RESTORE ITEM DELETED", for: .normal)
+        btnUndo.setTitle(undoStatus == 1 ? "UNCHECK ITEM" : "RESTORE ITEM DELETED", for: .normal)
         _layout_btnUndo_Bottom.constant = -btnUndo.layer.bounds.height
         btnUndo.alpha = 0
         vRight.layoutIfNeeded()

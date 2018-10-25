@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="m1v-VY-3DS">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1754,7 +1754,7 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9N-ZM-fHl">
-                                                                                    <rect key="frame" x="34" y="57" width="36.5" height="21"/>
+                                                                                    <rect key="frame" x="34" y="57" width="342" height="21"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="21" id="LlH-wL-pFR"/>
                                                                                     </constraints>
@@ -1816,6 +1816,7 @@
                                                                                 <constraint firstItem="kz4-as-8Dg" firstAttribute="centerY" secondItem="gJ5-5g-0l3" secondAttribute="centerY" id="cV8-I1-Rdj"/>
                                                                                 <constraint firstAttribute="height" constant="90" id="iIg-6b-GgG"/>
                                                                                 <constraint firstItem="iX5-Im-N2s" firstAttribute="top" secondItem="arg-Pk-sQf" secondAttribute="top" id="iMe-7b-Fbp"/>
+                                                                                <constraint firstItem="Jyr-Cc-0H7" firstAttribute="leading" secondItem="o9N-ZM-fHl" secondAttribute="trailing" constant="10" id="iXs-T4-6ge"/>
                                                                                 <constraint firstItem="7GC-rq-sub" firstAttribute="trailing" secondItem="gJ5-5g-0l3" secondAttribute="trailing" id="lLg-xe-4EN"/>
                                                                                 <constraint firstItem="gJ5-5g-0l3" firstAttribute="top" secondItem="7GC-rq-sub" secondAttribute="bottom" constant="2" id="ng3-2p-nSj"/>
                                                                                 <constraint firstItem="iX5-Im-N2s" firstAttribute="leading" secondItem="arg-Pk-sQf" secondAttribute="leading" id="oBe-CV-5VX"/>
@@ -1875,7 +1876,7 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                         <color key="tintColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <state key="normal" title="UNCKECK ITEM">
+                                                        <state key="normal" title="UNCHECK ITEM">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="titleShadowColor" red="0.54226852380000001" green="0.81778683900000004" blue="0.90961211919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
