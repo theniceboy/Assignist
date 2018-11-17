@@ -52,7 +52,7 @@ class frmAbout: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func btnGithub_Tapped(_ sender: Any) {
-        UIApplication.shared.openURL(URL(string: "http://github.com/theniceboy/Assignments")!)
+        UIApplication.shared.openURL(URL(string: "https://github.com/theniceboy/Assignist")!)
     }
     
     @IBAction func btnVisitDeveloperWebsite_Tapped(_ sender: Any) {
